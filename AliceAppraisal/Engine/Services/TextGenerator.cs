@@ -10,6 +10,10 @@ namespace AliceAppraisal.Engine.Strategy {
 		private readonly IExternalService externalService;
 		private readonly WordRandomizer randWords = new WordRandomizer();
 
+		public string GetRandTakeVerb() {
+			return randWords.Get();
+		}
+
 		public TextGenerator(IExternalService externalService) {
 			this.externalService = externalService;
 			complexResponseDataset[typeof(GetManufactureYearStrategy)] = CreateTextForGenerationStep;
@@ -20,10 +24,7 @@ namespace AliceAppraisal.Engine.Strategy {
 					Text = "Какая коробка передач установлена в вашем авто? Например автомат, механика и так далее",
 					Buttons = new[] { "Автомат", "Робот", "Механика", "Вариатор", "Оценить другой авто", "Выйти" }
 				},
-				[typeof(GetMakeStrategy)] = new SimpleResponse {
-					Text = $"{randWords.Get()} пожалуйста модель вашего автомобиля?",
-					Buttons = new[] { "Оценить другой авто", "Выйти" }
-				},
+
 				[typeof(GetModelStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} год выпуска вашего автомобиля?",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
@@ -111,26 +112,35 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 
-		public async Task<SimpleResponse> CreateTextForGenerationStep(State state) {
+		public async Task<SimpleResponse> CreateTextForGenerationStep(State state, bool hasScreen) {
 			var modelId = state.Request.ModelId;
 			var manufactureYear = state.Request.ManufactureYear;
 			var fitGenerations = await externalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
 			if (fitGenerations.Length > 1) {
-				state.GenerationChose = fitGenerations
+				state.GenerationChoise = fitGenerations
 					.Select((gen, index) => (Text: (index + 1).ToString(), Id: gen.Value))
 					.ToDictionary(
 						x => x.Text,
 						x => x.Id
 						);
 
-				return new SimpleResponse {
-					Text = $"Выберите поколение вашего авто",
-					Buttons = fitGenerations.Select((gen, index) => $"Вариант {index + 1}: {gen.Text}").ToArray()
-				};
+
+				var genText = fitGenerations.Select((gen, index) => $"Вариант {index + 1}: {gen.Text}").ToArray();
+				if (hasScreen) {
+					return new SimpleResponse {
+						Text = $"Выберите поколение вашего авто",
+						Buttons = genText
+					};
+				} else {
+					return new SimpleResponse {
+						Text = $"Скажите какой номер варианта соответствует вашему поколению авто: {string.Join(", ", genText)}",
+					};
+				}
+
 			} else {
 				state.Request.GenerationId = fitGenerations.FirstOrDefault()?.Value
-					?? throw new ArgumentException($"Поколение для  {modelId} {manufactureYear} не найдено");
+					?? throw new ArgumentException($"Поколение для {modelId} {manufactureYear} не найдено");
 
 				return new SimpleResponse {
 					Text = $"Какой тип кузова у вашего авто? Например седан, хэчбек и так далее."

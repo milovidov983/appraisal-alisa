@@ -7,17 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
-	public class AppraisalOtherStrategy : BaseStrategy {
-		public AppraisalOtherStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class SelectYearStrategy : BaseStrategy {
+		public SelectYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-            return request.HasIntent(Intents.AppraisalOther);
+			return request.HasIntent(Intents.SelectYear) && state.Request.MakeId.HasValue && state.Request.ModelId.HasValue;
 		}
 
-        protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			//state.Clear(); пока не будет очищать
-
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			return await GetMessage(request, state);
 		}
 

@@ -11,6 +11,7 @@ namespace AliceAppraisal.Static {
 		public static string[] Replay = new[] { "Повторить последний шаг" }; 
 		public static string[] Back = new[] { "Вернуться на предыдущий шаг" };
 		public static string[] ExecuteAppraisal = new[] { "Выполнить оценку" };
+		public static string[] SelectYear = new[] { "Изменить год выпуска" };
 
 
 

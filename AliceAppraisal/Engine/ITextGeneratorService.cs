@@ -8,5 +8,7 @@ namespace AliceAppraisal.Engine {
 		Task<SimpleResponse> CreateNextTextRequest(BaseStrategy currentStratagy, State state);
 		Task<SimpleResponse> CreateFinalResult(State state);
 		SimpleResponse CreateAnsverForUnexpectedCommand(State state);
+
+		string GetRandTakeVerb();
 	}
 }

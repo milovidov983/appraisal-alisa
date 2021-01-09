@@ -9,18 +9,20 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public abstract class BaseStrategy {
-        protected ITextGeneratorService textGeneratorService;
+        protected readonly ITextGeneratorService textGeneratorService;
+        protected readonly IExternalService externalService;
         private readonly IStrategyFactory strategyFactory;
 
-		protected BaseStrategy(IServiceFactory serviceFactory) {
+        protected BaseStrategy(IServiceFactory serviceFactory) {
             textGeneratorService = serviceFactory.GetTextGeneratorService();
             strategyFactory = serviceFactory.GetStrategyFactory();
+            externalService = serviceFactory.GetExternalService();
         }
 
         public string NextStep { get => Transitions.GetNextStep(this); }
 
-        protected BaseStrategy GetNextStrategy() {
-            return strategyFactory.GetStrategy(NextStep);
+        protected BaseStrategy GetNextStrategy(string customNextStep = null) {
+            return strategyFactory.GetStrategy(customNextStep ?? NextStep);
 		}
 
         public bool IsSuitableStrategy(AliceRequest request, State state) {
@@ -47,8 +49,9 @@ namespace AliceAppraisal.Engine.Strategy {
 
         protected abstract bool Check(AliceRequest request, State state);
         protected abstract Task<SimpleResponse> Respond(AliceRequest request, State state);
+
+        public abstract Task<SimpleResponse> GetMessage(AliceRequest request, State state);
         public abstract SimpleResponse GetHelp();
-        public abstract SimpleResponse GetMessage(AliceRequest request, State state);
         public abstract SimpleResponse GetMessageForUnknown(AliceRequest request, State state);
     }
 }

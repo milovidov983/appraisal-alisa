@@ -24,5 +24,6 @@ namespace AliceAppraisal.Static {
         public const string RunDdetermine = "run_determine";
         public const string AppraisalOther = "appraisal_other";
         public const string ChangeParamRun = "change_param_run";
+        public const string SelectYear = "select_year";
     }
 }

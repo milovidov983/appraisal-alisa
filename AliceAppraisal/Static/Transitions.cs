@@ -9,8 +9,22 @@ namespace AliceAppraisal.Static {
 		public static string GetNextStep(BaseStrategy strategy) {
 			var nextTransition = strategy switch {
 				
-				AppraisalOtherStrategy _ => typeof(GetMakeStrategy).FullName,
 				GetMakeStrategy _ => typeof(GetModelStrategy).FullName,
+				GetModelStrategy _ => typeof(GetManufactureYearStrategy).FullName,
+				GetManufactureYearStrategy _ => typeof(GenerationStrategy).FullName,
+				GenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
+				GetBodyTypeStrategy _ => typeof(GearboxStrategy).FullName,
+				GearboxStrategy _ => typeof(GetEngineTypeStrategy).FullName,
+				GetEngineTypeStrategy _ => typeof(GetDriveTypeStrategy).FullName,
+				GetDriveTypeStrategy _ => typeof(GetHorsePowerStrategy).FullName,
+				GetHorsePowerStrategy _ => typeof(GetRunStrategy).FullName,
+				GetRunStrategy _ => typeof(GetEquipmentSetStrategy).FullName,
+				GetEquipmentSetStrategy _ => typeof(GetCityStrategy).FullName,
+				GetCityStrategy _ => typeof(GetCityStrategy).FullName,
+				//
+				SelectYearStrategy _ => typeof(GetManufactureYearStrategy).FullName,
+				AppraisalOtherStrategy _ => typeof(GetMakeStrategy).FullName,
+				ConfirmGenerationStrategy _ => typeof(ConfirmGenerationStrategy).FullName,
 				_ => throw new Exception($"Для типа {strategy?.GetType()?.FullName} не описан переход")
 			};
 			return nextTransition;

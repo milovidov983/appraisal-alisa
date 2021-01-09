@@ -17,20 +17,19 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
-			var slot = request.GetSlot(Intents.MakeName, Slots.Make);
+			var value = request.GetSlot(Intents.MakeName, Slots.Make);
 
-			if (!slot.HasData) {
+			if (value.IsNullOrEmpty()) {
 				return GetMessageForUnknown(request, state);
 			}
 
-			var makeId = slot.Value.ExtractId() 
-				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {slot.Value}");
-			state.UpdateMake(makeId, slot.Token, this);
+			var makeId = value.ExtractId() 
+				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {value}");
+
+			state.UpdateMake(makeId, value, this);
 
 			var nextAction = GetNextStrategy();
-
-			return nextAction.GetMessage(request, state);
+			return await nextAction.GetMessage(request, state);
 		}
 
 
@@ -44,7 +43,8 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		 
 
-		public override SimpleResponse GetMessage(AliceRequest request, State state) {
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			await Task.Yield();
 			return new SimpleResponse {
 				Text = Messages.GetRand()
 			};

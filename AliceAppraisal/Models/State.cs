@@ -16,14 +16,15 @@ namespace AliceAppraisal.Models {
 		/// <summary>
 		/// Храним написание и произношение поколения для текущей марки модели года
 		/// </summary>
-		public Dictionary<string, int> GenerationChose { get; set; } = new Dictionary<string, int>();
+		public Dictionary<string, (int Id, string Name)> GenerationChoise { get; set; } = new Dictionary<string, (int Id, string Name)>();
 
 		
 
-		public int? GetGenerationIdBySelected(string value) {
-			GenerationChose.TryGetValue(value, out var generationId);
-			return generationId;
+		public (int Id, string Name) GetGenerationIdBySelected(string value) {
+			GenerationChoise.TryGetValue(value, out var result);
+			return result;
 		}
+
 
 		public void SaveCurrentStep(BaseStrategy strategy) {
             PrevAction = strategy.GetType().FullName;
@@ -31,7 +32,7 @@ namespace AliceAppraisal.Models {
 		}
 
 		public void Clear() {
-			GenerationChose = new Dictionary<string, int>();
+			GenerationChoise = new Dictionary<string, (int Id, string Name)>();
 			Request = new AppraisalQuoteRequest();
             PrevAction = "";
         }
@@ -46,7 +47,7 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateModelId(int newModelId, BaseStrategy strategy) {
+		public bool UpdateModelId(int newModelId, string entity, BaseStrategy strategy) {
 			SaveCurrentStep(strategy);
 			if (Request.ModelId != newModelId) {
 				Request.ModelId = newModelId;
@@ -58,7 +59,7 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateRegion(int regionId, BaseStrategy strategy) {
+		public bool UpdateRegion(int regionId, string entity, BaseStrategy strategy) {
 			SaveCurrentStep(strategy);
 			if (Request.RegionId != regionId) {
 				Request.RegionId = regionId;
@@ -103,6 +104,7 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
+
 		public bool UpdateGearbox(string gearbox, BaseStrategy strategy) {
 			SaveCurrentStep(strategy);
 			if (Request.Gearbox != gearbox) {
@@ -112,20 +114,23 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateGenerationId(int generationId, BaseStrategy strategy) {
+		public bool UpdateGenerationId(int generationId, string entity, BaseStrategy strategy) {
 			SaveCurrentStep(strategy);
 			if (Request.GenerationId != generationId) {
 				Request.GenerationId = generationId;
+
+				Request.GenerationValue = entity;
+
 				return true;
 			}
 			return false;
 		}
 
-		public bool UpdateMake(int? makeId, string token, BaseStrategy strategy) {
+		public bool UpdateMake(int? makeId, string entity, BaseStrategy strategy) {
 			SaveCurrentStep(strategy);
 			if (Request.MakeId != makeId) {
 				Request.MakeId = makeId;
-				Request.MakeToken = token;
+				Request.MakeEntity = entity;
 
 
 				Request.ResetModelId();
