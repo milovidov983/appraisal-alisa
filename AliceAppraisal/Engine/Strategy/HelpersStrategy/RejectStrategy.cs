@@ -6,19 +6,19 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class RejectStratagy : BaseStratagy {
+namespace AliceAppraisal.Engine.Strategy {
+	public class RejectStratagy : BaseStrategy {
 		public RejectStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
 			return request.HasIntent(Intents.YandexReject)
-				&& (state.PrevAction.Is(typeof(CityStratagy)) || state.PrevAction.Is(typeof(ChangeParamStratagy)));
+				&& (state.PrevAction.Is(typeof(GetCityStrategy)) || state.PrevAction.Is(typeof(ChangeParamStrategy)));
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			await Task.Yield();
-			state.SetPrevAction(this);
+			state.SaveCurrentStep(this);
 			state.Clear();
 			return new SimpleResponse {
 				Text = $"Всего вам хорошего, до свидания.",

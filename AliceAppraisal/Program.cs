@@ -1,6 +1,6 @@
 ﻿using AliceAppraisal.Configuration;
 using AliceAppraisal.Controllers;
-using AliceAppraisal.Engine.Stratagy;
+using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
 using System;
 using System.IO;

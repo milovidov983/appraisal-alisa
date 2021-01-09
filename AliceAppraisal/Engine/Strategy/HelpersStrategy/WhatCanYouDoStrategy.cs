@@ -6,20 +6,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class AppraisalOtherStratagy : BaseStratagy {
-		public AppraisalOtherStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class WhatCanYouDoStrategy : BaseStrategy {
+		public WhatCanYouDoStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-            return request.HasIntent(Intents.AppraisalOther);
+            return request.HasIntent(Intents.YandexHelp1);
 		}
 
         protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			await Task.Yield();
-			state.Clear();
+			
 			return new SimpleResponse {
-				Text = $"Назовите марку авто которое вы хотите оценить.",
+				Text = $"Я Бот обладающий навыком угадывать цену у подержанных автомобилей.",
 				Buttons = new[] { "Оценить другой авто", "Выйти" }
 			};
 		}

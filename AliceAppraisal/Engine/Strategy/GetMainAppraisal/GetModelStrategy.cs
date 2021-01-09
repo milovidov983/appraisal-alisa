@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class ModelStratagy : BaseStratagy {
-		public ModelStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class GetModelStrategy : BaseStrategy {
+		public GetModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.ModelName);
+			return request.HasIntent(Intents.ModelName) && state.PrevAction.Is(typeof(GetMakeStrategy));
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

@@ -1,5 +1,5 @@
 ﻿using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Stratagy;
+using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
 using System;
 using System.Collections.Generic;
@@ -67,5 +67,12 @@ namespace AliceAppraisal {
             return self == target.FullName;
 		}
 
+        public static Random rand = new Random((int)DateTime.UtcNow.Ticks);
+        public static string GetRand(this string[] data) {
+            var start = 0;
+            var end = data.Length - 1;
+            var index = rand.Next(start, end);
+            return data[index];
+        }
     }
 }

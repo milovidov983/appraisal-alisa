@@ -7,7 +7,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
+namespace AliceAppraisal.Engine.Strategy {
 	public class ExternalService : IExternalService {
 		public async Task<AppraisalRawResult> GetAppraisalResponse(AppraisalQuoteRequest appraisalRequest) {
 			var handler = new HttpClientHandler {

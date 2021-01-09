@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class GenerationStratagy : BaseStratagy {
-		public GenerationStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class GenerationStrategy : BaseStrategy {
+		public GenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.DigitInput) && state.PrevAction.Is(typeof(ManufactureYearStratagy));
+			return request.HasIntent(Intents.DigitInput) && state.PrevAction.Is(typeof(GetManufactureYearStrategy));
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

@@ -7,27 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class EngineTypeStratagy : BaseStratagy {
-		public EngineTypeStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class GearboxStrategy : BaseStrategy {
+		public GearboxStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.EngineType);
+			return request.HasIntent(Intents.GearboxType);
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			await Task.Yield();
-			var engine = request.GetSlot(Intents.EngineType, Slots.Engine);
+			var gearbox = request.GetSlot(Intents.GearboxType, Slots.Gearbox);
 
-			if (engine.IsNullOrEmpty()) {
+			if (gearbox.IsNullOrEmpty()) {
 				return new SimpleResponse {
-					Text = $"Не удалось распознать тип двигателя, попробуйте повторить ваш запрос.",
+					Text = $"Не удалось распознать тип коробки передач, попробуйте повторить ваш запрос.",
 					Buttons = new[] { "Оценить другой авто", "Вернутся на шаг назад", "Выйти" }
 				};
 			}
 
-			state.UpdateEngineType(engine, this);
+			state.UpdateGearbox(gearbox, this);
 
 			return textGeneratorService.CreateNextTextRequest(this);
 

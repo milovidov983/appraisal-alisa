@@ -7,27 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class BodyTypeStratagy : BaseStratagy {
-		public BodyTypeStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class GetDriveTypeStrategy : BaseStrategy {
+		public GetDriveTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.BodyType);
+			return request.HasIntent(Intents.DriveType);
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			await Task.Yield();
-			var body = request.GetSlot(Intents.BodyType, Slots.Body);
+			var drive = request.GetSlot(Intents.DriveType, Slots.Drive);
 
-			if (body.IsNullOrEmpty()) {
+			if (drive.IsNullOrEmpty()) {
 				return new SimpleResponse {
-					Text = $"Не удалось распознать тип кузова, попробуйте повторить ваш запрос.",
+					Text = $"Не удалось распознать тип привода, попробуйте повторить ваш запрос.",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
 				};
 			}
 
-			state.UpdateBodyType(body, this);
+			state.UpdateDriveType(drive, this);
 
 			return textGeneratorService.CreateNextTextRequest(this);
 

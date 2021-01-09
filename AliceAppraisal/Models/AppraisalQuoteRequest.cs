@@ -6,19 +6,11 @@ namespace AliceAppraisal.Models {
 	public class AppraisalQuoteRequest {
 
 
-		public int? MakeId {
-			get;
-			set;
-		}
-		public int? ModelId {
-			get;
-			set;
-		}
-		public int? ManufactureYear {
-			get;
-			set;
-		}
+		public int? MakeId { get;set;}
+		public string MakeToken { get; set; }
 
+		public int? ModelId {get;set;}
+		public int? ManufactureYear {get;set;}
 
 
 		/// <summary>
@@ -40,7 +32,11 @@ namespace AliceAppraisal.Models {
 
 
 
-
-
+		public void ResetModelId() {
+			ModelId = null;
+		}
+		public void ResetGenerationId() {
+			GenerationId = null;
+		}
 	}
 }

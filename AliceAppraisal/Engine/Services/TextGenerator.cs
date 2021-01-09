@@ -5,56 +5,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
+namespace AliceAppraisal.Engine.Strategy {
 	public class TextGenerator : ITextGeneratorService {
 		private readonly IExternalService externalService;
 		private readonly WordRandomizer randWords = new WordRandomizer();
 
 		public TextGenerator(IExternalService externalService) {
 			this.externalService = externalService;
-			complexResponseDataset[typeof(ManufactureYearStratagy)] = CreateTextForGenerationStep;
+			complexResponseDataset[typeof(GetManufactureYearStrategy)] = CreateTextForGenerationStep;
 
 
 			responseDataset = new Dictionary<Type, SimpleResponse> {
-				[typeof(BodyTypeStratagy)] = new SimpleResponse {
+				[typeof(GetBodyTypeStrategy)] = new SimpleResponse {
 					Text = "Какая коробка передач установлена в вашем авто? Например автомат, механика и так далее",
 					Buttons = new[] { "Автомат", "Робот", "Механика", "Вариатор", "Оценить другой авто", "Выйти" }
 				},
-				[typeof(MakeStratagy)] = new SimpleResponse {
+				[typeof(GetMakeStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} пожалуйста модель вашего автомобиля?",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
 				},
-				[typeof(ModelStratagy)] = new SimpleResponse {
+				[typeof(GetModelStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} год выпуска вашего автомобиля?",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
 				},
-				[typeof(ManufactureYearStratagy)] = SimpleResponse.Empty,
+				[typeof(GetManufactureYearStrategy)] = SimpleResponse.Empty,
 
-				[typeof(GenerationStratagy)] = new SimpleResponse {
+				[typeof(GenerationStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} тип кузова вашего авто? Например седан, хечбек, внедорожник и так далее",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
 				},
-				[typeof(GearboxStratagy)] = new SimpleResponse {
+				[typeof(GearboxStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} тип двигателя вашего авто? Например Бензиновый, Гибрид, Дизельный или Электрический",
 					Buttons = new[] { "Бензиновый", "Гибрид", "Дизельный", "Электрический", "Оценить другой авто", "Выйти" }
 				},
-				[typeof(EngineTypeStratagy)] = new SimpleResponse {
+				[typeof(GetEngineTypeStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} тип привода у вашего авто? Например Переднеприводный, Заднеприводный или Полноприводный ",
 					Buttons = new[] { "Переднеприводный", "Заднеприводный", "Полноприводный", "Оценить другой авто", "Выйти" }
 				},
-				[typeof(DriveTypeStratagy)] = new SimpleResponse {
+				[typeof(GetDriveTypeStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()} примерное количество лошадиных сил в вашем авто?",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
 				},
-				[typeof(HorsePowerStratagy)] = new SimpleResponse {
+				[typeof(GetHorsePowerStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()}  примерный пробег вашего авто?",
 					Buttons = new[] { "Оценить другой авто", "Выйти" }
 				},
-				[typeof(RunStratagy)] = new SimpleResponse {
+				[typeof(GetRunStrategy)] = new SimpleResponse {
 					Text = $"{randWords.Get()}  комплектацию вашего авто? Например Базовая, Стандартная или Максимальная",
 					Buttons = new[] { "Базовая", "Стандартная", "Максимальная", "Оценить другой авто", "Выйти" }
 				},
-				[typeof(EquipmentSetStratagy)] = new SimpleResponse {
+				[typeof(GetEquipmentSetStrategy)] = new SimpleResponse {
 					Text = "И последнее, по умолчанию оценка будет проведена для московского региона, " +
 				"если вас интересует другой регион, то введите его номер, если вас устраивает московский регион, то просто скажите Продолжить",
 					Buttons = new[] { "Продолжить", "Оценить другой авто", "Выйти" }
@@ -68,10 +68,10 @@ namespace AliceAppraisal.Engine.Stratagy {
 
 		private readonly Dictionary<Type, Func<State, Task<SimpleResponse>>> complexResponseDataset
 			= new Dictionary<Type, Func<State, Task<SimpleResponse>>> {
-				[typeof(ManufactureYearStratagy)] = null
+				[typeof(GetManufactureYearStrategy)] = null
 			};
 
-		public SimpleResponse CreateNextTextRequest(BaseStratagy currentStratagy) {
+		public SimpleResponse CreateNextTextRequest(BaseStrategy currentStratagy) {
 			if (responseDataset.TryGetValue(currentStratagy.GetType(), out var result)) {
 				if (result != SimpleResponse.Empty) {
 					return result;
@@ -82,11 +82,11 @@ namespace AliceAppraisal.Engine.Stratagy {
 			throw new NotImplementedException($"{currentStratagy.GetType()} is unknown strategy type");
 		}
 
-		public async Task<SimpleResponse> CreateNextTextRequest(BaseStratagy currentStratagy, State state) {
-			if (currentStratagy is CityStratagy) {
+		public async Task<SimpleResponse> CreateNextTextRequest(BaseStrategy currentStratagy, State state) {
+			if (currentStratagy is GetCityStrategy) {
 				return await CreateFinalResult(state);
 			}
-			if (currentStratagy is ManufactureYearStratagy) {
+			if (currentStratagy is GetManufactureYearStrategy) {
 				var fn = complexResponseDataset[currentStratagy.GetType()];
 				return await fn.Invoke(state);
 			}
@@ -94,7 +94,7 @@ namespace AliceAppraisal.Engine.Stratagy {
 		}
 
 		public async Task<SimpleResponse> CreateFinalResult(State state) {
-			var result = await externalService.GetAppraisalResponse(state.AppraisalRequest);
+			var result = await externalService.GetAppraisalResponse(state.Request);
 
 			if (result.Status != "success") {
 				return new SimpleResponse {
@@ -112,8 +112,8 @@ namespace AliceAppraisal.Engine.Stratagy {
 		}
 
 		public async Task<SimpleResponse> CreateTextForGenerationStep(State state) {
-			var modelId = state.AppraisalRequest.ModelId;
-			var manufactureYear = state.AppraisalRequest.ManufactureYear;
+			var modelId = state.Request.ModelId;
+			var manufactureYear = state.Request.ManufactureYear;
 			var fitGenerations = await externalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
 			if (fitGenerations.Length > 1) {
@@ -129,7 +129,7 @@ namespace AliceAppraisal.Engine.Stratagy {
 					Buttons = fitGenerations.Select((gen, index) => $"Вариант {index + 1}: {gen.Text}").ToArray()
 				};
 			} else {
-				state.AppraisalRequest.GenerationId = fitGenerations.FirstOrDefault()?.Value
+				state.Request.GenerationId = fitGenerations.FirstOrDefault()?.Value
 					?? throw new ArgumentException($"Поколение для  {modelId} {manufactureYear} не найдено");
 
 				return new SimpleResponse {
@@ -139,8 +139,26 @@ namespace AliceAppraisal.Engine.Stratagy {
 		}
 		
 
+		public class AnswersForStratagy {
+			public HashSet<string> PrevActions = new HashSet<string>();
+			public string CommonText { get; set; }
+			public string WithoutScreenText { get; set; }
+			public string[] Buttons = AliceAppraisal.Static.Buttons.Base;
+		}
 
-		public SimpleResponse CreateAnsverForUnexpectedCommand() {
+		private static AnswersForStratagy[] answersForStratagies = new[] {
+			new AnswersForStratagy {
+				PrevActions = new HashSet<string>(new[]{ 
+					typeof(ConfirmAppraisalStrategy).FullName,  
+					typeof(AppraisalOtherStrategy).FullName 
+				}),
+				CommonText = "Кажется у меня нет такой марки в базе данных, попробуйте еще раз или попросите у меня подсказку.",
+				
+			}
+
+		};
+
+		public SimpleResponse CreateAnsverForUnexpectedCommand(State state) {
 			return new SimpleResponse {
 				Text = "Я не смог распознать вашу команду, пожалуйста попробуйте повторить, " +
 				"или воспользуйтесь справочным разделом, нажав ответствующую кнопку.",

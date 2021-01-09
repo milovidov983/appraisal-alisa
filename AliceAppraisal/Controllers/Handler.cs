@@ -1,7 +1,7 @@
 ﻿using AliceAppraisal.Configuration;
 using AliceAppraisal.Engine;
 using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Engine.Stratagy;
+using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using Serilog;
@@ -47,34 +47,41 @@ namespace AliceAppraisal.Controllers {
 	}
 
 	public class MainHandler {
-		private static readonly IServiceFactory serviceFactory = new ServiceFactory();
-		private static readonly List<BaseStratagy> stratagy;
+	
+		private static readonly List<BaseStrategy> strategies;
 		private static readonly ITextGeneratorService textGenerator;
-		private readonly ILogger logger = new LoggerConfiguration().WriteTo.Console()
-												.MinimumLevel.Debug().CreateLogger();
-		private readonly State _state;
+		private static readonly ILogger logger = new LoggerConfiguration()
+			.WriteTo
+			.Console()
+			.MinimumLevel
+			.Debug()
+			.CreateLogger();
+
+		private readonly State state;
 
 
 		public MainHandler(AliceRequest request) {
-			_state = request.State?.Session ?? new State();
+			state = request.State?.Session ?? new State();
 		}
 
 		static MainHandler() {
-			stratagy = ReflectiveEnumerator.GetEnumerableOfType<BaseStratagy>(serviceFactory).ToList();
-			textGenerator = serviceFactory.GetTextGeneratorService();
+			var factory = new ServiceFactory(logger);
+			strategies = ReflectiveEnumerator.GetEnumerableOfType<BaseStrategy>(factory).ToList();
+			textGenerator = factory.GetTextGeneratorService();
+			factory.InitStratagy(strategies);
 		}
 
 
 		public async Task<AliceResponse> HandleRequest(AliceRequest aliceRequest) {
 			AliceResponse response;
 			try {
-				var suitableStrategy = stratagy
-					.Where(stratagy => stratagy.IsSuitableStrategy(aliceRequest, _state))
+				var suitableStrategy = strategies
+					.Where(stratagy => stratagy.IsSuitableStrategy(aliceRequest, state))
 					.ToArray();
 		
 				var tasks = suitableStrategy
 					.Select(async (strategy) => {
-						return await strategy.Run(aliceRequest, _state);
+						return await strategy.Run(aliceRequest, state);
 						})
 					.ToArray();
 
@@ -89,7 +96,7 @@ namespace AliceAppraisal.Controllers {
 					var simple = textGenerator.CreateAnsverForUnexpectedCommand();
 					response = AliceResponseBuilder.Create()
 						.WithData(aliceRequest)
-						.WithState(_state)
+						.WithState(state)
 						.WithText(simple)
 						.Build();
 				}
@@ -101,7 +108,7 @@ namespace AliceAppraisal.Controllers {
 						Text = "Произошла какая-то ошибка на сервере навыка, разработчик уже уведомлен. " +
 							   "Приносим извинения."
 					},
-					State = _state
+					State = state
 				};
 			}
 

@@ -7,7 +7,7 @@ namespace AliceAppraisal.Models {
     public class SimpleResponse {
         public string Text { get; set; }
         public string Tts { get; set; }
-        public string[] Buttons { get; set; }
+        public string[] Buttons { get; set; } = Static.Buttons.Base;
 
         public SimpleResponse() { }
         public SimpleResponse(string text, string[] buttons = null) {

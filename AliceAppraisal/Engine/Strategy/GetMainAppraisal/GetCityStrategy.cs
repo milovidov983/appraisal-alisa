@@ -8,8 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class CityStratagy : BaseStratagy {
+namespace AliceAppraisal.Engine.Strategy {
+	public class GetCityStrategy : BaseStrategy {
 
 		protected List<string> Keywords { get; } = new List<string>
 		{
@@ -31,14 +31,17 @@ namespace AliceAppraisal.Engine.Stratagy {
 			return CheckTokens(request) || request.HasIntent(Intents.CityName);
 		}
 
-		private static readonly Dictionary<string, int> cityRegions = RegionItem.All.ToDictionary(
-			x => x.CapitalName.ToLowerInvariant(),
-			x=>x.Code
-			);
+		private static readonly Dictionary<string, int> cityRegions;
+		static GetCityStrategy() {
+			cityRegions = new Dictionary<string, int>();
+			foreach(var item in RegionItem.All) {
+				cityRegions.TryAdd(item.CapitalName.ToLowerInvariant(), item.Code);
+			}
+		}
 
 		private const string DEFAULT_CITY = "москва";
 
-		public CityStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		public GetCityStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

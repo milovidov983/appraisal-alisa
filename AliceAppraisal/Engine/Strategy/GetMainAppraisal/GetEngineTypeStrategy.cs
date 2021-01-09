@@ -7,27 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class EquipmentSetStratagy : BaseStratagy {
-		public EquipmentSetStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class GetEngineTypeStrategy : BaseStrategy {
+		public GetEngineTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.EquipmentType);
+			return request.HasIntent(Intents.EngineType);
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			await Task.Yield();
-			var equipment = request.GetSlot(Intents.EquipmentType, Slots.Equipment);
+			var engine = request.GetSlot(Intents.EngineType, Slots.Engine);
 
-			if (equipment.IsNullOrEmpty()) {
+			if (engine.IsNullOrEmpty()) {
 				return new SimpleResponse {
-					Text = $"Не удалось распознать тип комплектации, попробуйте повторить ваш запрос.",
+					Text = $"Не удалось распознать тип двигателя, попробуйте повторить ваш запрос.",
 					Buttons = new[] { "Оценить другой авто", "Вернутся на шаг назад", "Выйти" }
 				};
 			}
 
-			state.UpdateEquipmentSet(equipment, this);
+			state.UpdateEngineType(engine, this);
 
 			return textGeneratorService.CreateNextTextRequest(this);
 

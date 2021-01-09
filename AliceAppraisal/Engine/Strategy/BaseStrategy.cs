@@ -1,18 +1,27 @@
 ﻿using AliceAppraisal.Engine.Services;
 using AliceAppraisal.Models;
+using AliceAppraisal.Static;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public abstract class BaseStratagy {
+namespace AliceAppraisal.Engine.Strategy {
+	public abstract class BaseStrategy {
         protected ITextGeneratorService textGeneratorService;
+        private readonly IStrategyFactory strategyFactory;
 
-        protected BaseStratagy(IServiceFactory serviceFactory) {
+		protected BaseStrategy(IServiceFactory serviceFactory) {
             textGeneratorService = serviceFactory.GetTextGeneratorService();
+            strategyFactory = serviceFactory.GetStrategyFactory();
         }
+
+        public string NextStep { get => Transitions.GetNextStep(this); }
+
+        protected BaseStrategy GetNextStrategy() {
+            return strategyFactory.GetStrategy(NextStep);
+		}
 
         public bool IsSuitableStrategy(AliceRequest request, State state) {
             return Check(request, state ?? new State());
@@ -23,6 +32,7 @@ namespace AliceAppraisal.Engine.Stratagy {
         }
 
         protected virtual async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
+            state.SaveCurrentStep(this);
             var simple = await Respond(request, state);
 
             var response = AliceResponseBuilder.Create()
@@ -37,6 +47,8 @@ namespace AliceAppraisal.Engine.Stratagy {
 
         protected abstract bool Check(AliceRequest request, State state);
         protected abstract Task<SimpleResponse> Respond(AliceRequest request, State state);
-
+        public abstract SimpleResponse GetHelp();
+        public abstract SimpleResponse GetMessage(AliceRequest request, State state);
+        public abstract SimpleResponse GetMessageForUnknown(AliceRequest request, State state);
     }
 }

@@ -6,14 +6,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Stratagy {
-	public class ChangeParamStratagy : BaseStratagy {
-		public ChangeParamStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
+namespace AliceAppraisal.Engine.Strategy {
+	public class ChangeParamStrategy : BaseStrategy {
+		public ChangeParamStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
 			return request.HasIntent(Intents.ChangeParamRun) 
-				&& ( state.PrevAction.Is(typeof(CityStratagy)) || state.PrevAction.Is(typeof(ChangeParamStratagy)));
+				&& ( state.PrevAction.Is(typeof(GetCityStrategy)) || state.PrevAction.Is(typeof(ChangeParamStrategy)));
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
