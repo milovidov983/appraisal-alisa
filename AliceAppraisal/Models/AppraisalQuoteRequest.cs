@@ -23,29 +23,43 @@ namespace AliceAppraisal.Models {
 		public string GenerationValue { get; set; }
 
 		public string EngineType { get; set; }
-		public string EngineEntity { get; set; }
+		
 
 		public int? HorsePower { get; set; }
 
 		public string BodyType { get; set; }
-		public string BodyEntity { get; set; }
+		
 
 
 		public string Gearbox { get; set; }
-		public string GearboxEntity { get; set; }
+	
 
 		public int? Run { get; set; }
 
 		public string Drive { get; set; }
-		public string DriveEntity { get; set; }
+		
 		
 		public int? RegionId { get; set; }
+		public string CityName { get; set; }
 
 		public string EquipmentType { get; set; }
-		public string EquipmentEntity { get; set; }
 
-
-
+		public string GetFullName() {
+			var name = $"" +
+				$"{MakeEntity.ExtractName()}, " +
+				$"{ModelEntity.ExtractName()}, " +
+				$"{ManufactureYear} г.в., " +
+				$"{GenerationValue}, " +
+				$"{BodyType}, " +
+				$"{Gearbox}, " +
+				$"{EngineType}, " +
+				$"{Drive}, " +
+				$"{HorsePower} л.с., " +
+				$"{Run} км., " +
+				$"{EquipmentType} л.с., " +
+				$"{CityName}";
+			return name;
+		}
 
 		public void ResetModelId() {
 			ModelId = null;

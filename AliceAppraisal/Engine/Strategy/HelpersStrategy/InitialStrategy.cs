@@ -9,20 +9,34 @@ namespace AliceAppraisal.Engine.Strategy {
 	public class InitialStrategy : BaseStrategy {
 		public InitialStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
-
-		protected override bool Check(AliceRequest request, State state) {
-			return request.Request.Command.IsNullOrEmpty() && state.PrevAction.IsNullOrEmpty(); 
-		}
-
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
-			state.SaveCurrentStep(this);
+
 			return new SimpleResponse {
 				Text = $"Привет я Бот обладающий навыком угадывать цену у подержанных автомобилей, " +
 				$"хотите я попробую оценить стоимость вашего авто на вторичном рынке?",
 				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
 			};
+		}
 
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+			return SimpleResponse.Empty;
+		}
+		public override SimpleResponse GetHelp() {
+			return new SimpleResponse {
+				Text = $"Привет я Бот обладающий навыком угадывать цену у подержанных автомобилей, " +
+							$"хотите я попробую оценить стоимость вашего авто на вторичном рынке?",
+				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
+			};
+
+		}
+		protected override bool Check(AliceRequest request, State state) {
+			return request.Request.Command.IsNullOrEmpty() && state.PrevAction.IsNullOrEmpty()
+				|| state.NextAction.Is(this.GetType()); 
+		}
+
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+			return await GetMessage(request, state);
 		}
 	}
 }

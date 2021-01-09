@@ -63,6 +63,9 @@ namespace AliceAppraisal.Models {
 			SaveCurrentStep(strategy);
 			if (Request.RegionId != regionId) {
 				Request.RegionId = regionId;
+
+				Request.CityName = entity;
+
 				return true;
 			}
 			return false;

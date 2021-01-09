@@ -17,5 +17,10 @@ namespace AliceAppraisal.Engine.Services {
 			Stratagies.TryGetValue(fullName, out var stratagy);
 			return stratagy;
 		}
+		public BaseStrategy GetDefaultStrategy() {
+			Stratagies.TryGetValue(typeof(InitialStrategy).FullName, out var stratagy);
+			return stratagy;
+		}
+
 	}
 }

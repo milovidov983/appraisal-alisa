@@ -10,10 +10,24 @@ namespace AliceAppraisal.Engine.Strategy {
 	public class ChangeParamStrategy : BaseStrategy {
 		public ChangeParamStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			await Task.Yield();
+			return SimpleResponse.Empty;
+		}
 
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+			return new SimpleResponse {
+				Text = $"Не удалось распознать указанный вами пробег, попробуйте повторить ваш запрос.",
+			};
+		}
+		public override SimpleResponse GetHelp() {
+			return new SimpleResponse {
+				Text = $"Изменить пробег у оцененного авто."
+			};
+		}
 		protected override bool Check(AliceRequest request, State state) {
 			return request.HasIntent(Intents.ChangeParamRun) 
-				&& ( state.PrevAction.Is(typeof(GetCityStrategy)) || state.PrevAction.Is(typeof(ChangeParamStrategy)));
+				&& state.NextAction.Is(typeof(StartAppraisalStrategy));
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
@@ -21,23 +35,16 @@ namespace AliceAppraisal.Engine.Strategy {
 			var runStr = request.GetSlot(Intents.ChangeParamRun, Slots.Run);
 
 			if (runStr.IsNullOrEmpty()) {
-				return CreateFailureResponse();
+				return GetMessageForUnknown(request,state);
 			}
 			if (!Int32.TryParse(runStr, out var run)) {
-				return CreateFailureResponse();
+				return GetMessageForUnknown(request, state);
 			}
 
 			state.UpdateRun(run, this);
 
-			return await textGeneratorService.CreateFinalResult(state);
-
-		}
-
-		private static SimpleResponse CreateFailureResponse() {
-			return new SimpleResponse {
-				Text = $"Не удалось распознать указанный вами пробег, попробуйте повторить ваш запрос.",
-				Buttons = new[] { "Оценить другой авто", "Вернутся на шаг назад", "Выйти" }
-			};
+			var nextAction = GetNextStrategy();
+			return await nextAction.GetMessage(request, state);
 		}
 	}
 }

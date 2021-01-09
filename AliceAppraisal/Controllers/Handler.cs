@@ -47,7 +47,7 @@ namespace AliceAppraisal.Controllers {
 	}
 
 	public class MainHandler {
-	
+		private static IStrategyFactory strategyFactory;
 		private static readonly List<BaseStrategy> strategies;
 		private static readonly ITextGeneratorService textGenerator;
 		private static readonly ILogger logger = new LoggerConfiguration()
@@ -59,7 +59,6 @@ namespace AliceAppraisal.Controllers {
 
 		private readonly State state;
 
-
 		public MainHandler(AliceRequest request) {
 			state = request.State?.Session ?? new State();
 		}
@@ -69,6 +68,7 @@ namespace AliceAppraisal.Controllers {
 			strategies = ReflectiveEnumerator.GetEnumerableOfType<BaseStrategy>(factory).ToList();
 			textGenerator = factory.GetTextGeneratorService();
 			factory.InitStratagy(strategies);
+			strategyFactory = factory.GetStrategyFactory();
 		}
 
 
@@ -80,9 +80,7 @@ namespace AliceAppraisal.Controllers {
 					.ToArray();
 		
 				var tasks = suitableStrategy
-					.Select(async (strategy) => {
-						return await strategy.Run(aliceRequest, state);
-						})
+					.Select(async (strategy) =>  await strategy.Run(aliceRequest, state))
 					.ToArray();
 
 				await Task.WhenAll(tasks);
@@ -93,7 +91,14 @@ namespace AliceAppraisal.Controllers {
 					.FirstOrDefault();
 
 				if (response is null) {
-					var simple = textGenerator.CreateAnsverForUnexpectedCommand();
+					var currentActionName = state.NextAction;
+					var currentAction = strategyFactory.GetStrategy(currentActionName);
+
+					if(currentAction is null) {
+						currentAction = strategyFactory.GetDefaultStrategy();
+					}
+
+					var simple = currentAction.GetMessageForUnknown(aliceRequest, state);
 					response = AliceResponseBuilder.Create()
 						.WithData(aliceRequest)
 						.WithState(state)

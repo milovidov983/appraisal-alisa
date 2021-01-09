@@ -12,7 +12,7 @@ namespace AliceAppraisal.Engine.Services {
 			return externalService;
 		}
 
-		private static readonly ITextGeneratorService textGeneratorService = new TextGenerator(externalService);
+		private static readonly ITextGeneratorService textGeneratorService = new TextGenerator();
 		public ITextGeneratorService GetTextGeneratorService() {
 			return textGeneratorService;
 		}

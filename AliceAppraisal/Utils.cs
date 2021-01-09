@@ -24,7 +24,7 @@ namespace AliceAppraisal {
     public static class Utils {
 
         public static bool ContainsStartWith(this IEnumerable<string> list, string start) {
-            return list.Any(element => element.ToLower().Trim().StartsWith(start));
+            return list.Any(element => element.ToLowerInvariant().Trim().StartsWith(start));
         }
         public static bool IsNullOrEmpty(this string s) {
             return string.IsNullOrEmpty(s);
@@ -61,6 +61,16 @@ namespace AliceAppraisal {
             }
 
             return null;
+        }
+        public static  string ExtractName(this string val) {
+            if (val.IsNullOrEmpty()) {
+                return null;
+            }
+            var makeParts = val.Split("_");
+            if (makeParts.Length != 2) {
+                return null;
+            }
+            return makeParts.First();
         }
 
         public static bool Is(this string self, Type target) {

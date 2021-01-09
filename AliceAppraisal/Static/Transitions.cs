@@ -20,11 +20,15 @@ namespace AliceAppraisal.Static {
 				GetHorsePowerStrategy _ => typeof(GetRunStrategy).FullName,
 				GetRunStrategy _ => typeof(GetEquipmentSetStrategy).FullName,
 				GetEquipmentSetStrategy _ => typeof(GetCityStrategy).FullName,
-				GetCityStrategy _ => typeof(GetCityStrategy).FullName,
+				GetCityStrategy _ => typeof(StartAppraisalStrategy).FullName,
 				//
+				ExitStrategy _ => typeof(InitialStrategy).FullName,
+				ChangeParamStrategy _ => typeof(StartAppraisalStrategy).FullName,
+				ConfirmAppraisalStrategy _ => typeof(GetMakeStrategy).FullName,
 				SelectYearStrategy _ => typeof(GetManufactureYearStrategy).FullName,
 				AppraisalOtherStrategy _ => typeof(GetMakeStrategy).FullName,
 				ConfirmGenerationStrategy _ => typeof(ConfirmGenerationStrategy).FullName,
+				WhatCanYouDoStrategy _ => typeof(AppraisalOtherStrategy).FullName,
 				_ => throw new Exception($"Для типа {strategy?.GetType()?.FullName} не описан переход")
 			};
 			return nextTransition;

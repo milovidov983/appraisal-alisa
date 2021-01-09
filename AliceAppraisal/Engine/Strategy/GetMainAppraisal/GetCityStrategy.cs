@@ -29,24 +29,23 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			return new SimpleResponse {
-				Text = "И последнее, по умолчанию оценка будет проведена для московского региона, " +
-				"если вас интересует другой регион, то введите его номер, если вас устраивает московский регион, то просто скажите Продолжить",
+				Text = "По умолчанию оценка будет проведена для московского региона, " +
+				"если вас устраивает московский регион, то просто скажите Продолжить. " +
+				"Если вас интересует другой регион то укажите столицу этого региона.",
 				Buttons = new[] { "Продолжить" }
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип двигателя, " +
-				$"попробуйте повторить запрос или попросите у меня подсказку."
+				Text = $"Не удалось распознать регион, по умолчанию выбрана Москва."
 			};
 		}
 
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Для оценки автомобиля мне необходимо знать его тип двигателя, существуют следующие " +
-				$"типы: Бензиновый, Гибрид, Дизельный, Электрический и другие. " +
-				$"Попробуйте произнести название приблизив микрофон ближе."
+				Text = $"Для оценки автомобиля мне необходимо знать для какого региона подбирать цену, " +
+				$"по умолчанию выбрана Москва. Если вас интересует другой регион то укажите столицу этого региона."
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
@@ -75,11 +74,13 @@ namespace AliceAppraisal.Engine.Strategy {
 			}
 			if(!cityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
 				regionId = cityRegions[DEFAULT_CITY];
+				city = DEFAULT_CITY;
 			}
-			state.UpdateRegion(regionId, this);
+			state.UpdateRegion(regionId, city, this);
 
-			return await textGeneratorService.CreateNextTextRequest(this, state);
-
+			var nextAction = GetNextStrategy();
+			return await nextAction.GetMessage(request, state);
 		}
+
 	}
 }
