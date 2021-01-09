@@ -34,7 +34,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.GearboxType) && state.NextAction.Is(typeof(GearboxStrategy));
+			return request.HasIntent(Intents.GearboxType) && state.NextAction.Is(this.GetType());
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

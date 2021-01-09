@@ -26,9 +26,31 @@ namespace AliceAppraisal.Engine.Strategy {
 				return expectedTokens.All(tokens.ContainsStartWith);
 			});
 		}
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			await Task.Yield();
+			return new SimpleResponse {
+				Text = "И последнее, по умолчанию оценка будет проведена для московского региона, " +
+				"если вас интересует другой регион, то введите его номер, если вас устраивает московский регион, то просто скажите Продолжить",
+				Buttons = new[] { "Продолжить" }
+			};
+		}
 
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+			return new SimpleResponse {
+				Text = $"Не удалось распознать тип двигателя, " +
+				$"попробуйте повторить запрос или попросите у меня подсказку."
+			};
+		}
+
+		public override SimpleResponse GetHelp() {
+			return new SimpleResponse {
+				Text = $"Для оценки автомобиля мне необходимо знать его тип двигателя, существуют следующие " +
+				$"типы: Бензиновый, Гибрид, Дизельный, Электрический и другие. " +
+				$"Попробуйте произнести название приблизив микрофон ближе."
+			};
+		}
 		protected override bool Check(AliceRequest request, State state) {
-			return CheckTokens(request) || request.HasIntent(Intents.CityName);
+			return ( CheckTokens(request) || request.HasIntent(Intents.CityName) ) && state.NextAction.Is(this.GetType());
 		}
 
 		private static readonly Dictionary<string, int> cityRegions;

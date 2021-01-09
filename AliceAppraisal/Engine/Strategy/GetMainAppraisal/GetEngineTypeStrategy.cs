@@ -15,13 +15,14 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			return new SimpleResponse {
 				Text = $"{textGeneratorService.GetRandTakeVerb()}  тип двигателя вашего авто? Например Бензиновый, Гибрид, Дизельный или Электрический",
-				Buttons = new[] { "Бензиновый", "Гибрид", "Дизельный", "Электрический", "Оценить другой авто", "Выйти" }
+				Buttons = new[] { "Бензиновый", "Гибрид", "Дизельный", "Электрический" }
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип двигателя, попробуйте повторить ваш запрос, попробуйте повторить запрос или попросите у меня подсказку."
+				Text = $"Не удалось распознать тип двигателя, " +
+				$"попробуйте повторить запрос или попросите у меня подсказку."
 			};
 		}
 

@@ -13,7 +13,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(typeof(GenerationStrategy));
+			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

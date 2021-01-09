@@ -35,7 +35,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.BodyType) && state.NextAction.Is(typeof(GetBodyTypeStrategy));
+			return request.HasIntent(Intents.BodyType) &&  state.NextAction.Is(this.GetType());
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
