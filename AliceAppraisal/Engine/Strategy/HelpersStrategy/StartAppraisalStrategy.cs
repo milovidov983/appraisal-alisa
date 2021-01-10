@@ -43,7 +43,7 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			if (result.Status != "success") {
 				return new SimpleResponse {
-					Text = "К сожалению я не смог провести оценку вашего авто. Мне не удалось найти аналогов по вашему запросу."
+					Text = $"К сожалению я не смог провести оценку вашего авто {state.Request.GetFullName()}. Мне не удалось найти аналогов по вашему запросу."
 				};
 			}
 			var countAds = result.SampleByPrices.HighPriced + result.SampleByPrices.Normal + result.SampleByPrices.LowPriced;

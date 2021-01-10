@@ -14,11 +14,14 @@ namespace AliceAppraisal.Engine.Services {
 
 
 		public BaseStrategy GetStrategy(string fullName) {
+			if(fullName is null) {
+				return default;
+			}
 			Stratagies.TryGetValue(fullName, out var stratagy);
 			return stratagy;
 		}
 		public BaseStrategy GetDefaultStrategy() {
-			Stratagies.TryGetValue(typeof(InitialStrategy).FullName, out var stratagy);
+			Stratagies.TryGetValue(typeof(WhatCanYouDoStrategy).FullName, out var stratagy);
 			return stratagy;
 		}
 

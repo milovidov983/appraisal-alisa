@@ -20,7 +20,10 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return SimpleResponse.Empty;
+			return new SimpleResponse {
+				Text = $"Хотите я попробую оценить стоимость вашего авто на вторичном рынке?",
+				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
+			};
 		}
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {

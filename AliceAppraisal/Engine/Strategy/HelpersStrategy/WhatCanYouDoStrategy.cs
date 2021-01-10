@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
-	public class WhatCanYouDoStrategy : BaseStrategy {
+	public class WhatCanYouDoStrategy : BaseWithoutChangeStepStrategy {
 		public WhatCanYouDoStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {

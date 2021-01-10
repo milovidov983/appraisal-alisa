@@ -50,7 +50,6 @@ namespace AliceAppraisal.Engine.Strategy {
 			}
 			state.UpdateManufactureYear(manufactureYear, this);
 
-
 			var nextAction = GetNextStrategy();
 			return await nextAction.GetMessage(request, state);
 		}

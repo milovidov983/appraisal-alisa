@@ -1,14 +1,10 @@
-﻿using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Strategy;
-using AliceAppraisal.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text.Json;
 
 namespace AliceAppraisal {
-    public static class ReflectiveEnumerator {
+	public static class ReflectiveEnumerator {
         static ReflectiveEnumerator() { }
 
         public static IEnumerable<T> GetEnumerableOfType<T>(params object[] constructorArgs) where T : class {
@@ -30,18 +26,9 @@ namespace AliceAppraisal {
             return string.IsNullOrEmpty(s);
         }
 
-   //     public static int? GetManufactureYear(this string self) {
-   //         if (self is null) {
-   //             return null;
-			//}
-   //         try {
-   //             var ydate = JsonSerializer.Deserialize<YaDatetime>(self);
-   //             return ydate.Year;
-   //         } catch { }
-
-            
-   //         return null;
-   //     }
+        public static string CapitalizeFirst(this string s) {
+            return s.IsNullOrEmpty() ? "" : s.Substring(0, 1).ToUpper() + s.Substring(1);
+        }
 
 
         /// <summary>

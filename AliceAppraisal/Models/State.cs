@@ -16,11 +16,11 @@ namespace AliceAppraisal.Models {
 		/// <summary>
 		/// Храним написание и произношение поколения для текущей марки модели года
 		/// </summary>
-		public Dictionary<string, (int Id, string Name)> GenerationChoise { get; set; } = new Dictionary<string, (int Id, string Name)>();
+		public Dictionary<string, IdAndName> GenerationChoise { get; set; } = new Dictionary<string, IdAndName>();
 
 		
 
-		public (int Id, string Name) GetGenerationIdBySelected(string value) {
+		public IdAndName GetGenerationIdBySelected(string value) {
 			GenerationChoise.TryGetValue(value, out var result);
 			return result;
 		}
@@ -32,7 +32,7 @@ namespace AliceAppraisal.Models {
 		}
 
 		public void Clear() {
-			GenerationChoise = new Dictionary<string, (int Id, string Name)>();
+			GenerationChoise = new Dictionary<string, IdAndName>();
 			Request = new AppraisalQuoteRequest();
             PrevAction = "";
         }
@@ -52,6 +52,7 @@ namespace AliceAppraisal.Models {
 			if (Request.ModelId != newModelId) {
 				Request.ModelId = newModelId;
 
+				Request.ModelEntity = entity;
 				Request.ResetGenerationId();
 
 				return true;
@@ -167,23 +168,5 @@ namespace AliceAppraisal.Models {
 
 
 		#endregion
-
-		
-
 	}
-	public enum Step {
-        None,
-        Make,
-        Model,
-        ManufactureYear,
-        Gen,
-        Body,
-        Gearbox,
-        EngineType,
-        Drive,
-        HorsPower,
-        Run,
-        EquipmentSet,
-        Reqion
-    }
 }

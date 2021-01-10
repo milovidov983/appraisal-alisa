@@ -26,7 +26,9 @@ namespace AliceAppraisal.Models {
             };
         }
 
-        public static SimpleResponse Empty { get => new SimpleResponse(); }
+        public static SimpleResponse Empty { get => new SimpleResponse() {
+            Text = "[Пустой ответ] (теоретически такое не возможно)"
+        }; }
     }
 
 

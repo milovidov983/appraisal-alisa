@@ -16,26 +16,36 @@ namespace AliceAppraisal.Engine.Services {
 		public ITextGeneratorService GetTextGeneratorService() {
 			return textGeneratorService;
 		}
-
-		private static IStrategyFactory strategyFactory;
-		public IStrategyFactory GetStrategyFactory() {
-			return strategyFactory;
-		}
-
 		private static ILogger logger;
 		public ServiceFactory(ILogger log) {
 			logger = log;
+			InitStratagy();
 		}
 		public ILogger GetLogger() {
 			return logger;
 		}
 
 
-		public void InitStratagy(IEnumerable<BaseStrategy> all) {
-			strategyFactory = new StrategyFactory(all.ToDictionary(
+		private static IStrategyFactory strategyFactory;
+
+		public IStrategyFactory GetStrategyFactory() {
+			return StrategyFactory;
+		}
+
+
+		public static IStrategyFactory StrategyFactory { 
+			get => strategyFactory; 
+			set => strategyFactory = value; 
+		}
+
+
+		public void InitStratagy() {
+			var strategies = ReflectiveEnumerator.GetEnumerableOfType<BaseStrategy>(this).ToList();
+			StrategyFactory = new StrategyFactory(strategies.ToDictionary(
 				x => x.GetType().FullName,
 				x => x
 				));
+			Console.WriteLine();
 		}
 
 

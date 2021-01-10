@@ -14,8 +14,7 @@ namespace AliceAppraisal.Static {
 		public static string[] SelectYear = new[] { "Изменить год выпуска" };
 
 
-
-		public static string[] Base = Replay.Union(Help).Union(Exit).ToArray();
+		public static string[] Base = StartNew.Union(Help).Union(Exit).ToArray();
 		public static string[] BaseExtended = StartNew.Union(Help).Union(Exit).ToArray();
 	}
 }

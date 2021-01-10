@@ -11,7 +11,7 @@ namespace AliceAppraisal {
 	class Program {
 		static async Task Main(string[] args) {
 			var requets = File.ReadAllText("Tests/request.json");
-			var ar = JsonSerializer.Deserialize<AliceRequest>(requets, Settings.JsonOptions);
+			var ar = JsonSerializer.Deserialize<AliceRequest>(requets);
 
 			var h = new Handler();
 

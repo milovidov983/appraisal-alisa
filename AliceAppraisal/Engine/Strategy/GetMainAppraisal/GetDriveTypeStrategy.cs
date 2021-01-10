@@ -39,7 +39,7 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			await Task.Yield();
-			var value = request.GetSlot(Intents.BodyType, Slots.Body);
+			var value = request.GetSlot(Intents.DriveType, Slots.Drive);
 
 			if (value.IsNullOrEmpty()) {
 				return GetMessageForUnknown(request, state);

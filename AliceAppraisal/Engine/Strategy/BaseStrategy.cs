@@ -10,18 +10,20 @@ using System.Threading.Tasks;
 namespace AliceAppraisal.Engine.Strategy {
 	public abstract class BaseStrategy {
         protected readonly ITextGeneratorService textGeneratorService;
-        protected readonly IExternalService externalService;
-        private readonly IStrategyFactory strategyFactory;
+        protected readonly IServiceFactory serviceFactory;
+		protected readonly IExternalService externalService;
+       
 
         protected BaseStrategy(IServiceFactory serviceFactory) {
-            textGeneratorService = serviceFactory.GetTextGeneratorService();
-            strategyFactory = serviceFactory.GetStrategyFactory();
-            externalService = serviceFactory.GetExternalService();
+            this.serviceFactory = serviceFactory;
+            this.textGeneratorService = serviceFactory.GetTextGeneratorService();
+            this.externalService = serviceFactory.GetExternalService();
         }
 
         public string NextStep { get => Transitions.GetNextStep(this); }
 
         protected BaseStrategy GetNextStrategy(string customNextStep = null) {
+            var strategyFactory = serviceFactory.GetStrategyFactory();
             return strategyFactory.GetStrategy(customNextStep ?? NextStep);
 		}
 
@@ -34,8 +36,8 @@ namespace AliceAppraisal.Engine.Strategy {
         }
 
         protected virtual async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
-            state.SaveCurrentStep(this);
             var simple = await Respond(request, state);
+            SetCurrentStep(state);
 
             var response = AliceResponseBuilder.Create()
                 .WithData(request)
@@ -46,6 +48,9 @@ namespace AliceAppraisal.Engine.Strategy {
             return response;
         }
 
+        protected virtual void SetCurrentStep(State state) {
+            state.SaveCurrentStep(this);
+		}
 
         protected abstract bool Check(AliceRequest request, State state);
         protected abstract Task<SimpleResponse> Respond(AliceRequest request, State state);

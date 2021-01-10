@@ -10,8 +10,8 @@
 		}
 	},
 	"session": {
-		"message_id": 1,
-		"session_id": "bbab6e3d-0718-4252-baa6-f6b3371bc14a",
+		"message_id": 14,
+		"session_id": "9965d071-49a7-4105-b70d-ab9f882f09f8",
 		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
 		"user": {
 			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
@@ -23,56 +23,28 @@
 		"new": false
 	},
 	"request": {
-		"command": "оцени киа рио",
-		"original_utterance": "Оцени киа рио",
+		"command": "помощь",
+		"original_utterance": "Помощь",
 		"nlu": {
 			"tokens": [
-				"оцени",
-				"киа",
-				"рио"
+				"помощь"
 			],
-			"entities": [
-				{
-					"type": "YANDEX.FIO",
-					"tokens": {
-						"start": 1,
-						"end": 2
-					},
-					"value": {
-						"first_name": "киа"
-					}
-				},
-				{
-					"type": "YANDEX.FIO",
-					"tokens": {
-						"start": 2,
-						"end": 3
-					},
-					"value": {
-						"first_name": "рио"
-					}
-				}
-			],
+			"entities": [],
 			"intents": {
 				"appraisal_short": {
 					"slots": {
-						"model": {
-							"type": "EModels",
+						"generation": {
+							"type": "YANDEX.STRING",
 							"tokens": {
-								"start": 2,
-								"end": 3
+								"start": 0,
+								"end": 1
 							},
-							"value": "rio_956"
-						},
-						"make": {
-							"type": "EMakes",
-							"tokens": {
-								"start": 1,
-								"end": 2
-							},
-							"value": "kia_92"
+							"value": "помощь"
 						}
 					}
+				},
+				"YANDEX.HELP": {
+					"slots": {}
 				}
 			}
 		},
@@ -82,7 +54,31 @@
 		"type": "SimpleUtterance"
 	},
 	"state": {
-		"session": {},
+		"session": {
+			"Request": {
+				"MakeId": 215,
+				"MakeEntity": "lada_215",
+				"ModelId": 2016,
+				"ModelEntity": null,
+				"ManufactureYear": 2015,
+				"GenerationId": 0,
+				"GenerationValue": null,
+				"EngineType": "gasoline",
+				"HorsePower": 98,
+				"BodyType": "sedan",
+				"Gearbox": "manual",
+				"Run": 12999,
+				"Drive": "front",
+				"RegionId": 50,
+				"CityName": "москва",
+				"EquipmentType": "standard"
+			},
+			"PrevAction": "AliceAppraisal.Engine.Strategy.GetCityStrategy",
+			"NextAction": "AliceAppraisal.Engine.Strategy.StartAppraisalStrategy",
+			"GenerationChoise": {
+				"1": {}
+			}
+		},
 		"user": {},
 		"application": {}
 	},

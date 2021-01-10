@@ -4,14 +4,10 @@ using System.Text;
 
 namespace AliceAppraisal.Models {
 	public class AppraisalQuoteRequest {
-
-
 		public int? MakeId { get;set;}
 		public string MakeEntity { get; set; }
-
 		public int? ModelId {get;set;}
 		public string ModelEntity { get; set; }
-
 		public int? ManufactureYear {get;set;}
 
 
@@ -21,43 +17,30 @@ namespace AliceAppraisal.Models {
 		/// </summary>
 		public int? GenerationId { get; set; }
 		public string GenerationValue { get; set; }
-
 		public string EngineType { get; set; }
-		
-
 		public int? HorsePower { get; set; }
-
 		public string BodyType { get; set; }
-		
-
-
 		public string Gearbox { get; set; }
-	
-
 		public int? Run { get; set; }
-
 		public string Drive { get; set; }
-		
-		
 		public int? RegionId { get; set; }
 		public string CityName { get; set; }
-
 		public string EquipmentType { get; set; }
 
 		public string GetFullName() {
 			var name = $"" +
-				$"{MakeEntity.ExtractName()}, " +
-				$"{ModelEntity.ExtractName()}, " +
+				$"{MakeEntity.ExtractName().CapitalizeFirst()}, " +
+				$"{ModelEntity.ExtractName().CapitalizeFirst()}, " +
 				$"{ManufactureYear} г.в., " +
-				$"{GenerationValue}, " +
-				$"{BodyType}, " +
-				$"{Gearbox}, " +
-				$"{EngineType}, " +
-				$"{Drive}, " +
+				$"поколение \"{GenerationValue}\", " +
+				$"кузов {BodyType}, " +
+				$"коробка {Gearbox}, " +
+				$"тип двигателя {EngineType}, " +
+				$"привод {Drive}, " +
 				$"{HorsePower} л.с., " +
-				$"{Run} км., " +
-				$"{EquipmentType} л.с., " +
-				$"{CityName}";
+				$"пробег {Run} км., " +
+				$"комплектация {EquipmentType}, " +
+				$"в городе {CityName.CapitalizeFirst()}";
 			return name;
 		}
 

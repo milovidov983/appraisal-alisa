@@ -1,0 +1,114 @@
+{
+	"meta": {
+		"locale": "ru-RU",
+		"timezone": "UTC",
+		"client_id": "ru.yandex.searchplugin/7.16 (none none; android 4.4.2)",
+		"interfaces": {
+			"screen": {},
+			"payments": {},
+			"account_linking": {}
+		}
+	},
+	"session": {
+		"message_id": 5,
+		"session_id": "68d47586-b1a1-4105-b7f4-1e9f4dbca2da",
+		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
+		"user": {
+			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
+		},
+		"application": {
+			"application_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B"
+		},
+		"user_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B",
+		"new": false
+	},
+	"request": {
+		"command": "вариант 1 iii рестайлинг",
+		"original_utterance": "Вариант 1: III Рестайлинг",
+		"nlu": {
+			"tokens": [
+				"вариант",
+				"1",
+				"iii",
+				"рестайлинг"
+			],
+			"entities": [
+				{
+					"type": "YANDEX.NUMBER",
+					"tokens": {
+						"start": 1,
+						"end": 2
+					},
+					"value": 1
+				}
+			],
+			"intents": {
+				"appraisal_short": {
+					"slots": {
+						"generation": {
+							"type": "YANDEX.STRING",
+							"tokens": {
+								"start": 0,
+								"end": 4
+							},
+							"value": "вариант 1 iii рестайлинг"
+						}
+					}
+				},
+				"digit_input": {
+					"slots": {
+						"number": {
+							"type": "YANDEX.NUMBER",
+							"tokens": {
+								"start": 1,
+								"end": 2
+							},
+							"value": 1
+						}
+					}
+				}
+			}
+		},
+		"markup": {
+			"dangerous_context": false
+		},
+		"type": "SimpleUtterance"
+	},
+	"state": {
+		"session": {
+			"Request": {
+				"MakeId": 92,
+				"MakeEntity": "kia_92",
+				"ModelId": 956,
+				"ModelEntity": null,
+				"ManufactureYear": 2017,
+				"GenerationId": null,
+				"GenerationValue": null,
+				"EngineType": null,
+				"HorsePower": null,
+				"BodyType": null,
+				"Gearbox": null,
+				"Run": null,
+				"Drive": null,
+				"RegionId": null,
+				"CityName": null,
+				"EquipmentType": null
+			},
+			"PrevAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
+			"NextAction": "AliceAppraisal.Engine.Strategy.GetGenerationStrategy",
+			"GenerationChoise": {
+				"1": {
+					"Id": 6533,
+					"Name": "III Рестайлинг"
+				},
+				"2": {
+					"Id": 9480,
+					"Name": "IV"
+				}
+			}
+		},
+		"user": {},
+		"application": {}
+	},
+	"version": "1.0"
+}

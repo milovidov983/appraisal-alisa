@@ -49,7 +49,6 @@ namespace AliceAppraisal.Controllers {
 	public class MainHandler {
 		private static IStrategyFactory strategyFactory;
 		private static readonly List<BaseStrategy> strategies;
-		private static readonly ITextGeneratorService textGenerator;
 		private static readonly ILogger logger = new LoggerConfiguration()
 			.WriteTo
 			.Console()
@@ -66,8 +65,6 @@ namespace AliceAppraisal.Controllers {
 		static MainHandler() {
 			var factory = new ServiceFactory(logger);
 			strategies = ReflectiveEnumerator.GetEnumerableOfType<BaseStrategy>(factory).ToList();
-			textGenerator = factory.GetTextGeneratorService();
-			factory.InitStratagy(strategies);
 			strategyFactory = factory.GetStrategyFactory();
 		}
 
@@ -108,6 +105,7 @@ namespace AliceAppraisal.Controllers {
 			} catch (Exception e) {
 				logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
 				logger.Error(e, e.Message);
+				throw e;
 				response = new AliceResponse(aliceRequest) {
 					Response = new Response {
 						Text = "Произошла какая-то ошибка на сервере навыка, разработчик уже уведомлен. " +

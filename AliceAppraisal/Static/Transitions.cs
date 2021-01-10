@@ -11,8 +11,8 @@ namespace AliceAppraisal.Static {
 				
 				GetMakeStrategy _ => typeof(GetModelStrategy).FullName,
 				GetModelStrategy _ => typeof(GetManufactureYearStrategy).FullName,
-				GetManufactureYearStrategy _ => typeof(GenerationStrategy).FullName,
-				GenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
+				GetManufactureYearStrategy _ => typeof(GetGenerationStrategy).FullName,
+				GetGenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
 				GetBodyTypeStrategy _ => typeof(GearboxStrategy).FullName,
 				GearboxStrategy _ => typeof(GetEngineTypeStrategy).FullName,
 				GetEngineTypeStrategy _ => typeof(GetDriveTypeStrategy).FullName,
@@ -22,6 +22,7 @@ namespace AliceAppraisal.Static {
 				GetEquipmentSetStrategy _ => typeof(GetCityStrategy).FullName,
 				GetCityStrategy _ => typeof(StartAppraisalStrategy).FullName,
 				//
+				InitialStrategy _ => typeof(ConfirmAppraisalStrategy).FullName,
 				ExitStrategy _ => typeof(InitialStrategy).FullName,
 				ChangeParamStrategy _ => typeof(StartAppraisalStrategy).FullName,
 				ConfirmAppraisalStrategy _ => typeof(GetMakeStrategy).FullName,
@@ -29,6 +30,7 @@ namespace AliceAppraisal.Static {
 				AppraisalOtherStrategy _ => typeof(GetMakeStrategy).FullName,
 				ConfirmGenerationStrategy _ => typeof(ConfirmGenerationStrategy).FullName,
 				WhatCanYouDoStrategy _ => typeof(AppraisalOtherStrategy).FullName,
+				StartAppraisalStrategy _ => typeof(StartAppraisalStrategy).FullName,
 				_ => throw new Exception($"Для типа {strategy?.GetType()?.FullName} не описан переход")
 			};
 			return nextTransition;
