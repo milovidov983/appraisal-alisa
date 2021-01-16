@@ -2,6 +2,8 @@
 using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
 using System;
+using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -78,5 +80,15 @@ namespace AliceUnitTests.BaseCommandTests {
 			Assert.Contains($"Выберите нужный вариант поколения авто",response.Response.Text);
 		}
 
+		[Fact]
+		public async Task Test() {
+			AliceRequest aliceRequest = JsonSerializer.Deserialize<AliceRequest>(
+				File.ReadAllText(@"D:\Source\PedProject\appraisal-alisa\tests\AliceUnitTests\BaseCommandTests\JsonRequests\anomaly.json"));
+
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
+
+			Assert.Contains($"Выберите нужный вариант поколения авто", response.Response.Text);
+		}
 	}
 }

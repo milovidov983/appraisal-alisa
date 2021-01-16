@@ -68,6 +68,14 @@ namespace AliceAppraisal.Engine.Strategy {
 			return await nextAction.GetMessage(request, state);
 		}
 
+		protected override void SetCurrentStep(State state) {
+			if (state.GenerationChoise.Count > 1) {
+				state.SaveCurrentStep(this);
+			} else {
+				state.PrevAction = this.GetType().FullName;
+				state.NextAction = typeof(ConfirmGenerationStrategy).FullName;
+			}
+		}
 
 		private string Validate(int manufactureYear) {
 			if (manufactureYear > DateTime.UtcNow.Year) {

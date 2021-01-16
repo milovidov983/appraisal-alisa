@@ -1,0 +1,102 @@
+{
+	"meta": {
+		"locale": "ru-RU",
+		"timezone": "UTC",
+		"client_id": "ru.yandex.searchplugin/7.16 (none none; android 4.4.2)",
+		"interfaces": {
+			"screen": {},
+			"payments": {},
+			"account_linking": {}
+		}
+	},
+	"session": {
+		"message_id": 4,
+		"session_id": "8bacaf08-f4b5-40ce-bcd5-50a3915393f5",
+		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
+		"user": {
+			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
+		},
+		"application": {
+			"application_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B"
+		},
+		"user_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B",
+		"new": false
+	},
+	"request": {
+		"command": "2018",
+		"original_utterance": "2018",
+		"nlu": {
+			"tokens": [
+				"2018"
+			],
+			"entities": [
+				{
+					"type": "YANDEX.NUMBER",
+					"tokens": {
+						"start": 0,
+						"end": 1
+					},
+					"value": 2018
+				},
+				{
+					"type": "YANDEX.DATETIME",
+					"tokens": {
+						"start": 0,
+						"end": 1
+					},
+					"value": {
+						"year": 2018,
+						"year_is_relative": false
+					}
+				}
+			],
+			"intents": {
+				"digit_input": {
+					"slots": {
+						"number": {
+							"type": "YANDEX.NUMBER",
+							"tokens": {
+								"start": 0,
+								"end": 1
+							},
+							"value": 2018
+						}
+					}
+				}
+			}
+		},
+		"markup": {
+			"dangerous_context": false
+		},
+		"type": "SimpleUtterance"
+	},
+	"state": {
+		"session": {
+			"Request": {
+				"MakeId": 79,
+				"MakeEntity": "hyundai_79",
+				"ModelId": 848,
+				"ModelEntity": "solaris_848",
+				"ManufactureYear": null,
+				"GenerationId": null,
+				"GenerationValue": null,
+				"EngineType": null,
+				"HorsePower": null,
+				"BodyType": null,
+				"Gearbox": null,
+				"Run": null,
+				"Drive": null,
+				"RegionId": null,
+				"CityName": null,
+				"EquipmentType": null
+			},
+			"PrevAction": "AliceAppraisal.Engine.Strategy.GetModelStrategy",
+			"NextAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
+			"GenerationChoise": {},
+			"StatusCode": 0
+		},
+		"user": {},
+		"application": {}
+	},
+	"version": "1.0"
+}

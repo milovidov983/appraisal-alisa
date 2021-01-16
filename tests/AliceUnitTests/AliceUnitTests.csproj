@@ -25,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="BaseCommandTests\JsonRequests\anomaly.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="BaseCommandTests\JsonRequests\HelpOnFirstStep.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

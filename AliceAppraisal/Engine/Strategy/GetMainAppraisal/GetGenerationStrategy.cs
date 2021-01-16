@@ -33,7 +33,6 @@ namespace AliceAppraisal.Engine.Strategy {
 			return await nextAction.GetMessage(request, state);
 		}
 
-
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			return await CreateTextForGenerationStep(request, state);
 		}
@@ -105,8 +104,16 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			} else {
 				var nextAction = GetNextStrategy(typeof(ConfirmGenerationStrategy).FullName);
-				state.NextAction = typeof(ConfirmGenerationStrategy).FullName;
 				return await nextAction.GetMessage(request, state);
+			}
+		}
+
+		protected override void SetCurrentStep(State state) {
+			if (state.GenerationChoise.Count > 1) {
+				state.SaveCurrentStep(this);
+			} else {
+				state.PrevAction = this.GetType().FullName;
+				state.NextAction = typeof(ConfirmGenerationStrategy).FullName;
 			}
 		}
 

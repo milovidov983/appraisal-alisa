@@ -29,11 +29,20 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
-			return (request.HasIntent(Intents.YandexConfirm) 
-				|| request.Request.Command.Trim().ToLowerInvariant().StartsWith("начать") 
-				&& state.PrevAction.Is(typeof(InitialStrategy))) 
+			return (
+				(
+					request.HasIntent(Intents.YandexConfirm) 
+					|| 
+					request.Request.Command.Trim().ToLowerInvariant().StartsWith("начать") 
+				)
+				&& 
+				state.PrevAction.Is(typeof(InitialStrategy))) 
 				||
-				 state.NextAction.Is(typeof(StartAppraisalStrategy)) && request.HasIntent(Intents.YandexConfirm);
+				 (
+					state.NextAction.Is(typeof(StartAppraisalStrategy)) 
+					&& 
+					request.HasIntent(Intents.YandexConfirm)
+				);
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
