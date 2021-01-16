@@ -27,7 +27,7 @@ namespace AliceAppraisal.Static {
 				ConfirmAppraisalStrategy _ => typeof(GetMakeStrategy).FullName,
 				SelectYearStrategy _ => typeof(GetManufactureYearStrategy).FullName,
 				AppraisalOtherStrategy _ => typeof(GetMakeStrategy).FullName,
-				ConfirmGenerationStrategy _ => typeof(ConfirmGenerationStrategy).FullName,
+				ConfirmGenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
 				WhatCanYouDoStrategy _ => typeof(AppraisalOtherStrategy).FullName,
 				StartAppraisalStrategy _ => typeof(AppraisalOtherStrategy).FullName,
 				_ => throw new Exception($"Для типа {strategy?.GetType()?.FullName} не описан переход")
