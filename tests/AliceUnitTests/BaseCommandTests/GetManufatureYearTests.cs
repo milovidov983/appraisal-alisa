@@ -1,5 +1,7 @@
 ﻿using AliceAppraisal.Controllers;
 using AliceAppraisal.Engine.Strategy;
+using AliceAppraisal.Models;
+using AliceUnitTests.Mocks;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,9 +10,17 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
+using Moq;
+using AliceAppraisal.Engine;
 
 namespace AliceUnitTests.BaseCommandTests {
 	public class GetManufatureYearTests {
+
+		//public MainHandler CreateHandler(AliceRequest request) {
+		//	var handler =  new MainHandlerMock(request);
+		//	var m1 = Mock.Of<IServiceFactory>((s)=>s.GetLogger())
+		//}
+
 
 		[Fact]
 		public async Task Set_correct_manufactureYear_year_is_saved() {
@@ -18,13 +28,12 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetModelStrategy).FullName,
 					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithModel()
-				.WithManufactureYear()
+				.WithModelId()
+				.WithIntentManufactureYear()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(2012, response.State.Request.ManufactureYear);
 		}
@@ -35,14 +44,14 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetModelStrategy).FullName,
 					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithManufactureYear()
+				.WithModelId()
+				.WithIntentManufactureYear()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
-			var response = await handler.HandleRequest(aliceRequest);
-
-			Assert.Contains("год выпуска вашего автомобиля", response.Response.Text);
+			Assert.Contains("год", response.Response.Text);
 		}
 
 		[Fact]
@@ -51,12 +60,12 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetManufactureYearStrategy).FullName,
 					next: typeof(GetGenerationStrategy).FullName)
-				.WithManufactureYear()
+				.WithModelId()
+				.WithIntentManufactureYear()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetGenerationStrategy).FullName, response.State.NextAction);
 		}
@@ -69,9 +78,8 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetManufactureYearStrategy).FullName)
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
 				$"Не удалось распознать модель вашего авто," +

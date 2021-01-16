@@ -117,7 +117,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}
 
-		public RequestBuilder WithMake() {
+		public RequestBuilder WithIntentMake() {
 			var command = "пежо";
 			request.Command = command;
 			request.OriginalUtterance = command;
@@ -134,7 +134,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}
 
-		public RequestBuilder WithModel() {
+		public RequestBuilder WithIntentModel() {
 			var command = "астра";
 			request.Command = command;
 			request.OriginalUtterance = command;
@@ -151,7 +151,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}		
 		
-		public RequestBuilder WithManufactureYear() {
+		public RequestBuilder WithIntentManufactureYear() {
 			var command = "2012";
 			request.Command = command;
 			request.OriginalUtterance = command;
@@ -165,6 +165,11 @@ namespace AliceUnitTests.BaseCommandTests {
 				}
 			};
 			request.Nlu.Tokens.Add(command);
+			return this;
+		}
+
+		public RequestBuilder WithModelId(int id = 123) {
+			state.Session.Request.ModelId = id;
 			return this;
 		}
 

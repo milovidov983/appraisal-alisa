@@ -65,5 +65,15 @@ namespace AliceAppraisal.Models {
         public string ToJson() {
             return JsonSerializer.Serialize(this, Settings.JsonOptions).Replace(@"\", "");
         }
+
+        public static AliceResponse CreateMissResponse() {
+            return new AliceResponse(new AliceRequest()) {
+                Response = new Response {
+                    Text = "У меня нет обработчика этого случая. " +
+                        "Я не понимаю что вы мне говорите. Приносим извинения.",
+                    EndSession = false
+                }
+            };
+        }
     }
 }

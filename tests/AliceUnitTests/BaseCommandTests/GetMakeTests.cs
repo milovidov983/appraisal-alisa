@@ -19,7 +19,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(ConfirmAppraisalStrategy).FullName,
 					next: typeof(GetMakeStrategy).FullName)
-				.WithMake()
+				.WithIntentMake()
 				.Build();
 
 			var handler = new MainHandler(aliceRequest);
@@ -35,7 +35,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(ConfirmAppraisalStrategy).FullName,
 					next: typeof(GetMakeStrategy).FullName)
-				.WithMake()
+				.WithIntentMake()
 				.Build();
 
 			var handler = new MainHandler(aliceRequest);
@@ -51,7 +51,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetMakeStrategy).FullName,
 					next: typeof(GetModelStrategy).FullName)
-				.WithMake()
+				.WithIntentMake()
 				.Build();
 
 			var handler = new MainHandler(aliceRequest);

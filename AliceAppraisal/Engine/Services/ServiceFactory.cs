@@ -13,18 +13,17 @@ namespace AliceAppraisal.Engine.Services {
 		}
 
 
-		private static ILogger logger;
-		public ServiceFactory(ILogger log) {
-			logger = log;
+		private static ILogger _logger;
+		public ServiceFactory(ILogger logger) {
+			_logger = logger;
 			InitStratagy();
 		}
 		public ILogger GetLogger() {
-			return logger;
+			return _logger;
 		}
 
 
 		private static IStrategyFactory strategyFactory;
-
 		public IStrategyFactory GetStrategyFactory() {
 			return StrategyFactory;
 		}
@@ -42,9 +41,6 @@ namespace AliceAppraisal.Engine.Services {
 				x => x.GetType().FullName,
 				x => x
 				));
-			Console.WriteLine();
 		}
-
-
 	}
 }

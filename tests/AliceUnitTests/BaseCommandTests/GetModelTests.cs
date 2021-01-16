@@ -19,12 +19,11 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetMakeStrategy).FullName,
 					next: typeof(GetModelStrategy).FullName)
-				.WithModel()
+				.WithIntentModel()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(1427, response.State.Request.ModelId);
 		}
@@ -35,12 +34,11 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetMakeStrategy).FullName,
 					next: typeof(GetModelStrategy).FullName)
-				.WithModel()
+				.WithIntentModel()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains("год выпуска вашего автомобиля", response.Response.Text);
 		}
@@ -51,12 +49,11 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithActions(
 					prev: typeof(GetModelStrategy).FullName,
 					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithModel()
+				.WithIntentModel()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetManufactureYearStrategy).FullName, response.State.NextAction);
 		}
@@ -69,9 +66,8 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetModelStrategy).FullName)
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
 				$"Не удалось распознать модель вашего авто," +

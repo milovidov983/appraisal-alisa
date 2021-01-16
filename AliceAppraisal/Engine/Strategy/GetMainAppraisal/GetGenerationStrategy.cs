@@ -109,7 +109,13 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		private void Validate(int? modelId, int? manufactureYear) {
-			throw new NotImplementedException();
+			if(modelId is null) {
+				throw new InvalidRequestException("Не указана модель авто, попробуйте начать с начала.");
+			}
+			if(manufactureYear is null) {
+				throw new InvalidRequestException("Не указан год выпуска авто, попробуйте начать с начала.");
+			}
+			
 		}
 	}
 }
