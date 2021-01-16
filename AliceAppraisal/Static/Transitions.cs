@@ -29,7 +29,7 @@ namespace AliceAppraisal.Static {
 				AppraisalOtherStrategy _ => typeof(GetMakeStrategy).FullName,
 				ConfirmGenerationStrategy _ => typeof(ConfirmGenerationStrategy).FullName,
 				WhatCanYouDoStrategy _ => typeof(AppraisalOtherStrategy).FullName,
-				StartAppraisalStrategy _ => typeof(StartAppraisalStrategy).FullName,
+				StartAppraisalStrategy _ => typeof(AppraisalOtherStrategy).FullName,
 				_ => throw new Exception($"Для типа {strategy?.GetType()?.FullName} не описан переход")
 			};
 			return nextTransition;

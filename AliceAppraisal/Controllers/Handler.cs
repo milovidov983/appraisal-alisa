@@ -1,17 +1,5 @@
 ﻿using AliceAppraisal.Application;
-using AliceAppraisal.Configuration;
-using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
-using AliceAppraisal.Static;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Controllers {
