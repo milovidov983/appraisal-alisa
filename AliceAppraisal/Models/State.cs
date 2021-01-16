@@ -17,6 +17,31 @@ namespace AliceAppraisal.Models {
 		/// Храним написание и произношение поколения для текущей марки модели года
 		/// </summary>
 		public Dictionary<string, IdAndName> GenerationChoise { get; set; } = new Dictionary<string, IdAndName>();
+		/// <summary>
+		/// Коды ответа от приложения
+		/// </summary>
+		public StatusCodes StatusCode { get; set; } = StatusCodes.OK;
+
+		public void SetStatusCode(Exception exception) {
+			switch (exception) {
+				case NotFoundExcteption _: {
+					StatusCode = StatusCodes.NotFound;
+					break;
+				}
+				case InvalidRequestException _: {
+					StatusCode = StatusCodes.InvalidRequest;
+					break;
+				}
+				case ExternalServiceException _: {
+					StatusCode = StatusCodes.ExternalError;
+					break;
+				}
+				case Exception _: {
+					StatusCode = StatusCodes.InternalError;
+					break;
+				}
+			}
+		}
 
 		
 

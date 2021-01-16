@@ -4,11 +4,14 @@ using System.Text;
 
 namespace AliceAppraisal.Models {
 	public class CustomException : Exception {
+		public string UserMessage { get; }
 		public CustomException() {
 		}
 
-		public CustomException(string message) : base(message) {
+		public CustomException(string message, string userMessage) : base(message) {
+			UserMessage = userMessage ?? message;
 		}
+
 	}
 
 
@@ -16,7 +19,7 @@ namespace AliceAppraisal.Models {
 		public NotFoundExcteption() {
 		}
 
-		public NotFoundExcteption(string message) : base(message) {
+		public NotFoundExcteption(string message, string userMessage = null) : base(message, userMessage) {
 		}
 	}
 
@@ -24,7 +27,15 @@ namespace AliceAppraisal.Models {
 		public InvalidRequestException() {
 		}
 
-		public InvalidRequestException(string message) : base(message) {
+		public InvalidRequestException(string message, string userMessage = null) : base(message, userMessage) {
+		}
+	}
+
+	public class ExternalServiceException : CustomException {
+		public ExternalServiceException() {
+		}
+
+		public ExternalServiceException(string message, string userMessage = null) : base(message, userMessage) {
 		}
 	}
 }

@@ -22,9 +22,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithConfirm()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(GetMakeStrategy.Messages, (x) => x.Any(y=> response.Response.Text.Contains(y)));
 		}
@@ -38,9 +37,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithConfirm()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetMakeStrategy).FullName, response.State.NextAction);
 		}
@@ -54,9 +52,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithHelp()
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal("Что бы начать оценку автомобиля скажите \"начать\"", response.Response.Text);
 		}

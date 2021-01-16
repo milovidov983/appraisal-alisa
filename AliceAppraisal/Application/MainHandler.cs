@@ -9,12 +9,12 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Application {
-	public class Handler : IMainHandler {
+	public class MainHandler : IMainHandler {
 		private readonly IStrategyFactory strategyFactory;
 		private readonly List<BaseStrategy> strategies;
 		private readonly ILogger logger;
 
-		public Handler(IStrategyFactory strategyFactory, List<BaseStrategy> strategies, ILogger logger) {
+		public MainHandler(IStrategyFactory strategyFactory, List<BaseStrategy> strategies, ILogger logger) {
 			this.strategyFactory = strategyFactory;
 			this.strategies = strategies;
 			this.logger = logger;
@@ -54,16 +54,18 @@ namespace AliceAppraisal.Application {
 						.Build();
 				}
 			} catch (CustomException e) {
+				state.SetStatusCode(e);
 				logger.Error($"{e.GetType().Name} {e.Message}");
 				response = AliceResponseBuilder.Create()
 					.WithData(aliceRequest)
 					.WithState(state)
 					.WithText(new SimpleResponse {
-						Text = e.Message,
+						Text = e.UserMessage,
 						Buttons = Buttons.BaseExtended
 					})
 					.Build();
 			} catch (Exception e) {
+				state.SetStatusCode(e);
 				logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
 				logger.Error(e, e.Message);
 				throw e;

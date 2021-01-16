@@ -12,7 +12,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
-			var strategyFactory = serviceFactory.GetStrategyFactory();
+			var strategyFactory = serviceFactory.StrategyFactory;
 			var stratagy = strategyFactory.GetStrategy(state.NextAction);
 			return stratagy.GetHelp();
 		}

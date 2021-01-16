@@ -1,31 +1,16 @@
-﻿using AliceAppraisal.Application;
-using AliceAppraisal.Controllers;
-using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Controllers;
 using AliceAppraisal.Engine.Strategy;
-using AliceAppraisal.Models;
-using AliceUnitTests.Builders;
-using Moq;
-using Serilog;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
-	public class GetManufatureYearTests {
+	public class GetGenerationTests {
 
 		//public MainHandler CreateHandler(AliceRequest request) {
 		//	var handler =  new MainHandlerMock(request);
 		//	var m1 = Mock.Of<IServiceFactory>((s)=>s.GetLogger())
 		//}
-
-		private ILogger logger = new LoggerConfiguration()
-					.WriteTo
-					.Console()
-					.MinimumLevel
-					.Debug()
-					.CreateLogger();
 
 
 		[Fact]
@@ -45,7 +30,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 
 		[Fact]
-		public async Task Set_correct_manufactureYear_response_ok() {
+		public async Task Set_correct_manufactureYear_response_text_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(GetModelStrategy).FullName,
@@ -54,18 +39,10 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentManufactureYear()
 				.Build();
 
-			var externalServiceMock = ExternalServiceBuilder
-				.Create()
-				.WithTwoGeneration()
-				.Build();
-			IServiceFactory serviceFactory = new ServiceFactory(logger, externalServiceMock);
-			IHandlerFactory handlerFactory = new HandlerFactory(serviceFactory);
-
-
-			var handler = new Handler(handlerFactory);
+			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
+			Assert.Contains("год", response.Response.Text);
 		}
 
 		[Fact]
@@ -98,7 +75,9 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(StatusCodes.InvalidRequest, response.State.StatusCode);
+			Assert.Contains(
+				$"Кажется указанный вами {wrongManufactureYear} год выпуска еще наступил, попробуйте еще раз.",
+				response.Response.Text);
 		}
 
 	}

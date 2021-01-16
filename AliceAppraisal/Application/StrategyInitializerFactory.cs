@@ -1,4 +1,5 @@
 ﻿using AliceAppraisal.Engine;
+using AliceAppraisal.Engine.Services;
 using AliceAppraisal.Engine.Strategy;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,10 @@ namespace AliceAppraisal.Application {
 
 			private void StartInitialization() {
 				Strategies = ReflectiveEnumerator.GetEnumerableOfType<BaseStrategy>(serviceFactory).ToList();
-				StrategyFactory = serviceFactory.GetStrategyFactory();
+				StrategyFactory = new StrategyFactory(Strategies.ToDictionary(
+					x => x.GetType().FullName,
+					x => x
+				));
 			}
 
 		}

@@ -21,7 +21,7 @@ namespace AliceAppraisal.Engine.Strategy {
         public string NextStep { get => Transitions.GetNextStep(this); }
 
         protected BaseStrategy GetNextStrategy(string customNextStep = null) {
-            var strategyFactory = serviceFactory.GetStrategyFactory();
+            var strategyFactory = serviceFactory.StrategyFactory;
             return strategyFactory.GetStrategy(customNextStep ?? NextStep);
 		}
 

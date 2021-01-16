@@ -19,9 +19,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithMessageId(0)
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains("стоимость подержанных автомобилей", response.Response.Text);
 		}
@@ -33,9 +32,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithMessageId(0)
 				.Build();
 
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
+			var handler = new Handler();
+			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(ConfirmAppraisalStrategy).FullName, response.State.NextAction);
 		}

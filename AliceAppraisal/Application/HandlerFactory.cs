@@ -8,21 +8,24 @@ using System.Text;
 
 namespace AliceAppraisal.Application {
 	public class HandlerFactory : IHandlerFactory {
-		private readonly StrategyInitializerFactory strategyInitializerFactory;
+		private readonly IServiceFactory factory;
 		private readonly ILogger logger;
 
+
 		public HandlerFactory() {
-			IServiceFactory factory = ServiceFactoryBuilder.GetServiceFactory();
+			factory = ServiceFactoryBuilder.Instance.GetServiceFactory();
 			logger = factory.GetLogger();
-			strategyInitializerFactory = new StrategyInitializerFactory(factory);
+		}
+		public HandlerFactory(IServiceFactory serviceFactory) {
+			factory = serviceFactory;
+			logger = factory.GetLogger();
 		}
 
 		public IMainHandler Create() {
-			var strategyInitializer = strategyInitializerFactory.GetStrategyInitializer();
-			var strategies = strategyInitializer.Strategies;
-			var strategyFactory = strategyInitializer.StrategyFactory;
-			
-			return new Handler(strategyFactory, strategies, logger);
+			var strategies = factory.Strategies;
+			var strategyFactory = factory.StrategyFactory;
+
+			return new MainHandler(strategyFactory, strategies, logger);
 		}
 	}
 }

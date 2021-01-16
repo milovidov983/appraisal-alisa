@@ -40,7 +40,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Contains("год выпуска вашего автомобиля", response.Response.Text);
+			Assert.Contains(GetManufactureYearStrategy.Messages, (x) => x.Any(y => response.Response.Text.Contains(y)));
 		}
 
 		[Fact]

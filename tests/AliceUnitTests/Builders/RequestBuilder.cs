@@ -151,8 +151,8 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}		
 		
-		public RequestBuilder WithIntentManufactureYear() {
-			var command = "2012";
+		public RequestBuilder WithIntentManufactureYear(int? year = null) {
+			var command = $"{year ?? 2012}";
 			request.Command = command;
 			request.OriginalUtterance = command;
 			request.Nlu.Intents["digit_input"] = new IntentSlot() {
@@ -160,7 +160,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					["number"] = new Entity {
 						Tokens = new Tokens { End = 1, Start = 0 },
 						Type = "YANDEX.NUMBER",
-						Value = 2012
+						Value = year ?? 2012
 					}
 				}
 			};
@@ -170,6 +170,7 @@ namespace AliceUnitTests.BaseCommandTests {
 
 		public RequestBuilder WithModelId(int id = 123) {
 			state.Session.Request.ModelId = id;
+			state.Session.Request.ModelEntity = "test_model";
 			return this;
 		}
 

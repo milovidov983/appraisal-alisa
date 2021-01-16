@@ -1,11 +1,27 @@
 ﻿using AliceAppraisal.Engine;
 using AliceAppraisal.Engine.Services;
+using AliceAppraisal.Engine.Strategy;
 using Serilog;
+using System;
 
 namespace AliceAppraisal.Application {
-	public static class ServiceFactoryBuilder {
-		private static IServiceFactory serviceFactory;
-		public static void InitServiceFactory(ILogger logger = null) {
+	public sealed class ServiceFactoryBuilder {
+		private IServiceFactory serviceFactory;
+		private IExternalService externalService;
+
+		private static readonly Lazy<ServiceFactoryBuilder> lazy =
+		new Lazy<ServiceFactoryBuilder>(() => new ServiceFactoryBuilder());
+		private ServiceFactoryBuilder() { }
+
+		public static ServiceFactoryBuilder Instance  {
+			get { return lazy.Value; }
+		}
+
+		public void SetExternalService(IExternalService externalService) {
+			this.externalService = externalService;
+		}
+
+		public void InitServiceFactory(ILogger logger = null, IExternalService externalService = null) {
 			if(logger is null) {
 				logger = new LoggerConfiguration()
 					.WriteTo
@@ -14,14 +30,12 @@ namespace AliceAppraisal.Application {
 					.Debug()
 					.CreateLogger();
 			}
-			serviceFactory = new ServiceFactory(logger);
+			externalService ??= this.externalService ?? new ExternalService();
+			serviceFactory = new ServiceFactory(logger, externalService ?? this.externalService);
 		}
 
-		public static void InitServiceFactory(IServiceFactory serviceFactory) {
-			ServiceFactoryBuilder.serviceFactory = serviceFactory;
-		}
 		private static readonly object _lock = new object();
-		public static IServiceFactory GetServiceFactory() {
+		public IServiceFactory GetServiceFactory() {
 			if(serviceFactory is null) {
 				lock (_lock) {
 					if(serviceFactory is null) {

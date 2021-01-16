@@ -12,12 +12,12 @@ namespace AliceAppraisal.Engine.Strategy {
 		public GetManufactureYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-
 		public static readonly string[] Messages = new[] {
 			$"{0} год выпуска автомобиля, который мы оцениваем?",
 			$"{0} в каком году был произведен автомобиль?",
 			$"{0} год производства автомобиля?",
 		};
+
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
@@ -60,7 +60,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			}
 			string error = Validate(manufactureYear);
 			if(error != null){
-				return CreateWrongDataMessage(error);
+				throw new InvalidRequestException(error);
 			}
 			state.UpdateManufactureYear(manufactureYear, this);
 
@@ -68,11 +68,6 @@ namespace AliceAppraisal.Engine.Strategy {
 			return await nextAction.GetMessage(request, state);
 		}
 
-		private SimpleResponse CreateWrongDataMessage(string error) {
-			return new SimpleResponse {
-				Text = error
-			};
-		}
 
 		private string Validate(int manufactureYear) {
 			if (manufactureYear > DateTime.UtcNow.Year) {

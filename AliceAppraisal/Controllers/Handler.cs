@@ -16,7 +16,14 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Controllers {
 	public class Handler {
-		public IHandlerFactory HandlerFactory { get; } = new HandlerFactory();
+		private IHandlerFactory HandlerFactory { get; }
+
+		public Handler() {
+			HandlerFactory = new HandlerFactory();
+		}
+		public Handler(IHandlerFactory handlerFactory) {
+			HandlerFactory = handlerFactory;
+		}
 
 		public async Task<AliceResponse> FunctionHandler(AliceRequest request) {
 			if(request is null) {
