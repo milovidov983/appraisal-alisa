@@ -9,13 +9,7 @@ namespace AliceAppraisal.Application {
 		private IServiceFactory serviceFactory;
 		private IExternalService externalService;
 
-		private static readonly Lazy<ServiceFactoryBuilder> lazy =
-		new Lazy<ServiceFactoryBuilder>(() => new ServiceFactoryBuilder());
-		private ServiceFactoryBuilder() { }
-
-		public static ServiceFactoryBuilder Instance  {
-			get { return lazy.Value; }
-		}
+		public ServiceFactoryBuilder() { }
 
 		public void SetExternalService(IExternalService externalService) {
 			this.externalService = externalService;

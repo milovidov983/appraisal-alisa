@@ -17,19 +17,15 @@ namespace AliceAppraisal.Engine.Services {
 		public ServiceFactory(ILogger logger, IExternalService externalService) {
 			_logger = logger;
 			_externalService = externalService;
-			if (strategyFactory is null) {
-				lock (_lock) {
-					if (strategyFactory is null) {
-						InitStratagy();
-					}
-				}
-			}
+
+			InitStratagy();
+			
 		}
 
 
 
 		#region logger
-		private static ILogger _logger; 
+		private ILogger _logger; 
 		public ILogger GetLogger() {
 			return _logger;
 		}
@@ -48,11 +44,6 @@ namespace AliceAppraisal.Engine.Services {
 			StrategyFactory = initializer.StrategyFactory;
 			Strategies = initializer.Strategies;
 		}
-
-		public void Setup(IExternalService externalService) {
-			_externalService = externalService;
-		}
-
 
 		#endregion
 	}

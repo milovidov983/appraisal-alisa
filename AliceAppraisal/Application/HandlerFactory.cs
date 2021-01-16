@@ -13,7 +13,7 @@ namespace AliceAppraisal.Application {
 
 
 		public HandlerFactory() {
-			factory = ServiceFactoryBuilder.Instance.GetServiceFactory();
+			factory = new ServiceFactoryBuilder().GetServiceFactory();
 			logger = factory.GetLogger();
 		}
 		public HandlerFactory(IServiceFactory serviceFactory) {

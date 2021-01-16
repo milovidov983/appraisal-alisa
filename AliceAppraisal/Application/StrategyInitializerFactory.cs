@@ -6,18 +6,13 @@ using System.Linq;
 
 namespace AliceAppraisal.Application {
 	public class StrategyInitializerFactory {
-		private static IStrategyInitializer strategyInitializerInstance;
+		private IStrategyInitializer strategyInitializerInstance;
 		private static readonly object _lock = new object();
 
 
 		public StrategyInitializerFactory(IServiceFactory serviceFactory) {
-			if(strategyInitializerInstance is null) {
-				lock (_lock) {
-					if (strategyInitializerInstance is null) {
-						strategyInitializerInstance = new StrategyInitializer(serviceFactory);
-					}
-				}
-			}
+			strategyInitializerInstance = new StrategyInitializer(serviceFactory);
+			
 		}
 
 		public IStrategyInitializer GetStrategyInitializer() {
