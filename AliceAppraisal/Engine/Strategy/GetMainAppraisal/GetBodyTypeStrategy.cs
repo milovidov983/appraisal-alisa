@@ -16,7 +16,8 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			return new SimpleResponse {
-				Text = $"Какой тип кузова у вашего авто? Например седан, хэчбек и так далее."
+				Text = $"Какой тип кузова у вашего авто? Например седан, хэчбек и так далее.",
+				Buttons = Buttons.BodyTypesBtn
 			};
 		}
 
@@ -48,10 +49,8 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			state.UpdateBodyType(value, this);
 
-
 			var nextAction = GetNextStrategy();
 			return await nextAction.GetMessage(request, state);
-
 		}
 	}
 }

@@ -19,5 +19,14 @@ namespace AliceAppraisal.Static {
 		public static string[] YesNoExtended = YesNo.Union(Help).Union(Exit).ToArray();
 		public static string[] Base = StartNew.Union(Help).Union(Exit).ToArray();
 		public static string[] BaseExtended = StartNew.Union(Help).Union(Exit).ToArray();
+
+		public static string[] BodyTypesBtn = new[] {
+			BodyTypes.Sedan.GetDescription(),
+			BodyTypes.Hatchback.GetDescription(),
+			BodyTypes.Offroad.GetDescription(),
+			BodyTypes.EstateCar.GetDescription(),
+			BodyTypes.Coupe.GetDescription(),
+			BodyTypes.Liftback.GetDescription()
+		};
 	}
 }
