@@ -17,3 +17,14 @@
 - дать возможность оценить если данных хватает
 
 - Укажите API-ключ из AppMetrica, чтобы получать отчеты по использованию вашего навыка. Подробнее в документации.
+
+# Deploy
+
+yc serverless function version create \
+--function-name=scharp1 \
+--runtime dotnetcore31-preview \
+--entrypoint AliceAppraisal.Controllers.Handler \
+--memory 128m \ # Объем RAM.
+--execution-timeout 3s \
+--source-path ./sources.zip
+

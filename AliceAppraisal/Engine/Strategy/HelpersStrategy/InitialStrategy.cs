@@ -27,8 +27,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Привет я Бот обладающий навыком угадывать цену у подержанных автомобилей, " +
-							$"хотите я попробую оценить стоимость вашего авто на вторичном рынке?",
+				Text = $"Что бы начать оценку автомобиля скажите \"начать\"",
 				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
 			};
 

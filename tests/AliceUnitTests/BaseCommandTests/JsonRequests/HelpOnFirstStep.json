@@ -1,0 +1,84 @@
+{
+	"meta": {
+		"locale": "ru-RU",
+		"timezone": "UTC",
+		"client_id": "ru.yandex.searchplugin/7.16 (none none; android 4.4.2)",
+		"interfaces": {
+			"screen": {},
+			"payments": {},
+			"account_linking": {}
+		}
+	},
+	"session": {
+		"message_id": 1,
+		"session_id": "c17436de-c222-4d00-9c9d-a90d4f0c38ae",
+		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
+		"user": {
+			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
+		},
+		"application": {
+			"application_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B"
+		},
+		"user_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B",
+		"new": false
+	},
+	"request": {
+		"command": "ןמלמשü",
+		"original_utterance": "ןמלמשü",
+		"nlu": {
+			"tokens": [
+				"ןמלמשü"
+			],
+			"entities": [],
+			"intents": {
+				"appraisal_short": {
+					"slots": {
+						"generation": {
+							"type": "YANDEX.STRING",
+							"tokens": {
+								"start": 0,
+								"end": 1
+							},
+							"value": "ןמלמשü"
+						}
+					}
+				},
+				"YANDEX.HELP": {
+					"slots": {}
+				}
+			}
+		},
+		"markup": {
+			"dangerous_context": false
+		},
+		"type": "SimpleUtterance"
+	},
+	"state": {
+		"session": {
+			"Request": {
+				"MakeId": null,
+				"MakeEntity": null,
+				"ModelId": null,
+				"ModelEntity": null,
+				"ManufactureYear": null,
+				"GenerationId": null,
+				"GenerationValue": null,
+				"EngineType": null,
+				"HorsePower": null,
+				"BodyType": null,
+				"Gearbox": null,
+				"Run": null,
+				"Drive": null,
+				"RegionId": null,
+				"CityName": null,
+				"EquipmentType": null
+			},
+			"PrevAction": "AliceAppraisal.Engine.Strategy.InitialStrategy",
+			"NextAction": "AliceAppraisal.Engine.Strategy.ConfirmAppraisalStrategy",
+			"GenerationChoise": {}
+		},
+		"user": {},
+		"application": {}
+	},
+	"version": "1.0"
+}

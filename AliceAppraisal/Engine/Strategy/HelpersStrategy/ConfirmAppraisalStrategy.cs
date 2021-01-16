@@ -25,11 +25,15 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Команда запуска оценки авто."
+				Text = $"Этот навык умеет производить оценку стоимости " +
+				$"Вашего автомобиля на вторичном рынке." +
+				$"Что бы начать оценку скажите Да"
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.YandexConfirm) && state.PrevAction.Is(typeof(InitialStrategy));
+			return request.HasIntent(Intents.YandexConfirm) 
+				|| request.Request.Command.Trim().ToLowerInvariant().StartsWith("начать") 
+				&& state.PrevAction.Is(typeof(InitialStrategy));
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
