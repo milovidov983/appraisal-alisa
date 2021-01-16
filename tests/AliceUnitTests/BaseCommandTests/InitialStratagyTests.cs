@@ -14,28 +14,28 @@ namespace AliceUnitTests.BaseCommandTests {
 
 		[Fact]
 		public async Task Initial_bot_response_is_correct() {
-			var aliceHelpRequest = RequestBuilder.Create()
+			var aliceRequest = RequestBuilder.Create()
 				.SetNew()
 				.WithMessageId(0)
 				.Build();
 
-			var handler = new MainHandler(aliceHelpRequest);
+			var handler = new MainHandler(aliceRequest);
 
-			var response = await handler.HandleRequest(aliceHelpRequest);
+			var response = await handler.HandleRequest(aliceRequest);
 
 			Assert.Contains("стоимость подержанных автомобилей", response.Response.Text);
 		}
 
 		[Fact]
 		public async Task Initial_bot_next_action_is_correct() {
-			var aliceHelpRequest = RequestBuilder.Create()
+			var aliceRequest = RequestBuilder.Create()
 				.SetNew()
 				.WithMessageId(0)
 				.Build();
 
-			var handler = new MainHandler(aliceHelpRequest);
+			var handler = new MainHandler(aliceRequest);
 
-			var response = await handler.HandleRequest(aliceHelpRequest);
+			var response = await handler.HandleRequest(aliceRequest);
 
 			Assert.Equal(typeof(ConfirmAppraisalStrategy).FullName, response.State.NextAction);
 		}

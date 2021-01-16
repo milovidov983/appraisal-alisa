@@ -15,20 +15,35 @@ namespace AliceUnitTests.BaseCommandTests {
 
 		[Fact]
 		public async Task Get_make_name_correct_save_id() {
-			var aliceHelpRequest = RequestBuilder.Create()
+			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(ConfirmAppraisalStrategy).FullName,
 					next: typeof(GetMakeStrategy).FullName)
 				.WithMake()
 				.Build();
 
-			var handler = new MainHandler(aliceHelpRequest);
+			var handler = new MainHandler(aliceRequest);
 
-			var response = await handler.HandleRequest(aliceHelpRequest);
+			var response = await handler.HandleRequest(aliceRequest);
 
 			Assert.Equal(135, response.State.Request.MakeId);
 		}
 
+		[Fact]
+		public async Task Set_correct_make_response_text_is_correct() {
+			var aliceRequest = RequestBuilder.Create()
+				.WithActions(
+					prev: typeof(ConfirmAppraisalStrategy).FullName,
+					next: typeof(GetMakeStrategy).FullName)
+				.WithMake()
+				.Build();
+
+			var handler = new MainHandler(aliceRequest);
+
+			var response = await handler.HandleRequest(aliceRequest);
+
+			Assert.Contains("пожалуйста модель вашего автомобиля", response.Response.Text);
+		}
 
 	}
 }
