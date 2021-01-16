@@ -32,8 +32,8 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			var greeting = WordsCollection.GET_GREETING.GetRand();
 			var resp = GetRandMessage();
-			string.Format(resp.Text, greeting);
-			string.Format(resp.Tts, greeting);
+			resp.Text = string.Format(resp.Text, greeting);
+			resp.Tts = string.Format(resp.Tts, greeting);
 
 			resp.Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" };
 

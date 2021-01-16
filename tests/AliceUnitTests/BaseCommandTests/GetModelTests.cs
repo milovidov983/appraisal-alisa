@@ -29,7 +29,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 
 		[Fact]
-		public async Task Set_correct_model_response_text_is_correct() {
+		public async Task Set_correct_model_response_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(GetMakeStrategy).FullName,
@@ -40,7 +40,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Contains(GetManufactureYearStrategy.Messages, (x) => x.Any(y => response.Response.Text.Contains(y)));
+			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
 		}
 
 		[Fact]

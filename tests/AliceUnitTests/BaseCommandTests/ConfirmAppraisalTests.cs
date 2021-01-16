@@ -25,7 +25,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Contains(GetMakeStrategy.Messages, (x) => x.Any(y=> response.Response.Text.Contains(y)));
+			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
 		}
 
 		[Fact]

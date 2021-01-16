@@ -41,6 +41,9 @@ namespace AliceUnitTests.BaseCommandTests {
 
 			};
 		}
+
+
+
 		private SessionState CreateState() {
 			return new SessionState {
 				Session = new State {
@@ -180,6 +183,43 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 		public RequestBuilder WithMessageId(int id) {
 			session.MessageId = id;
+			return this;
+		}
+
+		public RequestBuilder WithGenerationChoise(bool single) {
+			state.Session.GenerationChoise = new Dictionary<string, IdAndName> {
+				["1"] = new IdAndName {
+					Id = 12345,
+					Name = "TestGen"
+				} 
+			};
+			if (!single) {
+				state.Session.GenerationChoise.Add(
+					"2", 
+					new IdAndName { 
+						Id = 54321, 
+						Name = "TestGen2" 
+					}
+				);
+			}
+
+			return this;
+		}
+
+		public RequestBuilder WithNumberIntent(int number) {
+			var command = $"{number}";
+			request.Command = command;
+			request.OriginalUtterance = command;
+			request.Nlu.Intents["digit_input"] = new IntentSlot() {
+				Slots = new Dictionary<string, Entity> {
+					["number"] = new Entity {
+						Tokens = new Tokens { End = 1, Start = 0 },
+						Type = "YANDEX.NUMBER",
+						Value = number
+					}
+				}
+			};
+			request.Nlu.Tokens.Add(command);
 			return this;
 		}
 	}

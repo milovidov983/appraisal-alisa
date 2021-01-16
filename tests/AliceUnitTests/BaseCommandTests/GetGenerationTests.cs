@@ -1,5 +1,6 @@
 ﻿using AliceAppraisal.Controllers;
 using AliceAppraisal.Engine.Strategy;
+using AliceAppraisal.Models;
 using System;
 using System.Threading.Tasks;
 using Xunit;
@@ -17,67 +18,64 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_generation_result_saved() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithModelId()
-				.WithIntentManufactureYear()
+					prev: typeof(GetManufactureYearStrategy).FullName,
+					next: typeof(GetGenerationStrategy).FullName)
+				.WithGenerationChoise(single: false)
+				.WithNumberIntent(1)
 				.Build();
 
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(2012, response.State.Request.ManufactureYear);
+			Assert.Equal(12345, response.State.Request.GenerationId);
 		}
 
 		[Fact]
-		public async Task Set_correct_manufactureYear_response_text_is_correct() {
+		public async Task Set_correct_generation_status_ok() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithModelId()
-				.WithIntentManufactureYear()
+					prev: typeof(GetManufactureYearStrategy).FullName,
+					next: typeof(GetGenerationStrategy).FullName)
+				.WithGenerationChoise(single: false)
+				.WithNumberIntent(1)
 				.Build();
 
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Contains("год", response.Response.Text);
+			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
 		}
 
 		[Fact]
-		public async Task Set_correct_manufactureYear_next_action_is_correct() {
+		public async Task Set_correct_generation_next_action_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithModelId()
-				.WithIntentManufactureYear()
+					prev: typeof(GetManufactureYearStrategy).FullName,
+					next: typeof(GetGenerationStrategy).FullName)
+				.WithGenerationChoise(single: false)
+				.WithNumberIntent(1)
 				.Build();
 
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(typeof(GetGenerationStrategy).FullName, response.State.NextAction);
+			Assert.Equal(typeof(GetBodyTypeStrategy).FullName, response.State.NextAction);
 		}
 
 		[Fact]
-		public async Task Set_wrong_manufactureYear_return_warning_response() {
-			var wrongManufactureYear = DateTime.UtcNow.Year + 1;
+		public async Task Set_wrong_generation_return_warning_response() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
-				.WithModelId()
-				.WithIntentManufactureYear(wrongManufactureYear)
+					prev: typeof(GetManufactureYearStrategy).FullName,
+					next: typeof(GetGenerationStrategy).FullName)
+				.WithGenerationChoise(single: false)
+				.WithNumberIntent(99999)
 				.Build();
 
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Contains(
-				$"Кажется указанный вами {wrongManufactureYear} год выпуска еще наступил, попробуйте еще раз.",
-				response.Response.Text);
+			Assert.Contains($"Выберите нужный вариант поколения авто",response.Response.Text);
 		}
 
 	}
