@@ -48,7 +48,7 @@ namespace AliceAppraisal.Controllers {
 
 	public class MainHandler {
 		private static IStrategyFactory strategyFactory;
-		private static readonly List<BaseStrategy> strategies;
+		private static List<BaseStrategy> strategies;
 		private static readonly ILogger logger = new LoggerConfiguration()
 			.WriteTo
 			.Console()
@@ -68,6 +68,11 @@ namespace AliceAppraisal.Controllers {
 			strategyFactory = factory.GetStrategyFactory();
 		}
 
+		protected void ReInit(IServiceFactory factory) {
+			strategies = ReflectiveEnumerator.GetEnumerableOfType<BaseStrategy>(factory).ToList();
+			strategyFactory = factory.GetStrategyFactory();
+		}
+
 
 		public async Task<AliceResponse> HandleRequest(AliceRequest aliceRequest) {
 			AliceResponse response;
@@ -75,9 +80,9 @@ namespace AliceAppraisal.Controllers {
 				var suitableStrategy = strategies
 					.Where(stratagy => stratagy.IsSuitableStrategy(aliceRequest, state))
 					.ToArray();
-		
+
 				var tasks = suitableStrategy
-					.Select(async (strategy) =>  await strategy.Run(aliceRequest, state))
+					.Select(async (strategy) => await strategy.Run(aliceRequest, state))
 					.ToArray();
 
 				await Task.WhenAll(tasks);
@@ -91,7 +96,7 @@ namespace AliceAppraisal.Controllers {
 					var currentActionName = state.NextAction;
 					var currentAction = strategyFactory.GetStrategy(currentActionName);
 
-					if(currentAction is null) {
+					if (currentAction is null) {
 						currentAction = strategyFactory.GetDefaultStrategy();
 					}
 
@@ -102,6 +107,17 @@ namespace AliceAppraisal.Controllers {
 						.WithText(simple)
 						.Build();
 				}
+			} catch(NotFoundExcteption e) {
+				response = AliceResponseBuilder.Create()
+					.WithData(aliceRequest)
+					.WithState(state)
+					.WithText(new SimpleResponse { 
+						Text = e.Message,
+						Buttons = Buttons.BaseExtended
+					})
+					.Build();
+
+			
 			} catch (Exception e) {
 				logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
 				logger.Error(e, e.Message);

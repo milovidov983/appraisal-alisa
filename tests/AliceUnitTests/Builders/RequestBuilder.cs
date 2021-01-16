@@ -149,6 +149,23 @@ namespace AliceUnitTests.BaseCommandTests {
 			};
 			request.Nlu.Tokens.Add(command);
 			return this;
+		}		
+		
+		public RequestBuilder WithManufactureYear() {
+			var command = "2012";
+			request.Command = command;
+			request.OriginalUtterance = command;
+			request.Nlu.Intents["digit_input"] = new IntentSlot() {
+				Slots = new Dictionary<string, Entity> {
+					["number"] = new Entity {
+						Tokens = new Tokens { End = 1, Start = 0 },
+						Type = "YANDEX.NUMBER",
+						Value = 2012
+					}
+				}
+			};
+			request.Nlu.Tokens.Add(command);
+			return this;
 		}
 
 		public RequestBuilder SetNew() {

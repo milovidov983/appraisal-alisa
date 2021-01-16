@@ -8,7 +8,7 @@ using System.Text;
 namespace AliceAppraisal.Engine.Services {
 	public class ServiceFactory : IServiceFactory {
 		private static readonly IExternalService externalService = new ExternalService();
-		public IExternalService GetExternalService() {
+		public virtual IExternalService GetExternalService() {
 			return externalService;
 		}
 

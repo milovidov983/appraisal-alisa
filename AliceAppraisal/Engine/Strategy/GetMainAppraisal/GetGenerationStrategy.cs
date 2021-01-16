@@ -66,10 +66,16 @@ namespace AliceAppraisal.Engine.Strategy {
 			var hasScreen = request.HasScreen();
 			var modelId = state.Request.ModelId;
 			var manufactureYear = state.Request.ManufactureYear;
+
+			Validate(modelId, manufactureYear);
+
 			var findedGenerations = await externalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
 			if(findedGenerations?.Any() != true) {
-				throw new NotFoundExcteption();
+				throw new NotFoundExcteption(
+					$"Не удалось найти поколение для модели {request.State.Session.Request.ModelEntity} " +
+					$"с указанными годом выпуска {request.State.Session.Request.ManufactureYear}, " +
+					$"попробуйте изменить год выпуска или модель.");
 			}
 
 			state.GenerationChoise = findedGenerations
@@ -100,6 +106,10 @@ namespace AliceAppraisal.Engine.Strategy {
 				state.NextAction = typeof(ConfirmGenerationStrategy).FullName;
 				return await nextAction.GetMessage(request, state);
 			}
+		}
+
+		private void Validate(int? modelId, int? manufactureYear) {
+			throw new NotImplementedException();
 		}
 	}
 }
