@@ -15,10 +15,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			// TODO рандомизировать реплику
 			return new SimpleResponse {
-				Text = $"Отлично! Что бы я мог сделать максимально " +
-				$"точную оценку мне необходимо услышать от вас, " +
-				$"несколько ответов, это не займет много времени. " +
-				$"Скажите какой марки ваше авто?"
+				Text = $"Скажите какой марки оцениваемое авто?"
 			};
 		}
 
@@ -32,9 +29,11 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.YandexConfirm) 
+			return (request.HasIntent(Intents.YandexConfirm) 
 				|| request.Request.Command.Trim().ToLowerInvariant().StartsWith("начать") 
-				&& state.PrevAction.Is(typeof(InitialStrategy));
+				&& state.PrevAction.Is(typeof(InitialStrategy))) 
+				||
+				 state.NextAction.Is(typeof(StartAppraisalStrategy)) && request.HasIntent(Intents.YandexConfirm); ;
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
