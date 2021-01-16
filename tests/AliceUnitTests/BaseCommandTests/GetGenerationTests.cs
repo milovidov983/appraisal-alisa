@@ -14,7 +14,7 @@ namespace AliceUnitTests.BaseCommandTests {
 
 
 		[Fact]
-		public async Task Set_correct_manufactureYear_year_is_saved() {
+		public async Task Set_correct_generation_result_saved() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(GetModelStrategy).FullName,

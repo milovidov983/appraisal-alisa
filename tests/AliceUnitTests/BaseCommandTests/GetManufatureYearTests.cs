@@ -14,12 +14,6 @@ using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
 	public class GetManufatureYearTests {
-
-		//public MainHandler CreateHandler(AliceRequest request) {
-		//	var handler =  new MainHandlerMock(request);
-		//	var m1 = Mock.Of<IServiceFactory>((s)=>s.GetLogger())
-		//}
-
 		private ILogger logger = new LoggerConfiguration()
 					.WriteTo
 					.Console()

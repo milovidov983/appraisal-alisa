@@ -71,10 +71,6 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			var findedGenerations = await externalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
-			System.Diagnostics.Debug.WriteLine("----");
-			System.Diagnostics.Debug.WriteLine(findedGenerations.Length);
-			System.Diagnostics.Debug.WriteLine("----");
-
 			if(findedGenerations?.Any() != true) {
 				throw new NotFoundExcteption(
 					$"Не удалось найти поколение для модели {request.State.Session.Request.ModelEntity} " +
