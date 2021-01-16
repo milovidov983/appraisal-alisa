@@ -33,10 +33,13 @@ namespace AliceAppraisal.Engine.Strategy {
 				|| request.Request.Command.Trim().ToLowerInvariant().StartsWith("начать") 
 				&& state.PrevAction.Is(typeof(InitialStrategy))) 
 				||
-				 state.NextAction.Is(typeof(StartAppraisalStrategy)) && request.HasIntent(Intents.YandexConfirm); ;
+				 state.NextAction.Is(typeof(StartAppraisalStrategy)) && request.HasIntent(Intents.YandexConfirm);
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+			if(state.NextAction.Is(typeof(StartAppraisalStrategy)) && request.HasIntent(Intents.YandexConfirm)) {
+				state.Clear();
+			}
 			var nextAction = GetNextStrategy();
 			return await nextAction.GetMessage(request, state);
 		}

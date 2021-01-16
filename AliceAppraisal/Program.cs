@@ -2,6 +2,7 @@
 using AliceAppraisal.Controllers;
 using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
+using AliceAppraisal.Static;
 using System;
 using System.IO;
 using System.Text.Json;
@@ -14,7 +15,7 @@ namespace AliceAppraisal {
 			var ar = JsonSerializer.Deserialize<AliceRequest>(requets);
 
 			var h = new Handler();
-
+			var b = VehicleComponents.BodyTypes;
 			var resp = await h.FunctionHandler(ar);
 
 			Console.WriteLine("Hello World!");

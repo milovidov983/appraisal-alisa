@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AliceAppraisal.Static;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -33,13 +34,13 @@ namespace AliceAppraisal.Models {
 				$"{ModelEntity.ExtractName().CapitalizeFirst()}, " +
 				$"{ManufactureYear} г.в., " +
 				$"поколение \"{GenerationValue}\", " +
-				$"кузов {BodyType}, " +
-				$"коробка {Gearbox}, " +
-				$"тип двигателя {EngineType}, " +
-				$"привод {Drive}, " +
+				$"кузов {BodyType.TryGetBodyTypeDescriptionOrDefault()}, " +
+				$"коробка {Gearbox.TryGetGearboxesDescriptionOrDefault()}, " +
+				$"тип двигателя {EngineType.TryGetEngineTypesDescriptionOrDefault()}, " +
+				$"привод {Drive.TryGetDrivesDescriptionOrDefault()}, " +
 				$"{HorsePower} л.с., " +
 				$"пробег {Run} км., " +
-				$"комплектация {EquipmentType}, " +
+				$"комплектация {EquipmentType.TryGetEquipmentsDescriptionOrDefault()}, " +
 				$"в городе {CityName.CapitalizeFirst()}";
 			return name;
 		}

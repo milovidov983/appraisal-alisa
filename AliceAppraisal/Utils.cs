@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
 
@@ -71,5 +72,38 @@ namespace AliceAppraisal {
             var index = rand.Next(start, end);
             return data[index];
         }
+
+        #region Enum helpers
+        public static string GetDescription(this Enum value) {
+            if (value == null)
+                return null;
+            var fieldInfo = value.GetType().GetField(value.ToString());
+            return fieldInfo.GetDescription();
+        }
+
+        public static string GetDescription(this FieldInfo info) => info.GetCustomAttribute<DescriptionAttribute>()?.Description;
+
+        public static Dictionary<T, string> GetEnumDictionary<T>() where T : struct, Enum {
+            return typeof(T)
+                .GetTypeInfo()
+                .GetFields(BindingFlags.Public | BindingFlags.Static)
+                .ToDictionary(
+                    x => (T)x.GetValue(null),
+                    x => x.GetDescription()
+                );
+        }
+
+        public static string GetDescritption(this Type type) {
+            return type.GetTypeInfo()
+                       .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                       .Select(y => (DescriptionAttribute)y)
+                       .FirstOrDefault()
+                       ?.Description;
+        }
+        public static IEnumerable<T> GetValues<T>() {
+            return Enum.GetValues(typeof(T)).Cast<T>();
+        }
+
+        #endregion
     }
 }
