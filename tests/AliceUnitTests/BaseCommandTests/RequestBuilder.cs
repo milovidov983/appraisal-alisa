@@ -46,7 +46,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				Session = new State {
 					GenerationChoise = new Dictionary<string, IdAndName>(),
 					PrevAction = typeof(InitialStrategy).FullName,
-					NextAction = typeof(InitialStrategy).FullName,
+					NextAction = typeof(ConfirmAppraisalStrategy).FullName,
 					Request = new AppraisalQuoteRequest { }
 				}
 			};
@@ -94,7 +94,12 @@ namespace AliceUnitTests.BaseCommandTests {
 			};
 		}
 
+		public RequestBuilder WithActions(string prev, string next) {
+			state.Session.PrevAction = prev;
+			state.Session.NextAction = next;
+			return this;
 
+		}
 		public RequestBuilder WithHelp() {
 			var helpStr = "помощь";
 			request.Command = helpStr;

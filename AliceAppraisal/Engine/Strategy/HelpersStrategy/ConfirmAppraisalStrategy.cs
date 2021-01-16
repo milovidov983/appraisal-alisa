@@ -10,8 +10,10 @@ namespace AliceAppraisal.Engine.Strategy {
 	public class ConfirmAppraisalStrategy : BaseStrategy {
 		public ConfirmAppraisalStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
+
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			// TODO рандомизировать реплику
 			return new SimpleResponse {
 				Text = $"Отлично! Что бы я мог сделать максимально " +
 				$"точную оценку мне необходимо услышать от вас, " +
@@ -25,9 +27,8 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Этот навык умеет производить оценку стоимости " +
-				$"Вашего автомобиля на вторичном рынке." +
-				$"Что бы начать оценку скажите Да"
+				Text = $"Что бы начать оценку автомобиля скажите \"начать\"",
+				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {

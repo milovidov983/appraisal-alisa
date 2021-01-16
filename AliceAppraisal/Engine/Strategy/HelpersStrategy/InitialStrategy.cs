@@ -13,28 +13,25 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 
 			return new SimpleResponse {
-				Text = $"Привет я Бот обладающий навыком угадывать цену у подержанных автомобилей, " +
-				$"хотите я попробую оценить стоимость вашего авто на вторичном рынке?",
+				Text = $"Привет! Я бот и я умею оценивать стоимость подержанных автомобилей, " +
+				$"хотите я попробую оценить стоимость какого-нибудь авто?",
+				Tts = $"Привет! - - Я бот - и я умею оценивать стоимость подержанных автомобилей, - " +
+				$"хотите я попробую оценить стоимость какого-нибудь авто?",
 				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return new SimpleResponse {
-				Text = $"Хотите я попробую оценить стоимость вашего авто на вторичном рынке?",
-				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
-			};
+			// Текущая команда не может быть активирована
+			return SimpleResponse.Empty;
 		}
 		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
-				Text = $"Что бы начать оценку автомобиля скажите \"начать\"",
-				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
-			};
-
+			// Текущая команда не может быть активирована
+			return SimpleResponse.Empty;
 		}
+
 		protected override bool Check(AliceRequest request, State state) {
-			return request.Request.Command.IsNullOrEmpty() && state.PrevAction.IsNullOrEmpty()
-				|| state.NextAction.Is(this.GetType()); 
+			return request.Session.New;
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
