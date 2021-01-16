@@ -134,6 +134,23 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}
 
+		public RequestBuilder WithModel() {
+			var command = "астра";
+			request.Command = command;
+			request.OriginalUtterance = command;
+			request.Nlu.Intents["model_name"] = new IntentSlot() {
+				Slots = new Dictionary<string, Entity> {
+					["model"] = new Entity {
+						Tokens = new Tokens { End = 1, Start = 0 },
+						Type = "EModels",
+						Value = "astra_1427"
+					}
+				}
+			};
+			request.Nlu.Tokens.Add(command);
+			return this;
+		}
+
 		public RequestBuilder SetNew() {
 			session.New = true;
 			return this;

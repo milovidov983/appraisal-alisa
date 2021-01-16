@@ -14,7 +14,7 @@ namespace AliceUnitTests.BaseCommandTests {
 	public class ConfirmAppraisalTests {
 
 		[Fact]
-		public async Task Set_yes_bot_response_is_correct() {
+		public async Task Confirm_appraisal_bot_response_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(InitialStrategy).FullName,
@@ -30,7 +30,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 
 		[Fact]
-		public async Task Initial_bot_next_action_is_correct() {
+		public async Task Confirm_appraisal_next_action_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(ConfirmAppraisalStrategy).FullName,
@@ -46,7 +46,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 
 		[Fact]
-		public async Task Get_help_on_first_step_return_help() {
+		public async Task Get_help_on_confirm_appraisal_return_help() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(InitialStrategy).FullName,

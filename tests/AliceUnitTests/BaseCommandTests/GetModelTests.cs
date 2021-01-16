@@ -11,62 +11,62 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
-	public class GetMakeTests {
+	public class GetModelTests {
 
 		[Fact]
-		public async Task Set_correct_make_id_is_saved() {
-			var aliceRequest = RequestBuilder.Create()
-				.WithActions(
-					prev: typeof(ConfirmAppraisalStrategy).FullName,
-					next: typeof(GetMakeStrategy).FullName)
-				.WithMake()
-				.Build();
-
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
-
-			Assert.Equal(135, response.State.Request.MakeId);
-		}
-
-		[Fact]
-		public async Task Set_correct_make_response_text_is_correct() {
-			var aliceRequest = RequestBuilder.Create()
-				.WithActions(
-					prev: typeof(ConfirmAppraisalStrategy).FullName,
-					next: typeof(GetMakeStrategy).FullName)
-				.WithMake()
-				.Build();
-
-			var handler = new MainHandler(aliceRequest);
-
-			var response = await handler.HandleRequest(aliceRequest);
-
-			Assert.Contains("пожалуйста модель вашего автомобиля", response.Response.Text);
-		}
-
-		[Fact]
-		public async Task Set_correct_make_next_action_is_correct() {
+		public async Task Set_correct_model_id_is_saved() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(GetMakeStrategy).FullName,
 					next: typeof(GetModelStrategy).FullName)
-				.WithMake()
+				.WithModel()
 				.Build();
 
 			var handler = new MainHandler(aliceRequest);
 
 			var response = await handler.HandleRequest(aliceRequest);
 
-			Assert.Equal(typeof(GetModelStrategy).FullName, response.State.NextAction);
+			Assert.Equal(1427, response.State.Request.ModelId);
 		}
 
 		[Fact]
-		public async Task Set_wrong_make_return_warning_response() {
+		public async Task Set_correct_model_response_text_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(ConfirmAppraisalStrategy).FullName,
-					next: typeof(GetMakeStrategy).FullName)
+					prev: typeof(GetMakeStrategy).FullName,
+					next: typeof(GetModelStrategy).FullName)
+				.WithModel()
+				.Build();
+
+			var handler = new MainHandler(aliceRequest);
+
+			var response = await handler.HandleRequest(aliceRequest);
+
+			Assert.Contains("год выпуска вашего автомобиля", response.Response.Text);
+		}
+
+		[Fact]
+		public async Task Set_correct_model_next_action_is_correct() {
+			var aliceRequest = RequestBuilder.Create()
+				.WithActions(
+					prev: typeof(GetModelStrategy).FullName,
+					next: typeof(GetManufactureYearStrategy).FullName)
+				.WithModel()
+				.Build();
+
+			var handler = new MainHandler(aliceRequest);
+
+			var response = await handler.HandleRequest(aliceRequest);
+
+			Assert.Equal(typeof(GetManufactureYearStrategy).FullName, response.State.NextAction);
+		}
+
+		[Fact]
+		public async Task Set_wrong_model_return_warning_response() {
+			var aliceRequest = RequestBuilder.Create()
+				.WithActions(
+					prev: typeof(GetMakeStrategy).FullName,
+					next: typeof(GetModelStrategy).FullName)
 				.Build();
 
 			var handler = new MainHandler(aliceRequest);
@@ -74,7 +74,8 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.HandleRequest(aliceRequest);
 
 			Assert.Contains(
-				"Не удалось распознать марку вашего авто, попробуйте повторить запрос или попросите у меня подсказку.", 
+				$"Не удалось распознать модель вашего авто," +
+				$" попробуйте повторить ваш запрос или попросите у меня подсказку.",
 				response.Response.Text);
 		}
 
