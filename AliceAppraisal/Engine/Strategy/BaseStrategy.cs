@@ -9,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public abstract class BaseStrategy {
-        protected readonly ITextGeneratorService textGeneratorService;
         protected readonly IServiceFactory serviceFactory;
 		protected readonly IExternalService externalService;
        
 
         protected BaseStrategy(IServiceFactory serviceFactory) {
             this.serviceFactory = serviceFactory;
-            this.textGeneratorService = serviceFactory.GetTextGeneratorService();
             this.externalService = serviceFactory.GetExternalService();
         }
 

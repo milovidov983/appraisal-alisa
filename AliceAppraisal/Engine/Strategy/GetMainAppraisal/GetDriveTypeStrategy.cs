@@ -13,8 +13,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			var takeVerb = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{textGeneratorService.GetRandTakeVerb()} тип привода у вашего авто? " +
+				Text = $"{takeVerb} тип привода у вашего авто? " +
 				$"Например Переднеприводный, Заднеприводный или Полноприводный.",
 				Buttons = new[] { "Переднеприводный", "Заднеприводный", "Полноприводный" }
 			};

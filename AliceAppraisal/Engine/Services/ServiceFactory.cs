@@ -12,10 +12,7 @@ namespace AliceAppraisal.Engine.Services {
 			return externalService;
 		}
 
-		private static readonly ITextGeneratorService textGeneratorService = new TextGenerator();
-		public ITextGeneratorService GetTextGeneratorService() {
-			return textGeneratorService;
-		}
+
 		private static ILogger logger;
 		public ServiceFactory(ILogger log) {
 			logger = log;

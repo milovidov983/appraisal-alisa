@@ -28,7 +28,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
 				Text = $"Что бы начать оценку автомобиля скажите \"начать\"",
-				Buttons = new[] { "Да", "Нет", "Помощь", "Выйти" }
+				Buttons = Buttons.YesNoExtended
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {

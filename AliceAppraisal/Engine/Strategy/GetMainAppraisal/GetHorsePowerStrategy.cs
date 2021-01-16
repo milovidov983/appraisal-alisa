@@ -14,8 +14,9 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{textGeneratorService.GetRandTakeVerb()} примерное количество лошадиных сил в вашем авто?",
+				Text = $"{randGiveWord} примерное количество лошадиных сил в вашем авто?",
 			};
 		}
 
@@ -28,7 +29,8 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Для оценки автомобиля мне необходимо знать мощность двигателя, мощность необходимо указывать в лошадиных силах. " +
+				Text = $"Для оценки автомобиля мне необходимо знать мощность двигателя, " +
+				$"мощность необходимо указывать в лошадиных силах. " +
 				$"Попробуйте произнести название приблизив микрофон ближе."
 			};
 		}

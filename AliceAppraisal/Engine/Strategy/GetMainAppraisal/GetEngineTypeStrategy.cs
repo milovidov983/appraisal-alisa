@@ -13,8 +13,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{textGeneratorService.GetRandTakeVerb()}  тип двигателя вашего авто? Например Бензиновый, Гибрид, Дизельный или Электрический",
+				Text = $"{randGiveWord} тип двигателя вашего авто? Например Бензиновый, Гибрид, Дизельный или Электрический",
 				Buttons = new[] { "Бензиновый", "Гибрид", "Дизельный", "Электрический" }
 			};
 		}
@@ -30,7 +31,8 @@ namespace AliceAppraisal.Engine.Strategy {
 			return new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его тип двигателя, существуют следующие " +
 				$"типы: Бензиновый, Гибрид, Дизельный, Электрический и другие. " +
-				$"Попробуйте произнести название приблизив микрофон ближе."
+				$"Попробуйте произнести название приблизив микрофон ближе. " +
+				$"Вы в любой момент можете выйти, сказав мне об этом."
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {

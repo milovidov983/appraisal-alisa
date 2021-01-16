@@ -21,8 +21,9 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{textGeneratorService.GetRandTakeVerb()} год выпуска вашего автомобиля?"
+				Text = $"{randGiveWord} год выпуска вашего автомобиля?"
 			};
 		}
 

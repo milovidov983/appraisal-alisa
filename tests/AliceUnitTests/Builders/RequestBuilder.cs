@@ -45,8 +45,6 @@ namespace AliceUnitTests.BaseCommandTests {
 			return new SessionState {
 				Session = new State {
 					GenerationChoise = new Dictionary<string, IdAndName>(),
-					PrevAction = typeof(InitialStrategy).FullName,
-					NextAction = typeof(ConfirmAppraisalStrategy).FullName,
 					Request = new AppraisalQuoteRequest { }
 				}
 			};
@@ -106,6 +104,42 @@ namespace AliceUnitTests.BaseCommandTests {
 			request.OriginalUtterance = helpStr;
 			request.Nlu.Intents["YANDEX.HELP"] = new IntentSlot();
 			request.Nlu.Tokens.Add(helpStr);
+			return this;
+		}
+
+
+		public RequestBuilder WithConfirm() {
+			var command = "да";
+			request.Command = command;
+			request.OriginalUtterance = command;
+			request.Nlu.Intents["YANDEX.CONFIRM"] = new IntentSlot();
+			request.Nlu.Tokens.Add(command);
+			return this;
+		}
+
+		public RequestBuilder WithMake() {
+			var command = "пежо";
+			request.Command = command;
+			request.OriginalUtterance = command;
+			request.Nlu.Intents["make_name"] = new IntentSlot() {
+				Slots = new Dictionary<string, Entity> {
+					["make"] = new Entity {
+						Tokens = new Tokens { End = 1, Start = 0},
+						Type = "EMakes",
+						Value = "peugeot_135"
+					}
+				}
+			};
+			request.Nlu.Tokens.Add(command);
+			return this;
+		}
+
+		public RequestBuilder SetNew() {
+			session.New = true;
+			return this;
+		}
+		public RequestBuilder WithMessageId(int id) {
+			session.MessageId = id;
 			return this;
 		}
 	}
