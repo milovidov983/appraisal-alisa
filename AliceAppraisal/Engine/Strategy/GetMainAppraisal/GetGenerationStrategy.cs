@@ -41,24 +41,26 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			var currentGens = state.GenerationChoise.Select(gen => $"Вариант {gen.Key}: {gen.Value.Name}").ToArray();
 			if (request.HasScreen()) {
+				var gens = state.GenerationChoise.Select(kv => $"{kv.Key}-й ({kv.Value.Name})");
 				return new SimpleResponse {
-					Text = $"Выберите ваш вариант поколения авто: {string.Join("-й или ", state.GenerationChoise.Keys)}-й?",
+					Text = $"Выберите нужный вариант поколения авто: {string.Join(" или ", gens)}?",
 					Buttons = currentGens.Union(Buttons.SelectYear).ToArray()
 				};
 			} else {
 				return new SimpleResponse {
 					Text = $"Скажите какой вариант поколения ваш {string.Join("-й или ", state.GenerationChoise.Keys)}-й? " +
-					$"{string.Join(", ", currentGens)}. Если среди представленных поколений нет вашего, " +
-					" попробуйте указать другой год выпуска вызвав команду фразой \"Изменить год выпуска\""
+					$"{string.Join(", ", currentGens)}. Если среди представленных поколений нужное отсутствует, " +
+					"попробуйте указать другой год выпуска вызвав команду фразой \"Изменить год выпуска\""
 				};
 			}
 		}
 
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Для оценки автомобиля мне необходимо знать его поколение, если в указанный год" +
-				$" у автомобиля было несколько активных поколений то вам необходимо выбрать из представленных," +
-				$" назвав его номер по порядку."
+				Text = $"Для оценки автомобиля мне необходимо знать его поколение, если в указанный год " +
+				$"у автомобиля было несколько активных поколений то вам необходимо выбрать из представленных, " +
+				$"назвав его номер по порядку, например \"Вариант 1\", название поколения указывать не надо.",
+				Buttons = Buttons.BaseExtended
 			};
 		}
 
@@ -89,9 +91,9 @@ namespace AliceAppraisal.Engine.Strategy {
 				var genText = findedGenerations.Select((gen, index) => $"Вариант {index + 1}: {gen.Text}").ToArray();
 				if (hasScreen) {
 					return new SimpleResponse {
-						Text = $"Выберите поколение вашего авто, если среди представленных поколений нет вашего," +
-						$" попробуйте указать другой год выпуска.",
-						Buttons = genText.Union(Buttons.SelectYear).ToArray()
+						Text = $"Выберите поколение вашего авто, если среди представленных поколений нет вашего, " +
+						$"попробуйте указать другой год выпуска.",
+						Buttons = genText.Union(Buttons.SelectYear).Union(Buttons.Help).ToArray()
 					};
 				} else {
 					return new SimpleResponse {
@@ -115,7 +117,6 @@ namespace AliceAppraisal.Engine.Strategy {
 			if(manufactureYear is null) {
 				throw new InvalidRequestException("Не указан год выпуска авто, попробуйте начать с начала.");
 			}
-			
 		}
 	}
 }

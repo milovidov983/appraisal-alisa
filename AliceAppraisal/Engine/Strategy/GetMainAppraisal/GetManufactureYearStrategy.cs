@@ -75,7 +75,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			}
 			if (manufactureYear < 2000) {
 				return "Кажется год который вы указали выходит за нижний предел ограничения, " +
-					 $"минимально возможным годом является {Limits.StartProductionYear}." +
+					 $"минимально возможным годом является {Limits.StartProductionYear}. " +
 					 $"Попробуйте еще раз.";
 			}
 			return null;
