@@ -49,7 +49,8 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
-			return ( CheckTokens(request) || request.HasIntent(Intents.CityName) ) && state.NextAction.Is(this.GetType());
+			return (request.HasIntent(Intents.YandexConfirm) || CheckTokens(request) || request.HasIntent(Intents.CityName) ) 
+				&& state.NextAction.Is(this.GetType());
 		}
 
 		private static readonly Dictionary<string, int> cityRegions;

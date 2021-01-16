@@ -48,9 +48,9 @@ namespace AliceAppraisal.Engine.Strategy {
 			}
 			var countAds = result.SampleByPrices.HighPriced + result.SampleByPrices.Normal + result.SampleByPrices.LowPriced;
 			return new SimpleResponse {
-				Text = $"Цена вашего авто {state.Request.GetFullName()} на вторичном рынке составляет {result.OneMonthPrice} р., " +
-				$"всего было проанализировано {countAds} аналогичных авто, разброс цен среди них был в рамках " +
-				$"от {result.PriceRange.Min} до {result.PriceRange.Max}. " +
+				Text = $"Цена вашего авто {state.Request.GetFullName()} на вторичном рынке составляет {result.OneMonthPrice} руб., " +
+				$"всего было проанализировано {countAds} аналогичных авто, разброс цен среди них был в пределах " +
+				$"от {result.PriceRange.Min} до {result.PriceRange.Max} руб. " +
 				$"Хотите еще оценить автомобиль?"
 			};
 		}
