@@ -1,9 +1,6 @@
-﻿using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
@@ -12,26 +9,29 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
-			return SimpleResponse.Empty;
+			return GetHelp();
 		}
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return new SimpleResponse {
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
+			=> new SimpleResponse {
 				Text = $"Не удалось распознать указанный вами пробег, попробуйте повторить ваш запрос.",
 			};
-		}
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
-				Text = $"Изменить пробег у оцененного авто. Вызывается командой оцени такое же авто но с пробегом Х"
+
+		public override SimpleResponse GetHelp()
+			=> new SimpleResponse {
+				Text = $"Изменить пробег у оцененного авто. " +
+				$"Вызывается командой \"Оцени такое же авто но с пробегом Х\", " +
+				$"где Х это пробег в километрах."
 			};
-		}
-		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.ChangeParamRun) 
-				&& state.NextAction.Is(typeof(StartAppraisalStrategy));
-		}
+		
+		protected override bool Check(AliceRequest request, State state) 
+			=> 
+			request.HasIntent(Intents.ChangeParamRun) 
+			&& 
+			state.NextAction.Is(typeof(StartAppraisalStrategy));
+		
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
 			var runStr = request.GetSlot(Intents.ChangeParamRun, Slots.Run);
 
 			if (runStr.IsNullOrEmpty()) {
