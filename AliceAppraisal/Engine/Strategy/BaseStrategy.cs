@@ -1,14 +1,17 @@
 ﻿using AliceAppraisal.Models;
+using Serilog;
 using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public abstract class BaseStrategy {
 		protected readonly IExternalService externalService;
+        protected readonly ILogger logger;
         private readonly IStepManager stepManager;
 
-        protected BaseStrategy(IServiceFactory serviceFactory) {
+		protected BaseStrategy(IServiceFactory serviceFactory) {
             this.stepManager = new StepManager(this, serviceFactory);
+            this.logger = serviceFactory.GetLogger();
             this.externalService = serviceFactory.GetExternalService();
         }
 

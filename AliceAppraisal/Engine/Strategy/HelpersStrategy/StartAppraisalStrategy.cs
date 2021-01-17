@@ -12,8 +12,10 @@ namespace AliceAppraisal.Engine.Strategy {
 		public StartAppraisalStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) 
-			=> CreateFinalResult(state);
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			var result = await CreateFinalResult(state);
+			return result;
+		}
 		
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) 
@@ -35,23 +37,27 @@ namespace AliceAppraisal.Engine.Strategy {
 		private async Task<SimpleResponse> CreateFinalResult(State state) {
 			var result = await externalService.GetAppraisalResponse(state.Request);
 
+			SimpleResponse response = null;
 			if (result.Status != "success") {
-				return new SimpleResponse {
+				response = new SimpleResponse {
 					Text = $"Мне не удалось провести оценку вашего авто {state.Request.GetFullName()}. " +
 					$"К сожалению у меня нет аналогов по вашему запросу. " +
 					$"Возможно вы не очень точно указали параметры, либо ваше автомобиль очень редкий. " +
 					$"Хотите попробовать скорректировать запрос?",
 					Buttons = Buttons.YesNo
 				};
+			} else {
+				var countAds = result.SampleByPrices.HighPriced + result.SampleByPrices.Normal + result.SampleByPrices.LowPriced;
+				response = new SimpleResponse {
+					Text = $"Цена вашего авто {state.Request.GetFullName()} на вторичном рынке составляет {result.OneMonthPrice} руб., " +
+					$"всего было проанализировано {countAds} аналогичных авто, разброс цен среди них был в пределах " +
+					$"от {result.PriceRange.Min} до {result.PriceRange.Max} руб. " +
+					$"Хотите еще оценить автомобиль?",
+					Buttons = Buttons.YesNo
+				};
 			}
-			var countAds = result.SampleByPrices.HighPriced + result.SampleByPrices.Normal + result.SampleByPrices.LowPriced;
-			return new SimpleResponse {
-				Text = $"Цена вашего авто {state.Request.GetFullName()} на вторичном рынке составляет {result.OneMonthPrice} руб., " +
-				$"всего было проанализировано {countAds} аналогичных авто, разброс цен среди них был в пределах " +
-				$"от {result.PriceRange.Min} до {result.PriceRange.Max} руб. " +
-				$"Хотите еще оценить автомобиль?",
-				Buttons = Buttons.YesNo
-			};
+
+			return response;
 		}
 	}
 }

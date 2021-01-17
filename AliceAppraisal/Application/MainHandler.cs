@@ -6,6 +6,7 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Application {
@@ -20,6 +21,7 @@ namespace AliceAppraisal.Application {
 			this.logger = logger;
 		}
 		public async Task<AliceResponse> HandleRequest(AliceRequest aliceRequest) {
+			logger.Debug($"ALICE_REQUEST: {JsonSerializer.Serialize(aliceRequest)}");
 			State state = aliceRequest.State?.Session ?? new State();
 			AliceResponse response;
 			try {
@@ -67,7 +69,6 @@ namespace AliceAppraisal.Application {
 				state.SetStatusCode(e);
 				logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
 				logger.Error(e, e.Message);
-				throw e;
 				response = new AliceResponse(aliceRequest) {
 					Response = new Response {
 						Text = "Произошла какая-то ошибка на сервере навыка, разработчик уже уведомлен. " +
@@ -76,7 +77,7 @@ namespace AliceAppraisal.Application {
 					State = state
 				};
 			}
-
+			logger.Debug($"ALICE_RESPONSE: {JsonSerializer.Serialize(response)}");
 			return response;
 		}
 	}
