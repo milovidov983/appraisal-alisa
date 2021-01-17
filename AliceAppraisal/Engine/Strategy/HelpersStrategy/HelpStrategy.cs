@@ -27,7 +27,6 @@ namespace AliceAppraisal.Engine.Strategy {
             return request.HasIntent(Intents.YandexHelp2);
 		}
 
-
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			return await GetMessage(request, state);
 		}

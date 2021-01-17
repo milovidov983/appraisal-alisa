@@ -31,6 +31,9 @@ namespace AliceAppraisal {
             return s.IsNullOrEmpty() ? "" : s.Substring(0, 1).ToUpper() + s.Substring(1);
         }
 
+        public static string ConcatToString(this string[] collection) {
+            return string.Join(", ", collection);
+		}
 
         /// <summary>
         /// Паттерн записи моделей марок имямарки_001 где 001 id

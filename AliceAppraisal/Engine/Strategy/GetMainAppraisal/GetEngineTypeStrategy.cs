@@ -9,14 +9,17 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public class GetEngineTypeStrategy : BaseStrategy {
+		private static readonly string[] componentTypes = VehicleComponents.EngineTypes.Values.ToArray();
+
 		public GetEngineTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{randGiveWord} тип двигателя вашего авто? Например Бензиновый, Гибрид, Дизельный или Электрический",
-				Buttons = new[] { "Бензиновый", "Гибрид", "Дизельный", "Электрический" }
+				Text = $"{randGiveWord} тип двигателя вашего авто? " +
+				$"Например {componentTypes.ConcatToString()}",
+				Buttons = componentTypes
 			};
 		}
 
@@ -30,9 +33,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его тип двигателя, существуют следующие " +
-				$"типы: Бензиновый, Гибрид, Дизельный, Электрический и другие. " +
-				$"Попробуйте произнести название приблизив микрофон ближе. " +
-				$"Вы в любой момент можете выйти, сказав мне об этом."
+				$"типы: {componentTypes.ConcatToString()} " +
+				$"Попробуйте произнести название приблизив микрофон ближе.",
+				Buttons = componentTypes
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {

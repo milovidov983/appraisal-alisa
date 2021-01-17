@@ -90,5 +90,7 @@ namespace AliceUnitTests.BaseCommandTests {
 
 			//Assert.Contains($"Выберите нужный вариант поколения авто", response.Response.Text);
 		}
+
+
 	}
 }

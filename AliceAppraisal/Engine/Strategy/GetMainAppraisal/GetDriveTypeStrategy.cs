@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public class GetDriveTypeStrategy : BaseStrategy {
+		private static readonly string[] componentTypes = VehicleComponents.Drives.Values.ToArray();
 		public GetDriveTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
@@ -16,22 +17,25 @@ namespace AliceAppraisal.Engine.Strategy {
 			var takeVerb = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
 				Text = $"{takeVerb} тип привода у вашего авто? " +
-				$"Например Переднеприводный, Заднеприводный или Полноприводный.",
-				Buttons = new[] { "Переднеприводный", "Заднеприводный", "Полноприводный" }
+				$"Например {componentTypes.ConcatToString()}",
+				Buttons = componentTypes
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип привода, попробуйте повторить запрос или попросите у меня подсказку."
+				Text = $"Не удалось распознать тип привода, " +
+				$"попробуйте повторить запрос или попросите у меня подсказку.",
+				Buttons = componentTypes
 			};
 		}
 
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его тип привода, существуют следующие " +
-				$"типы: Переднеприводный, Заднеприводный или Полноприводный. " +
-				$"Попробуйте произнести название приблизив микрофон ближе."
+				$"типы: {componentTypes.ConcatToString()}. " +
+				$"Попробуйте произнести название приблизив микрофон ближе.",
+				Buttons = componentTypes
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
@@ -39,7 +43,6 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
 			var value = request.GetSlot(Intents.DriveType, Slots.Drive);
 
 			if (value.IsNullOrEmpty()) {

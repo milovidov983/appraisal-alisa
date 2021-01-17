@@ -18,25 +18,21 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return new SimpleResponse {
-				Text = $"Ошибка TODO?"
-			};
-		}
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
-				Text = $"Всего вам хорошего, до свидания.",
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) => GetHelp();
+
+		public override SimpleResponse GetHelp()
+			=> new SimpleResponse {
+				Text = $"Для выхода скажите \"Выйти\".",
 				Buttons = new[] { "Выйти" }
 			};
-		}
-		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.YandexReject);
-		}
+
+		protected override bool Check(AliceRequest request, State state) 
+			=> request.HasIntent(Intents.YandexReject);
+		
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			state.Clear();
 			return await GetMessage(request, state);
-
 		}
 	}
 }

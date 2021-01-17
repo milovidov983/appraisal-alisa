@@ -23,7 +23,9 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип кузова вашего авто, попробуйте повторить запрос или попросите у меня подсказку."
+				Text = $"Не удалось распознать тип кузова вашего авто," +
+				$" попробуйте повторить запрос или попросите у меня подсказку.",
+				Buttons = Buttons.BodyTypesBtn
 			};
 		}
 
@@ -31,7 +33,8 @@ namespace AliceAppraisal.Engine.Strategy {
 			return new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его тип кузова, существуют следующие " +
 				$"типы кузовов: седан, хечбек, внедорожник, универсал, купе, лифтбек и другие. " +
-				$"Попробуйте произнести название приблизив микрофон ближе."
+				$"Попробуйте произнести название приблизив микрофон ближе.",
+				Buttons = Buttons.BodyTypesBtn
 			};
 		}
 

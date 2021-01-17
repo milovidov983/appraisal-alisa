@@ -1,14 +1,11 @@
-﻿using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public class GearboxStrategy : BaseStrategy {
+		private static readonly string[] componentTypes = VehicleComponents.Gearboxes.Values.ToArray();
 		public GearboxStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
@@ -16,13 +13,14 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			return new SimpleResponse {
 				Text = "Какая коробка передач установлена в вашем авто? Например автомат, механика и так далее",
-				Buttons = new[] { "Автомат", "Робот", "Механика", "Вариатор" }
+				Buttons = componentTypes
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип коробки передач, попробуйте повторить запрос или попросите у меня подсказку."
+				Text = $"Не удалось распознать тип коробки передач, " +
+				$"попробуйте повторить запрос или попросите у меня подсказку."
 			};
 		}
 
@@ -38,7 +36,6 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
 			var value = request.GetSlot(Intents.GearboxType, Slots.Gearbox);
 
 			if (value.IsNullOrEmpty()) {
@@ -50,8 +47,6 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			var nextAction = GetNextStrategy();
 			return await nextAction.GetMessage(request, state);
-
-
 		}
 	}
 }

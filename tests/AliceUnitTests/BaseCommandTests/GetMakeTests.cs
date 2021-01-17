@@ -12,7 +12,6 @@ using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
 	public class GetMakeTests {
-
 		[Fact]
 		public async Task Set_correct_make_id_is_saved() {
 			var aliceRequest = RequestBuilder.Create()
@@ -70,7 +69,8 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
-				"Не удалось распознать марку вашего авто, попробуйте повторить запрос или попросите у меня подсказку.", 
+				"Что бы оценить авто мне надо знать его марку, " +
+				"пожалуйста попробуйте повторить запрос или попросите у меня подсказку.", 
 				response.Response.Text);
 		}
 
