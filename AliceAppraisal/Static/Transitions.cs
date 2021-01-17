@@ -34,7 +34,8 @@ namespace AliceAppraisal.Static {
 			StartAppraisalStrategy _ => typeof(InitStrategy).FullName,
 			// Extended
 			ConfirmGenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
-			ChangeParamStrategy _ => typeof(StartAppraisalStrategy).FullName,
+			ChangeRunStrategy _ => typeof(StartAppraisalStrategy).FullName,
+			ChangeCityStrategy _ => typeof(StartAppraisalStrategy).FullName,
 			SelectYearStrategy _ => typeof(GetManufactureYearStrategy).FullName,
 			_ => currentStep?.GetType().FullName
 		};

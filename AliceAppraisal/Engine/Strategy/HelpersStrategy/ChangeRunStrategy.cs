@@ -4,8 +4,8 @@ using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
-	public class ChangeParamStrategy : BaseStrategy {
-		public ChangeParamStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class ChangeRunStrategy : BaseStrategy {
+		public ChangeRunStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) 
 			=> GetHelp().FromTask();

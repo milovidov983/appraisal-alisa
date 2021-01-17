@@ -30,6 +30,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear()
+				.WithGenerationChoise()
 				.Build();
 
 			var handler = new Handler();
@@ -46,6 +47,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear()
+				.WithGenerationChoise()
 				.Build();
 
 			var externalServiceMock = ExternalServiceBuilder
@@ -70,6 +72,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear()
+				.WithGenerationChoise()
 				.Build();
 
 			var handler = new Handler();
@@ -103,6 +106,7 @@ namespace AliceUnitTests.BaseCommandTests {
 						next: typeof(GetManufactureYearStrategy).FullName)
 					.WithModelId()
 					.WithIntentManufactureYear()
+					.WithGenerationChoise(single: true)
 					.Build();
 
 			var externalServiceMock = ExternalServiceBuilder

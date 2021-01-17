@@ -1,0 +1,48 @@
+﻿using AliceAppraisal.Models;
+using AliceAppraisal.Static;
+using System;
+using System.Threading.Tasks;
+
+namespace AliceAppraisal.Engine.Strategy {
+	public class ChangeCityStrategy : BaseStrategy {
+		public ChangeCityStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		}
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state)
+			=> GetHelp().FromTask();
+
+
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
+			=> new SimpleResponse {
+				Text = $"Не удалось распознать указанный вами город, попробуйте повторить ваш запрос.",
+			};
+
+		public override SimpleResponse GetHelp()
+			=> new SimpleResponse {
+				Text = $"Изменить город оцененного авто. " +
+				$"Вызывается командой \"Оцени такое же авто в городе Х\", " +
+				$"где Х это город в России."
+			};
+
+		protected override bool Check(AliceRequest request, State state)
+			=>
+			request.HasIntent(Intents.ChangeParamCity)
+			&&
+			state.NextAction.Is(typeof(StartAppraisalStrategy));
+
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
+			var city = request.GetSlot(Intents.ChangeParamCity, Slots.City);
+
+			if (city.IsNullOrEmpty()) {
+				return GetMessageForUnknown(request, state).FromTask();
+			}
+			var cityRegions = GetCityStrategy.CityRegions;
+			if (!cityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
+				return GetMessageForUnknown(request, state).FromTask();
+			}
+
+			state.UpdateRegion(regionId, city);
+
+			return CreateNextStepMessage(request, state);
+		}
+	}
+}

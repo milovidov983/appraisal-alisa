@@ -53,11 +53,11 @@ namespace AliceAppraisal.Engine.Strategy {
 				&& state.NextAction.Is(this.GetType());
 		}
 
-		private static readonly Dictionary<string, int> cityRegions;
+		public static Dictionary<string, int> CityRegions { get; }
 		static GetCityStrategy() {
-			cityRegions = new Dictionary<string, int>();
+			CityRegions = new Dictionary<string, int>();
 			foreach(var item in RegionItem.All) {
-				cityRegions.TryAdd(item.CapitalName.ToLowerInvariant(), item.Code);
+				CityRegions.TryAdd(item.CapitalName.ToLowerInvariant(), item.Code);
 			}
 		}
 
@@ -71,8 +71,8 @@ namespace AliceAppraisal.Engine.Strategy {
 			if (city.IsNullOrEmpty()) {
 				city = DEFAULT_CITY;
 			}
-			if(!cityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
-				regionId = cityRegions[DEFAULT_CITY];
+			if(!CityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
+				regionId = CityRegions[DEFAULT_CITY];
 				city = DEFAULT_CITY;
 			}
 			state.UpdateRegion(regionId, city);

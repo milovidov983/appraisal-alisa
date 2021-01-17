@@ -186,7 +186,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}
 
-		public RequestBuilder WithGenerationChoise(bool single) {
+		public RequestBuilder WithGenerationChoise(bool single = false) {
 			state.Session.GenerationChoise = new Dictionary<string, IdAndName> {
 				["1"] = new IdAndName {
 					Id = 12345,
