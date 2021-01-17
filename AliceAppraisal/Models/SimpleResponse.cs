@@ -5,9 +5,18 @@ using System.Text;
 
 namespace AliceAppraisal.Models {
     public class SimpleResponse {
+        private string[] _buttons;
+
         public string Text { get; set; }
         public string Tts { get; set; }
-        public string[] Buttons { get; set; } = Static.Buttons.Base;
+        public string[] Buttons {
+			get {
+                return (_buttons ?? Array.Empty<string>()).Union(Static.Buttons.BaseSet).ToArray();
+			}
+            set {
+                _buttons = value;
+            } 
+        }
 
         public SimpleResponse() { }
         public SimpleResponse(string text, string[] buttons = null) {

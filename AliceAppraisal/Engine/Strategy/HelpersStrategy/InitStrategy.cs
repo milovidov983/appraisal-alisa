@@ -4,20 +4,25 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	/// <summary>
+	/// Первая стратегия.
+	/// Либо
 	/// Обрабатывает реплики:
 	/// ((Оценить другой авто)|(Начать с начала)|(начать оценку))
 	/// Либо обрабатывает согласие на начало новой оценки после уже совершенной
 	/// </summary>
-	public class AppraisalOtherStrategy : BaseStrategy {
-		public AppraisalOtherStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class InitStrategy : BaseStrategy {
+		public InitStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.AppraisalOther)
+			return
+				request.Session.New
+				||
+				request.HasIntent(Intents.AppraisalOther)
 				||
 				state.NextAction.Is(typeof(StartAppraisalStrategy))
 				&&
-				request.HasIntent(Intents.YandexConfirm); ;
+				request.HasIntent(Intents.YandexConfirm);
 		}
 
         protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

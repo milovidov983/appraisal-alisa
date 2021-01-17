@@ -13,15 +13,14 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.Session.New
-					||
+			return 
 					(
 						request.HasIntent(Intents.MakeName)
 						&& 
 						(
 							state.NextAction.Is(typeof(GetMakeStrategy)) 
 							|| 
-							state.NextAction.Is(typeof(AppraisalOtherStrategy))
+							state.NextAction.Is(typeof(InitStrategy))
 						)
 					);
 		}
@@ -62,7 +61,8 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state){
 			return new SimpleResponse {
-				Text = $"Не удалось распознать марку вашего авто, попробуйте повторить запрос или попросите у меня подсказку."
+				Text = $"Что бы оценить авто мне надо знать его марку," +
+				$" пожалуйста попробуйте повторить запрос или попросите у меня подсказку."
 			};
 		}
 

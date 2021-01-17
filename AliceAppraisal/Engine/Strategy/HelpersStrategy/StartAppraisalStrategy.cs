@@ -3,6 +3,7 @@ using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace AliceAppraisal.Engine.Strategy {
 				Text = $"Мне не удалось понять это поколение соответствует вашему или нет?"
 			};
 		}
+
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
 				Text = $"Текущая команда запускает процесс оценки на основе всех данных которые были получены в ходе диалога. " +
@@ -32,11 +34,8 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
-
 			var nextAction = GetNextStrategy();
 			return await nextAction.GetMessage(request, state);
-
 		}
 
 		private async Task<SimpleResponse> CreateFinalResult(State state) {
@@ -44,7 +43,11 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			if (result.Status != "success") {
 				return new SimpleResponse {
-					Text = $"К сожалению я не смог провести оценку вашего авто {state.Request.GetFullName()}. Мне не удалось найти аналогов по вашему запросу."
+					Text = $"Мне не удалось провести оценку вашего авто {state.Request.GetFullName()}. " +
+					$"К сожалению у меня нет аналогов по вашему запросу. " +
+					$"Возможно вы не очень точно указали параметры, либо ваше автомобиль очень редкий. " +
+					$"Хотите попробовать скорректировать запрос?",
+					Buttons = Buttons.YesNo
 				};
 			}
 			var countAds = result.SampleByPrices.HighPriced + result.SampleByPrices.Normal + result.SampleByPrices.LowPriced;
@@ -52,7 +55,8 @@ namespace AliceAppraisal.Engine.Strategy {
 				Text = $"Цена вашего авто {state.Request.GetFullName()} на вторичном рынке составляет {result.OneMonthPrice} руб., " +
 				$"всего было проанализировано {countAds} аналогичных авто, разброс цен среди них был в пределах " +
 				$"от {result.PriceRange.Min} до {result.PriceRange.Max} руб. " +
-				$"Хотите еще оценить автомобиль?"
+				$"Хотите еще оценить автомобиль?",
+				Buttons = Buttons.YesNo
 			};
 		}
 	}

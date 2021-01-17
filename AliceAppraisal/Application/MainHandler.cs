@@ -60,8 +60,7 @@ namespace AliceAppraisal.Application {
 					.WithData(aliceRequest)
 					.WithState(state)
 					.WithText(new SimpleResponse {
-						Text = e.UserMessage,
-						Buttons = Buttons.BaseExtended
+						Text = e.UserMessage
 					})
 					.Build();
 			} catch (Exception e) {

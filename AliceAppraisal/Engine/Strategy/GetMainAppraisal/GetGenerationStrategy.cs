@@ -58,8 +58,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			return new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его поколение, если в указанный год " +
 				$"у автомобиля было несколько активных поколений то вам необходимо выбрать из представленных, " +
-				$"назвав его номер по порядку, например \"Вариант 1\", название поколения указывать не надо.",
-				Buttons = Buttons.BaseExtended
+				$"назвав его номер по порядку, например \"Вариант 1\", название поколения указывать не надо."
 			};
 		}
 
@@ -90,7 +89,8 @@ namespace AliceAppraisal.Engine.Strategy {
 				var genText = findedGenerations.Select((gen, index) => $"Вариант {index + 1}: {gen.Text}").ToArray();
 				if (hasScreen) {
 					return new SimpleResponse {
-						Text = $"Выберите поколение вашего авто, если среди представленных поколений нет вашего, " +
+						Text = $"Выберите номер варианта из представленных поколений авто, " +
+						$"если среди представленных поколений нет нужного, " +
 						$"попробуйте указать другой год выпуска.",
 						Buttons = genText.Union(Buttons.SelectYear).Union(Buttons.Help).ToArray()
 					};
