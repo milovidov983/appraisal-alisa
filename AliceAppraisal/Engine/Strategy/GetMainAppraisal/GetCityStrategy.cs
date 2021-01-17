@@ -66,21 +66,18 @@ namespace AliceAppraisal.Engine.Strategy {
 		public GetCityStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var city = request.GetSlot(Intents.CityName, Slots.City);
 			if (city.IsNullOrEmpty()) {
-
 				city = DEFAULT_CITY;
 			}
 			if(!cityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
 				regionId = cityRegions[DEFAULT_CITY];
 				city = DEFAULT_CITY;
 			}
-			state.UpdateRegion(regionId, city, this);
+			state.UpdateRegion(regionId, city);
 
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			return CreateNextStepMessage(request, state);
 		}
 
 	}

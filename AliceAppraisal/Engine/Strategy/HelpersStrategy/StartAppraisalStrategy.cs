@@ -11,33 +11,27 @@ namespace AliceAppraisal.Engine.Strategy {
 	public class StartAppraisalStrategy : BaseStrategy {
 		public StartAppraisalStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			return await CreateFinalResult(state);
-		}
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return new SimpleResponse {
-				Text = $"Мне не удалось понять это поколение соответствует вашему или нет?"
-			};
-		}
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) 
+			=> CreateFinalResult(state);
+		
 
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) 
+			=> GetHelp();
+
+		public override SimpleResponse GetHelp() 
+			=> new SimpleResponse {
 				Text = $"Текущая команда запускает процесс оценки на основе всех данных которые были получены в ходе диалога. " +
 				$"После успешной оценки, можно попросить переоценить авто с другим пробегом, " +
 				$"вызывается командой: \"оцени такое же авто но с пробегом Х.\""
 			};
-		}
-
-		protected override bool Check(AliceRequest request, State state) {
-			return state.NextAction.Is(this.GetType());
-		}
-
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
-		}
-
+		
+		protected override bool Check(AliceRequest request, State state) 
+			=> state.NextAction.Is(this.GetType());
+		
+		protected override  Task<SimpleResponse> Respond(AliceRequest request, State state) 
+			=> CreateNextStepMessage(request, state);
+		
 		private async Task<SimpleResponse> CreateFinalResult(State state) {
 			var result = await externalService.GetAppraisalResponse(state.Request);
 

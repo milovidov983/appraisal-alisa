@@ -16,21 +16,21 @@ namespace AliceAppraisal.Engine.Strategy {
 			=> request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
 		
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var selectedGeneartion = request.GetSlot(Intents.DigitInput, Slots.Number);
 
 			if (selectedGeneartion.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
 			var value = state.GetGenerationIdBySelected(selectedGeneartion);
 			if(value is null) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
-			state.UpdateGenerationId(value.Id, value.Name, this);
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			state.UpdateGenerationId(value.Id, value.Name);
+			
+			return CreateNextStepMessage(request, state);
 		}
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state)
@@ -109,19 +109,10 @@ namespace AliceAppraisal.Engine.Strategy {
 						$"фразой \"Изменить год выпуска\"",
 					};
 				}
-
 			} else {
-				var nextAction = GetNextStrategy(typeof(ConfirmGenerationStrategy).FullName);
-				return await nextAction.GetMessage(request, state);
-			}
-		}
-
-		protected override void SetNextStep(State state) {
-			if (state.GenerationChoise.Count > 1) {
-				state.SaveCurrentStep(this);
-			} else {
-				state.PrevAction = this.GetType().FullName;
-				state.NextAction = typeof(ConfirmGenerationStrategy).FullName;
+				// Случай когда у модели было одно поколение и надо его просто подтвердить
+				var customNextStep = typeof(ConfirmGenerationStrategy).FullName;
+				return await CreateNextStepMessage(request, state, customNextStep);
 			}
 		}
 

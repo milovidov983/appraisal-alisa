@@ -19,40 +19,36 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return new SimpleResponse {
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
+			=> new SimpleResponse {
 				Text = $"Не удалось распознать указанный вами пробег, " +
 				$"попробуйте повторить запрос или попросите у меня подсказку."
 			};
-		}
 
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
+
+		public override SimpleResponse GetHelp()
+			=> new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его пробег, пробег необходимо указывать в километрах. " +
 				$"Попробуйте произнести название приблизив микрофон ближе."
 			};
-		}
-		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
-		}
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
+
+		protected override bool Check(AliceRequest request, State state)
+			=> request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
+
+
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var runStr = request.GetSlot(Intents.DigitInput, Slots.Number);
-
 			if (runStr.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 			if (!Int32.TryParse(runStr, out var run)) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
-			state.UpdateRun(run, this);
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			state.UpdateRun(run);
 
+			return CreateNextStepMessage(request, state);
 		}
-
-
 	}
 }

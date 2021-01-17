@@ -39,21 +39,19 @@ namespace AliceAppraisal.Engine.Strategy {
 			return request.HasIntent(Intents.ModelName) && state.NextAction.Is(this.GetType());
 		}
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.ModelName, Slots.Model);
 
 			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
 			var newModelId = value.ExtractId() 
 				?? throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
 
-			state.UpdateModelId(newModelId, value, this);
+			state.UpdateModelId(newModelId, value);
 
-
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			return CreateNextStepMessage(request, state);
 
 		}
 	}

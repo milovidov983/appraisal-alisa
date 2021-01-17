@@ -50,10 +50,22 @@ namespace AliceAppraisal.Models {
 			return result;
 		}
 
-
-		public void SaveCurrentStep(BaseStrategy strategy) {
+		public void SaveCurrentAndNextStep(BaseStrategy strategy, string next) {
             PrevAction = strategy.GetType().FullName;
-			NextAction = strategy.NextStep;
+			NextAction = next;
+		}
+		public void SaveCurrentAndNextStep(string prev, string next) {
+			if (prev.IsNullOrEmpty()) {
+				throw new ArgumentNullException(
+					$"Ошибка при попытке сохранить предыдущий шаг, аргумент {nameof(prev)} is null or empty");
+			}
+			if (next.IsNullOrEmpty()) {
+				throw new ArgumentNullException(
+					$"Ошибка при попытке сохранить следующий шаг, аргумент {nameof(next)} is null or empty");
+			}
+
+			PrevAction = prev;
+			NextAction = next;
 		}
 
 		public void Clear() {
@@ -63,8 +75,8 @@ namespace AliceAppraisal.Models {
         }
 
 		#region UpdateMethods
-		public bool UpdateEquipmentSet(string equipment, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateEquipmentSet(string equipment) {
+			
 			if (Request.EquipmentType != equipment) {
 				Request.EquipmentType = equipment;
 				return true;
@@ -72,8 +84,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateModelId(int newModelId, string entity, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateModelId(int newModelId, string entity) {
+			
 			if (Request.ModelId != newModelId) {
 				Request.ModelId = newModelId;
 
@@ -85,8 +97,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateRegion(int regionId, string entity, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateRegion(int regionId, string entity) {
+			
 			if (Request.RegionId != regionId) {
 				Request.RegionId = regionId;
 
@@ -97,8 +109,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateRun(int run, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateRun(int run) {
+			
 			if (Request.Run != run) {
 				Request.Run = run;
 				return true;
@@ -106,8 +118,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateHorsePower(int horsePower, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateHorsePower(int horsePower) {
+			
 			if (Request.HorsePower != horsePower) {
 				Request.HorsePower = horsePower;
 				return true;
@@ -115,8 +127,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateDriveType(string drive, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateDriveType(string drive) {
+			
 			if (Request.Drive != drive) {
 				Request.Drive = drive;
 				return true;
@@ -124,8 +136,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateEngineType(string engine, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateEngineType(string engine) {
+			
 			if (Request.EngineType != engine) {
 				Request.EngineType = engine;
 				return true;
@@ -134,8 +146,8 @@ namespace AliceAppraisal.Models {
 		}
 
 
-		public bool UpdateGearbox(string gearbox, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateGearbox(string gearbox) {
+			
 			if (Request.Gearbox != gearbox) {
 				Request.Gearbox = gearbox;
 				return true;
@@ -143,8 +155,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateGenerationId(int generationId, string entity, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateGenerationId(int generationId, string entity) {
+			
 			if (Request.GenerationId != generationId) {
 				Request.GenerationId = generationId;
 
@@ -155,8 +167,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateMake(int? makeId, string entity, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateMake(int? makeId, string entity) {
+			
 			if (Request.MakeId != makeId) {
 				Request.MakeId = makeId;
 				Request.MakeEntity = entity;
@@ -170,8 +182,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateBodyType(string body, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateBodyType(string body) {
+			
 			if (Request.BodyType != body) {
 				Request.BodyType = body;
 				return true;
@@ -179,8 +191,8 @@ namespace AliceAppraisal.Models {
 			return false;
 		}
 
-		public bool UpdateManufactureYear(int manufactureYear, BaseStrategy strategy) {
-			SaveCurrentStep(strategy);
+		public bool UpdateManufactureYear(int manufactureYear) {
+			
 			if (Request.ManufactureYear != manufactureYear) {
 				Request.ManufactureYear = manufactureYear;
 

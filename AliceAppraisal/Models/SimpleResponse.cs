@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AliceAppraisal.Models {
     public class SimpleResponse {
@@ -38,7 +39,9 @@ namespace AliceAppraisal.Models {
         public static SimpleResponse Empty { get => new SimpleResponse() {
             Text = "[Пустой ответ] (теоретически такое не возможно)"
         }; }
+
+        public Task<SimpleResponse> FromTask() {
+            return Task.FromResult(this);
+		}
     }
-
-
 }

@@ -35,18 +35,15 @@ namespace AliceAppraisal.Engine.Strategy {
 			return request.HasIntent(Intents.GearboxType) && state.NextAction.Is(this.GetType());
 		}
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.GearboxType, Slots.Gearbox);
 
 			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
-			state.UpdateGearbox(value, this);
-
-
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			state.UpdateGearbox(value);
+			return CreateNextStepMessage(request, state);
 		}
 	}
 }

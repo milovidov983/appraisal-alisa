@@ -14,8 +14,8 @@ namespace AliceAppraisal.Engine.Strategy {
 		public SelectYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.SelectYear) 
+		protected override bool Check(AliceRequest request, State state) 
+			=> request.HasIntent(Intents.SelectYear) 
 				&& state.Request.MakeId.HasValue 
 				&& state.Request.ModelId.HasValue
 				&& 
@@ -24,25 +24,18 @@ namespace AliceAppraisal.Engine.Strategy {
 					||
 					state.NextAction.Is(typeof(GetManufactureYearStrategy))
 				);
-		}
+		
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			return await GetMessage(request, state);
-		}
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) 
+			=> GetMessage(request, state);
 
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
-		}
-
-		public override SimpleResponse GetHelp() {
-			var nextAction = GetNextStrategy();
-			return nextAction.GetHelp();
-		}
-
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			var nextAction = GetNextStrategy();
-			return nextAction.GetMessageForUnknown(request, state);
-		}
+		public override  Task<SimpleResponse> GetMessage(AliceRequest request, State state) 
+			=> CreateNextStepMessage(request, state);
+		
+		public override SimpleResponse GetHelp() 
+			=> CreateNextStepHelp();
+		
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) 
+			=> CreateNextStepMessageForUnknown(request, state);
 	}
 }

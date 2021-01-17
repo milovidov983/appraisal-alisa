@@ -42,17 +42,17 @@ namespace AliceAppraisal.Engine.Strategy {
 			=> request.HasIntent(Intents.EquipmentType) && state.NextAction.Is(this.GetType());
 		
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.EquipmentType, Slots.Equipment);
 
 			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
-			state.UpdateEquipmentSet(value, this);
+			state.UpdateEquipmentSet(value);
 
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			
+			return CreateNextStepMessage(request, state);
 
 		}
 	}

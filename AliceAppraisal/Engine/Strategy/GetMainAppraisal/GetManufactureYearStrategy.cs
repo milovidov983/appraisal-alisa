@@ -47,33 +47,32 @@ namespace AliceAppraisal.Engine.Strategy {
 			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(typeof(GetManufactureYearStrategy));
 		}
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.DigitInput, Slots.Number);
 
 			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
 			var isCorrectConverted = Int32.TryParse(value, out var manufactureYear);
 			if (!isCorrectConverted) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 			string error = Validate(manufactureYear);
 			if(error != null){
 				throw new InvalidRequestException(error);
 			}
-			state.UpdateManufactureYear(manufactureYear, this);
+			state.UpdateManufactureYear(manufactureYear);
 
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			var nextStep = GetNextStepOrDefault(state);
+			return CreateNextStepMessage(request, state, nextStep);
 		}
 
-		protected override void SetNextStep(State state) {
+		private string GetNextStepOrDefault(State state) {
 			if (state.GenerationChoise.Count > 1) {
-				state.SaveCurrentStep(this);
+				return null;
 			} else {
-				state.PrevAction = this.GetType().FullName;
-				state.NextAction = typeof(ConfirmGenerationStrategy).FullName;
+				return typeof(ConfirmGenerationStrategy).FullName;
 			}
 		}
 

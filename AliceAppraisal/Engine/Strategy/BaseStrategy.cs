@@ -1,60 +1,88 @@
-﻿using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Models;
-using AliceAppraisal.Static;
+﻿using AliceAppraisal.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public abstract class BaseStrategy {
-        protected readonly IServiceFactory serviceFactory;
 		protected readonly IExternalService externalService;
-       
+        private readonly IStepManager stepManager;
 
         protected BaseStrategy(IServiceFactory serviceFactory) {
-            this.serviceFactory = serviceFactory;
+            this.stepManager = new StepManager(this, serviceFactory);
             this.externalService = serviceFactory.GetExternalService();
         }
 
-        public string NextStep { get => Transitions.GetNextStep(this); }
+        public bool IsSuitableStrategy(AliceRequest request, State state)
+            => Check(request, state ?? new State());
+        
 
-        protected BaseStrategy GetNextStrategy(string customNextStep = null) {
-            var strategyFactory = serviceFactory.StrategyFactory;
-            return strategyFactory.GetStrategy(customNextStep ?? NextStep);
-		}
-
-        public bool IsSuitableStrategy(AliceRequest request, State state) {
-            return Check(request, state ?? new State());
-        }
-
-        public async Task<AliceResponse> Run(AliceRequest request, State state) {
-            return await CreateResponse(request, state);
-        }
+        public Task<AliceResponse> Run(AliceRequest request, State state)
+            =>  CreateResponse(request, state);
+        
 
         protected virtual async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
-            var simple = await Respond(request, state);
-            SetNextStep(state);
+            try {
+				var simple = await Respond(request, state);
 
-            var response = AliceResponseBuilder.Create()
-                .WithData(request)
-                .WithState(state)
-                .WithText(simple)
-                .Build();
+				UpdateState(state);
 
-            return response;
+				var response = AliceResponseBuilder.Create()
+					.WithData(request)
+					.WithState(state)
+					.WithText(simple)
+					.Build();
+
+				return response;
+			} finally {
+                stepManager.ResetCustomStep();
+            }
         }
 
-        protected virtual void SetNextStep(State state) {
-            state.SaveCurrentStep(this);
-		}
+		protected virtual void UpdateState(State state) {
+			var nextStepName = stepManager.GetNextStep();
+            state.SaveCurrentAndNextStep(this.GetType().FullName, nextStepName);
+        }
 
+        /// <summary>
+        /// Проверка на пригодность стратегии для обработки запроса
+        /// </summary>
         protected abstract bool Check(AliceRequest request, State state);
         protected abstract Task<SimpleResponse> Respond(AliceRequest request, State state);
 
         public abstract Task<SimpleResponse> GetMessage(AliceRequest request, State state);
         public abstract SimpleResponse GetHelp();
         public abstract SimpleResponse GetMessageForUnknown(AliceRequest request, State state);
+
+
+        private BaseStrategy GetNextStep(string customNextStep = null) {
+            stepManager.ChangeDefaultStepTo(customNextStep);
+            return stepManager.GetNextStrategy();
+        }
+        /// <summary>
+        /// Вспомогательный метод создания ответа от следующего шага диалога
+        /// </summary>
+        protected Task<SimpleResponse> CreateNextStepMessage(
+            AliceRequest request, 
+            State state, 
+            string customNextStep = null) {
+            var nextStepInstanse = GetNextStep(customNextStep);
+            return nextStepInstanse.GetMessage(request, state);
+        }
+
+        /// <summary>
+        /// Вспомогательный метод создания ответа от следующего шага диалога
+        /// </summary>
+        protected SimpleResponse CreateNextStepHelp(string customNextStep = null) {
+            var nextStepInstanse = GetNextStep(customNextStep);
+            return nextStepInstanse.GetHelp();
+        }
+
+        /// <summary>
+        /// Вспомогательный метод создания ответа от следующего шага диалога
+        /// </summary>
+        protected SimpleResponse CreateNextStepMessageForUnknown(AliceRequest request, State state, string customNextStep = null) {
+            var nextStepInstanse = GetNextStep(customNextStep);
+            return nextStepInstanse.GetMessageForUnknown(request, state);
+        }
     }
 }

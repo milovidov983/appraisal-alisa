@@ -12,33 +12,32 @@ namespace AliceAppraisal.Engine.Strategy {
 		public GetMakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		protected override bool Check(AliceRequest request, State state) {
-			return 
-					(
-						request.HasIntent(Intents.MakeName)
-						&& 
-						(
-							state.NextAction.Is(typeof(GetMakeStrategy)) 
-							|| 
-							state.NextAction.Is(typeof(InitStrategy))
-						)
-					);
-		}
+		protected override bool Check(AliceRequest request, State state) 
+			=> (
+				request.HasIntent(Intents.MakeName)
+				&& 
+				(
+					state.NextAction.Is(typeof(GetMakeStrategy)) 
+					|| 
+					state.NextAction.Is(typeof(InitStrategy))
+				)
+			);
+		
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.MakeName, Slots.Make);
 
 			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
 			var makeId = value.ExtractId() 
 				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {value}");
 
-			state.UpdateMake(makeId, value, this);
+			state.UpdateMake(makeId, value);
 
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			
+			return CreateNextStepMessage(request, state);
 		}
 
 
@@ -59,19 +58,19 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		}
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state){
-			return new SimpleResponse {
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
+			=> new SimpleResponse {
 				Text = $"Что бы оценить авто мне надо знать его марку," +
 				$" пожалуйста попробуйте повторить запрос или попросите у меня подсказку."
 			};
-		}
+		
 
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
+		public override SimpleResponse GetHelp() 
+			=> new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его марку, если мне не удается распознать " +
 				$"название марки которое вы говорите, то возможно этой марки у меня просто нету в базе. " +
 				$"Попробуйте произнести название приблизив микрофон ближе. "
 			};
-		}
+		
 	}
 }

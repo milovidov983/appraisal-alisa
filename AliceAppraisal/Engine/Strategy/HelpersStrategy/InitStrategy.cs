@@ -14,35 +14,31 @@ namespace AliceAppraisal.Engine.Strategy {
 		public InitStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		protected override bool Check(AliceRequest request, State state) {
-			return
-				request.Session.New
+		protected override bool Check(AliceRequest request, State state) 
+			=>	request.Session.New
 				||
 				request.HasIntent(Intents.AppraisalOther)
 				||
 				state.NextAction.Is(typeof(StartAppraisalStrategy))
 				&&
 				request.HasIntent(Intents.YandexConfirm);
-		}
+		
 
         protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			state.Clear();
 			return await GetMessage(request, state);
 		}
 
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
-		}
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) 
+			=> CreateNextStepMessage(request, state);
+		
 
-		public override SimpleResponse GetHelp() {
-			var nextAction = GetNextStrategy();
-			return nextAction.GetHelp();
-		}
+		public override SimpleResponse GetHelp()
+			=> CreateNextStepHelp();
+		
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			var nextAction = GetNextStrategy();
-			return nextAction.GetMessageForUnknown(request, state);
-		}
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
+			=> CreateNextStepMessageForUnknown(request, state);
+
 	}
 }

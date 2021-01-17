@@ -7,10 +7,9 @@ namespace AliceAppraisal.Engine.Strategy {
 	public class ChangeParamStrategy : BaseStrategy {
 		public ChangeParamStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			await Task.Yield();
-			return GetHelp();
-		}
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) 
+			=> GetHelp().FromTask();
+		
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
 			=> new SimpleResponse {
@@ -31,20 +30,19 @@ namespace AliceAppraisal.Engine.Strategy {
 			state.NextAction.Is(typeof(StartAppraisalStrategy));
 		
 
-		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var runStr = request.GetSlot(Intents.ChangeParamRun, Slots.Run);
 
 			if (runStr.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request,state);
+				return GetMessageForUnknown(request,state).FromTask();
 			}
 			if (!Int32.TryParse(runStr, out var run)) {
-				return GetMessageForUnknown(request, state);
+				return GetMessageForUnknown(request, state).FromTask();
 			}
 
-			state.UpdateRun(run, this);
+			state.UpdateRun(run);
 
-			var nextAction = GetNextStrategy();
-			return await nextAction.GetMessage(request, state);
+			return CreateNextStepMessage(request, state);
 		}
 	}
 }

@@ -1,11 +1,23 @@
 ﻿using AliceAppraisal.Engine.Strategy;
 
 namespace AliceAppraisal.Static {
+	/// <summary>
+	/// Описание переходов между шагами
+	/// </summary>
 	public static class Transitions {
-		public static string GetNextStep(BaseStrategy strategy) => strategy switch {
-			// Основной путь алгоритма
-			// может изменятся внутри стратегий путем переопределения 
-			// метода BaseStrategy.SetNextStep
+		/// <summary>
+		/// Основной путь алгоритма
+		/// может изменятся внутри стратегий путем переопределения 
+		/// метода BaseStrategy.SetNextStep
+		/// </summary>
+		/// <param name="currentStep">
+		/// Текущий шаг
+		/// </param>
+		/// <returns>
+		/// Следующий шаг для текущего
+		/// </returns>
+		public static string GetDeafultNextStep(BaseStrategy currentStep) => currentStep switch {
+			// Main
 			InitStrategy _ => typeof(GetMakeStrategy).FullName,
 			GetMakeStrategy _ => typeof(GetModelStrategy).FullName,
 			GetModelStrategy _ => typeof(GetManufactureYearStrategy).FullName,
@@ -20,11 +32,11 @@ namespace AliceAppraisal.Static {
 			GetEquipmentSetStrategy _ => typeof(GetCityStrategy).FullName,
 			GetCityStrategy _ => typeof(StartAppraisalStrategy).FullName,
 			StartAppraisalStrategy _ => typeof(InitStrategy).FullName,
-			// 
+			// Extended
 			ConfirmGenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
 			ChangeParamStrategy _ => typeof(StartAppraisalStrategy).FullName,
 			SelectYearStrategy _ => typeof(GetManufactureYearStrategy).FullName,
-			_ => strategy?.GetType().FullName
+			_ => currentStep?.GetType().FullName
 		};
 	}
 }
