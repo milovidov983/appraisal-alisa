@@ -7,96 +7,79 @@
 			"screen": {},
 			"payments": {},
 			"account_linking": {}
-		}
-	},
-	"session": {
-		"message_id": 4,
-		"session_id": "1fee93f3-074c-48c0-91c7-4f0470c0de37",
-		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
-		"user": {
-			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
 		},
-		"application": {
-			"application_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B"
-		},
-		"user_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B",
-		"new": false
-	},
-	"request": {
-		"command": "2018",
-		"original_utterance": "2018",
-		"nlu": {
-			"tokens": [
-				"2018"
-			],
-			"entities": [
-				{
-					"type": "YANDEX.NUMBER",
-					"tokens": {
-						"start": 0,
-						"end": 1
+		"account_linking_complete_event": null,
+		"request": {
+			"command": "2017",
+			"original_utterance": "2017",
+			"type": "SimpleUtterance",
+			"markup": { "dangerous_context": false },
+			"payload": null,
+			"nlu": {
+				"tokens": [ "2017" ],
+				"entities": [
+					{
+						"token": null,
+						"type": "YANDEX.NUMBER",
+						"value": 2017
 					},
-					"value": 2018
-				},
-				{
-					"type": "YANDEX.DATETIME",
-					"tokens": {
-						"start": 0,
-						"end": 1
-					},
-					"value": {
-						"year": 2018,
-						"year_is_relative": false
-					}
-				}
-			],
-			"intents": {
-				"digit_input": {
-					"slots": {
-						"number": {
-							"type": "YANDEX.NUMBER",
-							"tokens": {
-								"start": 0,
-								"end": 1
-							},
-							"value": 2018
+					{
+						"token": null,
+						"type": "YANDEX.DATETIME",
+						"value": {
+							"year": 2017,
+							"year_is_relative": false
 						}
+					}
+				],
+				"intents": {
+					"digit_input": {
+						"slots": {
+							"number": {
+								"token": null,
+								"type": "YANDEX.NUMBER",
+								"value": 2017
+							}
+						}
+					}
+				},
+				"session": {
+					"new": false,
+					"message_id": 3,
+					"session_id": "8fd5b697-0d31-4a81-8be0-d2e8789a4ffb",
+					"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
+					"user_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B",
+					"user": { "user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5" },
+					"application": { "application_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B" }
+				},
+				"version": "1.0",
+				"state": {
+					"session": {
+						"Request": {
+							"MakeId": 18,
+							"MakeEntity": "bmw_18",
+							"ModelId": 1126,
+							"ModelEntity": "5_1126",
+							"ManufactureYear": null,
+							"GenerationId": null,
+							"GenerationValue": null,
+							"EngineType": null,
+							"HorsePower": null,
+							"BodyType": null,
+							"Gearbox": null,
+							"Run": null,
+							"Drive": null,
+							"RegionId": null,
+							"CityName": null,
+							"EquipmentType": null
+						},
+						"PrevAction": "AliceAppraisal.Engine.Strategy.GetModelStrategy",
+						"NextAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
+						"GenerationChoise": {},
+						"StatusCode": 0
 					}
 				}
 			}
-		},
-		"markup": {
-			"dangerous_context": false
-		},
-		"type": "SimpleUtterance"
-	},
-	"state": {
-		"session": {
-			"Request": {
-				"MakeId": 79,
-				"MakeEntity": "hyundai_79",
-				"ModelId": 848,
-				"ModelEntity": "solaris_848",
-				"ManufactureYear": null,
-				"GenerationId": null,
-				"GenerationValue": null,
-				"EngineType": null,
-				"HorsePower": null,
-				"BodyType": null,
-				"Gearbox": null,
-				"Run": null,
-				"Drive": null,
-				"RegionId": null,
-				"CityName": null,
-				"EquipmentType": null
-			},
-			"PrevAction": "AliceAppraisal.Engine.Strategy.GetModelStrategy",
-			"NextAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
-			"GenerationChoise": {},
-			"StatusCode": 0
-		},
-		"user": {},
-		"application": {}
-	},
-	"version": "1.0"
+		}
+	}
 }

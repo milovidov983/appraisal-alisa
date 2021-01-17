@@ -81,6 +81,9 @@ namespace AliceAppraisal.Engine.Strategy {
 				return new SimpleResponse {
 					Text = $"Не удалось найти поколение для модели {request.State.Session.Request.ModelEntity} " +
 					$"с указанными годом выпуска {request.State.Session.Request.ManufactureYear}, " +
+					$"возможно необходимо указать более полное название модели, " +
+					$"если взять пример \"Бмв\" то 5-ка будет звучать как 5er. " +
+					$"Либо в указанный вами год нет такого поколения " +
 					$"попробуйте изменить год выпуска или модель.",
 					Buttons = Buttons.SelectYear
 				};
