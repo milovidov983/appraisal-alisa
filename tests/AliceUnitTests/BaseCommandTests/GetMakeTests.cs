@@ -17,7 +17,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_make_id_is_saved() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(ConfirmAppraisalStrategy).FullName,
+					prev: typeof(StartNewAppraisalStrategy).FullName,
 					next: typeof(GetMakeStrategy).FullName)
 				.WithIntentMake()
 				.Build();
@@ -32,7 +32,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_make_response_text_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(ConfirmAppraisalStrategy).FullName,
+					prev: typeof(StartNewAppraisalStrategy).FullName,
 					next: typeof(GetMakeStrategy).FullName)
 				.WithIntentMake()
 				.Build();
@@ -62,7 +62,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_wrong_make_return_warning_response() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(ConfirmAppraisalStrategy).FullName,
+					prev: typeof(StartNewAppraisalStrategy).FullName,
 					next: typeof(GetMakeStrategy).FullName)
 				.Build();
 

@@ -14,7 +14,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			return new SimpleResponse {
 				Text = $"Я Бот обладающий навыком угадывать цену у подержанных автомобилей. " +
-				$"Что бы запустить оценку скажите Начать оценку."
+				$"Что бы запустить оценку скажите Начать оценку"
 			};
 		}
 

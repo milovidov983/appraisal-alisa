@@ -38,5 +38,15 @@ namespace AliceUnitTests.Builders {
 
 			return externalServiceMock;
 		}
+
+		public ExternalServiceBuilder WithOneGeneration() {
+			generationResponse = new[] {
+					new TextAndValue(){
+						Text = "Поколение 1",
+						Value = 123
+					}
+			};
+			return this;
+		}
 	}
 }

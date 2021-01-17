@@ -7,12 +7,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
+	/// <summary>
+	/// Позволяет изменить год выпуска авто
+	/// </summary>
 	public class SelectYearStrategy : BaseStrategy {
 		public SelectYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.SelectYear) && state.Request.MakeId.HasValue && state.Request.ModelId.HasValue;
+			return request.HasIntent(Intents.SelectYear) 
+				&& state.Request.MakeId.HasValue 
+				&& state.Request.ModelId.HasValue
+				&& 
+				( 
+					state.NextAction.Is(typeof(GetGenerationStrategy))
+					||
+					state.NextAction.Is(typeof(GetManufactureYearStrategy))
+				);
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {

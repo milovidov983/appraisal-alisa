@@ -34,7 +34,6 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
 			state.Clear();
 			return await GetMessage(request, state);
 

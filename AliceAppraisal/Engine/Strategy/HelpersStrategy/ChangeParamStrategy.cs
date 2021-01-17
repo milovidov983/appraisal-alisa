@@ -22,7 +22,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Изменить пробег у оцененного авто."
+				Text = $"Изменить пробег у оцененного авто. Вызывается командой оцени такое же авто но с пробегом Х"
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {

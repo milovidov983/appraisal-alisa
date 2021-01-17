@@ -21,10 +21,11 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
-				Text = $"Команда запуска оценки авто."
+				Text = $"Текущая команда запускает процесс оценки на основе всех данных которые были получены в ходе диалога. " +
+				$"После успешной оценки, можно попросить переоценить авто с другим пробегом, " +
+				$"вызывается командой: \"оцени такое же авто но с пробегом Х.\""
 			};
 		}
-
 
 		protected override bool Check(AliceRequest request, State state) {
 			return state.NextAction.Is(this.GetType());

@@ -95,5 +95,29 @@ namespace AliceUnitTests.BaseCommandTests {
 			Assert.Equal(StatusCodes.InvalidRequest, response.State.StatusCode);
 		}
 
+		[Fact]
+		public async Task Find_one_generation_set_special_action() {
+			var aliceRequest = RequestBuilder.Create()
+					.WithActions(
+						prev: typeof(GetModelStrategy).FullName,
+						next: typeof(GetManufactureYearStrategy).FullName)
+					.WithModelId()
+					.WithIntentManufactureYear()
+					.Build();
+
+			var externalServiceMock = ExternalServiceBuilder
+				.Create()
+				.WithOneGeneration()
+				.Build();
+			IServiceFactory serviceFactory = new ServiceFactory(logger, externalServiceMock);
+			IHandlerFactory handlerFactory = new HandlerFactory(serviceFactory);
+
+
+			var handler = new Handler(handlerFactory);
+			var response = await handler.FunctionHandler(aliceRequest);
+
+			Assert.Equal(typeof(ConfirmGenerationStrategy).FullName, response.State.NextAction);
+		}
+
 	}
 }
