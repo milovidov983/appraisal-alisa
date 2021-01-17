@@ -35,7 +35,7 @@ namespace AliceAppraisal.Engine.Strategy {
 
         protected virtual async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
             var simple = await Respond(request, state);
-            SetCurrentStep(state);
+            SetNextStep(state);
 
             var response = AliceResponseBuilder.Create()
                 .WithData(request)
@@ -46,7 +46,7 @@ namespace AliceAppraisal.Engine.Strategy {
             return response;
         }
 
-        protected virtual void SetCurrentStep(State state) {
+        protected virtual void SetNextStep(State state) {
             state.SaveCurrentStep(this);
 		}
 

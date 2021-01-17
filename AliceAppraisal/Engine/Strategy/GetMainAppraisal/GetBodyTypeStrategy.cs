@@ -12,38 +12,34 @@ namespace AliceAppraisal.Engine.Strategy {
 		public GetBodyTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state)
+			=> Task.FromResult(new SimpleResponse {
+				Text = $"Какой тип кузова у вашего авто? Например седан, " +
+				$"{Buttons.BodyTypesBtn.ConcatToString()} и так далее. ",
+				Buttons = Buttons.BodyTypesBtn
+			});
 
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			await Task.Yield();
-			return new SimpleResponse {
-				Text = $"Какой тип кузова у вашего авто? Например седан, хэчбек и так далее.",
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) 
+			=> new SimpleResponse {
+				Text = $"Не удалось распознать тип кузова вашего авто, " +
+				$"существуют следующие типы кузовов: {Buttons.BodyTypesBtn.ConcatToString()} и другие. " +
+				$"Попробуйте повторить запрос или попросите у меня подсказку.",
 				Buttons = Buttons.BodyTypesBtn
 			};
-		}
-
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
-			return new SimpleResponse {
-				Text = $"Не удалось распознать тип кузова вашего авто," +
-				$" попробуйте повторить запрос или попросите у меня подсказку.",
-				Buttons = Buttons.BodyTypesBtn
-			};
-		}
-
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
+		
+		public override SimpleResponse GetHelp() 
+			=> new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его тип кузова, существуют следующие " +
-				$"типы кузовов: седан, хечбек, внедорожник, универсал, купе, лифтбек и другие. " +
+				$"типы кузовов: {Buttons.BodyTypesBtn.ConcatToString()} и другие. " +
 				$"Попробуйте произнести название приблизив микрофон ближе.",
 				Buttons = Buttons.BodyTypesBtn
 			};
-		}
-
-		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.BodyType) &&  state.NextAction.Is(this.GetType());
-		}
+		
+		protected override bool Check(AliceRequest request, State state)
+			=> request.HasIntent(Intents.BodyType) &&  state.NextAction.Is(this.GetType());
+		
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			await Task.Yield();
 			var value = request.GetSlot(Intents.BodyType, Slots.Body);
 
 			if (value.IsNullOrEmpty()) {

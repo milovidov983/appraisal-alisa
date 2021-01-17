@@ -68,7 +68,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			return await nextAction.GetMessage(request, state);
 		}
 
-		protected override void SetCurrentStep(State state) {
+		protected override void SetNextStep(State state) {
 			if (state.GenerationChoise.Count > 1) {
 				state.SaveCurrentStep(this);
 			} else {

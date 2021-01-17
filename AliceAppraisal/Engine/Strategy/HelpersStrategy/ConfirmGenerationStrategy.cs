@@ -15,7 +15,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
 				Text = $"Вам необходимо ответить подходит-ли найденное поколение для вашего авто.",
-				Buttons = Buttons.YesNoExtended
+				Buttons = Buttons.YesNo
 			};
 		}
 
@@ -25,14 +25,14 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			return new SimpleResponse {
 				Text = $"Я выбрал поколение {value.Name} для вашего авто, скажите это правильное поколение?",
-				Buttons = Buttons.YesNoExtended
+				Buttons = Buttons.YesNo
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
 				Text = $"Мне не удалось понять это поколение соответствует вашему или нет?",
-				Buttons = Buttons.YesNoExtended
+				Buttons = Buttons.YesNo
 			};
 		}
 

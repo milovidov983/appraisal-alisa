@@ -12,9 +12,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		public GetGenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
-		}
+		protected override bool Check(AliceRequest request, State state)
+			=> request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
+		
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var selectedGeneartion = request.GetSlot(Intents.DigitInput, Slots.Number);
@@ -33,37 +33,41 @@ namespace AliceAppraisal.Engine.Strategy {
 			return await nextAction.GetMessage(request, state);
 		}
 
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			return await CreateTextForGenerationStep(request, state);
-		}
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state)
+			=> await CreateTextForGenerationStep(request, state);
+		
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			var currentGens = state.GenerationChoise.Select(gen => $"Вариант {gen.Key}: {gen.Value.Name}").ToArray();
 			if (request.HasScreen()) {
 				var gens = state.GenerationChoise.Select(kv => $"{kv.Key}-й ({kv.Value.Name})");
 				return new SimpleResponse {
-					Text = $"Выберите нужный вариант поколения авто: {string.Join(" или ", gens)}?",
+					Text = $"Выберите нужный вариант поколения авто: {string.Join(" или ", gens)}? " +
+					$"Важно сказать именно номер варианта если вы говорите голосом, " +
+					$"а не выбираете среди представленных на экране." +
+					$"Если среди представленных поколений нужное отсутствует, " +
+					"попробуйте указать другой год выпуска вызвав команду \"Изменить год выпуска\"",
 					Buttons = currentGens.Union(Buttons.SelectYear).ToArray()
 				};
 			} else {
 				return new SimpleResponse {
-					Text = $"Скажите какой вариант поколения ваш {string.Join("-й или ", state.GenerationChoise.Keys)}-й? " +
-					$"{string.Join(", ", currentGens)}. Если среди представленных поколений нужное отсутствует, " +
+					Text = $"Скажите номер варианта поколения {string.Join("-й или ", state.GenerationChoise.Keys)}-й? " +
+					$"{string.Join(", ", currentGens)}. Важно сказать именно номер варианта. " +
+					$"Если среди представленных поколений нужное отсутствует, " +
 					"попробуйте указать другой год выпуска вызвав команду фразой \"Изменить год выпуска\""
 				};
 			}
 		}
 
-		public override SimpleResponse GetHelp() {
-			return new SimpleResponse {
+		public override SimpleResponse GetHelp() 
+			=> new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его поколение, если в указанный год " +
 				$"у автомобиля было несколько активных поколений то вам необходимо выбрать из представленных, " +
 				$"назвав его номер по порядку, например \"Вариант 1\", название поколения указывать не надо. " +
 				$"Для вывода вариантов скажите мне повторить последний шаг.",
 				Buttons = Buttons.Replay
 			};
-		}
-
+		
 		private async Task<SimpleResponse> CreateTextForGenerationStep(AliceRequest request, State state) {
 			var hasScreen = request.HasScreen();
 			var modelId = state.Request.ModelId;
@@ -74,10 +78,12 @@ namespace AliceAppraisal.Engine.Strategy {
 			var findedGenerations = await externalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
 			if(findedGenerations?.Any() != true) {
-				throw new NotFoundExcteption(
-					$"Не удалось найти поколение для модели {request.State.Session.Request.ModelEntity} " +
+				return new SimpleResponse {
+					Text = $"Не удалось найти поколение для модели {request.State.Session.Request.ModelEntity} " +
 					$"с указанными годом выпуска {request.State.Session.Request.ManufactureYear}, " +
-					$"попробуйте изменить год выпуска или модель.");
+					$"попробуйте изменить год выпуска или модель.",
+					Buttons = Buttons.SelectYear
+				};
 			}
 
 			state.GenerationChoise = findedGenerations
@@ -94,7 +100,7 @@ namespace AliceAppraisal.Engine.Strategy {
 						Text = $"Выберите номер варианта из представленных поколений авто, " +
 						$"если среди представленных поколений нет нужного, " +
 						$"попробуйте указать другой год выпуска.",
-						Buttons = genText.Union(Buttons.SelectYear).Union(Buttons.Help).ToArray()
+						Buttons = genText.Union(Buttons.SelectYear).ToArray()
 					};
 				} else {
 					return new SimpleResponse {
@@ -110,7 +116,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			}
 		}
 
-		protected override void SetCurrentStep(State state) {
+		protected override void SetNextStep(State state) {
 			if (state.GenerationChoise.Count > 1) {
 				state.SaveCurrentStep(this);
 			} else {

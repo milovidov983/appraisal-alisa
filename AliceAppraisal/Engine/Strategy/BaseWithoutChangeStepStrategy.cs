@@ -11,7 +11,7 @@ namespace AliceAppraisal.Engine.Strategy {
 	public abstract class BaseWithoutChangeStepStrategy : BaseStrategy {
 		protected BaseWithoutChangeStepStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
-		protected override void SetCurrentStep(State state) {
+		protected override void SetNextStep(State state) {
 			// Do nothing!
 		}
 	}
