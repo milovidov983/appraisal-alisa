@@ -8,10 +8,10 @@ namespace AliceAppraisal.Engine.Strategy {
 	/// <summary>
 	/// Наследуем стратегию от него если не хотим менять текущее и предыдущее состояние шага
 	/// </summary>
-	public abstract class BaseWithoutChangeStepStrategy : BaseStrategy {
-		protected BaseWithoutChangeStepStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public abstract class BaseStrategyWithoutChangeStep : BaseStrategy {
+		protected BaseStrategyWithoutChangeStep(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
-		protected override void SetNextStep(State state) {
+		protected override void UpdateState(State state) {
 			// Do nothing!
 		}
 	}
