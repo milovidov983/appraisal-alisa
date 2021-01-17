@@ -5,6 +5,16 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
 	public class ChangeCityStrategy : BaseStrategy {
+		private static readonly SimpleResponse help = new SimpleResponse {
+			Text = $"Изменить город оцененного авто. " +
+				$"На последнем шаге с результатами оценки " +
+				$"вызывается командой \"Оцени такое же авто в городе Х\", " +
+				$"где Х это город в России."
+		};
+		private static readonly SimpleResponse unknown = new SimpleResponse {
+			Text = $"Не удалось распознать указанный вами город, попробуйте повторить ваш запрос."
+		};
+
 		public ChangeCityStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state)
@@ -12,16 +22,10 @@ namespace AliceAppraisal.Engine.Strategy {
 
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
-			=> new SimpleResponse {
-				Text = $"Не удалось распознать указанный вами город, попробуйте повторить ваш запрос.",
-			};
+			=> unknown;
 
 		public override SimpleResponse GetHelp()
-			=> new SimpleResponse {
-				Text = $"Изменить город оцененного авто. " +
-				$"Вызывается командой \"Оцени такое же авто в городе Х\", " +
-				$"где Х это город в России."
-			};
+			=> help;
 
 		protected override bool Check(AliceRequest request, State state)
 			=>
