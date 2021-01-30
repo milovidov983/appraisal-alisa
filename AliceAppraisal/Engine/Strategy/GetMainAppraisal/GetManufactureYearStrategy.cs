@@ -69,7 +69,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		private string GetNextStepOrDefault(State state) {
-			if (state.GenerationChoise.Count > 1) {
+			if (state.PrevAction.Is(typeof(GetModelStrategy)) || state.GenerationChoise.Count > 1) {
 				return null;
 			} else {
 				return typeof(ConfirmGenerationStrategy).FullName;
