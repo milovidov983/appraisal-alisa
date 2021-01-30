@@ -44,7 +44,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			string customNextStep = null;
 			if (request.HasIntent(Intents.YandexConfirm)) {
-				var value = state.GenerationChoise.Values.First();
+				var value = state.GenerationChoise.Values.FirstOrDefault()
+					?? throw new ArgumentException("Ожидалось что есть одно выбранное поколение.");
+
 				state.UpdateGenerationId(value.Id, value.Name);
 			} else {
 				customNextStep = typeof(GetManufactureYearStrategy).FullName;
