@@ -68,12 +68,13 @@ namespace AliceAppraisal.Engine.Strategy {
 			return CreateNextStepMessage(request, state, nextStep);
 		}
 
+
+		/// Гремучее легаси
 		private string GetNextStepOrDefault(State state) {
-			if (state.GenerationChoise.Count > 1) {
-				return null;
-			} else {
+			if (state.GenerationChoise.Count == 1) {
 				return typeof(ConfirmGenerationStrategy).FullName;
 			}
+			return null;
 		}
 
 		private string Validate(int manufactureYear) {

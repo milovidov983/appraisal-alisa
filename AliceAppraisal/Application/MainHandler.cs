@@ -36,8 +36,8 @@ namespace AliceAppraisal.Application {
 				await Task.WhenAll(tasks);
 
 				response = tasks
-					.Select(resp => resp.Result)
 					.Where(resp => resp != null)
+					.Select(resp => resp.Result)
 					.FirstOrDefault();
 
 				if (response is null) {
