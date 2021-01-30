@@ -91,8 +91,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
-				$"Не удалось распознать модель вашего авто," +
-				$" попробуйте повторить ваш запрос или попросите у меня подсказку.",
+				"Назовите год выпуска автомобиля, который мы оцениваем?",
 				response.Response.Text);
 		}
 

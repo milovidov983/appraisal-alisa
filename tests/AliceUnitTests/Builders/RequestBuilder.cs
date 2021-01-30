@@ -154,18 +154,24 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 
 		public RequestBuilder WithMakeId(int id) {
-			if(aliceRequest.State is null) {
-				aliceRequest.State = new SessionState ();
-
-			}
-			if(aliceRequest.State.Session is null) {
-				aliceRequest.State.Session = new State(); 
-
-			}
-			aliceRequest.State.Session.Request = new AppraisalQuoteRequest {
-				MakeId = id
-			}; 
+			var sessionState = GetState();
+			sessionState.Session.Request.MakeId = id;
 			return this;
+		}
+
+		private SessionState GetState() {
+			if (aliceRequest.State is null) {
+				aliceRequest.State = new SessionState();
+
+			}
+			if (aliceRequest.State.Session is null) {
+				aliceRequest.State.Session = new State();
+
+			}
+			if(aliceRequest.State.Session.Request is null) {
+				aliceRequest.State.Session.Request = new AppraisalQuoteRequest();
+			}
+			return aliceRequest.State;
 		}
 
 		public RequestBuilder WithIntentModel() {
