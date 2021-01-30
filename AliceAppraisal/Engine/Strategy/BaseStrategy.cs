@@ -25,7 +25,7 @@ namespace AliceAppraisal.Engine.Strategy {
 
         protected virtual async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
             try {
-				var simple = await Respond(request, state);
+				var simple = await Respond(request, state); // GetRequestTypes
 
 				UpdateState(state);
 

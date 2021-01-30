@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace AliceAppraisal.Models {
 	public class State {
-        public AppraisalQuoteRequest Request { get; set; } = new AppraisalQuoteRequest();
+		public AppraisalQuoteRequest Request { get; set; } = new AppraisalQuoteRequest();
 		/// <summary>
 		/// Предыдущее состояние
 		/// </summary>
-        public string PrevAction { get; set; }
+		public string PrevAction { get; set; }
 		/// <summary>
 		/// Следующее состояние
 		/// </summary>
@@ -20,7 +20,8 @@ namespace AliceAppraisal.Models {
 		/// <summary>
 		/// Коды ответа от приложения
 		/// </summary>
-		public StatusCodes StatusCode { get; set; } = StatusCodes.OK;
+		public StatusCodes StatusCode { get; set; } = StatusCodes.OK; 
+		// Вынести в отдельную сущность SetStatusCode не согласуется
 
 		public void SetStatusCode(Exception exception) {
 			switch (exception) {
@@ -51,7 +52,7 @@ namespace AliceAppraisal.Models {
 		}
 
 		public void SaveCurrentAndNextStep(BaseStrategy strategy, string next) {
-            PrevAction = strategy.GetType().FullName;
+			PrevAction = strategy.GetType().FullName;
 			NextAction = next;
 		}
 		public void SaveCurrentAndNextStep(string prev, string next) {
@@ -71,8 +72,8 @@ namespace AliceAppraisal.Models {
 		public void Clear() {
 			GenerationChoise = new Dictionary<string, IdAndName>();
 			Request = new AppraisalQuoteRequest();
-            PrevAction = "";
-        }
+			PrevAction = "";
+		}
 
 		#region UpdateMethods
 		public bool UpdateEquipmentSet(string equipment) {
