@@ -75,5 +75,26 @@ namespace AliceUnitTests.BaseCommandTests {
 				response.Response.Text);
 		}
 
+		[Fact]
+		public async Task Set_get_correct_model_when_similar_name() {
+			var aliceRequest = RequestBuilder.Create()
+				.WithActions(
+					prev: typeof(GetMakeStrategy).FullName,
+					next: typeof(GetModelStrategy).FullName)
+				.WithIntentMake("bmw_18")
+				.WithIntentModelSimilar()
+				.WithMakeId(18)
+				.Build();
+
+			var handler = new Handler();
+			
+			var response = await handler.FunctionHandler(aliceRequest);
+
+			Assert.Contains(
+				$"Не удалось распознать модель вашего авто," +
+				$" попробуйте повторить ваш запрос или попросите у меня подсказку.",
+				response.Response.Text);
+		}
+
 	}
 }

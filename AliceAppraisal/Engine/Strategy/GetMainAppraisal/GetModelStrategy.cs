@@ -1,9 +1,12 @@
 ﻿using AliceAppraisal.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,20 +42,50 @@ namespace AliceAppraisal.Engine.Strategy {
 			return request.HasIntent(Intents.ModelName) && state.NextAction.Is(this.GetType());
 		}
 
-		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.ModelName, Slots.Model);
 
 			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state).FromTask();
+				return await GetMessageForUnknown(request, state).FromTask();
 			}
 
-			var newModelId = value.ExtractId() 
-				?? throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
+			if (value.IsNullOrEmpty()) {
+				throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
+			}
+			var modelMap = await GetModelMap();
+			var isSimilarSoundModelName = modelMap.SimilarModelNames
+											.TryGetValue(value, out var similarModelNames);
+
+			int newModelId;
+			if (isSimilarSoundModelName) {
+				var legalModels = modelMap.MakeModels[state.Request.MakeId
+					?? throw new ArgumentException($"Не указана марка")];
+
+				newModelId = similarModelNames.FirstOrDefault(x => legalModels.Any(y => y == x));
+
+				if(newModelId == default) {
+					throw new ArgumentException($"Не удалось найти модели из похожих {value}");
+				}
+			} else {
+				newModelId = value.ExtractId()
+					?? throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
+			}
 
 			state.UpdateModelId(newModelId, value);
 
-			return CreateNextStepMessage(request, state);
+			return await CreateNextStepMessage(request, state);
 
+		}
+
+		private async Task<ModelMaps> GetModelMap() {
+			using var client = new WebClient();
+			var stream =  client.OpenRead(
+				"https://raw.githubusercontent.com/milovidov983/PublicData/master/modelsmap.json"
+				);
+			var reader = new StreamReader(stream);
+			var content = await reader.ReadToEndAsync();
+			var res = JsonConvert.DeserializeObject<ModelMaps>(content);
+			return res;
 		}
 	}
 }

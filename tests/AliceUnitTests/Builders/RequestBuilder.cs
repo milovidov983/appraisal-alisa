@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal;
+using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
 using System;
 using System.Collections.Generic;
@@ -120,8 +121,8 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}
 
-		public RequestBuilder WithIntentMake() {
-			var command = "пежо";
+		public RequestBuilder WithIntentMake(string make = null) {
+			var command = make ?? "пежо";
 			request.Command = command;
 			request.OriginalUtterance = command;
 			request.Nlu.Intents["make_name"] = new IntentSlot() {
@@ -129,11 +130,41 @@ namespace AliceUnitTests.BaseCommandTests {
 					["make"] = new Entity {
 						Tokens = new Tokens { End = 1, Start = 0},
 						Type = "EMakes",
-						Value = "peugeot_135"
+						Value = make ?? "peugeot_135"
 					}
 				}
 			};
 			request.Nlu.Tokens.Add(command);
+			
+			aliceRequest.State ??= new SessionState {
+				Session = new State {
+					Request = new AppraisalQuoteRequest {
+						MakeId = make.ExtractId()
+					}
+				}
+			};
+			if(aliceRequest.State.Session is null) {
+				aliceRequest.State.Session = new State {
+					Request = new AppraisalQuoteRequest {
+						MakeId = make.ExtractId()
+					}
+				};
+			}
+			return this;
+		}
+
+		public RequestBuilder WithMakeId(int id) {
+			if(aliceRequest.State is null) {
+				aliceRequest.State = new SessionState ();
+
+			}
+			if(aliceRequest.State.Session is null) {
+				aliceRequest.State.Session = new State(); 
+
+			}
+			aliceRequest.State.Session.Request = new AppraisalQuoteRequest {
+				MakeId = id
+			}; 
 			return this;
 		}
 
@@ -152,8 +183,24 @@ namespace AliceUnitTests.BaseCommandTests {
 			};
 			request.Nlu.Tokens.Add(command);
 			return this;
-		}		
-		
+		}
+		public RequestBuilder WithIntentModelSimilar() {
+			var command = "астра";
+			request.Command = command;
+			request.OriginalUtterance = command;
+			request.Nlu.Intents["model_name"] = new IntentSlot() {
+				Slots = new Dictionary<string, Entity> {
+					["model"] = new Entity {
+						Tokens = new Tokens { End = 1, Start = 0 },
+						Type = "EModels",
+						Value = "si_five"
+					}
+				}
+			};
+			request.Nlu.Tokens.Add(command);
+			return this;
+		}
+
 		public RequestBuilder WithIntentManufactureYear(int? year = null) {
 			var command = $"{year ?? 2012}";
 			request.Command = command;
