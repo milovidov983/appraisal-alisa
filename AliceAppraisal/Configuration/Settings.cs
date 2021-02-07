@@ -17,7 +17,7 @@ namespace AliceAppraisal.Configuration {
 		/// <summary>
 		/// Мапинг схожих названий у моделей
 		/// </summary>
-		public string SimilarNamesFullUrl { get; set; } = "https://github.com/milovidov983/PublicData/blob/master/appraisalbot/similarNames.json";
+		public string SimilarNamesFullUrl { get; set; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/similarNames.json";
 		public string MakeModelMapPartUrl { get; set; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/makes/";
 	}
 }
