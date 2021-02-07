@@ -4,18 +4,18 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 namespace AliceAppraisal.Models {
-	public class ModelMaps {
+	public class SimilarNames {
 		[JsonPropertyName("similarModelNames")]
 		public Dictionary<string, int[]> SimilarModelNames { get; set; } 
 			= new Dictionary<string, int[]> {
 
 		};
 
+	}
 
-		[JsonPropertyName("makeModels")]
-		public Dictionary<int, int[]> MakeModels { get; set; } 
-			= new Dictionary<int, int[]> {
-	
-		};
+
+	public class MakeModelsMap {
+		[JsonPropertyName("modelIds")]
+		public int[] ModelIds { get; set; }
 	}
 }

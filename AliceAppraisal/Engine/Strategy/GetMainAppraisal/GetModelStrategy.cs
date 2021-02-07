@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Configuration;
+using AliceAppraisal.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using Newtonsoft.Json;
@@ -52,23 +53,29 @@ namespace AliceAppraisal.Engine.Strategy {
 			if (value.IsNullOrEmpty()) {
 				throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
 			}
-			var modelMap = await GetModelMap();
-			var isSimilarSoundModelName = modelMap.SimilarModelNames
-											.TryGetValue(value, out var similarModelNames);
+			var (similarModel, modelsIdsForCurrentMake) = await GetModelMap(
+				state.Request.MakeId 
+				?? throw new ArgumentException($"Прежде чем выбрать модель необходимо указать марку авто."));
+
+			/// Так как существуют модели с схожими названиями например Мазда 5 Бмв 5
+			/// необходимо убедится что указанная пользователем модель является такого типа названием
+			var isSimilarSoundModelName = similarModel.SimilarModelNames.TryGetValue(value, out var similarModelNameIds);
 
 			int newModelId;
 			if (isSimilarSoundModelName) {
-				var legalModels = modelMap.MakeModels[state.Request.MakeId
-					?? throw new ArgumentException($"Не указана марка")];
+				newModelId = similarModelNameIds.FirstOrDefault(x => modelsIdsForCurrentMake.Contains(x));
 
-				newModelId = similarModelNames.FirstOrDefault(x => legalModels.Any(y => y == x));
-
-				if(newModelId == default) {
+				if (newModelId == default) {
 					throw new ArgumentException($"Не удалось найти модели из похожих {value}");
 				}
 			} else {
 				newModelId = value.ExtractId()
 					?? throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
+
+				var isFitModel = modelsIdsForCurrentMake.Contains(newModelId);
+				if (!isFitModel) {
+					throw new ArgumentException($"Выбранная модель {value.ExtractName()} не принадлежит к марке {state.Request.MakeEntity}");
+				}
 			}
 
 			state.UpdateModelId(newModelId, value);
@@ -77,15 +84,32 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		}
 
-		private async Task<ModelMaps> GetModelMap() {
+		private async Task<(SimilarNames, HashSet<int> MakeModelsMap)> GetModelMap(int makeId) {
 			using var client = new WebClient();
-			var stream =  client.OpenRead(
-				"https://raw.githubusercontent.com/milovidov983/PublicData/master/modelsmap.json"
+			var similarStream = client.OpenRead(Settings.Instance.SimilarNamesFullUrl);
+			var similarReader = new StreamReader(similarStream);
+			var similarContentTask = similarReader.ReadToEndAsync();
+
+			var makeModelMapFileName = $"{makeId}.json";
+			var makeModelMapStream = client.OpenRead(
+				$"{Settings.Instance.MakeModelMapPartUrl}{makeModelMapFileName}"
 				);
-			var reader = new StreamReader(stream);
-			var content = await reader.ReadToEndAsync();
-			var res = JsonConvert.DeserializeObject<ModelMaps>(content);
-			return res;
+			var makeModelMapReader = new StreamReader(makeModelMapStream);
+			var makeModelMapContentTask = makeModelMapReader.ReadToEndAsync();
+
+			await Task.WhenAll(similarContentTask, makeModelMapContentTask);
+
+
+			var similarContent = similarContentTask.Result;
+			var makeModelMapContent = makeModelMapContentTask.Result;
+
+			var similarNames = JsonConvert.DeserializeObject<SimilarNames>(similarContent);
+			var makeModelMapNames = JsonConvert.DeserializeObject<MakeModelsMap>(makeModelMapContent)
+										.ModelIds
+										.ToHashSet();
+
+
+			return (similarNames, makeModelMapNames);
 		}
 	}
 }
