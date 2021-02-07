@@ -29,9 +29,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			return new SimpleResponse {
-				Text = "По умолчанию оценка будет проведена для московского региона, " +
-				"если вас устраивает московский регион, то просто скажите Продолжить. " +
-				"Если вас интересует другой регион то укажите столицу этого региона.",
+				Text = $"Сейчас будет произведена оценка {state.Request.MakeEntity} " +
+				$"{state.Request.ModelEntity} {state.Request.ManufactureYear} г.в. для Московского региона. " +
+				$"Продолжить?",
 				Buttons = new[] { "Продолжить" }
 			};
 		}

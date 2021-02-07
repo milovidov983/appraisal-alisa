@@ -84,6 +84,9 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		}
 
+		/// <summary>
+		/// TODO тащить с собой названия моделей что бы было что подставлять в ModelEntity
+		/// </summary>
 		private async Task<(SimilarNames, HashSet<int> MakeModelsMap)> GetModelMap(int makeId) {
 			using var client = new WebClient();
 			var similarStream = client.OpenRead(Settings.Instance.SimilarNamesFullUrl);

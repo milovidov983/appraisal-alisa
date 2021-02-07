@@ -31,7 +31,7 @@ namespace AliceAppraisal.Models {
 		public string GetFullName() {
 			var name = $"" +
 				$"{MakeEntity.ExtractName().CapitalizeFirst()}, " +
-				$"{ModelEntity.ExtractName().CapitalizeFirst()}, " +
+				$"{(ModelEntity.IsNullOrEmpty() ? "" : ModelEntity.ExtractName().CapitalizeFirst())}, " +
 				$"{ManufactureYear} г.в., " +
 				$"поколение \"{GenerationValue}\", " +
 				$"кузов {BodyType.TryGetBodyTypeDescriptionOrDefault()}, " +
