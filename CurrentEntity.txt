@@ -1,243 +1,243 @@
-entity EMakes:
+п»їentity EMakes:
     values:
         audi_10:
              %lemma
-             Ауди
+             РђСѓРґРё
              Audi
         volkswagen_184:
              %lemma
-             Фольксваген
-             Фольсваген
-             Фольц
+             Р¤РѕР»СЊРєСЃРІР°РіРµРЅ
+             Р¤РѕР»СЊСЃРІР°РіРµРЅ
+             Р¤РѕР»СЊС†
              Volkswagen
         mazda_113:
              %lemma
-             Мазда
+             РњР°Р·РґР°
              Mazda
         mitsubishi_123:
              %lemma
-             Митсубиси
+             РњРёС‚СЃСѓР±РёСЃРё
              Mitsubishi
         nissan_127:
              %lemma
-             Ниссан
+             РќРёСЃСЃР°РЅ
              Nissan
         renault_147:
              %lemma
-             Рено
+             Р РµРЅРѕ
              Renault
         skoda_159:
              %lemma
-             Шкода
+             РЁРєРѕРґР°
              Skoda
         mercedesbenz_116:
              %lemma
-             Мерен
-             Мерседес (Бенц)?
+             РњРµСЂРµРЅ
+             РњРµСЂСЃРµРґРµСЃ (Р‘РµРЅС†)?
              Mercedes Benz
         porsche_139:
              %lemma
-             Порше
+             РџРѕСЂС€Рµ
              Porsche
         saab_152:
              %lemma
-             Сааб
+             РЎР°Р°Р±
              Saab
         seat_157:
              %lemma
-             Сеат
+             РЎРµР°С‚
              SEAT
         smart_160:
              %lemma
-             Смарт
+             РЎРјР°СЂС‚
              Smart
         hyundai_79:
              %lemma
-             Хёндай
-             Хёндаи
-             хёнда
-             хундай
-             хундаи
+             РҐС‘РЅРґР°Р№
+             РҐС‘РЅРґР°Рё
+             С…С‘РЅРґР°
+             С…СѓРЅРґР°Р№
+             С…СѓРЅРґР°Рё
              Hyundai
         ford_63:
              %lemma
-             Форд
+             Р¤РѕСЂРґ
              Ford
         honda_76:
              %lemma
-             Хонда
+             РҐРѕРЅРґР°
              Honda
         chevrolet_35:
              %lemma
-             Шевроле
+             РЁРµРІСЂРѕР»Рµ
              Chevrolet
         brilliance_21:
              %lemma
-             Бриллианс
+             Р‘СЂРёР»Р»РёР°РЅСЃ
              Brilliance
         byd_26:
              %lemma
-             БИД
+             Р‘РР”
              BYD
         cadillac_28:
              %lemma
-             Кадилак
+             РљР°РґРёР»Р°Рє
              Cadillac
         fiat_61:
              %lemma
-             Фиат
+             Р¤РёР°С‚
              Fiat
         chrysler_36:
              %lemma
-             Крайслер
+             РљСЂР°Р№СЃР»РµСЂ
              Chrysler
         acura_2:
              %lemma
-             Акура
+             РђРєСѓСЂР°
              Acura
         dacia_40:
              %lemma
-             Дачия
+             Р”Р°С‡РёСЏ
              Dacia
         daewoo_42:
              %lemma
-             Дэу
+             Р”СЌСѓ
              Daewoo
         datsun_47:
              %lemma
-             Датсун
-             Датсан
+             Р”Р°С‚СЃСѓРЅ
+             Р”Р°С‚СЃР°РЅ
              Datsun
         dodge_51:
              %lemma
-             Додж
+             Р”РѕРґР¶
              Dodge
         faw_59:
              %lemma
-             ФАВ
+             Р¤РђР’
              FAW
         geely_67:
              %lemma
-             Джили
+             Р”Р¶РёР»Рё
              Geely
         opel_130:
              %lemma
-             Опель
+             РћРїРµР»СЊ
              Opel
         ravon_3689:
              %lemma
-             Равон
+             Р Р°РІРѕРЅ
              Ravon
         pontiac_138:
              %lemma
-             Понтиак
+             РџРѕРЅС‚РёР°Рє
              Pontiac
         mini_122:
              %lemma
-             Мини
+             РњРёРЅРё
              MINI
         chery_34:
              %lemma
-             Чери
+             Р§РµСЂРё
              Chery
         daihatsu_44:
              %lemma
-             Дайхатсу
+             Р”Р°Р№С…Р°С‚СЃСѓ
              Daihatsu
         subaru_166:
              %lemma
-             Субару
+             РЎСѓР±Р°СЂСѓ
              Subaru
         vortex_186:
              %lemma
-             Вортекс
+             Р’РѕСЂС‚РµРєСЃ
              Vortex
         zaz_217:
              %lemma
-             ЗАЗ
-             ЗАЗ
+             Р—РђР—
+             Р—РђР—
         uaz_227:
              %lemma
-             УАЗ
-             УАЗ
+             РЈРђР—
+             РЈРђР—
         infiniti_80:
              %lemma
-             Инфинити
+             РРЅС„РёРЅРёС‚Рё
              Infiniti
         toyota_176:
              %lemma
-             Тойота
+             РўРѕР№РѕС‚Р°
              Toyota
         lada_215:
              %lemma
-             Лада
+             Р›Р°РґР°
              Lada
         suzuki_167:
              %lemma
-             Сузуки
+             РЎСѓР·СѓРєРё
              Suzuki
         volvo_185:
              %lemma
-             Вольво
+             Р’РѕР»СЊРІРѕ
              Volvo
         zotye_192:
              %lemma
-             Зоти
+             Р—РѕС‚Рё
              Zotye
         tagaz_226:
              %lemma
-             ТагАЗ
-             ТагАЗ
+             РўР°РіРђР—
+             РўР°РіРђР—
         jaguar_88:
              %lemma
-             Ягуар
+             РЇРіСѓР°СЂ
              Jaguar
         jeep_89:
              %lemma
-             Джип
+             Р”Р¶РёРї
              Jeep
         lexus_99:
              %lemma
-             Лексус
+             Р›РµРєСЃСѓСЃ
              Lexus
         lifan_101:
              %lemma
-             Лифан
+             Р›РёС„Р°РЅ
              Lifan
         kia_92:
              %lemma
-             Киа
-             Кио
+             РљРёР°
+             РљРёРѕ
              Kia
         landrover_97:
              %lemma
-             Ленд Ровер
+             Р›РµРЅРґ Р РѕРІРµСЂ
              Land Rover
         bmw_18:
              %lemma
-             БМВ
+             Р‘РњР’
              BMW
         isuzu_85:
              %lemma
-             Исузу
+             РСЃСѓР·Сѓ
              Isuzu
         ssangyong_165:
              %lemma
-             Саньёнг
-             Санёнг
+             РЎР°РЅСЊС‘РЅРі
+             РЎР°РЅС‘РЅРі
              SsangYong
         citroen_37:
              %lemma
-             Ситроен
+             РЎРёС‚СЂРѕРµРЅ
              Citroen
         peugeot_135:
              %lemma
-             Пежо
+             РџРµР¶Рѕ
              Peugeot
         greatwall_71:
              %lemma
-             Грейт Волл
-             Грейт Валл
+             Р“СЂРµР№С‚ Р’РѕР»Р»
+             Р“СЂРµР№С‚ Р’Р°Р»Р»
              Great Wall
 
 
@@ -245,44 +245,44 @@ entity EModels:
     values:
         frvbs2_172:
              %lemma
-             ФРВ (БС2)
+             Р¤Р Р’ (Р‘РЎ2)
              FRV (BS2)
         hoverh3_2276:
              %lemma
-             Ховер H3
+             РҐРѕРІРµСЂ H3
              Hover H3
         m3bc3_175:
              %lemma
-             М3 (БС3)
+             Рњ3 (Р‘РЎ3)
              M3 (BC3)
         prisma_19853:
              %lemma
-             Призма
+             РџСЂРёР·РјР°
              Prisma
         solaris_848:
              %lemma
-             Солярис
-             соларис
+             РЎРѕР»СЏСЂРёСЃ
+             СЃРѕР»Р°СЂРёСЃ
              Solaris
         focus_637:
              %lemma
-             Фокус
+             Р¤РѕРєСѓСЃ
              Focus
         ceed_939:
              %lemma
-             Сид
+             РЎРёРґ
              Ceed
         cruze_282:
              %lemma
-             Круз
+             РљСЂСѓР·
              Cruze
         corolla_1818:
              %lemma
-             Корола
+             РљРѕСЂРѕР»Р°
              Corolla
         rav4_2177:
              %lemma
-             РАВ 4 (РАФ 4)
+             Р РђР’ 4 (Р РђР¤ 4)
              RAV 4
         21214x4_2009:
              %lemma
@@ -290,167 +290,163 @@ entity EModels:
              2121 (4x4)
         m2bs4_174:
              %lemma
-             М2 (БС4)
+             Рњ2 (Р‘РЎ4)
              M2 (BS4)
         hoverh5_2277:
              %lemma
-             Ховер H5
+             РҐРѕРІРµСЂ H5
              Hover H5
         jetta_1912:
              %lemma
-             Джетта
+             Р”Р¶РµС‚С‚Р°
              Jetta
         bs6_19782:
              %lemma
-             БС6
+             Р‘РЎ6
              BS6
         eastar_19801:
              %lemma
-             Истар
+             РСЃС‚Р°СЂ
              Eastar
         spin_19858:
              %lemma
-             Спин
+             РЎРїРёРЅ
              Spin
         rsq3_98:
              %lemma
-             РС-КУ3
+             Р РЎ-РљРЈ3
              RS Q3
         freelander_1008:
              %lemma
-             Фрилендер
+             Р¤СЂРёР»РµРЅРґРµСЂ
              Freelander
         mdx_11:
              %lemma
-             МДХ
+             РњР”РҐ
              MDX
         xts_232:
              %lemma
-             ХТС
+             РҐРўРЎ
              XTS
         clklasse_1191:
              %lemma
-             ЦЛ-класс
-             CL-Класс
+             Р¦Р›-РєР»Р°СЃСЃ
+             CL-РљР»Р°СЃСЃ
         t600_19302:
              %lemma
-             Т600
+             Рў600
              T600
         dmax_891:
              %lemma
-             Д-Макс
+             Р”-РњР°РєСЃ
              D-Max
         agile_19824:
              %lemma
-             Агиль
+             РђРіРёР»СЊ
              Agile
         beat_19825:
              %lemma
-             Бить
+             Р‘РёС‚СЊ
              Beat
         enjoy_19835:
              %lemma
-             Энджой
+             Р­РЅРґР¶РѕР№
              Enjoy
         lova_19843:
              %lemma
-             Ловай
+             Р›РѕРІР°Р№
              Lova
         matiz_19844:
              %lemma
-             Матиз
+             РњР°С‚РёР·
              Matiz
         meriva_19845:
              %lemma
-             Мерива
+             РњРµСЂРёРІР°
              Meriva
         montana_19846:
              %lemma
-             Монтана
+             РњРѕРЅС‚Р°РЅР°
              Montana
         n200_19847:
              %lemma
-             Н200
+             Рќ200
              N200
         n300_19848:
              %lemma
-             Н300
+             Рќ300
              N300
         onix_19850:
              %lemma
-             Оникс
+             РћРЅРёРєСЃ
              Onix
         tornado_19863:
              %lemma
-             Торнадо
+             РўРѕСЂРЅР°РґРѕ
              Tornado
         utility_19865:
              %lemma
-             Утилита
+             РЈС‚РёР»РёС‚Р°
              Utility
         grandvitara_19838:
              %lemma
-             Гранд Витара
+             Р“СЂР°РЅРґ Р’РёС‚Р°СЂР°
              Grand Vitara
         clsklasseamg_2344:
              %lemma
-             ЦЛС-класс АМГ
+             Р¦Р›РЎ-РєР»Р°СЃСЃ РђРњР“
              CLS AMG
         m1bs6_173:
              %lemma
-             М1 (БС6)
+             Рњ1 (Р‘РЎ6)
              M1 (BS6)
-        6_1127:
-             %lemma
-             6
-             6
         s60_1953:
              %lemma
-             С60
+             РЎ60
              S60
         cklasseamg_2340:
              %lemma
-             Ц-Класс АМГ
-             C-Класс AMG
+             Р¦-РљР»Р°СЃСЃ РђРњР“
+             C-РљР»Р°СЃСЃ AMG
         6371_19997:
              %lemma
              6371
              6371
         s80_20003:
              %lemma
-             На S80
+             РќР° S80
              S80
         atenza_1132:
              %lemma
-             Атенза
+             РђС‚РµРЅР·Р°
              Atenza
         axela_1133:
              %lemma
-             Аксела
+             РђРєСЃРµР»Р°
              Axela
         claklasseamg_2342:
              %lemma
-             ЦЛА-класс АМГ
+             Р¦Р›Рђ-РєР»Р°СЃСЃ РђРњР“
              CLA AMG
         clklasseamg_2341:
              %lemma
-             ЦЛ класс АМГ
-             CL-Класс AMG
+             Р¦Р› РєР»Р°СЃСЃ РђРњР“
+             CL-РљР»Р°СЃСЃ AMG
         azwagon_1136:
              %lemma
-             АЗ-Вагон
+             РђР—-Р’Р°РіРѕРЅ
              AZ-Wagon
         lcpandacross_686:
              %lemma
-             ЛЦ (Панда) Кросс
+             Р›Р¦ (РџР°РЅРґР°) РљСЂРѕСЃСЃ
              LC (Panda) Cross
         rs6_103:
              %lemma
-             РС6
+             Р РЎ6
              RS6
         s1_105:
              %lemma
-             С1
+             РЎ1
              S1
         cx7_1146:
              %lemma
@@ -458,31 +454,31 @@ entity EModels:
              CX-7
         rs4_101:
              %lemma
-             РС4
+             Р РЎ4
              RS4
         fit_774:
              %lemma
-             Фит
+             Р¤РёС‚
              Fit
         rs5_102:
              %lemma
-             РС5
+             Р РЎ5
              RS5
         carol_1143:
              %lemma
-             Кэрол
+             РљСЌСЂРѕР»
              Carol
         biante_1138:
              %lemma
-             Бианте
+             Р‘РёР°РЅС‚Рµ
              Biante
         cx5_1145:
              %lemma
-             СХ-5
+             РЎРҐ-5
              CX-5
         bt50_1141:
              %lemma
-             Бт50
+             Р‘С‚50
              BT-50
         cx9_1147:
              %lemma
@@ -490,215 +486,215 @@ entity EModels:
              CX-9
         a4allroad_83:
              %lemma
-             А4 олроуд
+             Рђ4 РѕР»СЂРѕСѓРґ
              A4 allroad
         shuttle_802:
              %lemma
-             Шатл
+             РЁР°С‚Р»
              Shuttle
         a6allroad_86:
              %lemma
-             А6 олроуд
+             Рђ6 РѕР»СЂРѕСѓРґ
              A6 allroad
         s3_107:
              %lemma
-             С3
+             РЎ3
              S3
         s5_109:
              %lemma
-             С5
+             РЎ5
              S5
         s8_112:
              %lemma
-             С8
+             РЎ8
              S8
         s4_108:
              %lemma
-             С4
+             РЎ4
              S4
         freed_776:
              %lemma
-             Фрид
+             Р¤СЂРёРґ
              Freed
         demio_1148:
              %lemma
-             Демио
+             Р”РµРјРёРѕ
              Demio
         mpv_1161:
              %lemma
-             МПВ
+             РњРџР’
              MPV
         mx5_1163:
              %lemma
-             МХ-5
+             РњРҐ-5
              MX-5
         x4_154:
              %lemma
-             Х4
+             РҐ4
              X4
         f6_205:
              %lemma
-             Ф6
+             Р¤6
              F6
         cx3_19204:
              %lemma
-             ЦХ-3
+             Р¦РҐ-3
              CX-3
         bls_217:
              %lemma
-             БЛС
+             Р‘Р›РЎ
              BLS
         ct6_19392:
              %lemma
-             ЦТ6
+             Р¦Рў6
              CT6
         rx8_1174:
              %lemma
-             РХ-8
+             Р РҐ-8
              RX-8
         scrum_1175:
              %lemma
-             Скрам
+             РЎРєСЂР°Рј
              Scrum
         tribute_1178:
              %lemma
-             Трибьют
+             РўСЂРёР±СЊСЋС‚
              Tribute
         3mps_2337:
              %lemma
-             3 МПС
+             3 РњРџРЎ
              3 MPS
         xt5_19461:
              %lemma
-             ХТ5
+             РҐРў5
              XT5
         foraa21_250:
              %lemma
-             Фора
+             Р¤РѕСЂР°
              Fora (A21)
         amuleta15_247:
              %lemma
-             Амулет (А15)
+             РђРјСѓР»РµС‚ (Рђ15)
              Amulet (A15)
         indiss18d_251:
              %lemma
-             Индис
+             РРЅРґРёСЃ
              IndiS (S18D)
         bonusa13_248:
              %lemma
-             Бонус (А13)
+             Р‘РѕРЅСѓСЃ (Рђ13)
              Bonus (A13)
         s6_110:
              %lemma
-             С6
+             РЎ6
              S6
         kimoa1_252:
              %lemma
-             Кимо
+             РљРёРјРѕ
              Kimo (A1)
         stepwgn_803:
              %lemma
-             Степвэгон
+             РЎС‚РµРїРІСЌРіРѕРЅ
              Stepwgn
         crosstour_767:
              %lemma
-             Кросстур
+             РљСЂРѕСЃСЃС‚СѓСЂ
              Crosstour
         element_770:
              %lemma
-             Элемент
+             Р­Р»РµРјРµРЅС‚
              Element
         very_257:
              %lemma
-             Вери
+             Р’РµСЂРё
              Very (A13)
         s7_111:
              %lemma
-             С7
+             РЎ7
              S7
         minicoupe_1259:
              %lemma
-             Купе
+             РљСѓРїРµ
              Coupe
         hatch_1260:
              %lemma
-             Хэтч
+             РҐСЌС‚С‡
              Hatch
         paceman_1261:
              %lemma
-             Пейсмен
+             РџРµР№СЃРјРµРЅ
              Paceman
         miniroadster_1262:
              %lemma
-             Родстер
+             Р РѕРґСЃС‚РµСЂ
              Roadster
         insight_778:
              %lemma
-             Инсайт
+             РРЅСЃР°Р№С‚
              Insight
         asx_1266:
              %lemma
-             АСХ
+             РђРЎРҐ
              ASX
         discoverysport_2287:
              %lemma
-             Дискавери Спорт
+             Р”РёСЃРєР°РІРµСЂРё РЎРїРѕСЂС‚
              Discovery Sport
         sq5_113:
              %lemma
-             С Ку 5
+             РЎ РљСѓ 5
              SQ5
         delica_1274:
              %lemma
-             Делика
+             Р”РµР»РёРєР°
              Delica
         colt_1271:
              %lemma
-             Кольт
+             РљРѕР»СЊС‚
              Colt
         eclipse_1278:
              %lemma
-             Эклипс
+             Р­РєР»РёРїСЃ
              Eclipse
         ek_1279:
              %lemma
-             ЕК
+             Р•Рљ
              eK
         arkana_100019875:
              %lemma
-             аркана
+             Р°СЂРєР°РЅР°
              Arkana
         tiggo2_22340:
              %lemma
-             Тигго 2
+             РўРёРіРіРѕ 2
              Tiggo 2
         tiggo3_22341:
              %lemma
-             Тигго 3
+             РўРёРіРіРѕ 3
              Tiggo 3
         kodiaq_20945:
              %lemma
-             Кодиак
+             РљРѕРґРёР°Рє
              Kodiaq
         d60_20951:
              %lemma
-             Джанпай Д60
+             Р”Р¶Р°РЅРїР°Р№ Р”60
              D60
         forester_1716:
              %lemma
-             Форестер
+             Р¤РѕСЂРµСЃС‚РµСЂ
              Forester
         tiggo7_22413:
              %lemma
-             Тигго 7
+             РўРёРіРіРѕ 7
              Tiggo 7
         v3_22472:
              %lemma
-             В3
+             Р’3
              V3
         atlas_22416:
              %lemma
-             Атлас
+             РђС‚Р»Р°СЃ
              Atlas
         200_318:
              %lemma
@@ -706,319 +702,319 @@ entity EModels:
              200
         outlander_1300:
              %lemma
-             Аутлендер
+             РђСѓС‚Р»РµРЅРґРµСЂ
              Outlander
         montero_1298:
              %lemma
-             Монтеро
+             РњРѕРЅС‚РµСЂРѕ
              Montero
         xklasse_22418:
              %lemma
-             икс-класс
-             X-Класс
+             РёРєСЃ-РєР»Р°СЃСЃ
+             X-РљР»Р°СЃСЃ
         mazdaroadster_1172:
              %lemma
-             Роадстер
+             Р РѕР°РґСЃС‚РµСЂ
              Roadster
         galant_1284:
              %lemma
-             Галант
+             Р“Р°Р»Р°РЅС‚
              Galant
         imiev_1288:
              %lemma
-             Ай-МиЕВ
+             РђР№-РњРёР•Р’
              i-MiEV
         mirage_1297:
              %lemma
-             Мираж
+             РњРёСЂР°Р¶
              Mirage
         qx56_100019817:
              %lemma
-             ку икс 56
+             РєСѓ РёРєСЃ 56
              QX56
         grandstarex_100019816:
              %lemma
-             Гранд Старекс
+             Р“СЂР°РЅРґ РЎС‚Р°СЂРµРєСЃ
              Grand Starex
         pajero_1301:
              %lemma
-             Паджеро
+             РџР°РґР¶РµСЂРѕ
              Pajero
         v5_176:
              %lemma
-             В5
+             Р’5
              V5
         proudia_1308:
              %lemma
-             Проудиа
+             РџСЂРѕСѓРґРёР°
              Proudia
         raider_1309:
              %lemma
-             Рэйдер
+             Р СЌР№РґРµСЂ
              Raider
         rvr_1310:
              %lemma
-             РВР
+             Р Р’Р 
              RVR
         spacestar_1315:
              %lemma
-             Спейс Стар
+             РЎРїРµР№СЃ РЎС‚Р°СЂ
              Space Star
         toppo_1318:
              %lemma
-             Торро
+             РўРѕСЂСЂРѕ
              Toppo
         tiggot11_256:
              %lemma
-             Тигго
+             РўРёРіРіРѕ
              Tiggo (T11)
         tts_2274:
              %lemma
-             ТТС
+             РўРўРЎ
              TTS
         h530_2290:
              %lemma
-             Аш 530
+             РђС€ 530
              H530
         cts_220:
              %lemma
-             ЦТС
+             Р¦РўРЎ
              CTS
         dts_222:
              %lemma
-             ДТС
+             Р”РўРЎ
              DTS
         arrizo7_2267:
              %lemma
-             Арризо 7
+             РђСЂСЂРёР·Рѕ 7
              Arrizo 7
         almera_1356:
              %lemma
-             Альмера
+             РђР»СЊРјРµСЂР°
              Almera
         e6_202:
              %lemma
-             Е6
+             Р•6
              E6
         f0_203:
              %lemma
-             Ф0
+             Р¤0
              F0
         f8_206:
              %lemma
-             Ф8
+             Р¤8
              F8
         g3_208:
              %lemma
-             Г3
+             Р“3
              G3
         g6_209:
              %lemma
-             Г6
+             Р“6
              G6
         l3_210:
              %lemma
-             Л3
+             Р›3
              L3
         ad_1354:
              %lemma
-             АД
+             РђР”
              AD
         370z_1353:
              %lemma
-             370з
+             370Р·
              370Z
         juke_1381:
              %lemma
-             Жук
+             Р–СѓРє
              Juke
         armada_1359:
              %lemma
-             Армада
+             РђСЂРјР°РґР°
              Armada
         elgrand_1374:
              %lemma
-             Эльгранд
+             Р­Р»СЊРіСЂР°РЅРґ
              Elgrand
         leaf_1386:
              %lemma
-             Лиф
+             Р›РёС„
              Leaf
         bluebirdsylphy_1363:
              %lemma
-             Блю Бёрд Силфи
+             Р‘Р»СЋ Р‘С‘СЂРґ РЎРёР»С„Рё
              Bluebird Sylphy
         fuga_1378:
              %lemma
-             Фуга
+             Р¤СѓРіР°
              Fuga
         clipper_1369:
              %lemma
-             Клипер
+             РљР»РёРїРµСЂ
              Clipper
         dualis_1373:
              %lemma
-             Дуалис
+             Р”СѓР°Р»РёСЃ
              Dualis
         fairladyz_1376:
              %lemma
-             Файрледи-зед
+             Р¤Р°Р№СЂР»РµРґРё-Р·РµРґ
              Fairlady Z
         cube_1371:
              %lemma
-             Куб
+             РљСѓР±
              Cube
         cima_1368:
              %lemma
-             Кима
+             РљРёРјР°
              Cima
         altima_1358:
              %lemma
-             Альтима
+             РђР»СЊС‚РёРјР°
              Altima
         gtr_1380:
              %lemma
-             ГТ-Р
+             Р“Рў-Р 
              GT-R
         lafesta_1382:
              %lemma
-             Лэйфста
+             Р›СЌР№С„СЃС‚Р°
              Lafesta
         nv200_1399:
              %lemma
-             НВ200
+             РќР’200
              NV200
         march_1390:
              %lemma
-             Март
+             РњР°СЂС‚
              March
         maxima_1391:
              %lemma
-             Максима
+             РњР°РєСЃРёРјР°
              Maxima
         micra_1392:
              %lemma
-             Микра
+             РњРёРєСЂР°
              Micra
         moco_1394:
              %lemma
-             Моко
+             РњРѕРєРѕ
              Moco
         murano_1395:
              %lemma
-             Мурано
+             РњСѓСЂР°РЅРѕ
              Murano
         navarafrontier_1396:
              %lemma
-             Навара
+             РќР°РІР°СЂР°
              Navara (Frontier)
         np300_1398:
              %lemma
-             НП 300
+             РќРџ 300
              NP 300
         ottidayz_1401:
              %lemma
-             Отти (Дэйз)
+             РћС‚С‚Рё (Р”СЌР№Р·)
              Otti (Dayz)
         pathfinder_1403:
              %lemma
-             Патфайндер
+             РџР°С‚С„Р°Р№РЅРґРµСЂ
              Pathfinder
         patrol_1404:
              %lemma
-             Патрол
+             РџР°С‚СЂРѕР»
              Patrol
         pulsar_2122:
              %lemma
-             Пульсар
+             РџСѓР»СЊСЃР°СЂ
              Pulsar
         teana_2138:
              %lemma
-             Теана
+             РўРµР°РЅР°
              Teana
         qashqai_2123:
              %lemma
-             Кашкай
+             РљР°С€РєР°Р№
              Qashqai
         skyline_2134:
              %lemma
-             Скайлайн
+             РЎРєР°Р№Р»Р°Р№РЅ
              Skyline
         serena_2131:
              %lemma
-             Серена
+             РЎРµСЂРµРЅР°
              Serena
         sunny_2137:
              %lemma
-             Санни
+             РЎР°РЅРЅРё
              Sunny
         quest_2124:
              %lemma
-             Квест
+             РљРІРµСЃС‚
              Quest
         rogue_2127:
              %lemma
-             Рог
+             Р РѕРі
              Rogue
         sentra_2130:
              %lemma
-             Сентра
+             РЎРµРЅС‚СЂР°
              Sentra
         terrano_2139:
              %lemma
-             Террано
+             РўРµСЂСЂР°РЅРѕ
              Terrano
         tiida_2141:
              %lemma
-             Тиида
+             РўРёРёРґР°
              Tiida
         titan_2143:
              %lemma
-             Титан
+             РўРёС‚Р°РЅ
              Titan
         a1_80:
              %lemma
-             А1
+             Рђ1
              A1
         a8_89:
              %lemma
-             А8
+             Рђ8
              A8
         versa_2145:
              %lemma
-             Верса
+             Р’РµСЂСЃР°
              Versa
         xterra_2147:
              %lemma
-             Икс-Терра
+             РРєСЃ-РўРµСЂСЂР°
              X-Terra
         qashqai2_19073:
              %lemma
-             Кашкай 2
+             РљР°С€РєР°Р№ 2
              Qashqai+2
         a5_85:
              %lemma
-             А5
+             Рђ5
              A5
         agila_1423:
              %lemma
-             Агила
+             РђРіРёР»Р°
              Agila
         ampera_1424:
              %lemma
-             Ампера
+             РђРјРїРµСЂР°
              Ampera
         antara_1425:
              %lemma
-             Антара
+             РђРЅС‚Р°СЂР°
              Antara
         astra_1427:
              %lemma
-             Астра
+             РђСЃС‚СЂР°
              Astra
         mokka_1441:
              %lemma
-             Мокка
+             РњРѕРєРєР°
              Mokka
         500_574:
              %lemma
@@ -1026,55 +1022,55 @@ entity EModels:
              500
         combo_1431:
              %lemma
-             Комбо
+             РљРѕРјР±Рѕ
              Combo
         cascada_1430:
              %lemma
-             Каскада
+             РљР°СЃРєР°РґР°
              Cascada
         corsa_1433:
              %lemma
-             Корса
+             РљРѕСЂСЃР°
              Corsa
         pino_1405:
              %lemma
-             Пино
+             РџРёРЅРѕ
              Pino
         gt_1436:
              %lemma
-             ГТ
+             Р“Рў
              GT
         vivaro_2227:
              %lemma
-             Виваро
+             Р’РёРІР°СЂРѕ
              Vivaro
         zafira_1453:
              %lemma
-             Зафира
+             Р—Р°С„РёСЂР°
              Zafira
         astraopc_2355:
              %lemma
-             Астра ОПЦ
+             РђСЃС‚СЂР° РћРџР¦
              Astra OPC
         corsaopc_2356:
              %lemma
-             Корса ОПЦ
+             РљРѕСЂСЃР° РћРџР¦
              Corsa OPC
         insigniaopc_2357:
              %lemma
-             Инсигния ОПЦ
+             РРЅСЃРёРіРЅРёСЏ РћРџР¦
              Insignia OPC
         merivaopc_2358:
              %lemma
-             Мерива ОПЦ
+             РњРµСЂРёРІР° РћРџР¦
              Meriva OPC
         a6_87:
              %lemma
-             А6
+             Рђ6
              A6
         cabrio_1255:
              %lemma
-             Кабрио
+             РљР°Р±СЂРёРѕ
              Cabrio
         107_1470:
              %lemma
@@ -1110,11 +1106,11 @@ entity EModels:
              4007
         partner_1501:
              %lemma
-             Партнер
+             РџР°СЂС‚РЅРµСЂ
              Partner
         expert_2229:
              %lemma
-             Эксперт
+             Р­РєСЃРїРµСЂС‚
              Expert
         4008_1486:
              %lemma
@@ -1134,7 +1130,7 @@ entity EModels:
              807
         rcz_1502:
              %lemma
-             РЦЗ
+             Р Р¦Р—
              RCZ
         108_2228:
              %lemma
@@ -1142,43 +1138,43 @@ entity EModels:
              108
         bipper_2246:
              %lemma
-             Биппер
+             Р‘РёРїРїРµСЂ
              Bipper
         traveller_19688:
              %lemma
-             Травелер
+             РўСЂР°РІРµР»РµСЂ
              Traveller
         2eractivetourer_143:
              %lemma
-             2ер Эктив Турер
+             2РµСЂ Р­РєС‚РёРІ РўСѓСЂРµСЂ
              2er Active Tourer
         ats_216:
              %lemma
-             АТС
+             РђРўРЎ
              ATS
         roox_2128:
              %lemma
-             Рукс
+             Р СѓРєСЃ
              Roox
         skylinecrossover_2133:
              %lemma
-             Скайлайн кроссовер
+             РЎРєР°Р№Р»Р°Р№РЅ РєСЂРѕСЃСЃРѕРІРµСЂ
              Skyline Crossover
         adam_1421:
              %lemma
-             Адам
+             РђРґР°Рј
              Adam
         a3_82:
              %lemma
-             А3
+             Рђ3
              A3
         m11a3_2248:
              %lemma
-             М11 (А3)
+             Рњ11 (Рђ3)
              M11 (A3)
         a7_88:
              %lemma
-             А7
+             Рђ7
              A7
         f5_2237:
              %lemma
@@ -1186,23 +1182,23 @@ entity EModels:
              F5
         elr_2219:
              %lemma
-             ЕЛР
+             Р•Р›Р 
              ELR
         vibe_1535:
              %lemma
-             Вайб
+             Р’Р°Р№Р±
              Vibe
         primastar_2226:
              %lemma
-             Примастар
+             РџСЂРёРјР°СЃС‚Р°СЂ
              Primastar
         nv350caravan_2244:
              %lemma
-             НВ350 Караван
+             РќР’350 РљР°СЂР°РІР°РЅ
              NV350 Caravan
         catalina_19707:
              %lemma
-             Каталина
+             РљР°С‚Р°Р»РёРЅР°
              Catalina
         911_1536:
              %lemma
@@ -1210,267 +1206,267 @@ entity EModels:
              911
         espace_1590:
              %lemma
-             Эспейс
+             Р­СЃРїРµР№СЃ
              Espace
         boxster_1544:
              %lemma
-             Бокстер
+             Р‘РѕРєСЃС‚РµСЂ
              Boxster
         cayenne_1546:
              %lemma
-             Кайен
+             РљР°Р№РµРЅ
              Cayenne
         cayman_1547:
              %lemma
-             Кайман
+             РљР°Р№РјР°РЅ
              Cayman
         macan_1548:
              %lemma
-             Макан
+             РњР°РєР°РЅ
              Macan
         panamera_1549:
              %lemma
-             Панамера
+             РџР°РЅР°РјРµСЂР°
              Panamera
         718boxster_19619:
              %lemma
-             718 Бокстер
+             718 Р‘РѕРєСЃС‚РµСЂ
              718 Boxster
         duster_1589:
              %lemma
-             Дастер
+             Р”Р°СЃС‚РµСЂ
              Duster
         tiggo5_2254:
              %lemma
-             Тиго 5
+             РўРёРіРѕ 5
              Tiggo 5
         bonus3e3a19_2253:
              %lemma
-             Бонус 3 
+             Р‘РѕРЅСѓСЃ 3 
              Bonus 3
         ttrs_2273:
              %lemma
-             ТТ-РС
+             РўРў-Р РЎ
              TT RS
         m6_211:
              %lemma
-             М6
+             Рњ6
              M6
         escalade_224:
              %lemma
-             Эскалейд
+             Р­СЃРєР°Р»РµР№Рґ
              Escalade
         i8_151:
              %lemma
-             Ай 8
+             РђР№ 8
              i8
         i3_150:
              %lemma
-             Ай 3
+             РђР№ 3
              i3
         ctsv_2322:
              %lemma
-             ЦТС В
+             Р¦РўРЎ Р’
              CTS-V
         911gt2_2361:
              %lemma
-             911 ГТ2
+             911 Р“Рў2
              911 GT2
         911gt3_2362:
              %lemma
-             911 ГТ3
+             911 Р“Рў3
              911 GT3
         kaptur_1587:
              %lemma
-             Каптур
+             РљР°РїС‚СѓСЂ
              Kaptur
         clio_1588:
              %lemma
-             Клио
+             РљР»РёРѕ
              Clio
         fluence_1592:
              %lemma
-             Флюенс
+             Р¤Р»СЋРµРЅСЃ
              Fluence
         qq6s21_254:
              %lemma
-             Куку6
+             РљСѓРєСѓ6
              QQ6 (S21)
         q5_94:
              %lemma
-             КУ5
+             РљРЈ5
              Q5
         q3_93:
              %lemma
-             КУ3
+             РљРЈ3
              Q3
         r8_97:
              %lemma
-             Р8
+             Р 8
              R8
         rs7_104:
              %lemma
-             РС7
+             Р РЎ7
              RS7
         h230_19137:
              %lemma
-             Х230
+             РҐ230
              H230
         srx_229:
              %lemma
-             СР Икс
+             РЎР  РРєСЃ
              SRX
         atsv_19064:
              %lemma
-             АТС-В
+             РђРўРЎ-Р’
              ATS-V
         lancerralliart_18967:
              %lemma
-             Лансер Раллиарт
+             Р›Р°РЅСЃРµСЂ Р Р°Р»Р»РёР°СЂС‚
              Lancer Ralliart
         attrage_19138:
              %lemma
-             Аттрадж
+             РђС‚С‚СЂР°РґР¶
              Attrage
         jukenismo_19072:
              %lemma
-             Жук Нисмо
+             Р–СѓРє РќРёСЃРјРѕ
              Juke Nismo
         karl_19074:
              %lemma
-             Карл
+             РљР°СЂР»
              Karl
         208gti_2386:
              %lemma
-             208 ГТИ
+             208 Р“РўР
              208 GTi
         ion_2387:
              %lemma
-             Ион
+             РРѕРЅ
              iOn
         918spyder_2388:
              %lemma
-             918 Спайдер
+             918 РЎРїР°Р№РґРµСЂ
              918 Spyder
         caymangt4_19075:
              %lemma
-             Кайман ГТ4
+             РљР°Р№РјР°РЅ Р“Рў4
              Cayman GT4
         kangoo_1594:
              %lemma
-             Кангу
+             РљР°РЅРіСѓ
              Kangoo
         q7_95:
              %lemma
-             КУ7
+             РљРЈ7
              Q7
         logan_1598:
              %lemma
-             Логан
+             Р›РѕРіР°РЅ
              Logan
         rs3_100:
              %lemma
-             РС3
+             Р РЎ3
              RS3
         tt_114:
              %lemma
-             ТТ
+             РўРў
              TT
         sts_230:
              %lemma
-             СТС
+             РЎРўРЎ
              STS
         308gti_19206:
              %lemma
-             308 ГТИ
+             308 Р“РўР
              308 GTi
         2ergrandtourer_19203:
              %lemma
-             2ер Гранд Турир
+             2РµСЂ Р“СЂР°РЅРґ РўСѓСЂРёСЂ
              2er Grand Tourer
         koleos_1595:
              %lemma
-             Колеос
+             РљРѕР»РµРѕСЃ
              Koleos
         laguna_1596:
              %lemma
-             Лагуна
+             Р›Р°РіСѓРЅР°
              Laguna
         latitude_1597:
              %lemma
-             Латитьюд
+             Р›Р°С‚РёС‚СЊСЋРґ
              Latitude
         megane_1599:
              %lemma
-             Меган
+             РњРµРіР°РЅ
              Megane
         crosseastarb14_249:
              %lemma
-             Кроссистер (Б14)
+             РљСЂРѕСЃСЃРёСЃС‚РµСЂ (Р‘14)
              CrossEastar (B14)
         dokker_2294:
              %lemma
-             Доккер
+             Р”РѕРєРєРµСЂ
              Dokker
         trafic_2230:
              %lemma
-             Трафик
+             РўСЂР°С„РёРє
              Trafic
         modus_1600:
              %lemma
-             Модус
+             РњРѕРґСѓСЃ
              Modus
         safrane_1602:
              %lemma
-             Сафран
+             РЎР°С„СЂР°РЅ
              Safrane
         scenic_1604:
              %lemma
-             Сценик
+             РЎС†РµРЅРёРє
              Scenic
         twingo_1607:
              %lemma
-             Твинго
+             РўРІРёРЅРіРѕ
              Twingo
         twizy_1608:
              %lemma
-             Твизи
+             РўРІРёР·Рё
              Twizy
         zoe_1611:
              %lemma
-             ЗОЕ
+             Р—РћР•
              ZOE
         wind_1610:
              %lemma
-             Вайнд
+             Р’Р°Р№РЅРґ
              Wind
         lodgy_2295:
              %lemma
-             Лоджи
+             Р›РѕРґР¶Рё
              Lodgy
         cliors_2363:
              %lemma
-             Клио РС
+             РљР»РёРѕ Р РЎ
              Clio RS
         meganers_2365:
              %lemma
-             Меган РС
+             РњРµРіР°РЅ Р РЎ
              Megane RS
         kadjar_19139:
              %lemma
-             Кадьяр
+             РљР°РґСЊСЏСЂ
              Kadjar
         talisman_19234:
              %lemma
-             Талисман
+             РўР°Р»РёСЃРјР°РЅ
              Talisman
         sanderors_19349:
              %lemma
-             Сандеро РС
+             РЎР°РЅРґРµСЂРѕ Р РЎ
              Sandero RS
         kwid_19395:
              %lemma
-             КВИД
+             РљР’РР”
              KWID
         hd78_100019784:
              %lemma
@@ -1478,7 +1474,7 @@ entity EModels:
              HD78
         altea_1668:
              %lemma
-             Альтея
+             РђР»СЊС‚РµСЏ
              Altea
         93_1636:
              %lemma
@@ -1486,7 +1482,7 @@ entity EModels:
              9-3
         94x_1637:
              %lemma
-             9-4Х
+             9-4РҐ
              9-4X
         95_1638:
              %lemma
@@ -1494,492 +1490,484 @@ entity EModels:
              9-5
         alhambra_1667:
              %lemma
-             Альхамбра
+             РђР»СЊС…Р°РјР±СЂР°
              Alhambra
         cordoba_1670:
              %lemma
-             Кордоба
+             РљРѕСЂРґРѕР±Р°
              Cordoba
         exeo_1671:
              %lemma
-             Эксео
+             Р­РєСЃРµРѕ
              Exeo
         ibiza_1673:
              %lemma
-             Ибица
+             РР±РёС†Р°
              Ibiza
         octavia_1686:
              %lemma
-             Октавия
+             РћРєС‚Р°РІРёСЏ
              Octavia
         premacy_1167:
              %lemma
-             Премаки
+             РџСЂРµРјР°РєРё
              Premacy
         rapid_1687:
              %lemma
-             Рапид
+             Р Р°РїРёРґ
              Rapid
         citigo_1682:
              %lemma
-             Цитиго
+             Р¦РёС‚РёРіРѕ
              Citigo
         leon_1674:
              %lemma
-             Леон
+             Р›РµРѕРЅ
              Leon
         toledo_1678:
              %lemma
-             Толедо
+             РўРѕР»РµРґРѕ
              Toledo
         fortwo_1692:
              %lemma
-             Форту
+             Р¤РѕСЂС‚Сѓ
              Fortwo
         ibizacupra_2367:
              %lemma
-             Ибица Купра
+             РР±РёС†Р° РљСѓРїСЂР°
              Ibiza Cupra
         leoncupra_2368:
              %lemma
-             Леон Купра
+             Р›РµРѕРЅ РљСѓРїСЂР°
              Leon Cupra
         mii_2389:
              %lemma
-             Мии
+             РњРёРё
              Mii
         ateca_19711:
              %lemma
-             Атека
+             РђС‚РµРєР°
              Ateca
         roomster_1688:
              %lemma
-             Румстер
+             Р СѓРјСЃС‚РµСЂ
              Roomster
         fabia_1683:
              %lemma
-             Фабия
+             Р¤Р°Р±РёСЏ
              Fabia
         fabiars_2369:
              %lemma
-             Фабия РС
+             Р¤Р°Р±РёСЏ Р РЎ
              Fabia RS
         octaviars_2370:
              %lemma
-             Октавия РС
+             РћРєС‚Р°РІРёСЏ Р РЎ
              Octavia RS
         forfour_1691:
              %lemma
-             Форфоу
+             Р¤РѕСЂС„РѕСѓ
              Forfour
         citan_1190:
              %lemma
-             Цитан
+             Р¦РёС‚Р°РЅ
              Citan
         slsamg_1207:
              %lemma
-             СЛС АМГ
+             РЎР›РЎ РђРњР“
              SLS AMG
         viano_1210:
              %lemma
-             Виано
+             Р’РёР°РЅРѕ
              Viano
         superb_1689:
              %lemma
-             Суперб
+             РЎСѓРїРµСЂР±
              Superb
         amggt_2280:
              %lemma
-             АМГ ГТ
+             РђРњР“ Р“Рў
              AMG GT
         vito_2225:
              %lemma
-             Вито
+             Р’РёС‚Рѕ
              Vito
         aklasse_1187:
              %lemma
-             А-класс
-             A-Класс
+             Рђ-РєР»Р°СЃСЃ
+             A-РљР»Р°СЃСЃ
         aklasseamg_2339:
              %lemma
-             А-класс АМГ
-             A-Класс AMG
+             Рђ-РєР»Р°СЃСЃ РђРњР“
+             A-РљР»Р°СЃСЃ AMG
         bklasse_1188:
              %lemma
-             Б-класс
-             B-Класс
+             Р‘-РєР»Р°СЃСЃ
+             B-РљР»Р°СЃСЃ
         cklasse_1189:
              %lemma
-             Ц-класс
-             C-Класс
+             Р¦-РєР»Р°СЃСЃ
+             C-РљР»Р°СЃСЃ
         eklasse_1196:
              %lemma
-             Е-класс
-             E-Класс
+             Р•-РєР»Р°СЃСЃ
+             E-РљР»Р°СЃСЃ
         claklasse_1192:
              %lemma
-             ЦЛА-класс
+             Р¦Р›Рђ-РєР»Р°СЃСЃ
              CLA
         eklasseamg_2345:
              %lemma
-             Е-класс АМГ
-             E-Класс AMG
+             Р•-РєР»Р°СЃСЃ РђРњР“
+             E-РљР»Р°СЃСЃ AMG
         gklasse_1197:
              %lemma
-             Г-класс
-             G-Класс
+             Р“-РєР»Р°СЃСЃ
+             G-РљР»Р°СЃСЃ
         sq7_19691:
              %lemma
-             С Ку 7
+             РЎ РљСѓ 7
              SQ7
         gklasseamg_2347:
              %lemma
-             Г-класс АМГ
-             G-Класс AMG
+             Р“-РєР»Р°СЃСЃ РђРњР“
+             G-РљР»Р°СЃСЃ AMG
         clsklasse_1195:
              %lemma
-             ЦЛС-класс
+             Р¦Р›РЎ-РєР»Р°СЃСЃ
              CLS
         gklasseamg6x6_2346:
              %lemma
-             Г-класс АМГ 6х6
-             G-Класс AMG 6x6
+             Р“-РєР»Р°СЃСЃ РђРњР“ 6С…6
+             G-РљР»Р°СЃСЃ AMG 6x6
         glaklasse_1199:
              %lemma
-             ГЛА-класс
+             Р“Р›Рђ-РєР»Р°СЃСЃ
              GLA
         glaklasseamg_2348:
              %lemma
-             ГЛА-класс АМГ
+             Р“Р›Рђ-РєР»Р°СЃСЃ РђРњР“
              GLA AMG
         glecoupeklasse_18966:
              %lemma
-             гле купе-класс
+             РіР»Рµ РєСѓРїРµ-РєР»Р°СЃСЃ
              GLE Coupe
         glecoupeklasseamg_18964:
              %lemma
-             гле купе-класс амг
+             РіР»Рµ РєСѓРїРµ-РєР»Р°СЃСЃ Р°РјРі
              GLE Coupe AMG
         gleklasse_18965:
              %lemma
-             гле-класс
+             РіР»Рµ-РєР»Р°СЃСЃ
              GLE
         gleklasseamg_18963:
              %lemma
-             гле-класс amg
+             РіР»Рµ-РєР»Р°СЃСЃ amg
              GLE AMG
         glklasse_1198:
              %lemma
-             ГЛ-класс
-             GL-Класс
+             Р“Р›-РєР»Р°СЃСЃ
+             GL-РљР»Р°СЃСЃ
         glklasseamg_18880:
              %lemma
-             ГЛ-класс АМГ
-             GL-Класс AMG
+             Р“Р›-РєР»Р°СЃСЃ РђРњР“
+             GL-РљР»Р°СЃСЃ AMG
         glsklasse_19463:
              %lemma
-             ГЛС-класс
+             Р“Р›РЎ-РєР»Р°СЃСЃ
              GLS
         glsklasseamg_19464:
              %lemma
-             ГЛС-класс АМГ
+             Р“Р›РЎ-РєР»Р°СЃСЃ РђРњР“
              GLS AMG
         maybachsklasse_2350:
              %lemma
-             Майбах С-класс
-             Maybach S-Класс
+             РњР°Р№Р±Р°С… РЎ-РєР»Р°СЃСЃ
+             Maybach S-РљР»Р°СЃСЃ
         mklasse_1201:
              %lemma
-             М-класс
-             M-Класс
+             Рњ-РєР»Р°СЃСЃ
+             M-РљР»Р°СЃСЃ
         mklasseamg_2349:
              %lemma
-             М-класс АМГ
-             M-Класс AMG
+             Рњ-РєР»Р°СЃСЃ РђРњР“
+             M-РљР»Р°СЃСЃ AMG
         rklasseamg_2351:
              %lemma
-             Р-класс Амг
-             R-Класс AMG
+             Р -РєР»Р°СЃСЃ РђРјРі
+             R-РљР»Р°СЃСЃ AMG
         sklasse_1203:
              %lemma
-             С-класс
-             S-Класс
+             РЎ-РєР»Р°СЃСЃ
+             S-РљР»Р°СЃСЃ
         sklasseamg_2352:
              %lemma
-             С-класс АМГ
-             S-Класс AMG
+             РЎ-РєР»Р°СЃСЃ РђРњР“
+             S-РљР»Р°СЃСЃ AMG
         slcklasseamg_19573:
              %lemma
-             СЛЦ-класс АМГ
+             РЎР›Р¦-РєР»Р°СЃСЃ РђРњР“
              SLC AMG
         slkklasse_1205:
              %lemma
-             СЛК-класс
-             SLK-Класс
+             РЎР›Рљ-РєР»Р°СЃСЃ
+             SLK-РљР»Р°СЃСЃ
         slkklasseamg_2354:
              %lemma
-             СЛК-класс АМГ
-             SLK-Класс AMG
+             РЎР›Рљ-РєР»Р°СЃСЃ РђРњР“
+             SLK-РљР»Р°СЃСЃ AMG
         slklasse_1204:
              %lemma
-             СЛ-класс
-             SL-Класс
+             РЎР›-РєР»Р°СЃСЃ
+             SL-РљР»Р°СЃСЃ
         slklasseamg_2353:
              %lemma
-             СЛ-класс АМГ
-             SL-Класс AMG
+             РЎР›-РєР»Р°СЃСЃ РђРњР“
+             SL-РљР»Р°СЃСЃ AMG
         vklasse_18881:
              %lemma
-             В-класс
-             V-Класс
-        2_1123:
-             %lemma
-             2
-             2
-        3_1124:
-             %lemma
-             3
-             3
+             Р’-РєР»Р°СЃСЃ
+             V-РљР»Р°СЃСЃ
         q8_100019824:
              %lemma
-             ку8
-             ку 8
+             РєСѓ8
+             РєСѓ 8
              Q8
         x7_100019825:
              %lemma
-             икс7
+             РёРєСЃ7
              X7
         c4spacetourer_100019826:
              %lemma
-             спэйстурер
+             СЃРїСЌР№СЃС‚СѓСЂРµСЂ
              C4 SpaceTourer
         k900_100019827:
              %lemma
-             к900
+             Рє900
              K900
         xlv_100019828:
              %lemma
-             иксэлви
+             РёРєСЃСЌР»РІРё
              XLV
         clubman_1256:
              %lemma
-             Клубман
+             РљР»СѓР±РјР°РЅ
              Clubman
         countryman_1258:
              %lemma
-             Каунтримэн
+             РљР°СѓРЅС‚СЂРёРјСЌРЅ
              Countryman
         fe_100019741:
              %lemma
-             ФИИ
+             Р¤РР
              FE
         lancer_1293:
              %lemma
-             Лансер
+             Р›Р°РЅСЃРµСЂ
              Lancer
         q2_19690:
              %lemma
-             Ку 2
+             РљСѓ 2
              Q2
         octaviascout_100019751:
              %lemma
-             Октавия Скаут
+             РћРєС‚Р°РІРёСЏ РЎРєР°СѓС‚
              Octavia Scout
         sprinter_100019734:
              %lemma
-             Спринтер
+             РЎРїСЂРёРЅС‚РµСЂ
              Sprinter
         transit_100019715:
              %lemma
-             Транзит
+             РўСЂР°РЅР·РёС‚
              Transit
         porter_100019733:
              %lemma
-             Портер
+             РџРѕСЂС‚РµСЂ
              Porter
         l200_1290:
              %lemma
-             Л200
+             Р›200
              L200
         bongo_100019732:
              %lemma
-             Бонго
+             Р‘РѕРЅРіРѕ
              Bongo
         lancerevolution_1292:
              %lemma
-             Лансер Эволюшин
+             Р›Р°РЅСЃРµСЂ Р­РІРѕР»СЋС€РёРЅ
              Lancer Evolution
         crafter_100019722:
              %lemma
-             Крафтер
+             РљСЂР°С„С‚РµСЂ
              Crafter
         sanderostepway_100019753:
              %lemma
-             Сандеро Степвэй
+             РЎР°РЅРґРµСЂРѕ РЎС‚РµРїРІСЌР№
              Sandero Stepway
         allion_1793:
              %lemma
-             Аллион
+             РђР»Р»РёРѕРЅ
              Allion
         creta_100019750:
              %lemma
-             Крета
+             РљСЂРµС‚Р°
              Creta
         rangerovervelar_20997:
              %lemma
-             Ровер Велар Ассортимент
+             Р РѕРІРµСЂ Р’РµР»Р°СЂ РђСЃСЃРѕСЂС‚РёРјРµРЅС‚
              Range Rover Velar
         clcklasse_1193:
              %lemma
-             ЦЛЦ-класс
-             CLC-Класс
+             Р¦Р›Р¦-РєР»Р°СЃСЃ
+             CLC-РљР»Р°СЃСЃ
         glcklasse_19205:
              %lemma
-             ГЛЦ-класс
+             Р“Р›Р¦-РєР»Р°СЃСЃ
              GLC
         rklasse_1202:
              %lemma
-             Р-класс
-             R-Класс
+             Р -РєР»Р°СЃСЃ
+             R-РљР»Р°СЃСЃ
         slcklasse_19574:
              %lemma
-             СЛЦ-класс
+             РЎР›Р¦-РєР»Р°СЃСЃ
              SLC
         r4_20959:
              %lemma
-             Р4
+             Р 4
              R4
         symbol_1606:
              %lemma
-             Символ
+             РЎРёРјРІРѕР»
              Symbol
         avalanche_261:
              %lemma
-             Эвэлэнч
+             Р­РІСЌР»СЌРЅС‡
              Avalanche
         caprice_268:
              %lemma
-             Каприз
+             РљР°РїСЂРёР·
              Caprice
         captiva_269:
              %lemma
-             Каптива
+             РљР°РїС‚РёРІР°
              Captiva
         cobalt_276:
              %lemma
-             Кобальт
+             РљРѕР±Р°Р»СЊС‚
              Cobalt
         colorado_277:
              %lemma
-             Колорадо
+             РљРѕР»РѕСЂР°РґРѕ
              Colorado
         corvette_280:
              %lemma
-             Корвет
+             РљРѕСЂРІРµС‚
              Corvette
         epica_283:
              %lemma
-             Эпика
+             Р­РїРёРєР°
              Epica
         equinox_284:
              %lemma
-             Эквинокс
+             Р­РєРІРёРЅРѕРєСЃ
              Equinox
         impala_288:
              %lemma
-             Импала
+             РРјРїР°Р»Р°
              Impala
         lumina_292:
              %lemma
-             Люмина
+             Р›СЋРјРёРЅР°
              Lumina
         luvdmax_294:
              %lemma
-             ЛЮВ Д-МАКС
+             Р›Р®Р’ Р”-РњРђРљРЎ
              LUV D-MAX
         malibu_295:
              %lemma
-             Малибу
+             РњР°Р»РёР±Сѓ
              Malibu
         orlando_303:
              %lemma
-             Орландо
+             РћСЂР»Р°РЅРґРѕ
              Orlando
         sail_307:
              %lemma
-             Сэил
+             РЎСЌРёР»
              Sail
         sonic_308:
              %lemma
-             Соник
+             РЎРѕРЅРёРє
              Sonic
         spark_309:
              %lemma
-             Спарк
+             РЎРїР°СЂРє
              Spark
         suburban_312:
              %lemma
-             Субурбан
+             РЎСѓР±СѓСЂР±Р°РЅ
              Suburban
         tahoe_313:
              %lemma
-             Тахо
+             РўР°С…Рѕ
              Tahoe
         tavera_314:
              %lemma
-             Травера
+             РўСЂР°РІРµСЂР°
              Tavera
         tracker_315:
              %lemma
-             Трэкер
+             РўСЂСЌРєРµСЂ
              Tracker
         trailblazer_316:
              %lemma
-             Трейлблейзер
+             РўСЂРµР№Р»Р±Р»РµР№Р·РµСЂ
              TrailBlazer
         traverse_2102:
              %lemma
-             Траверс
+             РўСЂР°РІРµСЂСЃ
              Traverse
         celta_272:
              %lemma
-             Целта
+             Р¦РµР»С‚Р°
              Celta
         camaro_267:
              %lemma
-             Камаро
+             РљР°РјР°СЂРѕ
              Camaro
         glcklasseamg_19701:
              %lemma
-             ГЛЦ-класс АМГ
+             Р“Р›Р¦-РєР»Р°СЃСЃ РђРњР“
              GLC AMG
         gentra_19401:
              %lemma
-             Гентра
+             Р“РµРЅС‚СЂР°
              Gentra
         r2_19620:
              %lemma
-             Р2
+             Р 2
              R2
         nexiar3_19406:
              %lemma
-             Нексия Р3
+             РќРµРєСЃРёСЏ Р 3
              Nexia R3
         volt_2108:
              %lemma
-             Вольт
+             Р’РѕР»СЊС‚
              Volt
         silverado_2220:
              %lemma
-             Сильверадо
+             РЎРёР»СЊРІРµСЂР°РґРѕ
              Silverado
         ss_2255:
              %lemma
-             СС
+             РЎРЎ
              SS
         bolt_19569:
              %lemma
-             Болт
+             Р‘РѕР»С‚
              Bolt
         300c_319:
              %lemma
@@ -1987,607 +1975,607 @@ entity EModels:
              300C
         aspen_321:
              %lemma
-             Аспен
+             РђСЃРїРµРЅ
              Aspen
         nassau_331:
              %lemma
-             Нассау
+             РќР°СЃСЃР°Сѓ
              Nassau
         pacifica_334:
              %lemma
-             Пацифика
+             РџР°С†РёС„РёРєР°
              Pacifica
         sebring_338:
              %lemma
-             Себринг
+             РЎРµР±СЂРёРЅРі
              Sebring
         voyager_344:
              %lemma
-             Вояжер
+             Р’РѕСЏР¶РµСЂ
              Voyager
         300csrt8_2323:
              %lemma
-             300Ц SRT8
+             300Р¦ SRT8
              300C SRT8
         berlingo_348:
              %lemma
-             Берлинго
+             Р‘РµСЂР»РёРЅРіРѕ
              Berlingo
         ccrosser_350:
              %lemma
-             Ц-Кроссер
+             Р¦-РљСЂРѕСЃСЃРµСЂ
              C-Crosser
         celysee_351:
              %lemma
-             Ц-Элизи
+             Р¦-Р­Р»РёР·Рё
              C-Elysee
         c1_352:
              %lemma
-             Ц1
+             Р¦1
              C1
         c2_353:
              %lemma
-             Ц2
+             Р¦2
              C2
         c3_354:
              %lemma
-             Ц3
+             Р¦3
              C3
         tl_18:
              %lemma
-             ТЛ
+             РўР›
              TL
         c3picasso_355:
              %lemma
-             Ц3 Пикассо
+             Р¦3 РџРёРєР°СЃСЃРѕ
              C3 Picasso
         c4aircross_356:
              %lemma
-             Ц4 Эиркрос
+             Р¦4 Р­РёСЂРєСЂРѕСЃ
              C4 Aircross
         c4cactus_357:
              %lemma
-             Ц4 Кактус
+             Р¦4 РљР°РєС‚СѓСЃ
              C4 Cactus
         c4picasso_359:
              %lemma
-             Ц4 Пикасо
+             Р¦4 РџРёРєР°СЃРѕ
              C4 Picasso
         c5_360:
              %lemma
-             Ц5
+             Р¦5
              C5
         c8_362:
              %lemma
-             Ц8
+             Р¦8
              C8
         ds3_364:
              %lemma
-             ДС3
+             Р”РЎ3
              DS3
         ds5_366:
              %lemma
-             ДС5
+             Р”РЎ5
              DS5
         towncountry_341:
              %lemma
-             Город и страна
+             Р“РѕСЂРѕРґ Рё СЃС‚СЂР°РЅР°
              Town Country
         ds4_365:
              %lemma
-             ДС4
+             Р”РЎ4
              DS4
         jumpy_2221:
              %lemma
-             Джампи
+             Р”Р¶Р°РјРїРё
              Jumpy
         czero_2383:
              %lemma
-             Ц Зеро
+             Р¦ Р—РµСЂРѕ
              C-ZERO
         sandero_388:
              %lemma
-             Сандеро
+             РЎР°РЅРґРµСЂРѕ
              Sandero
         g2x_398:
              %lemma
-             Г2Х
+             Р“2РҐ
              G2X
         nexia_409:
              %lemma
-             Нексия
+             РќРµРєСЃРёСЏ
              Nexia
         tosca_416:
              %lemma
-             Тоска
+             РўРѕСЃРєР°
              Tosca
         winstorm_417:
              %lemma
-             Винсторм
+             Р’РёРЅСЃС‚РѕСЂРј
              Winstorm
         altis_420:
              %lemma
-             Алтис
+             РђР»С‚РёСЃ
              Altis
         bego_423:
              %lemma
-             Би-Го
+             Р‘Рё-Р“Рѕ
              Be-go
         coo_428:
              %lemma
-             Соо
+             РЎРѕРѕ
              Coo
         copen_429:
              %lemma
-             Купен
+             РљСѓРїРµРЅ
              Copen
         cuore_430:
              %lemma
-             Квор
+             РљРІРѕСЂ
              Cuore
         esse_432:
              %lemma
-             Эссе
+             Р­СЃСЃРµ
              Esse
         materia_436:
              %lemma
-             Материя
+             РњР°С‚РµСЂРёСЏ
              Materia
         mira_439:
              %lemma
-             Мира
+             РњРёСЂР°
              Mira
         move_440:
              %lemma
-             Муви
+             РњСѓРІРё
              Move
         sonica_446:
              %lemma
-             Соника
+             РЎРѕРЅРёРєР°
              Sonica
         tanto_449:
              %lemma
-             Танто
+             РўР°РЅС‚Рѕ
              Tanto
         terios_450:
              %lemma
-             Териос
+             РўРµСЂРёРѕСЃ
              Terios
         trevis_451:
              %lemma
-             Тревис
+             РўСЂРµРІРёСЃ
              Trevis
         go_467:
              %lemma
-             Гоу
+             Р“РѕСѓ
              GO
         ondo_469:
              %lemma
-             Он-Ду
+             РћРЅ-Р”Сѓ
              on-DO
         mido_2268:
              %lemma
-             Ми-Ду
+             РњРё-Р”Сѓ
              mi-DO
         avenger_488:
              %lemma
-             Эвенджер
+             Р­РІРµРЅРґР¶РµСЂ
              Avenger
         caliber_489:
              %lemma
-             Калибер
+             РљР°Р»РёР±РµСЂ
              Caliber
         dodgecaravan_490:
              %lemma
-             Караван
+             РљР°СЂР°РІР°РЅ
              Caravan
         challenger_491:
              %lemma
-             Челенджер
+             Р§РµР»РµРЅРґР¶РµСЂ
              Challenger
         dakota_493:
              %lemma
-             Дакота
+             Р”Р°РєРѕС‚Р°
              Dakota
         dart_494:
              %lemma
-             Дарт
+             Р”Р°СЂС‚
              Dart
         durango_496:
              %lemma
-             Дуранго
+             Р”СѓСЂР°РЅРіРѕ
              Durango
         journey_500:
              %lemma
-             Джорни
+             Р”Р¶РѕСЂРЅРё
              Journey
         nitro_504:
              %lemma
-             Нитро
+             РќРёС‚СЂРѕ
              Nitro
         viper_512:
              %lemma
-             Вайпер
+             Р’Р°Р№РїРµСЂ
              Viper
         ram_506:
              %lemma
-             Рам
+             Р Р°Рј
              RAM
         charger_492:
              %lemma
-             Чарджер
+             Р§Р°СЂРґР¶РµСЂ
              Charger
         besturnb50_530:
              %lemma
-             Бэстурн Б50
+             Р‘СЌСЃС‚СѓСЂРЅ Р‘50
              Besturn B50
         besturnb70_531:
              %lemma
-             Бестурн Б70
+             Р‘РµСЃС‚СѓСЂРЅ Р‘70
              Besturn B70
         oley_536:
              %lemma
-             Олей
+             РћР»РµР№
              Oley
         v2_537:
              %lemma
-             В2
+             Р’2
              V2
         vita_539:
              %lemma
-             Вита
+             Р’РёС‚Р°
              Vita
         besturnx80_2257:
              %lemma
-             Бестурн Х80
+             Р‘РµСЃС‚СѓСЂРЅ РҐ80
              Besturn X80
         500l_575:
              %lemma
-             500Л
+             500Р›
              500L
         croma_585:
              %lemma
-             Крома
+             РљСЂРѕРјР°
              Croma
         fiorino_588:
              %lemma
-             Фьёрино
+             Р¤СЊС‘СЂРёРЅРѕ
              Fiorino
         freemont_589:
              %lemma
-             Фримонт
+             Р¤СЂРёРјРѕРЅС‚
              Freemont
         linea_591:
              %lemma
-             Линия
+             Р›РёРЅРёСЏ
              Linea
         palio_594:
              %lemma
-             Палио
+             РџР°Р»РёРѕ
              Palio
         panda_595:
              %lemma
-             Панда
+             РџР°РЅРґР°
              Panda
         qubo_597:
              %lemma
-             Кубо
+             РљСѓР±Рѕ
              Qubo
         punto_596:
              %lemma
-             Пунто
+             РџСѓРЅС‚Рѕ
              Punto
         bravo_582:
              %lemma
-             Браво
+             Р‘СЂР°РІРѕ
              Bravo
         doblo_586:
              %lemma
-             Добло
+             Р”РѕР±Р»Рѕ
              Doblo
         tipo_606:
              %lemma
-             Типо
+             РўРёРїРѕ
              Tipo
         scudo_2222:
              %lemma
-             Скудо
+             РЎРєСѓРґРѕ
              Scudo
         500x_2292:
              %lemma
-             500х
+             500С…
              500X
         bmax_613:
              %lemma
-             Б-Макс
+             Р‘-РњР°РєСЃ
              B-MAX
         cmax_615:
              %lemma
-             Ц-Макс
+             Р¦-РњР°РєСЃ
              C-MAX
         escape_624:
              %lemma
-             Эскейп
+             Р­СЃРєРµР№Рї
              Escape
         everest_627:
              %lemma
-             Эверест
+             Р­РІРµСЂРµСЃС‚
              Everest
         explorer_630:
              %lemma
-             Эксплорер
+             Р­РєСЃРїР»РѕСЂРµСЂ
              Explorer
         f150_631:
              %lemma
-             Ф 150
+             Р¤ 150
              F-150
         fiesta_634:
              %lemma
-             Фиеста
+             Р¤РёРµСЃС‚Р°
              Fiesta
         fusionnorthamerica_640:
              %lemma
-             Фьюжн (Северная Америка)
+             Р¤СЊСЋР¶РЅ (РЎРµРІРµСЂРЅР°СЏ РђРјРµСЂРёРєР°)
              Fusion (North America)
         ka_647:
              %lemma
-             Ка
+             РљР°
              KA
         kuga_648:
              %lemma
-             Куга
+             РљСѓРіР°
              Kuga
         ranger_658:
              %lemma
-             Рэйнджер
+             Р СЌР№РЅРґР¶РµСЂ
              Ranger
         smax_659:
              %lemma
-             С макс
+             РЎ РјР°РєСЃ
              S-MAX
         taurus_664:
              %lemma
-             Таурис
+             РўР°СѓСЂРёСЃ
              Taurus
         taurusx_665:
              %lemma
-             Таурис Икс
+             РўР°СѓСЂРёСЃ РРєСЃ
              Taurus X
         tourneoconnect_668:
              %lemma
-             Турнео Коннект
+             РўСѓСЂРЅРµРѕ РљРѕРЅРЅРµРєС‚
              Tourneo Connect
         flex_636:
              %lemma
-             Флекс
+             Р¤Р»РµРєСЃ
              Flex
         tourneocustom_2239:
              %lemma
-             Турнео Кастом
+             РўСѓСЂРЅРµРѕ РљР°СЃС‚РѕРј
              Tourneo Custom
         tourneocourier_2275:
              %lemma
-             Торнео Коурир
+             РўРѕСЂРЅРµРѕ РљРѕСѓСЂРёСЂ
              Tourneo Courier
         mustang_653:
              %lemma
-             Мустанг
+             РњСѓСЃС‚Р°РЅРі
              Mustang
         galaxy_642:
              %lemma
-             Гэлекси
+             Р“СЌР»РµРєСЃРё
              Galaxy
         expedition_629:
              %lemma
-             Экспедиция
+             Р­РєСЃРїРµРґРёС†РёСЏ
              Expedition
         edge_623:
              %lemma
-             Эдж
+             Р­РґР¶
              Edge
         ecosport_622:
              %lemma
-             Экоспорт
+             Р­РєРѕСЃРїРѕСЂС‚
              EcoSport
         focusnorthamerica_2293:
              %lemma
-             Фокус (Северная Америка)
+             Р¤РѕРєСѓСЃ (РЎРµРІРµСЂРЅР°СЏ РђРјРµСЂРёРєР°)
              Focus (North America)
         fiestast_2324:
              %lemma
-             Фиеста СТ
+             Р¤РёРµСЃС‚Р° РЎРў
              Fiesta ST
         s40_1952:
              %lemma
-             С40
+             РЎ40
              S40
         focusrs_2327:
              %lemma
-             Фокус РС
+             Р¤РѕРєСѓСЃ Р РЎ
              Focus RS
         focusst_2328:
              %lemma
-             Фокус СТ
+             Р¤РѕРєСѓСЃ РЎРў
              Focus ST
         explorersporttrac_19066:
              %lemma
-             Эксплорер Спорт Трэк
+             Р­РєСЃРїР»РѕСЂРµСЂ РЎРїРѕСЂС‚ РўСЂСЌРє
              Explorer Sport Trac
         emgrandec7_680:
              %lemma
-             Эмгранд ес7
+             Р­РјРіСЂР°РЅРґ РµСЃ7
              Emgrand EC7
         emgrandec8_681:
              %lemma
-             Эмгранд ес8
+             Р­РјРіСЂР°РЅРґ РµСЃ8
              Emgrand EC8
         emgrandx7_682:
              %lemma
-             Эмгранд х7
+             Р­РјРіСЂР°РЅРґ С…7
              Emgrand X7
         fcvision_683:
              %lemma
-             ФЦ (Вижин)
+             Р¤Р¦ (Р’РёР¶РёРЅ)
              FC (Vision)
         gc6_2111:
              %lemma
-             ГС6
+             Р“РЎ6
              GC6
         sc7_2258:
              %lemma
-             СЦ 7
+             РЎР¦ 7
              SC7
         gc9_19069:
              %lemma
-             ГЦ9
+             Р“Р¦9
              GC9
         coolbear_710:
              %lemma
-             Кулбир
+             РљСѓР»Р±РёСЂ
              Coolbear
         cowryv80_711:
              %lemma
-             Коври
+             РљРѕРІСЂРё
              Cowry (V80)
         florid_713:
              %lemma
-             Флорид
+             Р¤Р»РѕСЂРёРґ
              Florid
         hoverm1peri4x4_715:
              %lemma
-             Ховер М1 (Пери 4x4)
+             РҐРѕРІРµСЂ Рњ1 (РџРµСЂРё 4x4)
              Hover M1 (Peri 4x4)
         hoverm2_716:
              %lemma
-             Ховер М2
+             РҐРѕРІРµСЂ Рњ2
              Hover M2
         hoverm4_717:
              %lemma
-             Ховер М4
+             РҐРѕРІРµСЂ Рњ4
              Hover M4
         pegasus_718:
              %lemma
-             Пегасус
+             РџРµРіР°СЃСѓСЃ
              Pegasus
         peri_719:
              %lemma
-             Пери
+             РџРµСЂРё
              Peri
         singruv_722:
              %lemma
-             Синг Рув
+             РЎРёРЅРі Р СѓРІ
              Sing RUV
         socool_723:
              %lemma
-             Сокул
+             РЎРѕРєСѓР»
              Socool
         lcpanda_685:
              %lemma
-             ЛЦ (Панда)
+             Р›Р¦ (РџР°РЅРґР°)
              LC (Panda)
         ckotaka_679:
              %lemma
-             ЦК (Отака)
+             Р¦Рљ (РћС‚Р°РєР°)
              CK (Otaka)
         mk_688:
              %lemma
-             МК
+             РњРљ
              MK
         mkcross_687:
              %lemma
-             МК Кросс
+             РњРљ РљСЂРѕСЃСЃ
              MK Cross
         voleexc10phenom_724:
              %lemma
-             Воликс С10 (Феном)
+             Р’РѕР»РёРєСЃ РЎ10 (Р¤РµРЅРѕРј)
              Voleex C10 (Phenom)
         wingle_725:
              %lemma
-             Вингл Ап
+             Р’РёРЅРіР» РђРї
              Wingle
         hoverh6_2278:
              %lemma
-             Ховер H6
+             РҐРѕРІРµСЂ H6
              Hover H6
         voleexc30_5811:
              %lemma
-             Воликс С30
+             Р’РѕР»РёРєСЃ РЎ30
              Voleex C30
         airwave_754:
              %lemma
-             Эирвейв
+             Р­РёСЂРІРµР№РІ
              Airwave
         avancier_756:
              %lemma
-             Аванцер
+             РђРІР°РЅС†РµСЂ
              Avancier
         crv_763:
              %lemma
-             СРВ
+             РЎР Р’
              CR-V
         fcxclarity_772:
              %lemma
-             ФЦИкс Кларити
+             Р¤Р¦РРєСЃ РљР»Р°СЂРёС‚Рё
              FCX Clarity
         hrv_777:
              %lemma
-             ХР-В
+             РҐР -Р’
              HR-V
         inspire_779:
              %lemma
-             Инспайр
+             РРЅСЃРїР°Р№СЂ
              Inspire
         jazz_782:
              %lemma
-             Джаз
+             Р”Р¶Р°Р·
              Jazz
         legend_783:
              %lemma
-             Легенда
+             Р›РµРіРµРЅРґР°
              Legend
         life_784:
              %lemma
-             Лайф
+             Р›Р°Р№С„
              Life
         mobilio_787:
              %lemma
-             Мобилио
+             РњРѕР±РёР»РёРѕ
              Mobilio
         nsx_788:
              %lemma
-             НСХ
+             РќРЎРҐ
              NSX
         odysseynorthamerica_789:
              %lemma
-             Одиссей (Северная Америка)
+             РћРґРёСЃСЃРµР№ (РЎРµРІРµСЂРЅР°СЏ РђРјРµСЂРёРєР°)
              Odyssey (North America)
         pilot_794:
              %lemma
-             Пилот
+             РџРёР»РѕС‚
              Pilot
         civic_761:
              %lemma
-             Цивик
+             Р¦РёРІРёРє
              Civic
         accord_753:
              %lemma
-             Аккорд
+             РђРєРєРѕСЂРґ
              Accord
         elysion_771:
              %lemma
-             Элижн
+             Р­Р»РёР¶РЅ
              Elysion
         odyssey_790:
              %lemma
-             Одиссей
+             РћРґРёСЃСЃРµР№
              Odyssey
         city_759:
              %lemma
-             Сити
+             РЎРёС‚Рё
              City
         crossroad_766:
              %lemma
-             Кроссроад
+             РљСЂРѕСЃСЃСЂРѕР°Рґ
              Crossroad
         crz_765:
              %lemma
@@ -2595,735 +2583,735 @@ entity EModels:
              CR-Z
         ridgeline_798:
              %lemma
-             Риджлайн
+             Р РёРґР¶Р»Р°Р№РЅ
              Ridgeline
         zest_811:
              %lemma
-             Зест
+             Р—РµСЃС‚
              Zest
         civictyper_2330:
              %lemma
-             Цивик Тип Р
+             Р¦РёРІРёРє РўРёРї Р 
              Civic Type R
         accent_818:
              %lemma
-             Акцент
+             РђРєС†РµРЅС‚
              Accent
         hyundaicoupe_822:
              %lemma
-             Купе
+             РљСѓРїРµ
              Coupe
         equus_825:
              %lemma
-             Эквус
+             Р­РєРІСѓСЃ
              Equus
         hyundaigenesis_828:
              %lemma
-             Генезис
+             Р“РµРЅРµР·РёСЃ
              Genesis
         grandeur_831:
              %lemma
-             Грандеур
+             Р“СЂР°РЅРґРµСѓСЂ
              Grandeur
         i10_832:
              %lemma
-             ай 10
+             Р°Р№ 10
              i10
         i20_833:
              %lemma
-             ай 20
+             Р°Р№ 20
              i20
         ix20_836:
              %lemma
-             ай икс 20
+             Р°Р№ РёРєСЃ 20
              ix20
         ix55_838:
              %lemma
-             Ай Икс 55
+             РђР№ РРєСЃ 55
              ix55
         maxcruz_843:
              %lemma
-             Макскруз
+             РњР°РєСЃРєСЂСѓР·
              Maxcruz
         sonata_849:
              %lemma
-             Соната
+             РЎРѕРЅР°С‚Р°
              Sonata
         starexh1_850:
              %lemma
-             Старекс H-1
+             РЎС‚Р°СЂРµРєСЃ H-1
              Starex (H-1)
         tiburon_853:
              %lemma
-             Тубирон
+             РўСѓР±РёСЂРѕРЅ
              Tiburon
         veloster_857:
              %lemma
-             Велостер
+             Р’РµР»РѕСЃС‚РµСЂ
              Veloster
         veracruz_858:
              %lemma
-             Веракруз
+             Р’РµСЂР°РєСЂСѓР·
              Veracruz
         aslan_2285:
              %lemma
-             Аслан
+             РђСЃР»Р°РЅ
              Aslan
         i40_835:
              %lemma
-             ай 40
+             Р°Р№ 40
              i40
         ix35_837:
              %lemma
-             ай икс 35
+             Р°Р№ РёРєСЃ 35
              ix35
         i30_834:
              %lemma
-             ай 30
+             Р°Р№ 30
              i30
         santafe_845:
              %lemma
-             Санта Фе
+             РЎР°РЅС‚Р° Р¤Рµ
              Santa Fe
         stream_804:
              %lemma
-             Стрим
+             РЎС‚СЂРёРј
              Stream
         vezel_2224:
              %lemma
-             Везель
+             Р’РµР·РµР»СЊ
              Vezel
         avante_820:
              %lemma
-             Аванте
+             РђРІР°РЅС‚Рµ
              Avante
         matrix_842:
              %lemma
-             Матрикс
+             РњР°С‚СЂРёРєСЃ
              Matrix
         tucson_855:
              %lemma
-             Туксон
+             РўСѓРєСЃРѕРЅ
              Tucson
         tlx_2265:
              %lemma
-             ТЛХ
+             РўР›РҐ
              TLX
         csx_6:
              %lemma
-             ЦСИкс
+             Р¦РЎРРєСЃ
              CSX
         ilx_8:
              %lemma
-             Ай Эл Икс
+             РђР№ Р­Р» РРєСЃ
              ILX
         rdx_13:
              %lemma
-             РДХ
+             Р Р”РҐ
              RDX
         rl_14:
              %lemma
-             РЛ
+             Р Р›
              RL
         rlx_15:
              %lemma
-             РЛХ
+             Р Р›РҐ
              RLX
         tsx_19:
              %lemma
-             ТСХ
+             РўРЎРҐ
              TSX
         zdx_20:
              %lemma
-             ЗДХ
+             Р—Р”РҐ
              ZDX
         actyonsports_1700:
              %lemma
-             Актион Спорт
+             РђРєС‚РёРѕРЅ РЎРїРѕСЂС‚
              Actyon Sports
         chairman_1701:
              %lemma
-             Шарман
+             РЁР°СЂРјР°РЅ
              Chairman
         korando_1704:
              %lemma
-             Корандо
+             РљРѕСЂР°РЅРґРѕ
              Korando
         kyron_1705:
              %lemma
-             Кайрон
+             РљР°Р№СЂРѕРЅ
              Kyron
         rexton_1707:
              %lemma
-             Рекстон
+             Р РµРєСЃС‚РѕРЅ
              Rexton
         rodius_1708:
              %lemma
-             Родиус
+             Р РѕРґРёСѓСЃ
              Rodius
         stavic_1709:
              %lemma
-             Ставик
+             РЎС‚Р°РІРёРє
              Stavic
         korandosports_2281:
              %lemma
-             Корандо Спортс
+             РљРѕСЂР°РЅРґРѕ РЎРїРѕСЂС‚СЃ
              Korando Sports
         nomad_19140:
              %lemma
-             Номанд
+             РќРѕРјР°РЅРґ
              Nomad
         tivoli_19208:
              %lemma
-             Тиволи
+             РўРёРІРѕР»Рё
              Tivoli
         brz_1712:
              %lemma
-             БРЗ
+             Р‘Р Р—
              BRZ
         dex_1713:
              %lemma
-             Декс
+             Р”РµРєСЃ
              Dex
         justy_1718:
              %lemma
-             Юсти
+             Р®СЃС‚Рё
              Justy
         legacy_1719:
              %lemma
-             Легаси
+             Р›РµРіР°СЃРё
              Legacy
         impreza_1717:
              %lemma
-             Импреза
+             РРјРїСЂРµР·Р°
              Impreza
         exiga_1715:
              %lemma
-             Эксига
+             Р­РєСЃРёРіР°
              Exiga
         lucra_1722:
              %lemma
-             Люкра
+             Р›СЋРєСЂР°
              Lucra
         outback_1723:
              %lemma
-             Аутбек
+             РђСѓС‚Р±РµРє
              Outback
         pleo_1724:
              %lemma
-             Плео
+             РџР»РµРѕ
              Pleo
         sambar_1727:
              %lemma
-             Самбар
+             РЎР°РјР±Р°СЂ
              Sambar
         stella_1728:
              %lemma
-             Стелла
+             РЎС‚РµР»Р»Р°
              Stella
         trezia_1731:
              %lemma
-             Трезья
+             РўСЂРµР·СЊСЏ
              Trezia
         tribeca_1732:
              %lemma
-             Трибека
+             РўСЂРёР±РµРєР°
              Tribeca
         imprezawrx_2371:
              %lemma
-             Импреза ВРХ
+             РРјРїСЂРµР·Р° Р’Р РҐ
              Impreza WRX
         imprezawrxsti_2391:
              %lemma
-             Импреза ВРХ СТИ
+             РРјРїСЂРµР·Р° Р’Р РҐ РЎРўР
              Impreza WRX STi
         wrxsti_2392:
              %lemma
-             ВРХ СТИ
+             Р’Р РҐ РЎРўР
              WRX STi
         levorg_5812:
              %lemma
-             Леворг
+             Р›РµРІРѕСЂРі
              Levorg
         baleno_1738:
              %lemma
-             Балено
+             Р‘Р°Р»РµРЅРѕ
              Baleno
         cervo_1740:
              %lemma
-             Церво
+             Р¦РµСЂРІРѕ
              Cervo
         ertiga_1741:
              %lemma
-             Эртига
+             Р­СЂС‚РёРіР°
              Ertiga
         jimny_1747:
              %lemma
-             Джимми
+             Р”Р¶РёРјРјРё
              Jimny
         kizashi_1749:
              %lemma
-             Кизаши
+             РљРёР·Р°С€Рё
              Kizashi
         landy_1750:
              %lemma
-             Лэнди
+             Р›СЌРЅРґРё
              Landy
         mrwagon_1752:
              %lemma
-             Мистер Вагон
+             РњРёСЃС‚РµСЂ Р’Р°РіРѕРЅ
              MR Wagon
         palette_1753:
              %lemma
-             Палет
+             РџР°Р»РµС‚
              Palette
         solio_1755:
              %lemma
-             Солио
+             РЎРѕР»РёРѕ
              Solio
         spacia_1756:
              %lemma
-             Спачия
+             РЎРїР°С‡РёСЏ
              Spacia
         splash_1757:
              %lemma
-             Сплэш
+             РЎРїР»СЌС€
              Splash
         swift_1758:
              %lemma
-             Свифт
+             РЎРІРёС„С‚
              Swift
         wagonr_1761:
              %lemma
-             Вагон Р
+             Р’Р°РіРѕРЅ Р 
              Wagon R
         xl7_1764:
              %lemma
-             Икс Л 7
+             РРєСЃ Р› 7
              XL7
         celerio_2232:
              %lemma
-             Целерио
+             Р¦РµР»РµСЂРёРѕ
              Celerio
         vitara_2251:
              %lemma
-             Витара
+             Р’РёС‚Р°СЂР°
              Vitara
         sx4_1759:
              %lemma
-             Сх4
+             РЎС…4
              SX4
         wrx_2231:
              %lemma
-             ВРХ
+             Р’Р РҐ
              WRX
         xv_1735:
              %lemma
-             Икс В
+             РРєСЃ Р’
              XV
         escudo_1742:
              %lemma
-             Эскудо
+             Р­СЃРєСѓРґРѕ
              Escudo
         alto_1737:
              %lemma
-             Альто
+             РђР»СЊС‚Рѕ
              Alto
         ignis_1746:
              %lemma
-             Игнис
+             РРіРЅРёСЃ
              Ignis
         aurion_1797:
              %lemma
-             Аурион
+             РђСѓСЂРёРѕРЅ
              Aurion
         auris_1798:
              %lemma
-             Аурис
+             РђСѓСЂРёСЃ
              Auris
         aygo_1802:
              %lemma
-             Айго
+             РђР№РіРѕ
              Aygo
         blade_1805:
              %lemma
-             Блэйд
+             Р‘Р»СЌР№Рґ
              Blade
         corollarumion_1819:
              %lemma
-             Королла Румион
+             РљРѕСЂРѕР»Р»Р° Р СѓРјРёРѕРЅ
              Corolla Rumion
         crownmajesta_1825:
              %lemma
-             Кроун Маджеста
+             РљСЂРѕСѓРЅ РњР°РґР¶РµСЃС‚Р°
              Crown Majesta
         fjcruiser_1832:
              %lemma
-             Ф Джей Крузер
+             Р¤ Р”Р¶РµР№ РљСЂСѓР·РµСЂ
              FJ Cruiser
         highlander_1840:
              %lemma
-             Хайлендер
+             РҐР°Р№Р»РµРЅРґРµСЂ
              Highlander
         hilux_1842:
              %lemma
-             Хайлюкс
+             РҐР°Р№Р»СЋРєСЃ
              Hilux
         innova_1843:
              %lemma
-             Иннова
+             РРЅРЅРѕРІР°
              Innova
         iq_1845:
              %lemma
-             Айкью
+             РђР№РєСЊСЋ
              iQ
         kluger_1848:
              %lemma
-             Клюгер
+             РљР»СЋРіРµСЂ
              Kluger
         landcruiserprado_1850:
              %lemma
-             Ленд Крузер Прадо
+             Р›РµРЅРґ РљСЂСѓР·РµСЂ РџСЂР°РґРѕ
              Land Cruiser Prado
         markx_2151:
              %lemma
-             Марк 10
+             РњР°СЂРє 10
              Mark X
         markxzio_2152:
              %lemma
-             Марк 10 Зио
+             РњР°СЂРє 10 Р—РёРѕ
              Mark X ZiO
         avensis_1800:
              %lemma
-             Авенсис
+             РђРІРµРЅСЃРёСЃ
              Avensis
         camry_1810:
              %lemma
-             Камри
+             РљР°РјСЂРё
              Camry
         hiace_1839:
              %lemma
-             Хайс
+             РҐР°Р№СЃ
              HiAce
         alphard_1794:
              %lemma
-             Альфард
+             РђР»СЊС„Р°СЂРґ
              Alphard
         harrier_1838:
              %lemma
-             Харриер
+             РҐР°СЂСЂРёРµСЂ
              Harrier
         crown_1826:
              %lemma
-             Кроун
+             РљСЂРѕСѓРЅ
              Crown
         4runner_1791:
              %lemma
-             Фораннер
+             Р¤РѕСЂР°РЅРЅРµСЂ
              4Runner
         ist_1847:
              %lemma
-             Ист
+             РСЃС‚
              Ist
         estima_1831:
              %lemma
-             Эстима
+             Р­СЃС‚РёРјР°
              Estima
         noah_2158:
              %lemma
-             Ноах
+             РќРѕР°С…
              Noah
         avalon_1799:
              %lemma
-             Авалон
+             РђРІР°Р»РѕРЅ
              Avalon
         bb_1803:
              %lemma
-             ББ
+             Р‘Р‘
              bB
         isis_1846:
              %lemma
-             Исис
+             РСЃРёСЃ
              ISis
         fortuner_1833:
              %lemma
-             Фортунер
+             Р¤РѕСЂС‚СѓРЅРµСЂ
              Fortuner
         passosette_2163:
              %lemma
-             Пассо Сетте
+             РџР°СЃСЃРѕ РЎРµС‚С‚Рµ
              Passo Sette
         porte_2166:
              %lemma
-             Порте
+             РџРѕСЂС‚Рµ
              Porte
         premio_2167:
              %lemma
-             Премио
+             РџСЂРµРјРёРѕ
              Premio
         previa_2168:
              %lemma
-             Превиа
+             РџСЂРµРІРёР°
              Previa
         priusc_2169:
              %lemma
-             Приус ц
+             РџСЂРёСѓСЃ С†
              Prius c
         prius_2170:
              %lemma
-             Приус
+             РџСЂРёСѓСЃ
              Prius
         rush_2180:
              %lemma
-             Руш
+             Р СѓС€
              Rush
         sai_2181:
              %lemma
-             Сай
+             РЎР°Р№
              Sai
         succeed_2195:
              %lemma
-             Саккид
+             РЎР°РєРєРёРґ
              Succeed
         tacoma_2197:
              %lemma
-             Такома
+             РўР°РєРѕРјР°
              Tacoma
         townace_2199:
              %lemma
-             Таун Айс
+             РўР°СѓРЅ РђР№СЃ
              TownAce
         tundra_2200:
              %lemma
-             Тундра
+             РўСѓРЅРґСЂР°
              Tundra
         urbancruiser_2201:
              %lemma
-             Урбан Крузер
+             РЈСЂР±Р°РЅ РљСЂСѓР·РµСЂ
              Urban Cruiser
         vanguard_2202:
              %lemma
-             Вангард
+             Р’Р°РЅРіР°СЂРґ
              Vanguard
         venza_2204:
              %lemma
-             Венза
+             Р’РµРЅР·Р°
              Venza
         versos_2207:
              %lemma
-             Версо-С
+             Р’РµСЂСЃРѕ-РЎ
              Verso-S
         vios_2208:
              %lemma
-             Виос
+             Р’РёРѕСЃ
              Vios
         vitz_2210:
              %lemma
-             Витз
+             Р’РёС‚Р·
              Vitz
         yaris_2217:
              %lemma
-             Ярис
+             РЇСЂРёСЃ
              Yaris
         proace_2282:
              %lemma
-             Про Эйс
+             РџСЂРѕ Р­Р№СЃ
              ProAce
         camryjapan_2373:
              %lemma
-             Камри (Япония)
+             РљР°РјСЂРё (РЇРїРѕРЅРёСЏ)
              Camry (Japan)
         camrysolara_2374:
              %lemma
-             Камри Солара
+             РљР°РјСЂРё РЎРѕР»Р°СЂР°
              Camry Solara
         corollaverso_2376:
              %lemma
-             Корола Версо
+             РљРѕСЂРѕР»Р° Р’РµСЂСЃРѕ
              Corolla Verso
         priusv_5813:
              %lemma
-             Приус В
+             РџСЂРёСѓСЃ Р’
              Prius v
         gt86_18968:
              %lemma
-             ГТ86
+             Р“Рў86
              GT86
         mirai_19397:
              %lemma
-             Мирай
+             РњРёСЂР°Р№
              Mirai
         pixisepoch_19580:
              %lemma
-             Пиксис Эпоч
+             РџРёРєСЃРёСЃ Р­РїРѕС‡
              Pixis Epoch
         pixismega_19581:
              %lemma
-             Пиксис Мега
+             РџРёРєСЃРёСЃ РњРµРіР°
              Pixis Mega
         voxy_2212:
              %lemma
-             Вокси
+             Р’РѕРєСЃРё
              Voxy
         probox_2172:
              %lemma
-             Пробокс
+             РџСЂРѕР±РѕРєСЃ
              Probox
         wish_2216:
              %lemma
-             Виш
+             Р’РёС€
              Wish
         vellfire_2203:
              %lemma
-             Велфаир
+             Р’РµР»С„Р°РёСЂ
              Vellfire
         sequoia_2183:
              %lemma
-             Секвоя
+             РЎРµРєРІРѕСЏ
              Sequoia
         verso_2206:
              %lemma
-             Версо
+             Р’РµСЂСЃРѕ
              Verso
         sienna_2185:
              %lemma
-             Сиенна
+             РЎРёРµРЅРЅР°
              Sienna
         ractis_2175:
              %lemma
-             Рактис
+             Р Р°РєС‚РёСЃ
              Ractis
         passo_2162:
              %lemma
-             Пассо
+             РџР°СЃСЃРѕ
              Passo
         sienta_2186:
              %lemma
-             Сиента
+             РЎРёРµРЅС‚Р°
              Sienta
         pixisspace_19582:
              %lemma
-             Пиксис Спейс
+             РџРёРєСЃРёСЃ РЎРїРµР№СЃ
              Pixis Space
         beetle_1900:
              %lemma
-             Жук
+             Р–СѓРє
              Beetle
         eos_1905:
              %lemma
-             Еос
+             Р•РѕСЃ
              Eos
         fox_1906:
              %lemma
-             Фокс
+             Р¤РѕРєСЃ
              Fox
         golfplus_1909:
              %lemma
-             Гольф Плюс
+             Р“РѕР»СЊС„ РџР»СЋСЃ
              Golf Plus
         golfsportsvan_1910:
              %lemma
-             Гольф Спортсвен
+             Р“РѕР»СЊС„ РЎРїРѕСЂС‚СЃРІРµРЅ
              Golf Sportsvan
         passatnorthamerica_1916:
              %lemma
-             Пассат (Северная Америка)
+             РџР°СЃСЃР°С‚ (РЎРµРІРµСЂРЅР°СЏ РђРјРµСЂРёРєР°)
              Passat (North America)
         phaeton_1919:
              %lemma
-             Фаэтон
+             Р¤Р°СЌС‚РѕРЅ
              Phaeton
         routan_1922:
              %lemma
-             Рутан
+             Р СѓС‚Р°РЅ
              Routan
         scirocco_1924:
              %lemma
-             Сирокко
+             РЎРёСЂРѕРєРєРѕ
              Scirocco
         sharan_1925:
              %lemma
-             Шаран
+             РЁР°СЂР°РЅ
              Sharan
         touareg_1928:
              %lemma
-             Туарег
+             РўСѓР°СЂРµРі
              Touareg
         touran_1929:
              %lemma
-             Туран
+             РўСѓСЂР°РЅ
              Touran
         up_1931:
              %lemma
-             Ап
+             РђРї
              up
         xl1_1933:
              %lemma
-             ХЛ1
+             РҐР›1
              XL1
         amarok_2233:
              %lemma
-             Амарок
+             РђРјР°СЂРѕРє
              Amarok
         california_2234:
              %lemma
-             Калифорния
+             РљР°Р»РёС„РѕСЂРЅРёСЏ
              California
         golfgti_2377:
              %lemma
-             Гольф ГТИ
+             Р“РѕР»СЊС„ Р“РўР
              Golf GTI
         golfr_2378:
              %lemma
-             Гольф Р
+             Р“РѕР»СЊС„ Р 
              Golf R
         polo_1921:
              %lemma
-             Поло
+             РџРѕР»Рѕ
              Polo
         passat_1917:
              %lemma
-             Пассат
+             РџР°СЃСЃР°С‚
              Passat
         tiguan_1927:
              %lemma
-             Тигуан
+             РўРёРіСѓР°РЅ
              Tiguan
         golf_1908:
              %lemma
-             Гольф
+             Р“РѕР»СЊС„
              Golf
         passatcc_1918:
              %lemma
-             Пассатцц
+             РџР°СЃСЃР°С‚С†С†
              Passat CC
         transporter_2236:
              %lemma
-             Транспортер
+             РўСЂР°РЅСЃРїРѕСЂС‚РµСЂ
              Transporter
         caddy_1902:
              %lemma
-             Кадди
+             РљР°РґРґРё
              Caddy
         multivan_1915:
              %lemma
-             Мультивен
+             РњСѓР»СЊС‚РёРІРµРЅ
              Multivan
         caravelle_2235:
              %lemma
-             Каравелла
+             РљР°СЂР°РІРµР»Р»Р°
              Caravelle
         pologti_2380:
              %lemma
-             Поло ГТИ
+             РџРѕР»Рѕ Р“РўР
              Polo GTI
         polorwrc_2381:
              %lemma
-             Поло Р ВРЦ
+             РџРѕР»Рѕ Р  Р’Р Р¦
              Polo R WRC
         sciroccor_2382:
              %lemma
-             Сцирокко Р
+             РЎС†РёСЂРѕРєРєРѕ Р 
              Scirocco R
         c30_1949:
              %lemma
@@ -3335,115 +3323,115 @@ entity EModels:
              C70
         s90_1956:
              %lemma
-             С90
+             РЎ90
              S90
         v40_1957:
              %lemma
-             В40
+             Р’40
              V40
         v50_1958:
              %lemma
-             В50
+             Р’50
              V50
         v60_1959:
              %lemma
-             В60
+             Р’60
              V60
         v70_1960:
              %lemma
-             В70
+             Р’70
              V70
         v90_1961:
              %lemma
-             В90
+             Р’90
              V90
         xc60_1962:
              %lemma
-             ХС60
+             РҐРЎ60
              XC60
         xc70_1963:
              %lemma
-             ХС70
+             РҐРЎ70
              XC70
         xc90_1964:
              %lemma
-             ХС90
+             РҐРЎ90
              XC90
         v40crosscountry_18969:
              %lemma
-             В40 Кросс Каунтри
+             Р’40 РљСЂРѕСЃСЃ РљР°СѓРЅС‚СЂРё
              V40 Cross Country
         s60crosscountry_19076:
              %lemma
-             С60 Кросс Каунтри
+             РЎ60 РљСЂРѕСЃСЃ РљР°СѓРЅС‚СЂРё
              S60 Cross Country
         v60crosscountry_19077:
              %lemma
-             В60 Кросс Каунтри
+             Р’60 РљСЂРѕСЃСЃ РљР°СѓРЅС‚СЂРё
              V60 Cross Country
         nomadrx6400_1981:
              %lemma
-             Номад (РХ6400)
+             РќРѕРјР°Рґ (Р РҐ6400)
              Nomad (RX6400)
         z300_19303:
              %lemma
-             З300
+             Р—300
              Z300
         z100_19584:
              %lemma
-             Зед 100
+             Р—РµРґ 100
              Z100
         estina_1966:
              %lemma
-             Эстина
+             Р­СЃС‚РёРЅР°
              Estina
         corda_1965:
              %lemma
-             Корда
+             РљРѕСЂРґР°
              Corda
         tingo_1967:
              %lemma
-             Тинго
+             РўРёРЅРіРѕ
              Tingo
         forza_2045:
              %lemma
-             Форза
+             Р¤РѕСЂР·Р°
              Forza
         vida_2047:
              %lemma
-             Вида
+             Р’РёРґР°
              Vida
         c10_2088:
              %lemma
-             Ц10
+             Р¦10
              C10
         c190_2089:
              %lemma
-             Ц190
+             Р¦190
              C190
         chance_2044:
              %lemma
-             Шанс
+             РЁР°РЅСЃ
              Chance
         aquila_2086:
              %lemma
-             Аквила
+             РђРєРІРёР»Р°
              Aquila
         roadpartner_2090:
              %lemma
-             Роад Партнер
+             Р РѕР°Рґ РџР°СЂС‚РЅРµСЂ
              Road Partner
         tager_2091:
              %lemma
-             Тагер
+             РўР°РіРµСЂ
              Tager
         vega_2092:
              %lemma
-             Вега
+             Р’РµРіР°
              Vega
         patriot_2100:
              %lemma
-             Патриот
+             РџР°С‚СЂРёРѕС‚
              Patriot
         2110_2002:
              %lemma
@@ -3455,121 +3443,121 @@ entity EModels:
              2111
         kalina_2016:
              %lemma
-             Калина
+             РљР°Р»РёРЅР°
              Kalina
         priora_2018:
              %lemma
-             Приора
+             РџСЂРёРѕСЂР°
              Priora
         revolution_2019:
              %lemma
-             Революция
+             Р РµРІРѕР»СЋС†РёСЏ
              Revolution
         ellada_19304:
              %lemma
-             Эль Лада
+             Р­Р»СЊ Р›Р°РґР°
              EL Lada
         g_863:
              %lemma
-             Джи
+             Р”Р¶Рё
              G
         m_867:
              %lemma
-             М
+             Рњ
              M
         q50_869:
              %lemma
-             Ку50
+             РљСѓ50
              Q50
         q60_870:
              %lemma
-             Ку 60
+             РљСѓ 60
              Q60
         qx50_872:
              %lemma
-             Ку Икс 50
+             РљСѓ РРєСЃ 50
              QX50
         qx60_873:
              %lemma
-             Ку Икс 60
+             РљСѓ РРєСЃ 60
              QX60
         qx70_874:
              %lemma
-             Ку Икс 70
+             РљСѓ РРєСЃ 70
              QX70
         qx80_875:
              %lemma
-             Ку Икс 80
+             РљСѓ РРєСЃ 80
              QX80
         q70_2112:
              %lemma
-             Ку70
+             РљСѓ70
              Q70
         q40_2249:
              %lemma
-             Ку 40
+             РљСѓ 40
              Q40
         q30_19343:
              %lemma
-             Ку 30
+             РљСѓ 30
              Q30
         qx30_19516:
              %lemma
-             Ку Икс 30
+             РљСѓ РРєСЃ 30
              QX30
         largus_2017:
              %lemma
-             Ларгус
+             Р›Р°СЂРіСѓСЃ
              Largus
         vesta_19209:
              %lemma
-             Веста
+             Р’РµСЃС‚Р°
              Vesta
         ex_861:
              %lemma
-             Е Икс
+             Р• РРєСЃ
              EX
         jx_866:
              %lemma
-             Джей Икс
+             Р”Р¶РµР№ РРєСЃ
              JX
         fx_862:
              %lemma
-             Ф Икс
+             Р¤ РРєСЃ
              FX
         uazpickup_2101:
              %lemma
-             Пикап
+             РџРёРєР°Рї
              Pickup
         xray_19210:
              %lemma
-             Х Рэй
+             РҐ Р СЌР№
              XRAY
         soul_961:
              %lemma
-             Соул
+             РЎРѕСѓР»
              Soul
         granta_2015:
              %lemma
-             Гранта
+             Р“СЂР°РЅС‚Р°
              Granta
         mux_2390:
              %lemma
-             МУ-Икс
+             РњРЈ-РРєСЃ
              MU-X
         ftype_915:
              %lemma
-             Эф тайп
-             Ф-Тип
+             Р­С„ С‚Р°Р№Рї
+             Р¤-РўРёРї
              F-Type
         xf_918:
              %lemma
-             Икс эф
-             ХФ
+             РРєСЃ СЌС„
+             РҐР¤
              XF
         xj_919:
              %lemma
-             Икс Джей
+             РРєСЃ Р”Р¶РµР№
              XJ
         xk_922:
              %lemma
@@ -3577,391 +3565,393 @@ entity EModels:
              XK
         xe_2286:
              %lemma
-             ХЕ
+             РҐР•
              XE
         xfr_2331:
              %lemma
-             ХФР
+             РҐР¤Р 
              XFR
         xkr_2332:
              %lemma
-             ХКР
+             РҐРљР 
              XKR
         xjr_18882:
              %lemma
-             Икс Джей
+             РРєСЃ Р”Р¶РµР№
              XJR
         ftypesvr_19686:
              %lemma
-             Ф-тип
+             Р¤-С‚РёРї
              F-Type
         cherokee_923:
              %lemma
-             Чероки
+             Р§РµСЂРѕРєРё
              Cherokee
         compass_926:
              %lemma
-             Компасс
+             РљРѕРјРїР°СЃСЃ
              Compass
         grandcherokee_927:
              %lemma
-             Гранд Чероки
+             Р“СЂР°РЅРґ Р§РµСЂРѕРєРё
              Grand Cherokee
         libertypatriot_930:
              %lemma
-             Либерти
+             Р›РёР±РµСЂС‚Рё
              Liberty 
         wrangler_931:
              %lemma
-             Вранглер
+             Р’СЂР°РЅРіР»РµСЂ
              Wrangler
         renegade_2269:
              %lemma
-             Ренегад
+             Р РµРЅРµРіР°Рґ
              Renegade
         grandcherokeesrt8_2333:
              %lemma
-             Гранд Чероки
+             Р“СЂР°РЅРґ Р§РµСЂРѕРєРё
              Grand Cherokee
         cadenza_935:
              %lemma
-             Каденза
+             РљР°РґРµРЅР·Р°
              Cadenza
         carens_937:
              %lemma
-             Каренс
+             РљР°СЂРµРЅСЃ
              Carens
         carnival_938:
              %lemma
-             Карнивал
+             РљР°СЂРЅРёРІР°Р»
              Carnival
         magentis_946:
              %lemma
-             Магентис
+             РњР°РіРµРЅС‚РёСЃ
              Magentis
         opirus_948:
              %lemma
-             Опирус
+             РћРїРёСЂСѓСЃ
              Opirus
         pride_952:
              %lemma
-             Прайд
+             РџСЂР°Р№Рґ
              Pride
         quoris_953:
              %lemma
-             Кворис
+             РљРІРѕСЂРёСЃ
              Quoris
         ray_954:
              %lemma
-             Рэй
+             Р СЌР№
              Ray
         sedona_957:
              %lemma
-             Седона
+             РЎРµРґРѕРЅР°
              Sedona
         sorento_960:
              %lemma
-             Соренто
+             РЎРѕСЂРµРЅС‚Рѕ
              Sorento
         rio_956:
              %lemma
-             Рио
+             Р РёРѕ
              Rio
         cerato_940:
              %lemma
-             Церато
+             Р¦РµСЂР°С‚Рѕ
              Cerato
         picanto_950:
              %lemma
-             Пиканто
+             РџРёРєР°РЅС‚Рѕ
              Picanto
         fpace_19346:
              %lemma
-             Ф-Пэйк
+             Р¤-РџСЌР№Рє
              F-Pace
         optima_949:
              %lemma
-             Оптима
+             РћРїС‚РёРјР°
              Optima
         venga_964:
              %lemma
-             Венга
+             Р’РµРЅРіР°
              Venga
         ceedgt_2334:
              %lemma
-             Цид ГТ
+             Р¦РёРґ Р“Рў
              Ceed GT
         niro_19616:
              %lemma
-             Ниро
+             РќРёСЂРѕ
              Niro
         discovery_1007:
              %lemma
-             Дискавери
+             Р”РёСЃРєР°РІРµСЂРё
              Discovery
         rangeroverevoque_1009:
              %lemma
-             Эвог
+             Р­РІРѕРі
              Range Rover Evoque
         rangerover_1010:
              %lemma
-             Рендж Ровер
+             Р РµРЅРґР¶ Р РѕРІРµСЂ
              Range Rover
         rangeroversport_1011:
              %lemma
-             Рендж Ровер Спорт
+             Р РµРЅРґР¶ Р РѕРІРµСЂ РЎРїРѕСЂС‚
              Range Rover Sport
         es_1020:
              %lemma
-             ЕС
+             Р•РЎ
              ES
         gs_1021:
              %lemma
-             ГС
+             Р“РЎ
              GS
         gx_1022:
              %lemma
-             ГХ
+             Р“РҐ
              GX
         hs_1023:
              %lemma
-             ХС
+             РҐРЎ
              HS
         is_1024:
              %lemma
-             Ай С
+             РђР№ РЎ
              IS
         lfa_1025:
              %lemma
-             ЛФА
+             Р›Р¤Рђ
              LFA
         ls_1026:
              %lemma
-             ЛС
+             Р›РЎ
              LS
         rc_1028:
              %lemma
-             РС
+             Р РЎ
              RC
         rx_1029:
              %lemma
-             РХ
+             Р РҐ
              RX
         isf_2335:
              %lemma
-             ИС Ф
+             РРЎ Р¤
              IS F
         rcf_2336:
              %lemma
-             РС Ф
+             Р РЎ Р¤
              RC F
         lc_19571:
              %lemma
-             ЛЦ
+             Р›Р¦
              LC
         defender_1006:
              %lemma
-             Дефендер
+             Р”РµС„РµРЅРґРµСЂ
              Defender
         nx_2260:
              %lemma
-             НХ
+             РќРҐ
              NX
         lx_1027:
              %lemma
-             ЛХ
+             Р›РҐ
              LX
         ct_1019:
              %lemma
-             СТ
+             РЎРў
              CT
         celliya530_2113:
              %lemma
-             Целия 530
+             Р¦РµР»РёСЏ 530
              Celliya (530)
         solano_2279:
              %lemma
-             Солано
+             РЎРѕР»Р°РЅРѕ
              Solano
         1m_2313:
              %lemma
-             Единичка
-             1М
+             Р•РґРёРЅРёС‡РєР°
+             1Рњ
              1M
-        2er_142:
-             %lemma
-             Двушка
-             Вторая серия
-             2ер
-             2er
         4er_145:
              %lemma
-             Четыре
-             Четвертая серия
-             4ер
+             Р§РµС‚С‹СЂРµ
+             Р§РµС‚РІРµСЂС‚Р°СЏ СЃРµСЂРёСЏ
+             4РµСЂ
              4er
         6er_147:
              %lemma
-             Шесть
-             6ер
+             6РµСЂ
              6er
         7er_148:
              %lemma
-             Семёрка
-             Седьмая
-             Семь
-             7ер
+             РЎРµРјС‘СЂРєР°
+             РЎРµРґСЊРјР°СЏ
+             РЎРµРјСЊ
+             7РµСЂ
              7er
         8er_149:
              %lemma
-             8ер
+             8РµСЂ
              8er
         m2_19391:
              %lemma
-             М2
+             Рњ2
              M2
         m3_2314:
              %lemma
-             М3
+             Рњ3
              M3
         m4_2315:
              %lemma
-             М4
+             Рњ4
              M4
         m5_2316:
              %lemma
-             М5
+             Рњ5
              M5
         x1_152:
              %lemma
-             Х1
+             РҐ1
              X1
         x3_153:
              %lemma
-             Х3
+             РҐ3
              X3
         x5_155:
              %lemma
-             Икс пять
-             Х5
+             РРєСЃ РїСЏС‚СЊ
+             РҐ5
              X5
         x5m_2318:
              %lemma
-             Икс пять эм
-             Х5 М
+             РРєСЃ РїСЏС‚СЊ СЌРј
+             РҐ5 Рњ
              X5 M
         x6_156:
              %lemma
-             Икс шесть
-             Х6
+             РРєСЃ С€РµСЃС‚СЊ
+             РҐ6
              X6
         x6m_2319:
              %lemma
-             Икс шесть эм
-             Х6 М
+             РРєСЃ С€РµСЃС‚СЊ СЌРј
+             РҐ6 Рњ
              X6 M
         z4_159:
              %lemma
-             З4
+             Р—4
              Z4
         z4m_2321:
              %lemma
-             З4 М
+             Р—4 Рњ
              Z4 M
-        3er_144:
-             %lemma
-             Три ер
-             3ер
-             3er
         breez520_1032:
              %lemma
-             Бриз (520)
+             Р‘СЂРёР· (520)
              Breez (520)
         x60_1036:
              %lemma
-             Х60
+             РҐ60
              X60
         smily_2270:
              %lemma
-             Смайли
+             РЎРјР°Р№Р»Рё
              Smily
         cebrium720_1033:
              %lemma
-             Цебриум (720)
+             Р¦РµР±СЂРёСѓРј (720)
              Cebrium (720)
         x50_19142:
              %lemma
-             Х50
+             РҐ50
              X50
         1er_141:
              %lemma
-             1ер
+             1РµСЂ
              1er
         sportage_963:
              %lemma
-             Спортейдж
+             РЎРїРѕСЂС‚РµР№РґР¶
              Sportage
         mondeo_652:
              %lemma
-             Мондео
+             РњРѕРЅРґРµРѕ
              Mondeo
         actyon_1699:
              %lemma
-             Актион
+             РђРєС‚РёРѕРЅ
              Actyon
         niva_300:
              %lemma
-             Нива
+             РќРёРІР°
              Niva
         pajerosport_1306:
              %lemma
-             Паджеро спорт
+             РџР°РґР¶РµСЂРѕ СЃРїРѕСЂС‚
              Pajero Sport
         aveo_262:
              %lemma
-             Авео
+             РђРІРµРѕ
              Aveo
         5er_146:
              %lemma
-             5ер
+             5РµСЂ
              5er
-        five:
+        two:
             %lemma
-            пять
-            пятёрка
-            пятая серия
+            2
+            РґРІР°
+            РІС‚РѕСЂР°СЏ (СЃРµСЂРёСЏ)?
+            РґРІСѓС€РєР°
         three:
             %lemma
-            три
-            трёшка
-            третья серия
+            3
+            С‚СЂРё
+            С‚СЂС‘С€РєР°
+            С‚СЂРµС‚СЊСЏ (СЃРµСЂРёСЏ)?
+        five:
+            %lemma
+            5
+            РїСЏС‚СЊ
+            РїСЏС‚С‘СЂРєР°
+            РїСЏС‚Р°СЏ (СЃРµСЂРёСЏ)?
+        six:
+            %lemma
+            6
+            С€РµСЃС‚СЊ
+            С€РµСЃС‚С‘СЂРєР°
+            С€РµСЃС‚Р°СЏ (СЃРµСЂРёСЏ)?
         elantra_824:
              %lemma
-             Элантра
+             Р­Р»Р°РЅС‚СЂР°
              Elantra
         yeti_1690:
              %lemma
-             Йети
+             Р™РµС‚Рё
              Yeti
         a4_84:
              %lemma
-             А4
+             Рђ4
              A4
         c4_358:
              %lemma
-             Ц4
+             Р¦4
              C4
         xtrail_2148:
              %lemma
-             Икс-Треил
+             РРєСЃ-РўСЂРµРёР»
              X-Trail
         insignia_1437:
              %lemma
-             Инсигния
+             РРЅСЃРёРіРЅРёСЏ
              Insignia
         note_1397:
              %lemma
-             Ноут
+             РќРѕСѓС‚
              Note
         408_1490:
              %lemma
@@ -3969,120 +3959,120 @@ entity EModels:
              408
         landcruiser_1849:
              %lemma
-             Ленд Крузер
+             Р›РµРЅРґ РљСЂСѓР·РµСЂ
              Land Cruiser
         almeraclassic_1355:
              %lemma
-             Альмера Класик
+             РђР»СЊРјРµСЂР° РљР»Р°СЃРёРє
              Almera Classic
         glkklasse_1200:
              %lemma
-             ГЛК-класс
-             GLK-Класс
+             Р“Р›Рљ-РєР»Р°СЃСЃ
+             GLK-РљР»Р°СЃСЃ
 
 entity EBodyType:
     values:
         offroad:
             %lemma
-            Внедорожный
-            Внедорожник
-            Джип
-            Паркетник
+            Р’РЅРµРґРѕСЂРѕР¶РЅС‹Р№
+            Р’РЅРµРґРѕСЂРѕР¶РЅРёРє
+            Р”Р¶РёРї
+            РџР°СЂРєРµС‚РЅРёРє
             offroad
         coupe:
             %lemma
-            Купе
+            РљСѓРїРµ
             coupe
         cabriolet:
             %lemma
-            Кабриолет
+            РљР°Р±СЂРёРѕР»РµС‚
             cabriolet
         roadster:
             %lemma
-            Родстер
+            Р РѕРґСЃС‚РµСЂ
             roadster
         minivan:
             %lemma
-            Минивэн
-            Минивен
+            РњРёРЅРёРІСЌРЅ
+            РњРёРЅРёРІРµРЅ
             minivan
         pickup:
             %lemma
-            Пикап
+            РџРёРєР°Рї
             pickup
         sedan:
             %lemma
-            Седан
+            РЎРµРґР°РЅ
             sedan
         estateCar:
             %lemma
-            Универсал
+            РЈРЅРёРІРµСЂСЃР°Р»
             estateCar
         caravan:
             %lemma
-            Фургон
+            Р¤СѓСЂРіРѕРЅ
             caravan
         hatchback:
             %lemma
-            Хетчбэк
-            Хэтчбэк
-            Хэтчбек
-            хечбек
+            РҐРµС‚С‡Р±СЌРє
+            РҐСЌС‚С‡Р±СЌРє
+            РҐСЌС‚С‡Р±РµРє
+            С…РµС‡Р±РµРє
             hatchback
         liftback:
             %lemma
-            Лифтбек
-            Лифтбэк
-            Лифбек
+            Р›РёС„С‚Р±РµРє
+            Р›РёС„С‚Р±СЌРє
+            Р›РёС„Р±РµРє
             liftback
         limousine:
             %lemma
-            Лимузин
+            Р›РёРјСѓР·РёРЅ
             limousine
 
 entity EDriveType:
     values:
         rear:
             %lemma
-            Зад
-            Задний
-            Заднеприводный 
+            Р—Р°Рґ
+            Р—Р°РґРЅРёР№
+            Р—Р°РґРЅРµРїСЂРёРІРѕРґРЅС‹Р№ 
             rear
         front:
             %lemma
-            Перед
-            Передний
-            Переднеприводный
+            РџРµСЂРµРґ
+            РџРµСЂРµРґРЅРёР№
+            РџРµСЂРµРґРЅРµРїСЂРёРІРѕРґРЅС‹Р№
             front
         full:
             %lemma
-            Полный
-            Полноприводный
-            Четыре на четыре
+            РџРѕР»РЅС‹Р№
+            РџРѕР»РЅРѕРїСЂРёРІРѕРґРЅС‹Р№
+            Р§РµС‚С‹СЂРµ РЅР° С‡РµС‚С‹СЂРµ
             full
 
 entity EEngine:
     values:
         gasoline:
             %lemma
-            Бензиновый
-            Бензин
-            Бенз
+            Р‘РµРЅР·РёРЅРѕРІС‹Р№
+            Р‘РµРЅР·РёРЅ
+            Р‘РµРЅР·
             gasoline
         hybrid:
             %lemma
-            Гибридный
-            Гибрид
+            Р“РёР±СЂРёРґРЅС‹Р№
+            Р“РёР±СЂРёРґ
             hybrid
         electric:
             %lemma
-            Электрический
+            Р­Р»РµРєС‚СЂРёС‡РµСЃРєРёР№
             electric
         diesel:
             %lemma
-            Дизельный
-            Дизель
-            Кирасин
+            Р”РёР·РµР»СЊРЅС‹Р№
+            Р”РёР·РµР»СЊ
+            РљРёСЂР°СЃРёРЅ
             diesel
 
 
@@ -4090,36 +4080,36 @@ entity EGearbox:
     values:
         variator:
             %lemma
-            Вариатор
+            Р’Р°СЂРёР°С‚РѕСЂ
             variator
         robot:
             %lemma
-            Робот
+            Р РѕР±РѕС‚
             robot
         manual:
             %lemma
-            Механика
-            Механическая
-            Ручная
+            РњРµС…Р°РЅРёРєР°
+            РњРµС…Р°РЅРёС‡РµСЃРєР°СЏ
+            Р СѓС‡РЅР°СЏ
             manual
         automatic:
             %lemma
-            Автомат
-            Автоматическая
+            РђРІС‚РѕРјР°С‚
+            РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ
             automatic
 entity  EEquipment:
     values:
         basic:
             %lemma
-            минимальная
-            базовая
-            база
+            РјРёРЅРёРјР°Р»СЊРЅР°СЏ
+            Р±Р°Р·РѕРІР°СЏ
+            Р±Р°Р·Р°
         standard:
             %lemma
-            стандартная
-            стандарт
+            СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ
+            СЃС‚Р°РЅРґР°СЂС‚
         max:
             %lemma
-            максимальная
-            максимум
-            полная
+            РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ
+            РјР°РєСЃРёРјСѓРј
+            РїРѕР»РЅР°СЏ
