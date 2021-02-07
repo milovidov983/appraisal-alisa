@@ -3559,10 +3559,12 @@ entity EModels:
              MU-X
         ftype_915:
              %lemma
+             Эф тайп
              Ф-Тип
              F-Type
         xf_918:
              %lemma
+             Икс эф
              ХФ
              XF
         xj_919:
@@ -3587,12 +3589,12 @@ entity EModels:
              XKR
         xjr_18882:
              %lemma
-             Икс Джей Р
+             Икс Джей
              XJR
         ftypesvr_19686:
              %lemma
-             Ф-тип СВР
-             F-Type SVR
+             Ф-тип
+             F-Type
         cherokee_923:
              %lemma
              Чероки
@@ -3605,14 +3607,10 @@ entity EModels:
              %lemma
              Гранд Чероки
              Grand Cherokee
-        libertynorthamerica_929:
-             %lemma
-             Либерти (Северная Америка)
-             Liberty (North America)
         libertypatriot_930:
              %lemma
-             Либерти (Патриот)
-             Liberty (Patriot)
+             Либерти
+             Liberty 
         wrangler_931:
              %lemma
              Вранглер
@@ -3623,8 +3621,8 @@ entity EModels:
              Renegade
         grandcherokeesrt8_2333:
              %lemma
-             Гранд Чероки СРТ8
-             Grand Cherokee SRT8
+             Гранд Чероки
+             Grand Cherokee
         cadenza_935:
              %lemma
              Каденза
@@ -3787,22 +3785,31 @@ entity EModels:
              Solano
         1m_2313:
              %lemma
+             Единичка
              1М
              1M
         2er_142:
              %lemma
+             Двушка
+             Вторая серия
              2ер
              2er
         4er_145:
              %lemma
+             Четыре
+             Четвертая серия
              4ер
              4er
         6er_147:
              %lemma
+             Шесть
              6ер
              6er
         7er_148:
              %lemma
+             Семёрка
+             Седьмая
+             Семь
              7ер
              7er
         8er_149:
@@ -3835,18 +3842,22 @@ entity EModels:
              X3
         x5_155:
              %lemma
+             Икс пять
              Х5
              X5
         x5m_2318:
              %lemma
+             Икс пять эм
              Х5 М
              X5 M
         x6_156:
              %lemma
+             Икс шесть
              Х6
              X6
         x6m_2319:
              %lemma
+             Икс шесть эм
              Х6 М
              X6 M
         z4_159:
@@ -3859,6 +3870,7 @@ entity EModels:
              Z4 M
         3er_144:
              %lemma
+             Три ер
              3ер
              3er
         breez520_1032:
