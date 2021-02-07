@@ -78,7 +78,7 @@ namespace AliceAppraisal.Engine.Strategy {
 				}
 			}
 
-			state.UpdateModelId(newModelId, value);
+			state.UpdateModelId(newModelId, isSimilarSoundModelName ? null: value);
 
 			return await CreateNextStepMessage(request, state);
 
