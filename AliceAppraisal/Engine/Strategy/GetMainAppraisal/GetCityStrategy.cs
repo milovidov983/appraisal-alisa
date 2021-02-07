@@ -29,8 +29,8 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			return new SimpleResponse {
-				Text = $"Сейчас будет произведена оценка {state.Request.MakeEntity} " +
-				$"{state.Request.ModelEntity} {state.Request.ManufactureYear} г.в. для Московского региона. " +
+				Text = $"Сейчас будет произведена оценка {state.Request.MakeEntity.ExtractName().CapitalizeFirst()} " +
+				$"{state.Request.GenerationValue} {state.Request.ManufactureYear} г.в. для Московского региона. " +
 				$"Продолжить?",
 				Buttons = new[] { "Продолжить" }
 			};

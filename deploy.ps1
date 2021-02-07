@@ -9,3 +9,6 @@ yc serverless function version create `
 --memory 128m `
 --execution-timeout 3s `
 --source-path d:\tmp\appraisal-bot-src.zip
+
+
+dotnet restore D:\Source\PedProject\appraisal-alisa
