@@ -6,27 +6,26 @@ namespace AliceAppraisal.Engine {
 	/// Управляет порядком переходов между шагами
 	/// </summary>
 	public class StepManager : IStepManager {
-		private readonly BaseStrategy currentStep;
 		private readonly IServiceFactory serviceFactory;
 		private string customNextStep;
-		private string NextDefaultStep { get => Transitions.GetDeafultNextStep(currentStep); }
+		private string NextDefaultStep(BaseStrategy currentStep)
+			=> Transitions.GetDeafultNextStep(currentStep); 
 
-		public StepManager(BaseStrategy currentStep, IServiceFactory serviceFactory) {
-			this.currentStep = currentStep;
+		public StepManager(IServiceFactory serviceFactory) {
 			this.serviceFactory = serviceFactory;
 		}
 
 		/// <summary>
 		/// Получить название следующего шага
 		/// </summary>
-		public string GetNextStep() => customNextStep ?? NextDefaultStep;
+		public string GetNextStep(BaseStrategy current) => customNextStep ?? NextDefaultStep(current);
 
 		/// <summary>
 		/// Получить обработчик следующего шага
 		/// </summary>
-		public BaseStrategy GetNextStrategy() {
+		public BaseStrategy GetNextStrategy(BaseStrategy currentStep) {
 			IStrategyFactory strategyFactory = serviceFactory.StrategyFactory;
-			string nextStep = GetNextStep();
+			string nextStep = GetNextStep(currentStep);
 			BaseStrategy nextStepInstanse = strategyFactory.GetStrategy(nextStep);
 			return nextStepInstanse;
 		}

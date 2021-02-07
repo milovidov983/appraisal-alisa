@@ -46,5 +46,17 @@ namespace AliceAppraisal.Engine.Services {
 		}
 
 		#endregion
+
+		StepManager stepManager;
+		public StepManager CreateStepManager() {
+			if(stepManager is null) {
+				lock (_lock) {
+					if(stepManager is null) {
+						stepManager = new StepManager(this);
+					}
+				}
+			}
+			return stepManager;
+		}
 	}
 }

@@ -13,7 +13,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected override bool Check(AliceRequest request, State state)
-			=> request.HasIntent(Intents.DigitInput) && state.NextAction.Is(this.GetType());
+			=> state.NextAction.Is(this.GetType()) &&
+			(request.HasIntent(Intents.DigitInput));
+			
 		
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {

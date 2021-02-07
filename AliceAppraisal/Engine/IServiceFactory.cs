@@ -7,5 +7,6 @@ namespace AliceAppraisal.Engine {
 	public interface IServiceFactory : IStrategyInitializer {
 		IExternalService GetExternalService();
 		ILogger GetLogger();
+		StepManager CreateStepManager();
 	}
 } 

@@ -10,7 +10,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		private readonly IStepManager stepManager;
 
 		protected BaseStrategy(IServiceFactory serviceFactory) {
-			this.stepManager = new StepManager(this, serviceFactory);
+			this.stepManager = serviceFactory.CreateStepManager();
 			this.logger = serviceFactory.GetLogger();
 			this.externalService = serviceFactory.GetExternalService();
 		}
@@ -44,7 +44,7 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		protected virtual void UpdateState(State state) {
-			var nextStepName = stepManager.GetNextStep();
+			var nextStepName = stepManager.GetNextStep(this);
 			state.SaveCurrentAndNextStep(this.GetType().FullName, nextStepName);
 		}
 
@@ -61,7 +61,7 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		private BaseStrategy GetNextStep(string customNextStep = null) {
 			stepManager.ChangeDefaultStepTo(customNextStep);
-			return stepManager.GetNextStrategy();
+			return stepManager.GetNextStrategy(this);
 		}
 		/// <summary>
 		/// Вспомогательный метод создания ответа от следующего шага диалога
