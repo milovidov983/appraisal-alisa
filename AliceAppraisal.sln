@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliceUnitTests", "tests\AliceUnitTests\AliceUnitTests.csproj", "{027DB1F3-4746-44F3-999D-6F85A521CC76}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{8EF4283B-9EBA-4D29-95D2-612F364C8975}"
+	ProjectSection(SolutionItems) = preProject
+		CurrentEntity.txt = CurrentEntity.txt
+	EndProjectSection
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PublicData", "..\PublicData\", "{C2136A04-4021-4F9E-8657-44FB5594A7A1}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -30,6 +33,26 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "PublicData", "..\PublicData
 		SlnRelativePath = "..\PublicData\"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "alice-entities-library", "..\alice-entities-library\", "{F47C29DA-EA27-4052-86BF-8C5FE60B65C8}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_53409"
+		Debug.AspNetCompiler.PhysicalPath = "..\alice-entities-library\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53409\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_53409"
+		Release.AspNetCompiler.PhysicalPath = "..\alice-entities-library\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_53409\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "53409"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,12 +71,17 @@ Global
 		{C2136A04-4021-4F9E-8657-44FB5594A7A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2136A04-4021-4F9E-8657-44FB5594A7A1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2136A04-4021-4F9E-8657-44FB5594A7A1}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{F47C29DA-EA27-4052-86BF-8C5FE60B65C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F47C29DA-EA27-4052-86BF-8C5FE60B65C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F47C29DA-EA27-4052-86BF-8C5FE60B65C8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F47C29DA-EA27-4052-86BF-8C5FE60B65C8}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C2136A04-4021-4F9E-8657-44FB5594A7A1} = {8EF4283B-9EBA-4D29-95D2-612F364C8975}
+		{F47C29DA-EA27-4052-86BF-8C5FE60B65C8} = {8EF4283B-9EBA-4D29-95D2-612F364C8975}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D7B8C1D8-E8DD-49BB-B914-58EBDD5226A5}
