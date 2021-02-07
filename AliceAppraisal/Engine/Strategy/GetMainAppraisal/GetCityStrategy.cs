@@ -32,7 +32,7 @@ namespace AliceAppraisal.Engine.Strategy {
 				Text = $"Сейчас будет произведена оценка {state.Request.MakeEntity.ExtractName().CapitalizeFirst()} " +
 				$"{state.Request.GenerationValue} {state.Request.ManufactureYear} г.в. для Московского региона. " +
 				$"Продолжить?",
-				Buttons = new[] { "Продолжить" }
+				Buttons = new[] { "Продолжить", "Указать другой город"  }
 			};
 		}
 
@@ -45,12 +45,20 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override SimpleResponse GetHelp() {
 			return new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать для какого региона подбирать цену, " +
-				$"по умолчанию выбрана Москва. Если вас интересует другой регион то укажите столицу этого региона."
+				$"по умолчанию выбрана Москва. Если вас интересует другой регион то укажите столицу этого региона.",
+				Buttons = new[] { "Продолжить", "Указать другой город" }
 			};
 		}
 		protected override bool Check(AliceRequest request, State state) {
-			return (request.HasIntent(Intents.YandexConfirm) || CheckTokens(request) || request.HasIntent(Intents.CityName) ) 
-				&& state.NextAction.Is(this.GetType());
+			return (
+				request.HasIntent(Intents.YandexConfirm) 
+				|| 
+				CheckTokens(request) 
+				|| 
+				request.HasIntent(Intents.CityName) 
+				) 
+				&& 
+				state.NextAction.Is(this.GetType());
 		}
 
 		public static Dictionary<string, int> CityRegions { get; }

@@ -31,7 +31,10 @@ namespace AliceAppraisal.Engine.Strategy {
 			=>
 			request.HasIntent(Intents.ChangeParamCity)
 			&&
-			state.NextAction.Is(typeof(StartAppraisalStrategy));
+			(state.NextAction.Is(typeof(StartAppraisalStrategy))
+			|| 
+			state.PrevAction.Is(typeof(GetCityStrategy)))
+			;
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var city = request.GetSlot(Intents.ChangeParamCity, Slots.City);
