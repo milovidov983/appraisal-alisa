@@ -13,8 +13,8 @@ namespace AliceAppraisal.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			return new SimpleResponse {
-				Text = "Выхожу. Хорошего дня.",
-				Tts = "Выхожу - - хорошего дня"
+				Text = "Выхожу из навыка оценки автомобилей. Хорошего дня.",
+				Tts = "Выхожу из навыка оценки автомобилей - - хорошего дня"
 			};
 		}
 
@@ -26,18 +26,19 @@ namespace AliceAppraisal.Engine.Strategy {
 
 		
 		protected override bool Check(AliceRequest request, State state) 
-            => request.HasIntent(Intents.Exit);
+			=> request.HasIntent(Intents.Exit) 
+			|| state.NextAction.Is(typeof(StartAppraisalStrategy)) && request.HasIntent(Intents.YandexReject);
 		
 	
-        protected override async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
-            var resp = await base.CreateResponse(request, state);
-            resp.Response.EndSession = true;
-            return resp;
-        }
+		protected override async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
+			var resp = await base.CreateResponse(request, state);
+			resp.Response.EndSession = true;
+			return resp;
+		}
 
-        protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			state.Clear();
 			return GetMessage(request, state);
 		}
-    }
+	}
 }

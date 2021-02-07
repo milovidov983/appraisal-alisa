@@ -10,8 +10,8 @@
         }
     },
     "session": {
-        "message_id": 3,
-        "session_id": "2ef9b5f4-7e1a-4018-a3fe-5f382c886713",
+        "message_id": 13,
+        "session_id": "0e4ff6ad-3585-47c0-8834-6e79046b1022",
         "skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
         "user": {
             "user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
@@ -23,45 +23,16 @@
         "new": false
     },
     "request": {
-        "command": "2017",
-        "original_utterance": "2017",
+        "command": "нет",
+        "original_utterance": "нет",
         "nlu": {
             "tokens": [
-                "2017"
+                "нет"
             ],
-            "entities": [
-                {
-                    "type": "YANDEX.NUMBER",
-                    "tokens": {
-                        "start": 0,
-                        "end": 1
-                    },
-                    "value": 2017
-                },
-                {
-                    "type": "YANDEX.DATETIME",
-                    "tokens": {
-                        "start": 0,
-                        "end": 1
-                    },
-                    "value": {
-                        "year": 2017,
-                        "year_is_relative": false
-                    }
-                }
-            ],
+            "entities": [],
             "intents": {
-                "digit_input": {
-                    "slots": {
-                        "number": {
-                            "type": "YANDEX.NUMBER",
-                            "tokens": {
-                                "start": 0,
-                                "end": 1
-                            },
-                            "value": 2017
-                        }
-                    }
+                "YANDEX.REJECT": {
+                    "slots": {}
                 }
             }
         },
@@ -73,26 +44,35 @@
     "state": {
         "session": {
             "Request": {
-                "MakeId": 92,
-                "MakeEntity": "kia_92",
-                "ModelId": 956,
-                "ModelEntity": "rio_956",
-                "ManufactureYear": null,
-                "GenerationId": null,
-                "GenerationValue": null,
-                "EngineType": null,
-                "HorsePower": null,
-                "BodyType": null,
-                "Gearbox": null,
-                "Run": null,
-                "Drive": null,
-                "RegionId": null,
-                "CityName": null,
-                "EquipmentType": null
+                "MakeId": 18,
+                "MakeEntity": "bmw_18",
+                "ModelId": 144,
+                "ModelEntity": "three",
+                "ManufactureYear": 2018,
+                "GenerationId": 6669,
+                "GenerationValue": "VI (F30/F31/F34) Рестайлинг",
+                "EngineType": "gasoline",
+                "HorsePower": 150,
+                "BodyType": "sedan",
+                "Gearbox": "manual",
+                "Run": 12456,
+                "Drive": "rear",
+                "RegionId": 50,
+                "CityName": "москва",
+                "EquipmentType": "standard"
             },
-            "PrevAction": "AliceAppraisal.Engine.Strategy.GetModelStrategy",
-            "NextAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
-            "GenerationChoise": {},
+            "PrevAction": "AliceAppraisal.Engine.Strategy.GetCityStrategy",
+            "NextAction": "AliceAppraisal.Engine.Strategy.StartAppraisalStrategy",
+            "GenerationChoise": {
+                "1": {
+                    "Id": 6669,
+                    "Name": "VI (F30/F31/F34) Рестайлинг"
+                },
+                "2": {
+                    "Id": 108129,
+                    "Name": "VII (G2x)"
+                }
+            },
             "StatusCode": 0
         },
         "user": {},

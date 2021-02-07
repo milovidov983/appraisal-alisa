@@ -51,6 +51,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "alice-entities-library", ".
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "53409"
+		SlnRelativePath = "..\alice-entities-library\"
 	EndProjectSection
 EndProject
 Global

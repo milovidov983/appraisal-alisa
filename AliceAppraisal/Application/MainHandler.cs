@@ -49,6 +49,7 @@ namespace AliceAppraisal.Application {
 					}
 
 					var simple = currentAction.GetMessageForUnknown(aliceRequest, state);
+					simple.AddToHead("Ой, мне не удалось понять вас. ");
 					response = AliceResponseBuilder.Create()
 						.WithData(aliceRequest)
 						.WithState(state)

@@ -29,9 +29,9 @@ namespace AliceAppraisal.Engine.Strategy {
 			};
 		
 		protected override bool Check(AliceRequest request, State state) 
-			=> state.NextAction.Is(this.GetType());
+			=> state.NextAction.Is(this.GetType()) && !request.HasIntent(Intents.YandexReject);
 		
-		protected override  Task<SimpleResponse> Respond(AliceRequest request, State state) 
+		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) 
 			=> CreateNextStepMessage(request, state);
 		
 		private async Task<SimpleResponse> CreateFinalResult(State state) {

@@ -4027,11 +4027,13 @@ entity EBodyType:
             Хетчбэк
             Хэтчбэк
             Хэтчбек
+            хечбек
             hatchback
         liftback:
             %lemma
             Лифтбек
             Лифтбэк
+            Лифбек
             liftback
         limousine:
             %lemma
@@ -4042,11 +4044,13 @@ entity EDriveType:
     values:
         rear:
             %lemma
+            Зад
             Задний
             Заднеприводный 
             rear
         front:
             %lemma
+            Перед
             Передний
             Переднеприводный
             front
@@ -4054,6 +4058,7 @@ entity EDriveType:
             %lemma
             Полный
             Полноприводный
+            Четыре на четыре
             full
 
 entity EEngine:
@@ -4062,6 +4067,7 @@ entity EEngine:
             %lemma
             Бензиновый
             Бензин
+            Бенз
             gasoline
         hybrid:
             %lemma
@@ -4076,6 +4082,7 @@ entity EEngine:
             %lemma
             Дизельный
             Дизель
+            Кирасин
             diesel
 
 
