@@ -1,0 +1,100 @@
+﻿{
+	"meta": {
+		"locale": "ru-RU",
+		"timezone": "UTC",
+		"client_id": "ru.yandex.searchplugin/7.16 (none none; android 4.4.2)",
+		"interfaces": {
+			"screen": {},
+			"payments": {},
+			"account_linking": {}
+		}
+	},
+	"session": {
+		"message_id": 28,
+		"session_id": "5e064c1f-a0af-4219-bf44-99a66506040c",
+		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
+		"user": {
+			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
+		},
+		"application": {
+			"application_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B"
+		},
+		"user_id": "6161FDFB4BDA155502EED94AA0AC3479D796066CF3F5A72871AE51DAB3E8A18B",
+		"new": false
+	},
+	"request": {
+		"command": "краснодар",
+		"original_utterance": "краснодар",
+		"nlu": {
+			"tokens": [
+				"краснодар"
+			],
+			"entities": [
+				{
+					"type": "YANDEX.GEO",
+					"tokens": {
+						"start": 0,
+						"end": 1
+					},
+					"value": {
+						"city": "краснодар"
+					}
+				}
+			],
+			"intents": {
+				"city_name": {
+					"slots": {
+						"city": {
+							"type": "YANDEX.GEO",
+							"tokens": {
+								"start": 0,
+								"end": 1
+							},
+							"value": {
+								"city": "краснодар"
+							}
+						}
+					}
+				}
+			}
+		},
+		"markup": {
+			"dangerous_context": false
+		},
+		"type": "SimpleUtterance"
+	},
+	"state": {
+		"session": {
+			"Request": {
+				"MakeId": 18,
+				"MakeEntity": "bmw_18",
+				"ModelId": 147,
+				"ModelEntity": null,
+				"ManufactureYear": 2010,
+				"GenerationId": 5972,
+				"GenerationValue": "II (E63/E64) Рестайлинг",
+				"EngineType": "gasoline",
+				"HorsePower": 123,
+				"BodyType": "sedan",
+				"Gearbox": "manual",
+				"Run": 234,
+				"Drive": "rear",
+				"RegionId": null,
+				"CityName": null,
+				"EquipmentType": "standard"
+			},
+			"PrevAction": "AliceAppraisal.Engine.Strategy.SpecifyAnotherCityStratagy",
+			"NextAction": "AliceAppraisal.Engine.Strategy.GetCityStrategy",
+			"GenerationChoise": {
+				"1": {
+					"Id": 5972,
+					"Name": "II (E63/E64) Рестайлинг"
+				}
+			},
+			"StatusCode": 0
+		},
+		"user": {},
+		"application": {}
+	},
+	"version": "1.0"
+}

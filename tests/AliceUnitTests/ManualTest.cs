@@ -13,7 +13,7 @@ namespace AliceUnitTests {
 		[Fact]
 		public async Task ManualTestStart() {
 			AliceRequest aliceRequest = JsonSerializer.Deserialize<AliceRequest>(
-				File.ReadAllText(@"D:\Source\PedProject\appraisal-alisa\tests\AliceUnitTests\BaseCommandTests\JsonRequests\MYearError.json"));
+				File.ReadAllText(@"D:\Source\PedProject\appraisal-alisa\tests\AliceUnitTests\BaseCommandTests\JsonRequests\Krasnodar.json"));
 
 			var handler = new Handler();
 			var response = await handler.FunctionHandler(aliceRequest);

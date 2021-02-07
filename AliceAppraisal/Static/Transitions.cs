@@ -33,6 +33,7 @@ namespace AliceAppraisal.Static {
 			GetCityStrategy _ => typeof(StartAppraisalStrategy).FullName,
 			StartAppraisalStrategy _ => typeof(InitStrategy).FullName,
 			// Extended
+			SpecifyAnotherCityStratagy _ => typeof(GetCityStrategy).FullName,
 			ConfirmGenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
 			ChangeRunStrategy _ => typeof(StartAppraisalStrategy).FullName,
 			ChangeCityStrategy _ => typeof(StartAppraisalStrategy).FullName,

@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
@@ -78,14 +80,25 @@ namespace AliceAppraisal.Engine.Strategy {
 			var city = request.GetSlot(Intents.CityName, Slots.City);
 			if (city.IsNullOrEmpty()) {
 				city = DEFAULT_CITY;
+			} else {
+				try {
+					city = JsonSerializer.Deserialize<CityDto>(city)?.City;
+				} catch { }
 			}
-			if(!CityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
+
+			if(!CityRegions.TryGetValue(city?.ToLowerInvariant() ?? DEFAULT_CITY, out var regionId)) {
 				regionId = CityRegions[DEFAULT_CITY];
 				city = DEFAULT_CITY;
 			}
 			state.UpdateRegion(regionId, city);
 
 			return CreateNextStepMessage(request, state);
+		}
+
+		class CityDto {
+			[JsonPropertyName("city")]
+
+			public string City { get; set; }
 		}
 
 	}

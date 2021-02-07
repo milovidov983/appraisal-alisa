@@ -29,9 +29,13 @@ namespace AliceAppraisal.Models {
 		public string EquipmentType { get; set; }
 
 		public string GetFullName() {
+			var modelText = ModelEntity.IsNullOrEmpty()
+				? ""
+				: ModelEntity.ExtractName().CapitalizeFirst() + ", ";
+
 			var name = $"" +
 				$"{MakeEntity.ExtractName().CapitalizeFirst()}, " +
-				$"{(ModelEntity.IsNullOrEmpty() ? "" : ModelEntity.ExtractName().CapitalizeFirst()) + ", "}" +
+				$"{modelText}" +
 				$"{ManufactureYear} г.в., " +
 				$"поколение \"{GenerationValue}\", " +
 				$"кузов {BodyType.TryGetBodyTypeDescriptionOrDefault()}, " +
