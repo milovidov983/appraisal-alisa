@@ -10,8 +10,8 @@
 		}
 	},
 	"session": {
-		"message_id": 28,
-		"session_id": "5e064c1f-a0af-4219-bf44-99a66506040c",
+		"message_id": 13,
+		"session_id": "746d25ff-f1f0-46d9-978f-11186963eb52",
 		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
 		"user": {
 			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
@@ -23,35 +23,38 @@
 		"new": false
 	},
 	"request": {
-		"command": "краснодар",
-		"original_utterance": "краснодар",
+		"command": "измени город на рязань",
+		"original_utterance": "измени город на рязань",
 		"nlu": {
 			"tokens": [
-				"краснодар"
+				"измени",
+				"город",
+				"на",
+				"рязань"
 			],
 			"entities": [
 				{
 					"type": "YANDEX.GEO",
 					"tokens": {
-						"start": 0,
-						"end": 1
+						"start": 2,
+						"end": 4
 					},
 					"value": {
-						"city": "краснодар"
+						"city": "рязань"
 					}
 				}
 			],
 			"intents": {
-				"city_name": {
+				"change_param_city": {
 					"slots": {
 						"city": {
 							"type": "YANDEX.GEO",
 							"tokens": {
-								"start": 0,
-								"end": 1
+								"start": 2,
+								"end": 4
 							},
 							"value": {
-								"city": "краснодар"
+								"city": "рязань"
 							}
 						}
 					}
@@ -66,29 +69,33 @@
 	"state": {
 		"session": {
 			"Request": {
-				"MakeId": 18,
-				"MakeEntity": "bmw_18",
-				"ModelId": 147,
-				"ModelEntity": null,
-				"ManufactureYear": 2010,
-				"GenerationId": 5972,
-				"GenerationValue": "II (E63/E64) Рестайлинг",
+				"MakeId": 92,
+				"MakeEntity": "kia_92",
+				"ModelId": 956,
+				"ModelEntity": "rio_956",
+				"ManufactureYear": 2017,
+				"GenerationId": 6533,
+				"GenerationValue": "III Рестайлинг",
 				"EngineType": "gasoline",
 				"HorsePower": 123,
 				"BodyType": "sedan",
 				"Gearbox": "manual",
-				"Run": 234,
+				"Run": 123,
 				"Drive": "rear",
-				"RegionId": null,
-				"CityName": null,
-				"EquipmentType": "standard"
+				"RegionId": 50,
+				"CityName": "москва",
+				"EquipmentType": "basic"
 			},
-			"PrevAction": "AliceAppraisal.Engine.Strategy.SpecifyAnotherCityStratagy",
-			"NextAction": "AliceAppraisal.Engine.Strategy.GetCityStrategy",
+			"PrevAction": "AliceAppraisal.Engine.Strategy.GetCityStrategy",
+			"NextAction": "AliceAppraisal.Engine.Strategy.StartAppraisalStrategy",
 			"GenerationChoise": {
 				"1": {
-					"Id": 5972,
-					"Name": "II (E63/E64) Рестайлинг"
+					"Id": 6533,
+					"Name": "III Рестайлинг"
+				},
+				"2": {
+					"Id": 9480,
+					"Name": "IV"
 				}
 			},
 			"StatusCode": 0

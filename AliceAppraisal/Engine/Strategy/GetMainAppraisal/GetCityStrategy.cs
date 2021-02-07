@@ -95,11 +95,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			return CreateNextStepMessage(request, state);
 		}
 
-		class CityDto {
-			[JsonPropertyName("city")]
 
-			public string City { get; set; }
-		}
 
 	}
 }

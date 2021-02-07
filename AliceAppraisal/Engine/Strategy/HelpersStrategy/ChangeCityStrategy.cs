@@ -1,6 +1,7 @@
 ﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Engine.Strategy {
@@ -41,6 +42,10 @@ namespace AliceAppraisal.Engine.Strategy {
 
 			if (city.IsNullOrEmpty()) {
 				return GetMessageForUnknown(request, state).FromTask();
+			} else {
+				try {
+					city = JsonSerializer.Deserialize<CityDto>(city)?.City;
+				} catch { }
 			}
 			var cityRegions = GetCityStrategy.CityRegions;
 			if (!cityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
