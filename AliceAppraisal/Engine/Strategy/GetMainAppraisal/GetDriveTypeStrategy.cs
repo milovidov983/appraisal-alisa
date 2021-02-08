@@ -16,8 +16,8 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			var takeVerb = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{takeVerb} тип привода у вашего авто? " +
-				$"Например {componentTypes.ConcatToString()}",
+				Text = $"{takeVerb} тип привода у вашего авто, " +
+				$"например {componentTypes.ConcatToString()}",
 				Buttons = componentTypes
 			};
 		}

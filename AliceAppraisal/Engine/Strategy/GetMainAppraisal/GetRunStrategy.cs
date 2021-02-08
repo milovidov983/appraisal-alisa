@@ -15,7 +15,7 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{randGiveWord} примерный пробег вашего авто?",
+				Text = $"{randGiveWord} примерный пробег вашего авто",
 			};
 		}
 

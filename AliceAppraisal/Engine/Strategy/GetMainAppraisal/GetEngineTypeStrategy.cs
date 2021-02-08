@@ -17,8 +17,8 @@ namespace AliceAppraisal.Engine.Strategy {
 			await Task.Yield();
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
-				Text = $"{randGiveWord} тип двигателя вашего авто? " +
-				$"Например {componentTypes.ConcatToString()}",
+				Text = $"{randGiveWord} тип двигателя вашего авто, " +
+				$"например {componentTypes.ConcatToString()}",
 				Buttons = componentTypes
 			};
 		}

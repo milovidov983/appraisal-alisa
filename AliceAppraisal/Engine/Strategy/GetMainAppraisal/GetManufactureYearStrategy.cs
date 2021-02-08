@@ -13,9 +13,9 @@ namespace AliceAppraisal.Engine.Strategy {
 		}
 
 		public static readonly string[] Messages = new[] {
-			"{0} год выпуска автомобиля, который мы оцениваем?",
-			"{0} в каком году был произведен автомобиль?",
-			"{0} год производства автомобиля?",
+			"{0} год выпуска автомобиля, который мы оцениваем",
+			"{0} в каком году был произведен автомобиль",
+			"{0} год производства автомобиля",
 		};
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
