@@ -17,6 +17,7 @@ namespace AliceAppraisal.Application {
 		}
 
 		public void InitServiceFactory(ILogger logger = null, IExternalService externalService = null) {
+			
 			if(logger is null) {
 				logger = new LoggerConfiguration()
 					.WriteTo
@@ -25,8 +26,14 @@ namespace AliceAppraisal.Application {
 					.Debug()
 					.CreateLogger();
 			}
-			externalService ??= this.externalService ?? new ExternalService();
-			serviceFactory = new ServiceFactory(logger, externalService ?? this.externalService);
+			try {
+				externalService ??= this.externalService ?? new ExternalService();
+				serviceFactory = new ServiceFactory(logger, externalService ?? this.externalService);
+				logger.Information("Ok");
+			} catch(Exception e) {
+				logger.Information("Err");
+				logger.Information(e.Message);
+			}
 		}
 
 		private static readonly object _lock = new object();

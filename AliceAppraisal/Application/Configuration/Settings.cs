@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,17 +26,27 @@ namespace AliceAppraisal.Application.Configuration {
 		public static string MakeModelMapPartUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/makes/";
 
 		private Settings() {
-			var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-			if(env is null) {
-				Env = "develop";
+			var logger = new LoggerConfiguration()
+				.WriteTo
+				.Console()
+				.MinimumLevel
+				.Debug()
+				.CreateLogger();
+			try {
+				var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+				if (env is null) {
+					Env = "develop";
+				}
+
+				var configuration = new ConfigurationBuilder()
+					.AddEnvironmentVariables($"{AppId}:")
+					.Build();
+
+				configuration.Bind(Instance);
+				logger.Information("Settings Ok");
+			} catch(Exception e) {
+				logger.Information(e.Message);
 			}
-
-			var configuration = new ConfigurationBuilder()
-				.AddEnvironmentVariables($"{AppId}:")
-				.Build();
-
-			configuration.Bind(Instance);
-
 
 
 			

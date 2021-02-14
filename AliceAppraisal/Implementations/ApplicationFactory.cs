@@ -24,6 +24,9 @@ namespace AliceAppraisal.Application {
 			logger = factory.GetLogger();
 		}
 
+		public ILogger CreateLogger() {
+			return logger;
+		}
 		public IMainHandler CreateHandler() {
 			var strategies = factory.Strategies;
 			var strategyFactory = factory.StrategyFactory;
