@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AliceAppraisal.Engine.Services {
+namespace AliceAppraisal.Core.Engine.Services {
 	public static class WordsCollection {
 		public static readonly string[] GET_VERB = new[] {
 			"Назовите",

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	/// <summary>
 	/// Наследуем стратегию от него если не хотим менять текущее и предыдущее состояние шага
 	/// </summary>

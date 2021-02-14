@@ -1,10 +1,10 @@
-﻿using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AliceAppraisal.Engine.Services {
+namespace AliceAppraisal.Core.Engine.Services {
 	public class StrategyFactory : IStrategyFactory {
 		private Dictionary<string, BaseStrategy> Stratagies { get; set; }
 

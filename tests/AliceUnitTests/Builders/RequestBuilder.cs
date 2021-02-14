@@ -1,5 +1,5 @@
 ﻿using AliceAppraisal;
-using AliceAppraisal.Engine.Strategy;
+using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
 using System;
 using System.Collections.Generic;
@@ -102,6 +102,14 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 
 		}
+		
+
+
+		public RequestBuilder WithStoredMake(int makeId) {
+			state.Session.Request.MakeId = makeId;
+			return this;
+
+		}
 		public RequestBuilder WithHelp() {
 			var helpStr = "помощь";
 			request.Command = helpStr;
@@ -159,6 +167,8 @@ namespace AliceUnitTests.BaseCommandTests {
 			return this;
 		}
 
+
+
 		private SessionState GetState() {
 			if (aliceRequest.State is null) {
 				aliceRequest.State = new SessionState();
@@ -199,7 +209,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					["model"] = new Entity {
 						Tokens = new Tokens { End = 1, Start = 0 },
 						Type = "EModels",
-						Value = "si_five"
+						Value = "five"
 					}
 				}
 			};

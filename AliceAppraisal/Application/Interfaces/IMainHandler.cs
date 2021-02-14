@@ -1,8 +1,9 @@
 ﻿using AliceAppraisal.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Application {
 	public interface IMainHandler {
-		Task<AliceResponse> HandleRequest(AliceRequest aliceRequest);
+		Task<(AliceResponse, Exception)> HandleRequest(AliceRequest aliceRequest);
 	}
 }

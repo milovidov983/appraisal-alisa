@@ -1,4 +1,4 @@
-﻿using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ExitStrategy : BaseStrategy {
 		public ExitStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}

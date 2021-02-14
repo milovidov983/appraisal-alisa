@@ -1,4 +1,4 @@
-﻿using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 using System;
 using System.Collections.Generic;
 

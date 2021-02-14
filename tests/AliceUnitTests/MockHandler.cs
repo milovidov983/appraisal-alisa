@@ -4,12 +4,12 @@ using System.Threading.Tasks;
 
 namespace AliceUnitTests {
 	public class MockHandler {
-		private IHandlerFactory HandlerFactory { get; }
+		private IApplicationFactory HandlerFactory { get; }
 
 		public MockHandler() {
-			HandlerFactory = new HandlerFactory();
+			HandlerFactory = new ApplicationFactory();
 		}
-		public MockHandler(IHandlerFactory handlerFactory) {
+		public MockHandler(IApplicationFactory handlerFactory) {
 			HandlerFactory = handlerFactory;
 		}
 
@@ -22,8 +22,9 @@ namespace AliceUnitTests {
 				return new AliceResponse(request).ToPong();
 			}
 
-			IMainHandler handler = HandlerFactory.Create();
-			return await handler.HandleRequest(request);
+			IMainHandler handler = HandlerFactory.CreateHandler ();
+			var (r,_) = await handler.HandleRequest(request);
+			return r;
 		}
 
 	}

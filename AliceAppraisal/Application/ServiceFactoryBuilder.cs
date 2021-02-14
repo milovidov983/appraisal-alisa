@@ -1,6 +1,6 @@
-﻿using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Engine.Services;
+using AliceAppraisal.Core.Engine.Strategy;
 using Serilog;
 using System;
 

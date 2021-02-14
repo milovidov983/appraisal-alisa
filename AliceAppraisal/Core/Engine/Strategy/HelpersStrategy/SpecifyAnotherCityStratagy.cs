@@ -3,7 +3,7 @@ using AliceAppraisal.Static;
 using System;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class SpecifyAnotherCityStratagy : BaseStrategy {
 		private static readonly SimpleResponse help = new SimpleResponse {
 			Text = $"Изменить город оцененного авто. Корректными считаются города столицы своих регионов."

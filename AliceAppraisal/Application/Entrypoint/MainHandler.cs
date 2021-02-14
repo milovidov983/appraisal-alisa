@@ -1,6 +1,6 @@
-﻿using AliceAppraisal.Configuration;
-using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Application.Configuration;
+using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
 using Serilog;
 using System;
@@ -23,13 +23,14 @@ namespace AliceAppraisal.Application {
 			this.logger = logger;
 			this.settings = Settings.Instance;
 		}
-		public async Task<AliceResponse> HandleRequest(AliceRequest aliceRequest) {
+		public async Task<(AliceResponse, Exception)> HandleRequest(AliceRequest aliceRequest) {
 			logger.Debug($"ALICE_REQUEST: {JsonSerializer.Serialize(aliceRequest)}");
 			
 			
 			
 			State state = aliceRequest.State?.Session ?? new State();
 			AliceResponse response = null;
+			Exception ex = null;
 			try {
 				var suitableStrategy = strategies
 					.Where(stratagy => stratagy.IsSuitableStrategy(aliceRequest, state))
@@ -64,11 +65,13 @@ namespace AliceAppraisal.Application {
 				}
 			} catch (CustomException e) {
 				response = HandleException(aliceRequest, state, e);
+				ex = e;
 			} catch (Exception e) {
 				response = HandleUnhandledException(aliceRequest, state, e);
+				ex = e;
 			}
 			logger.Debug($"ALICE_RESPONSE: {JsonSerializer.Serialize(response)}");
-			return response;
+			return (response, ex);
 		}
 
 		private AliceResponse HandleUnhandledException(AliceRequest aliceRequest, State state, Exception e) {

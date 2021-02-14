@@ -2,7 +2,7 @@
 using AliceAppraisal.Static;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	/// <summary>
 	/// Первая стратегия.
 	/// Либо

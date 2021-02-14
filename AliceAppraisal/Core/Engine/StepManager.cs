@@ -1,7 +1,7 @@
-﻿using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Static;
 
-namespace AliceAppraisal.Engine {
+namespace AliceAppraisal.Core.Engine {
 	/// <summary>
 	/// Управляет порядком переходов между шагами
 	/// </summary>

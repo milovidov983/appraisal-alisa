@@ -94,8 +94,8 @@
 				"CityName": null,
 				"EquipmentType": null
 			},
-			"PrevAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
-			"NextAction": "AliceAppraisal.Engine.Strategy.GetGenerationStrategy",
+			"PrevAction": "AliceAppraisal.Core.Engine.Strategy.GetManufactureYearStrategy",
+			"NextAction": "AliceAppraisal.Core.Engine.Strategy.GetGenerationStrategy",
 			"GenerationChoise": {
 				"1": {
 					"Id": 6533,

@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Infrastructure;
+﻿using AliceAppraisal.Application.Infrastructure.Models;
+using AliceAppraisal.Infrastructure;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Sheets.v4;
@@ -10,13 +11,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Store {
-	public class SheetConfig {
-		public string SpreadsheetId { get; set; }
-		public string ClientId { get; set; }
-		public string ClientSecret { get; set; }
-		public string User { get; set; }
-	}
+namespace AliceAppraisal.Implementations.Infrastructure {
+
 
 	public class SpreadsheetStorageService : IStorageService {
 		private readonly Database db;

@@ -70,8 +70,8 @@
 				"CityName": null,
 				"EquipmentType": null
 			},
-			"PrevAction": "AliceAppraisal.Engine.Strategy.GetRunStrategy",
-			"NextAction": "AliceAppraisal.Engine.Strategy.GetEquipmentSetStrategy",
+			"PrevAction": "AliceAppraisal.Core.Engine.Strategy.GetRunStrategy",
+			"NextAction": "AliceAppraisal.Core.Engine.Strategy.GetEquipmentSetStrategy",
 			"GenerationChoise": {
 				"1": {
 					"Id": 5972,

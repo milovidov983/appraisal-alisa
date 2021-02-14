@@ -1,14 +1,12 @@
-﻿using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Engine.Services;
+using AliceAppraisal.Core.Engine.Strategy;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace AliceAppraisal.Application {
 	public class StrategyInitializerFactory {
 		private IStrategyInitializer strategyInitializerInstance;
-		private static readonly object _lock = new object();
-
 
 		public StrategyInitializerFactory(IServiceFactory serviceFactory) {
 			strategyInitializerInstance = new StrategyInitializer(serviceFactory);

@@ -1,9 +1,5 @@
-﻿using AliceAppraisal.Controllers;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
-using System;
-using System.IO;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 

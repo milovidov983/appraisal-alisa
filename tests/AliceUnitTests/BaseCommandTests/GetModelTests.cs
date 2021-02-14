@@ -1,12 +1,5 @@
-﻿using AliceAppraisal.Controllers;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,6 +13,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					prev: typeof(GetMakeStrategy).FullName,
 					next: typeof(GetModelStrategy).FullName)
 				.WithIntentModel()
+				.WithStoredMake(130)
 				.Build();
 
 			var handler = new MockHandler();
@@ -35,6 +29,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					prev: typeof(GetMakeStrategy).FullName,
 					next: typeof(GetModelStrategy).FullName)
 				.WithIntentModel()
+				.WithStoredMake(130)
 				.Build();
 
 			var handler = new MockHandler();
@@ -76,7 +71,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		}
 
 		[Fact]
-		public async Task Set_get_correct_model_when_similar_name() {
+		public async Task Correct_model_when_similar_name() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(GetMakeStrategy).FullName,
@@ -91,8 +86,11 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
-				"Назовите год выпуска автомобиля, который мы оцениваем?",
-				response.Response.Text);
+				typeof(GetManufactureYearStrategy).FullName,
+				response.State.NextAction);
+			Assert.Equal(
+				146,
+				response.State.Request.ModelId ?? -1);
 		}
 
 	}

@@ -1,12 +1,14 @@
 ﻿using AliceAppraisal.Application;
-using AliceAppraisal.Engine.Strategy;
+using AliceAppraisal.Core.Engine.Strategy;
+using AliceAppraisal.Infrastructure;
 using Serilog;
 using System.Collections.Generic;
 
-namespace AliceAppraisal.Engine {
+namespace AliceAppraisal.Core.Engine {
 	public interface IServiceFactory : IStrategyInitializer {
 		IExternalService GetExternalService();
 		ILogger GetLogger();
 		StepManager CreateStepManager();
+		IStorageService GetStorageService();
 	}
 } 

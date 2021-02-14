@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AliceAppraisal.Application.Infrastructure.Models;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
@@ -7,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 
 
-namespace AliceAppraisal.Configuration {
+namespace AliceAppraisal.Application.Configuration {
 
 	public class Settings {
 		public static readonly string AppId = "AliceAppraisalApp";
@@ -35,10 +36,14 @@ namespace AliceAppraisal.Configuration {
 
 			configuration.Bind(Instance);
 
+
+
 			
 		}
 
 
 		public string Env { get; set; }
+
+		public SheetConfig SheetConfig { get; set; }
 	}
 }

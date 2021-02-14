@@ -90,8 +90,8 @@
                 "CityName": null,
                 "EquipmentType": null
             },
-            "PrevAction": "AliceAppraisal.Engine.Strategy.GetModelStrategy",
-            "NextAction": "AliceAppraisal.Engine.Strategy.GetManufactureYearStrategy",
+            "PrevAction": "AliceAppraisal.Core.Engine.Strategy.GetModelStrategy",
+            "NextAction": "AliceAppraisal.Core.Engine.Strategy.GetManufactureYearStrategy",
             "GenerationChoise": {},
             "StatusCode": 0
         },

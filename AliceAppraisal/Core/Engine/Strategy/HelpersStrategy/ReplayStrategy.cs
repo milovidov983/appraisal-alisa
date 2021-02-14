@@ -2,7 +2,7 @@
 using AliceAppraisal.Static;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ReplayStrategy : BaseStrategy {
 		public ReplayStrategy(IServiceFactory serviceFactory) : base(serviceFactory) { }
 		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) 

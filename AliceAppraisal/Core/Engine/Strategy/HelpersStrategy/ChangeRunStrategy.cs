@@ -3,7 +3,7 @@ using AliceAppraisal.Static;
 using System;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ChangeRunStrategy : BaseStrategy {
 		public ChangeRunStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}

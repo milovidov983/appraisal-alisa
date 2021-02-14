@@ -1,4 +1,4 @@
-﻿using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Helpers;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class GetCityStrategy : BaseStrategy {
 
 		protected List<string> Keywords { get; } = new List<string>

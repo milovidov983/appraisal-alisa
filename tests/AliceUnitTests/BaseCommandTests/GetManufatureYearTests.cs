@@ -1,14 +1,11 @@
 ﻿using AliceAppraisal.Application;
-using AliceAppraisal.Controllers;
-using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Services;
-using AliceAppraisal.Engine.Strategy;
+using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Engine.Services;
+using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
 using AliceUnitTests.Builders;
-using Moq;
 using Serilog;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -55,7 +52,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithTwoGeneration()
 				.Build();
 			IServiceFactory serviceFactory = new ServiceFactory(logger, externalServiceMock);
-			IHandlerFactory handlerFactory = new HandlerFactory(serviceFactory);
+			IApplicationFactory handlerFactory = new ApplicationFactory(serviceFactory);
 
 
 			var handler = new MockHandler(handlerFactory);
@@ -114,7 +111,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithOneGeneration()
 				.Build();
 			IServiceFactory serviceFactory = new ServiceFactory(logger, externalServiceMock);
-			IHandlerFactory handlerFactory = new HandlerFactory(serviceFactory);
+			IApplicationFactory handlerFactory = new ApplicationFactory(serviceFactory);
 
 
 			var handler = new MockHandler(handlerFactory);

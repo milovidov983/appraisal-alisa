@@ -3,7 +3,7 @@ using Serilog;
 using System;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public abstract class BaseStrategy {
 		protected readonly IExternalService externalService;
 		protected readonly ILogger logger;

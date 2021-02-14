@@ -1,4 +1,4 @@
-﻿using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class WhatCanYouDoStrategy : BaseStrategyWithoutChangeStep {
 		private const string MESSAGE = "Я могу угадывать цену у подержанных автомобилей. " +
 				"Этап оценки состоит из нескольких простых шагов, " +

@@ -1,4 +1,4 @@
-﻿using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 
 namespace AliceAppraisal.Static {
 	/// <summary>

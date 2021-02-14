@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AliceAppraisal.Engine {
+namespace AliceAppraisal.Core.Engine {
 	public class AliceResponseBuilder {
 		private AliceRequest aliceRequest;
 		private SimpleResponse simpleResponse;

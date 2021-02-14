@@ -86,8 +86,8 @@
 				"CityName": "москва",
 				"EquipmentType": "basic"
 			},
-			"PrevAction": "AliceAppraisal.Engine.Strategy.GetCityStrategy",
-			"NextAction": "AliceAppraisal.Engine.Strategy.StartAppraisalStrategy",
+			"PrevAction": "AliceAppraisal.Core.Engine.Strategy.GetCityStrategy",
+			"NextAction": "AliceAppraisal.Core.Engine.Strategy.StartAppraisalStrategy",
 			"GenerationChoise": {
 				"1": {
 					"Id": 6533,

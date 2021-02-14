@@ -1,4 +1,4 @@
-﻿using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class GetDriveTypeStrategy : BaseStrategy {
 		private static readonly string[] componentTypes = VehicleComponents.Drives.Values.ToArray();
 		public GetDriveTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {

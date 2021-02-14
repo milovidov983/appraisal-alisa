@@ -1,5 +1,5 @@
-﻿using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Engine.Strategy;
 using System.Collections.Generic;
 
 namespace AliceAppraisal.Application {

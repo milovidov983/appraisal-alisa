@@ -1,5 +1,4 @@
-﻿using AliceAppraisal.Configuration;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -7,7 +6,7 @@ using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ExternalService : IExternalService {
 		public string Token { get; set; } = "Independet";
 

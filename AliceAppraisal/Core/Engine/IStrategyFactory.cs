@@ -1,7 +1,7 @@
-﻿using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Core.Engine.Strategy;
 using System.Collections.Generic;
 
-namespace AliceAppraisal.Engine {
+namespace AliceAppraisal.Core.Engine {
 	public interface IStrategyFactory {
 		BaseStrategy GetStrategy(string fullName);
 		BaseStrategy GetDefaultStrategy();

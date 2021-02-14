@@ -4,7 +4,7 @@ using System;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ChangeCityStrategy : BaseStrategy {
 		private static readonly SimpleResponse help = new SimpleResponse {
 			Text = $"Изменить город оцененного авто. " +

@@ -73,8 +73,8 @@
 				"CityName": null,
 				"EquipmentType": null
 			},
-			"PrevAction": "AliceAppraisal.Engine.Strategy.InitialStrategy",
-			"NextAction": "AliceAppraisal.Engine.Strategy.ConfirmAppraisalStrategy",
+			"PrevAction": "AliceAppraisal.Core.Engine.Strategy.InitialStrategy",
+			"NextAction": "AliceAppraisal.Core.Engine.Strategy.ConfirmAppraisalStrategy",
 			"GenerationChoise": {}
 		},
 		"user": {},

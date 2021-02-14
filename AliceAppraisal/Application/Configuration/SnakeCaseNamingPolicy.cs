@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace AliceAppraisal.Configuration {
+namespace AliceAppraisal.Application.Configuration {
 	public class SnakeCaseNamingPolicy : JsonNamingPolicy {
 		public static SnakeCaseNamingPolicy Instance { get; } = new SnakeCaseNamingPolicy();
 

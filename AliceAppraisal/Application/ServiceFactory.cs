@@ -1,12 +1,15 @@
 ﻿using AliceAppraisal.Application;
-using AliceAppraisal.Engine.Strategy;
+using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Engine.Strategy;
+using AliceAppraisal.Infrastructure;
 using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AliceAppraisal.Engine.Services {
+namespace AliceAppraisal.Application {
+
 	public class ServiceFactory : IServiceFactory {
 		private IExternalService _externalService;
 		public IExternalService GetExternalService() {
@@ -57,6 +60,10 @@ namespace AliceAppraisal.Engine.Services {
 				}
 			}
 			return stepManager;
+		}
+
+		public IStorageService GetStorageService() {
+			throw new NotImplementedException();
 		}
 	}
 }

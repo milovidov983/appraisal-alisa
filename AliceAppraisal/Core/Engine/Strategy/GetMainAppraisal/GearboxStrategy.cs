@@ -3,7 +3,7 @@ using AliceAppraisal.Static;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class GearboxStrategy : BaseStrategy {
 		private static readonly string[] componentTypes = VehicleComponents.Gearboxes.Values.ToArray();
 		public GearboxStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {

@@ -1,5 +1,5 @@
-﻿using AliceAppraisal.Configuration;
-using AliceAppraisal.Engine.Services;
+﻿using AliceAppraisal.Application.Configuration;
+using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using Newtonsoft.Json;
@@ -8,10 +8,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine.Strategy {
 	public class GetModelStrategy : BaseStrategy {
 		public GetModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
