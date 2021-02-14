@@ -5,7 +5,7 @@ Remove-Item 'D:\tmp\appraisal-bot-src.zip' -ErrorAction Ignore
 yc serverless function version create `
 --function-name=aliceappraisalbot `
 --runtime dotnetcore31-preview `
---entrypoint AliceAppraisal.Application.EntryPoint `
+--entrypoint AliceAppraisal.Application.EntryPoint.FunctionHandler `
 --memory 128m `
 --execution-timeout 3s `
 --source-path d:\tmp\appraisal-bot-src.zip `
