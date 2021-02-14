@@ -2,14 +2,14 @@
 using AliceAppraisal.Models;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Controllers {
-	public class Handler {
+namespace AliceUnitTests {
+	public class MockHandler {
 		private IHandlerFactory HandlerFactory { get; }
 
-		public Handler() {
+		public MockHandler() {
 			HandlerFactory = new HandlerFactory();
 		}
-		public Handler(IHandlerFactory handlerFactory) {
+		public MockHandler(IHandlerFactory handlerFactory) {
 			HandlerFactory = handlerFactory;
 		}
 

@@ -54,6 +54,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "alice-entities-library", ".
 		SlnRelativePath = "..\alice-entities-library\"
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Delpoy", "Delpoy", "{474F50B1-28BD-4038-B6F7-BA3B25193444}"
+	ProjectSection(SolutionItems) = preProject
+		deploy.ps1 = deploy.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

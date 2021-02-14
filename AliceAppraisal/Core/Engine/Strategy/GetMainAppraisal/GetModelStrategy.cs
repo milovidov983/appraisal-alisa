@@ -89,13 +89,13 @@ namespace AliceAppraisal.Engine.Strategy {
 		/// </summary>
 		private async Task<(SimilarNames, HashSet<int> MakeModelsMap)> GetModelMap(int makeId) {
 			using var client = new WebClient();
-			var similarStream = client.OpenRead(Settings.Instance.SimilarNamesFullUrl);
+			var similarStream = client.OpenRead(Settings.SimilarNamesFullUrl);
 			var similarReader = new StreamReader(similarStream);
 			var similarContentTask = similarReader.ReadToEndAsync();
 
 			var makeModelMapFileName = $"{makeId}.json";
 			var makeModelMapStream = client.OpenRead(
-				$"{Settings.Instance.MakeModelMapPartUrl}{makeModelMapFileName}"
+				$"{Settings.MakeModelMapPartUrl}{makeModelMapFileName}"
 				);
 			var makeModelMapReader = new StreamReader(makeModelMapStream);
 			var makeModelMapContentTask = makeModelMapReader.ReadToEndAsync();

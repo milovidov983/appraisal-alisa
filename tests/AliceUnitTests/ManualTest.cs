@@ -1,9 +1,5 @@
-﻿using AliceAppraisal.Controllers;
-using AliceAppraisal.Models;
-using System;
-using System.Collections.Generic;
+﻿using AliceAppraisal.Models;
 using System.IO;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
@@ -15,7 +11,7 @@ namespace AliceUnitTests {
 			AliceRequest aliceRequest = JsonSerializer.Deserialize<AliceRequest>(
 				File.ReadAllText(@"D:\Source\PedProject\appraisal-alisa\tests\AliceUnitTests\BaseCommandTests\JsonRequests\Krasnodar.json"));
 
-			var handler = new Handler();
+			var handler = new MockHandler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains($"Выберите нужный вариант поколения авто", response.Response.Text);

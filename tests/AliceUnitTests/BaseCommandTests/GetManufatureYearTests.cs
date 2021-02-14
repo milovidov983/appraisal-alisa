@@ -33,7 +33,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithGenerationChoise()
 				.Build();
 
-			var handler = new Handler();
+			var handler = new MockHandler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(2012, response.State.Request.ManufactureYear);
@@ -58,7 +58,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			IHandlerFactory handlerFactory = new HandlerFactory(serviceFactory);
 
 
-			var handler = new Handler(handlerFactory);
+			var handler = new MockHandler(handlerFactory);
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
@@ -75,7 +75,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithGenerationChoise()
 				.Build();
 
-			var handler = new Handler();
+			var handler = new MockHandler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetGenerationStrategy).FullName, response.State.NextAction);
@@ -92,7 +92,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentManufactureYear(wrongManufactureYear)
 				.Build();
 
-			var handler = new Handler();
+			var handler = new MockHandler();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(StatusCodes.InvalidRequest, response.State.StatusCode);
@@ -117,7 +117,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			IHandlerFactory handlerFactory = new HandlerFactory(serviceFactory);
 
 
-			var handler = new Handler(handlerFactory);
+			var handler = new MockHandler(handlerFactory);
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(ConfirmGenerationStrategy).FullName, response.State.NextAction);

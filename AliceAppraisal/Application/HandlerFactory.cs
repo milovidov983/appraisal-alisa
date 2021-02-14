@@ -1,10 +1,5 @@
-﻿using AliceAppraisal.Controllers;
-using AliceAppraisal.Engine;
-using AliceAppraisal.Engine.Strategy;
+﻿using AliceAppraisal.Engine;
 using Serilog;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AliceAppraisal.Application {
 	public class HandlerFactory : IHandlerFactory {

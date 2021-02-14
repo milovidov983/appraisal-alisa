@@ -1,7 +1,7 @@
-﻿using AliceAppraisal.Engine;
+﻿using AliceAppraisal.Configuration;
+using AliceAppraisal.Engine;
 using AliceAppraisal.Engine.Strategy;
 using AliceAppraisal.Models;
-using AliceAppraisal.Static;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -9,21 +9,27 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+
 namespace AliceAppraisal.Application {
 	public class MainHandler : IMainHandler {
 		private readonly IStrategyFactory strategyFactory;
 		private readonly List<BaseStrategy> strategies;
 		private readonly ILogger logger;
+		private readonly Settings settings;
 
 		public MainHandler(IStrategyFactory strategyFactory, List<BaseStrategy> strategies, ILogger logger) {
 			this.strategyFactory = strategyFactory;
 			this.strategies = strategies;
 			this.logger = logger;
+			this.settings = Settings.Instance;
 		}
 		public async Task<AliceResponse> HandleRequest(AliceRequest aliceRequest) {
 			logger.Debug($"ALICE_REQUEST: {JsonSerializer.Serialize(aliceRequest)}");
+			
+			
+			
 			State state = aliceRequest.State?.Session ?? new State();
-			AliceResponse response;
+			AliceResponse response = null;
 			try {
 				var suitableStrategy = strategies
 					.Where(stratagy => stratagy.IsSuitableStrategy(aliceRequest, state))
@@ -57,28 +63,40 @@ namespace AliceAppraisal.Application {
 						.Build();
 				}
 			} catch (CustomException e) {
-				state.SetStatusCode(e);
-				logger.Error($"{e.GetType().Name} {e.Message}");
-				response = AliceResponseBuilder.Create()
-					.WithData(aliceRequest)
-					.WithState(state)
-					.WithText(new SimpleResponse {
-						Text = e.UserMessage
-					})
-					.Build();
+				response = HandleException(aliceRequest, state, e);
 			} catch (Exception e) {
-				state.SetStatusCode(e);
-				logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
-				logger.Error(e, e.Message);
-				response = new AliceResponse(aliceRequest) {
-					Response = new Response {
-						Text = "Произошла какая-то ошибка на сервере навыка, разработчик уже уведомлен. " +
-							   "Приносим извинения."
-					},
-					State = state
-				};
+				response = HandleUnhandledException(aliceRequest, state, e);
 			}
 			logger.Debug($"ALICE_RESPONSE: {JsonSerializer.Serialize(response)}");
+			return response;
+		}
+
+		private AliceResponse HandleUnhandledException(AliceRequest aliceRequest, State state, Exception e) {
+			AliceResponse response;
+			state.SetStatusCode(e);
+			logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
+			logger.Error(e, e.Message);
+			response = new AliceResponse(aliceRequest) {
+				Response = new Response {
+					Text = "Произошла какая-то ошибка на сервере навыка, разработчик уже уведомлен. " +
+						   "Приносим извинения."
+				},
+				State = state
+			};
+			return response;
+		}
+
+		private AliceResponse HandleException(AliceRequest aliceRequest, State state, CustomException e) {
+			AliceResponse response;
+			state.SetStatusCode(e);
+			logger.Error($"{e.GetType().Name} {e.Message}");
+			response = AliceResponseBuilder.Create()
+				.WithData(aliceRequest)
+				.WithState(state)
+				.WithText(new SimpleResponse {
+					Text = e.UserMessage
+				})
+				.Build();
 			return response;
 		}
 	}

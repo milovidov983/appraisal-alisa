@@ -8,7 +8,8 @@ yc serverless function version create `
 --entrypoint AliceAppraisal.Controllers.Handler `
 --memory 128m `
 --execution-timeout 3s `
---source-path d:\tmp\appraisal-bot-src.zip
+--source-path d:\tmp\appraisal-bot-src.zip `
+--environment ASPNETCORE_ENVIRONMENT=production
 
 
 dotnet restore D:\Source\PedProject\appraisal-alisa

@@ -1,13 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 
+
 namespace AliceAppraisal.Configuration {
 
 	public class Settings {
+		public static readonly string AppId = "AliceAppraisalApp";
 		public static Settings Instance = new Settings();
 		public static JsonSerializerOptions JsonOptions { get; } = new JsonSerializerOptions {
 			PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance,
@@ -17,7 +20,25 @@ namespace AliceAppraisal.Configuration {
 		/// <summary>
 		/// Мапинг схожих названий у моделей
 		/// </summary>
-		public string SimilarNamesFullUrl { get; set; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/similarNames.json";
-		public string MakeModelMapPartUrl { get; set; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/makes/";
+		public static string SimilarNamesFullUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/similarNames.json";
+		public static string MakeModelMapPartUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/makes/";
+
+		private Settings() {
+			var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+			if(env is null) {
+				Env = "develop";
+			}
+
+			var configuration = new ConfigurationBuilder()
+				.AddEnvironmentVariables($"{AppId}:")
+				.Build();
+
+			configuration.Bind(Instance);
+
+			
+		}
+
+
+		public string Env { get; set; }
 	}
 }
