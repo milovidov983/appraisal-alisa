@@ -10,7 +10,10 @@ yc serverless function version create `
 --execution-timeout 3s `
 --source-path d:\tmp\appraisal-bot-src.zip `
 --environment ASPNETCORE_ENVIRONMENT=production `
---environment SheetConfig:SpreadsheetId=1cHYd0kfb-f1ATHkmyD9g1TMdGi6AgCwhAfeEFPhcD8E 
+--environment SpreadsheetId=1cHYd0kfb-f1ATHkmyD9g1TMdGi6AgCwhAfeEFPhcD8E `
+--environment ClientId=699445886162-i0chpihi32i6a9jp9c6csh8k13m65lno.apps.googleusercontent.com `
+--environment ClientSecret=ypzXA5afc46D-Lv6eeNb9SVk `
+--environment User=dbuser `
 
 
 dotnet restore D:\Source\PedProject\appraisal-alisa

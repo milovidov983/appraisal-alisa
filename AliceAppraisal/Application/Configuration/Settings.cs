@@ -44,6 +44,15 @@ namespace AliceAppraisal.Application.Configuration {
 
 		public string Env { get; set; }
 
-		public SheetConfig SheetConfig { get; set; }
+		public SheetConfig SheetConfig { get => new SheetConfig {
+			ClientId = ClientId,
+			ClientSecret = ClientSecret,
+			SpreadsheetId = SpreadsheetId,
+			User = User
+		}; }
+		public string SpreadsheetId { get; set; }
+		public string ClientId { get; set; }
+		public string ClientSecret { get; set; }
+		public string User { get; set; }
 	}
 }
