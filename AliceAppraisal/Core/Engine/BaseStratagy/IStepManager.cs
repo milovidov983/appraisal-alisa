@@ -1,6 +1,4 @@
-﻿using AliceAppraisal.Core.Engine.Strategy;
-
-namespace AliceAppraisal.Core.Engine {
+﻿namespace AliceAppraisal.Core.Engine {
 	public interface IStepManager {
 		void ChangeDefaultStepTo(string nextStep);
 		string GetNextStep(BaseStrategy current);

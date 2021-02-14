@@ -1,9 +1,10 @@
-﻿using AliceAppraisal.Models;
+﻿using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Models;
 using Serilog;
 using System;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Core.Engine.Strategy {
+namespace AliceAppraisal.Core.Engine {
 	public abstract class BaseStrategy {
 		protected readonly IExternalService externalService;
 		protected readonly ILogger logger;

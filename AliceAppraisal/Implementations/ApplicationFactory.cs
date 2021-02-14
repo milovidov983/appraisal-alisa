@@ -34,6 +34,7 @@ namespace AliceAppraisal.Application {
 
 
 		public IStorageService GetStorage() {
+			logger.Information(settings.SheetConfig?.SpreadsheetId);
 			if (storageService is null) {
 				lock (_lock) {
 					if (storageService is null) {
