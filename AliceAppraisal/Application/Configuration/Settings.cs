@@ -32,6 +32,7 @@ namespace AliceAppraisal.Application.Configuration {
 				.MinimumLevel
 				.Debug()
 				.CreateLogger();
+			logger.Information("Start configuration initialization");
 			try {
 				var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 				if (env is null) {
@@ -39,13 +40,14 @@ namespace AliceAppraisal.Application.Configuration {
 				}
 
 				var configuration = new ConfigurationBuilder()
-					.AddEnvironmentVariables($"{AppId}:")
+					.AddEnvironmentVariables()
 					.Build();
 
 				configuration.Bind(Instance);
-				logger.Information("Settings Ok");
+				logger.Information("Success configuration initialization");
 			} catch(Exception e) {
-				logger.Information(e.Message);
+				logger.Information("Error configuration initialization");
+				logger.Error(e.Message);
 			}
 
 
