@@ -84,7 +84,7 @@ namespace AliceAppraisal.Models {
 		public Dictionary<string, IntentSlot> Intents { get; set; }
 	}
 
-	public class Request {
+	public class RequestInfo {
 		/// <summary>
 		/// Служебное поле: запрос пользователя, преобразованный для внутренней 
 		/// обработки Алисы. В ходе преобразования текст, в частности, 
@@ -189,7 +189,7 @@ namespace AliceAppraisal.Models {
 		public AliceEmpty AccountLinkingCompleteEvent { get; set; }
 
 		[JsonPropertyName("request")]
-		public Request Request { get; set; }
+		public RequestInfo Request { get; set; }
 
 		[JsonPropertyName("session")]
 		public Session Session { get; set; }

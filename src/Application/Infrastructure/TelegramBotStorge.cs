@@ -2,7 +2,10 @@
 using AliceAppraisal.Infrastructure;
 using Serilog;
 using System;
+using System.Linq;
+using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Args;
@@ -24,6 +27,7 @@ namespace AliceAppraisal.Implementations.Infrastructure {
 				logger.Information(
 				  $"Телеграм бот инициализирован id: {me.Id} name is {me.FirstName}."
 				);
+				
 				botClient.StartReceiving();
 			} catch(Exception e) {
 				logger.Error(e, $"Ошибка при инициализации телеграм бота {e.Message}");
@@ -32,7 +36,8 @@ namespace AliceAppraisal.Implementations.Infrastructure {
 
 		public async Task Insert<T>(T data) {
 			try {
-				await Send(data.ToJson());
+				var json = data.ToJson();
+				await Send(json);
 			} catch(Exception e) {
 				logger.Error(e, $"Ошибка при отправке данных боту {e.Message}");
 			}

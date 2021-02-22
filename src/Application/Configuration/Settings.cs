@@ -25,6 +25,7 @@ namespace AliceAppraisal.Application.Configuration {
 				.CreateLogger();
 
 			try {
+				Console.OutputEncoding = System.Text.Encoding.UTF8;
 				Environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "develop";
 
 				Domain = System.Environment.GetEnvironmentVariable(nameof(Domain));

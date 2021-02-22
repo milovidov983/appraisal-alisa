@@ -11,7 +11,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		private Meta meta;
 		private Session session;
 		private SessionState state;
-		private Request request;
+		private RequestInfo request;
 
 
 		private Meta CreateMeta() {
@@ -53,8 +53,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				}
 			};
 		}
-		private Request CreateRequest() {
-			return new Request {
+		private RequestInfo CreateRequest() {
+			return new RequestInfo {
 				Command = string.Empty,
 				OriginalUtterance = string.Empty,
 				Type = "SimpleUtterance",
