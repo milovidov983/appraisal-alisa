@@ -37,7 +37,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		private async Task<SimpleResponse> CreateFinalResult(State state) {
 			var result = await externalService.GetAppraisalResponse(state.Request);
 
-			SimpleResponse response = null;
+			SimpleResponse response;
 			if (result.Status != "success") {
 				response = new SimpleResponse {
 					Text = $"Мне не удалось провести оценку вашего авто {state.Request.GetFullName()}. " +

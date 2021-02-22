@@ -17,7 +17,7 @@ namespace AliceAppraisal.Static {
 
 
 
-		public static string[] BaseSet = Help.Union(StartNew).Union(Exit).ToArray();
+		public static string[] BaseSet = StartNew.Union(Exit).Union(Exit).ToArray();
 
 		public static string[] BodyTypesBtn = new[] {
 			BodyTypes.Sedan.GetDescription(),
