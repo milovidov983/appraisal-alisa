@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Text.Json;
 
 namespace AliceAppraisal {
 	public static class ReflectiveEnumerator {
@@ -19,6 +20,13 @@ namespace AliceAppraisal {
 		}
 	}
 	public static class Utils {
+
+		public static string ToJson<T>(this T self) {
+			return JsonSerializer.Serialize(self, new JsonSerializerOptions {
+				PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+				IgnoreNullValues = true
+			});
+		}
 
 		public static bool ContainsStartWith(this IEnumerable<string> list, string start) {
 			return list.Any(element => element.ToLowerInvariant().Trim().StartsWith(start));

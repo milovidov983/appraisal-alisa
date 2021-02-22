@@ -5,13 +5,14 @@ using System.Text;
 
 namespace AliceAppraisal.Application.Infrastructure.Models {
 	public class TelegramBotConfig {
-		public string SpreadsheetId { get; set; }
-		public string ClientId { get; set; }
-		public string ClientSecret { get; set; }
-		public string User { get; set; }
+		public string Token { get; set; }
+		public string ChatId { get; set; }
 
+		public TelegramBotConfig() { }
 
 		public TelegramBotConfig(Settings settings) {
+			Token = settings.TelegramBotToken;
+			ChatId = settings.TelegramChatId;
 		}
 	
 	}

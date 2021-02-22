@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Serilog;
+using Serilog.Events;
 using System;
 using System.Text.Json;
 
@@ -25,11 +26,14 @@ namespace AliceAppraisal.Application.Configuration {
 
 			try {
 				Environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "develop";
+
 				Domain = System.Environment.GetEnvironmentVariable(nameof(Domain));
+				TelegramBotToken = System.Environment.GetEnvironmentVariable(nameof(TelegramBotToken));
+				TelegramChatId = System.Environment.GetEnvironmentVariable(nameof(TelegramChatId));
 
 				var _envLogLevel = System.Environment.GetEnvironmentVariable(nameof(LogLevel));
-				Enum.TryParse(typeof(Serilog.Events.LogEventLevel), _envLogLevel, true, out var parsedLogLevel);
-				LogLevel = (Serilog.Events.LogEventLevel)(parsedLogLevel ?? Serilog.Events.LogEventLevel.Information);
+				Enum.TryParse(typeof(LogEventLevel), _envLogLevel, true, out var parsedLogLevel);
+				LogLevel = (LogEventLevel)(parsedLogLevel ?? LogEventLevel.Information);
 
 
 				Console.WriteLine($"{nameof(Environment)}: {Environment}");
@@ -43,9 +47,12 @@ namespace AliceAppraisal.Application.Configuration {
 
 		public bool IsProduction { get => Environment == "production"; }
 
-		public Serilog.Events.LogEventLevel LogLevel { get; }
+		public LogEventLevel LogLevel { get; }
 		public string Environment { get; }
 		public string Domain { get; }
+		public string TelegramBotToken { get; }
+		public string TelegramChatId { get; }
+
 		/// <summary>
 		/// Мапинг схожих названий у моделей
 		/// </summary>

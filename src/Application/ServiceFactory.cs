@@ -75,7 +75,9 @@ namespace AliceAppraisal.Application {
 			lock (_storageLock) {
 				if (storageService is null) {
 					storageService 
-						= new TelegramBotStorge(new TelegramBotConfig(Settings.Instance));
+						= new TelegramBotStorge(
+							new TelegramBotConfig(Settings.Instance), 
+							_loggerFactory.GetLogger());
 				}
 			}
 			return storageService;

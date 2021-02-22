@@ -36,10 +36,5 @@
 		</None>
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Update="Tests\request.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
 
 </Project>

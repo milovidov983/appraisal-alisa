@@ -1,4 +1,5 @@
 ﻿using AliceAppraisal.Application;
+using AliceAppraisal.Application.Models;
 using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Infrastructure;
 using AliceAppraisal.Models;
@@ -51,11 +52,7 @@ namespace AliceAppraisal {
 				ex = e;
 			} finally {
 				if (!response.IsServiceResponse()) {
-					await storageService.Insert(new {
-						Request = request,
-						Response = response,
-						Error = ex
-					});
+					await storageService.Insert(LogItem.Create(request, response, ex));
 				}
 			}
 			return response;
