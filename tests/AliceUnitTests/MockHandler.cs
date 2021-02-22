@@ -1,15 +1,16 @@
 ﻿using AliceAppraisal.Application;
+using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Models;
 using System.Threading.Tasks;
 
 namespace AliceUnitTests {
 	public class MockHandler {
-		private IApplicationFactory HandlerFactory { get; }
+		private IMainHandlerFactory HandlerFactory { get; }
 
-		public MockHandler() {
-			HandlerFactory = new ApplicationFactory();
+		private MockHandler(IServiceFactory serviceFactory) {
+			HandlerFactory = MainHandlerFactory.Create(serviceFactory);
 		}
-		public MockHandler(IApplicationFactory handlerFactory) {
+		public MockHandler(IMainHandlerFactory handlerFactory) {
 			HandlerFactory = handlerFactory;
 		}
 
@@ -22,9 +23,13 @@ namespace AliceUnitTests {
 				return new AliceResponse(request).ToPong();
 			}
 
-			IMainHandler handler = HandlerFactory.CreateHandler ();
+			IMainHandler handler = HandlerFactory.GetHandler();
 			var (r,_) = await handler.HandleRequest(request);
 			return r;
+		}
+
+		public static MockHandler Create(IServiceFactory serviceFactory = null) {
+			return new MockHandler(serviceFactory ?? ServiceFactoryBuilder.Create().GetServiceFactory());
 		}
 
 	}

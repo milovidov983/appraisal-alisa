@@ -30,7 +30,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithGenerationChoise()
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(2012, response.State.Request.ManufactureYear);
@@ -51,8 +51,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.Create()
 				.WithTwoGeneration()
 				.Build();
-			IServiceFactory serviceFactory = new ServiceFactory(logger, externalServiceMock);
-			IApplicationFactory handlerFactory = new ApplicationFactory(serviceFactory);
+			IServiceFactory serviceFactory = new ServiceFactory(null, externalServiceMock);
+			IMainHandlerFactory handlerFactory = MainHandlerFactory.Create(serviceFactory);
 
 
 			var handler = new MockHandler(handlerFactory);
@@ -72,7 +72,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithGenerationChoise()
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetGenerationStrategy).FullName, response.State.NextAction);
@@ -89,7 +89,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentManufactureYear(wrongManufactureYear)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(StatusCodes.InvalidRequest, response.State.StatusCode);
@@ -110,8 +110,8 @@ namespace AliceUnitTests.BaseCommandTests {
 				.Create()
 				.WithOneGeneration()
 				.Build();
-			IServiceFactory serviceFactory = new ServiceFactory(logger, externalServiceMock);
-			IApplicationFactory handlerFactory = new ApplicationFactory(serviceFactory);
+			IServiceFactory serviceFactory = new ServiceFactory(null, externalServiceMock);
+			IMainHandlerFactory handlerFactory = MainHandlerFactory.Create(serviceFactory);
 
 
 			var handler = new MockHandler(handlerFactory);

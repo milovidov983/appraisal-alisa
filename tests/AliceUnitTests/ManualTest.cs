@@ -11,7 +11,7 @@ namespace AliceUnitTests {
 			AliceRequest aliceRequest = JsonSerializer.Deserialize<AliceRequest>(
 				File.ReadAllText(@"D:\Source\PedProject\appraisal-alisa\tests\AliceUnitTests\BaseCommandTests\JsonRequests\Krasnodar.json"));
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains($"Выберите нужный вариант поколения авто", response.Response.Text);

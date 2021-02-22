@@ -1,8 +1,5 @@
 ﻿using AliceAppraisal.Core.Engine.Strategy;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AliceAppraisal.Core.Engine.Services {
 	public class StrategyFactory : IStrategyFactory {

@@ -1,11 +1,6 @@
-﻿using AliceAppraisal.Application.Infrastructure.Models;
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json;
 
 
@@ -13,17 +8,12 @@ namespace AliceAppraisal.Application.Configuration {
 
 	public class Settings {
 		public static readonly string AppId = "AliceAppraisalApp";
+
 		public static Settings Instance = new Settings();
 		public static JsonSerializerOptions JsonOptions { get; } = new JsonSerializerOptions {
 			PropertyNamingPolicy = SnakeCaseNamingPolicy.Instance,
 			IgnoreNullValues = true
 		};
-
-		/// <summary>
-		/// Мапинг схожих названий у моделей
-		/// </summary>
-		public static string SimilarNamesFullUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/similarNames.json";
-		public static string MakeModelMapPartUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/makes/";
 
 		private Settings() {
 			var logger = new LoggerConfiguration()
@@ -32,38 +22,34 @@ namespace AliceAppraisal.Application.Configuration {
 				.MinimumLevel
 				.Debug()
 				.CreateLogger();
+
 			try {
-				var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-				if (env is null) {
-					Env = "develop";
-				}
+				Environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "develop";
+				Domain = System.Environment.GetEnvironmentVariable(nameof(Domain));
 
-				var configuration = new ConfigurationBuilder()
-					.AddEnvironmentVariables()
-					.Build();
+				var _envLogLevel = System.Environment.GetEnvironmentVariable(nameof(LogLevel));
+				Enum.TryParse(typeof(Serilog.Events.LogEventLevel), _envLogLevel, true, out var parsedLogLevel);
+				LogLevel = (Serilog.Events.LogEventLevel)(parsedLogLevel ?? Serilog.Events.LogEventLevel.Information);
 
-				configuration.Bind(Instance);
+
+				Console.WriteLine($"{nameof(Environment)}: {Environment}");
+				Console.WriteLine($"{nameof(IsProduction)}: {IsProduction}");
+				Console.WriteLine($"{nameof(LogLevel)}: {LogLevel}");
 			} catch(Exception e) {
 				logger.Information("Error configuration initialization");
 				logger.Error(e.Message);
 			}
-
-
-			
 		}
 
+		public bool IsProduction { get => Environment == "production"; }
 
-		public string Env { get; set; }
-
-		public TelegramBotConfig SheetConfig { get => new TelegramBotConfig {
-			ClientId = ClientId,
-			ClientSecret = ClientSecret,
-			SpreadsheetId = SpreadsheetId,
-			User = User
-		}; }
-		public string SpreadsheetId { get; set; }
-		public string ClientId { get; set; }
-		public string ClientSecret { get; set; }
-		public string User { get; set; }
+		public Serilog.Events.LogEventLevel LogLevel { get; }
+		public string Environment { get; }
+		public string Domain { get; }
+		/// <summary>
+		/// Мапинг схожих названий у моделей
+		/// </summary>
+		public static string SimilarNamesFullUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/similarNames.json";
+		public static string MakeModelMapPartUrl { get; } = "https://raw.githubusercontent.com/milovidov983/PublicData/master/appraisalbot/makes/";
 	}
 }

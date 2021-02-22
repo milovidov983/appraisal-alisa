@@ -1,25 +1,26 @@
-﻿using AliceAppraisal.Application;
+﻿using AliceAppraisal.Application.Configuration;
+using AliceAppraisal.Application.Infrastructure;
+using AliceAppraisal.Application.Infrastructure.Models;
+using AliceAppraisal.Core;
 using AliceAppraisal.Core.Engine;
-using AliceAppraisal.Core.Engine.Strategy;
+using AliceAppraisal.Implementations.Infrastructure;
 using AliceAppraisal.Infrastructure;
-using Serilog;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AliceAppraisal.Application {
 
 	public class ServiceFactory : IServiceFactory {
-		private IExternalService _externalService;
-		public IExternalService GetExternalService() {
-			return _externalService;
+		private IAppraisalProvider _dataProviderService;
+		public IAppraisalProvider GetDataProvider() {
+			return _dataProviderService;
 		}
 
 		private static readonly object _lock = new object();
-		public ServiceFactory(ILogger logger, IExternalService externalService) {
-			_logger = logger;
-			_externalService = externalService;
+
+		public ServiceFactory(ILoggerFactory loggerFactory, IAppraisalProvider externalService) {
+			_loggerFactory = loggerFactory ?? LoggerFactory.Create();
+			_dataProviderService = externalService;
 
 			InitStratagy();
 			
@@ -28,9 +29,9 @@ namespace AliceAppraisal.Application {
 
 
 		#region logger
-		private ILogger _logger; 
-		public ILogger GetLogger() {
-			return _logger;
+		private ILoggerFactory _loggerFactory; 
+		public ILoggerFactory GetLoggerFactory() {
+			return _loggerFactory;
 		}
 		#endregion
 
@@ -50,8 +51,10 @@ namespace AliceAppraisal.Application {
 
 		#endregion
 
-		StepManager stepManager;
-		public StepManager CreateStepManager() {
+		#region StepManager
+
+		IStepManager stepManager;
+		public IStepManager GetStepManager() {
 			if(stepManager is null) {
 				lock (_lock) {
 					if(stepManager is null) {
@@ -62,8 +65,21 @@ namespace AliceAppraisal.Application {
 			return stepManager;
 		}
 
+		#endregion;
+		private static readonly object _storageLock = new object();
+		private IStorageService storageService;
 		public IStorageService GetStorageService() {
-			throw new NotImplementedException();
+			if (storageService != null) {
+				return storageService;
+			}
+			lock (_storageLock) {
+				if (storageService is null) {
+					storageService 
+						= new TelegramBotStorge(new TelegramBotConfig(Settings.Instance));
+				}
+			}
+			return storageService;
+			
 		}
 	}
 }

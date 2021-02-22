@@ -28,13 +28,11 @@ namespace AliceUnitTests.Builders {
 			return this;
 		}
 
-		public IExternalService Build() {
-			var externalServiceMock = Mock.Of<IExternalService>(
+		public IAppraisalProvider Build() {
+			var externalServiceMock = Mock.Of<IAppraisalProvider>(
 				s => s.GetAppraisalResponse(It.IsAny<AppraisalQuoteRequest>()) == Task.FromResult(new AppraisalRawResult())
 				&&
-				s.GetGenerationsFor(It.IsAny<int>(), It.IsAny<int>()) == Task.FromResult(generationResponse)
-				&&
-				s.Token == "Mock");
+				s.GetGenerationsFor(It.IsAny<int>(), It.IsAny<int>()) == Task.FromResult(generationResponse));
 
 			return externalServiceMock;
 		}

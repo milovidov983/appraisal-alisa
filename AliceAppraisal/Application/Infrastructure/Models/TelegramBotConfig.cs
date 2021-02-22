@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AliceAppraisal.Application.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,5 +9,10 @@ namespace AliceAppraisal.Application.Infrastructure.Models {
 		public string ClientId { get; set; }
 		public string ClientSecret { get; set; }
 		public string User { get; set; }
+
+
+		public TelegramBotConfig(Settings settings) {
+		}
+	
 	}
 }

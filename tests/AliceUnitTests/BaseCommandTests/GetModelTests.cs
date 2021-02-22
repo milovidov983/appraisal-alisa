@@ -16,7 +16,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithStoredMake(130)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(1427, response.State.Request.ModelId);
@@ -32,7 +32,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithStoredMake(130)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
@@ -47,7 +47,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentModel()
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetManufactureYearStrategy).FullName, response.State.NextAction);
@@ -61,7 +61,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetModelStrategy).FullName)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
@@ -81,7 +81,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithMakeId(18)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			
 			var response = await handler.FunctionHandler(aliceRequest);
 

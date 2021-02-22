@@ -1,24 +1,33 @@
 ﻿using AliceAppraisal.Application;
+using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Infrastructure;
 using AliceAppraisal.Models;
+using Serilog;
 using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal {
 	public class EntryPoint {
-		private readonly IApplicationFactory factory;
-		private readonly IStorageService storageService;
+		private IMainHandlerFactory handlerFactory;
+		private IStorageService storageService;
+		private ILogger logger;
+
 		public EntryPoint() {
-			factory = new ApplicationFactory();
-			storageService = factory.GetStorage();
+			var serviceFactory = ServiceFactoryBuilder.Create().GetServiceFactory();
+			Init(serviceFactory);
 		}
-		public EntryPoint(IApplicationFactory handlerFactory) {
-			factory = handlerFactory;
-			storageService = factory.GetStorage();
+
+		public EntryPoint(IServiceFactory serviceFactory) {
+			Init(serviceFactory);
+		}
+
+		private void Init(IServiceFactory serviceFactory) {
+			handlerFactory = MainHandlerFactory.Create(serviceFactory);
+			storageService = serviceFactory.GetStorageService();
+			logger = serviceFactory.GetLoggerFactory().GetLogger();
 		}
 
 		public async Task<AliceResponse> FunctionHandler(AliceRequest request) {
-			var logger = factory.CreateLogger();
 			logger.Information("Running FunctionHandler function");
 			AliceResponse response = null;
 			Exception ex = null;
@@ -26,7 +35,7 @@ namespace AliceAppraisal {
 				response = GetServiceResponseOrDefault(request);
 
 				if (response is null) {
-					IMainHandler handler = factory.CreateHandler();
+					IMainHandler handler = handlerFactory.GetHandler();
 					var (r, e) = await handler.HandleRequest(request);
 
 					if(e != null) {

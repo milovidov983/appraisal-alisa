@@ -13,7 +13,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentMake()
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(135, response.State.Request.MakeId);
@@ -28,7 +28,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentMake()
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains("пожалуйста модель вашего автомобиля", response.Response.Text);
@@ -43,7 +43,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithIntentMake()
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetModelStrategy).FullName, response.State.NextAction);
@@ -57,7 +57,7 @@ namespace AliceUnitTests.BaseCommandTests {
 					next: typeof(GetMakeStrategy).FullName)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(

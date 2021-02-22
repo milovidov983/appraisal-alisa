@@ -22,7 +22,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithNumberIntent(1)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(12345, response.State.Request.GenerationId);
@@ -38,7 +38,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithNumberIntent(1)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(StatusCodes.OK, response.State.StatusCode);
@@ -54,7 +54,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithNumberIntent(1)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Equal(typeof(GetBodyTypeStrategy).FullName, response.State.NextAction);
@@ -70,7 +70,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				.WithNumberIntent(99999)
 				.Build();
 
-			var handler = new MockHandler();
+			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains($"Выберите нужный вариант поколения авто",response.Response.Text);

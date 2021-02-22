@@ -7,43 +7,35 @@ using System;
 
 namespace AliceAppraisal.Application {
 	public sealed class ServiceFactoryBuilder {
+		private static readonly ServiceFactoryBuilder instanse = new ServiceFactoryBuilder();
+		private static readonly object _lock = new object();
 		private IServiceFactory serviceFactory;
-		private IExternalService externalService;
 
-		public ServiceFactoryBuilder() { }
-
-		public void SetExternalService(IExternalService externalService) {
-			this.externalService = externalService;
-		}
-
-		public void InitServiceFactory(ILogger logger = null, IExternalService externalService = null) {
-			
-			if(logger is null) {
-				logger = new LoggerConfiguration()
-					.WriteTo
-					.Console()
-					.MinimumLevel
-					.Debug()
-					.CreateLogger();
-			}
+		private void InitServiceFactory(IAppraisalProvider appraisalProvider = null) {
+			var loggerFactory = LoggerFactory.Create();
 			try {
-				externalService ??= this.externalService ?? new ExternalService();
-				serviceFactory = new ServiceFactory(logger, externalService ?? this.externalService);
+				appraisalProvider ??= new DataProviderService();
+				serviceFactory = new ServiceFactory(loggerFactory, appraisalProvider);
 			} catch(Exception e) {
+				var logger = loggerFactory.GetLogger();
 				logger.Error(e, $"{nameof(ServiceFactoryBuilder)}: {e.Message}");
 			}
 		}
 
-		private static readonly object _lock = new object();
-		public IServiceFactory GetServiceFactory() {
+
+		public IServiceFactory GetServiceFactory(IAppraisalProvider appraisalProvider = null) {
 			if(serviceFactory is null) {
 				lock (_lock) {
 					if(serviceFactory is null) {
-						InitServiceFactory();
+						InitServiceFactory(appraisalProvider);
 					}
 				}
 			}
 			return serviceFactory;
 		}
+		public static ServiceFactoryBuilder Create() {
+			return instanse;
+		}
+
 	}
 }

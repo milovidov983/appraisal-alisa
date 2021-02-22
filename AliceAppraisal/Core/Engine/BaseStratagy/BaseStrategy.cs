@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine {
 	public abstract class BaseStrategy {
-		protected readonly IExternalService externalService;
+		protected readonly IAppraisalProvider externalService;
 		protected readonly ILogger logger;
 		private readonly IStepManager stepManager;
 
 		protected BaseStrategy(IServiceFactory serviceFactory) {
-			this.stepManager = serviceFactory.CreateStepManager();
-			this.logger = serviceFactory.GetLogger();
-			this.externalService = serviceFactory.GetExternalService();
+			this.stepManager = serviceFactory.GetStepManager();
+			this.logger = serviceFactory.GetLoggerFactory().GetLogger();
+			this.externalService = serviceFactory.GetDataProvider();
 		}
 
 		public bool IsSuitableStrategy(AliceRequest request, State state)
