@@ -11,8 +11,7 @@ namespace AliceAppraisal.Static {
 				x => x.GetDescription()
 				);
 		public static string TryGetBodyTypeDescriptionOrDefault(this string id) {
-			BodyTypes.TryGetValue(id ?? "", out var desc);
-			return desc ?? id;
+			return TryGetParamName(id, BodyTypes);
 		}
 
 		public static readonly Dictionary<string, string> Gearboxes
@@ -23,8 +22,7 @@ namespace AliceAppraisal.Static {
 				);
 
 		public static string TryGetGearboxesDescriptionOrDefault(this string id) {
-			Gearboxes.TryGetValue(id ?? "", out var desc);
-			return desc ?? id;
+			return TryGetParamName(id, Gearboxes);
 		}
 
 		public static readonly Dictionary<string, string> Drives
@@ -35,8 +33,7 @@ namespace AliceAppraisal.Static {
 				);
 
 		public static string TryGetDrivesDescriptionOrDefault(this string id) {
-			Drives.TryGetValue(id ?? "", out var desc);
-			return desc ?? id;
+			return TryGetParamName(id, Drives);
 		}
 
 		public static readonly Dictionary<string, string> EngineTypes
@@ -47,8 +44,7 @@ namespace AliceAppraisal.Static {
 				);
 
 		public static string TryGetEngineTypesDescriptionOrDefault(this string id) {
-			EngineTypes.TryGetValue(id ?? "", out var desc);
-			return desc ?? id;
+			return TryGetParamName(id, EngineTypes);
 		}
 
 		public static readonly Dictionary<string, string> Equipments
@@ -59,8 +55,12 @@ namespace AliceAppraisal.Static {
 				);
 
 		public static string TryGetEquipmentsDescriptionOrDefault(this string id) {
-			Equipments.TryGetValue(id ?? "", out var desc);
-			return desc ?? id;
+			return TryGetParamName(id, Equipments);
+		}
+
+		private static string TryGetParamName(string id, Dictionary<string, string> data) {
+			data.TryGetValue(id ?? "", out var desc);
+			return desc?.ToLower() ?? id ?? "";
 		}
 	}
 }

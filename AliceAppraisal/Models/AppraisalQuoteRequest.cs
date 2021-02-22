@@ -42,9 +42,9 @@ namespace AliceAppraisal.Models {
 				$"коробка {Gearbox.TryGetGearboxesDescriptionOrDefault()}, " +
 				$"тип двигателя {EngineType.TryGetEngineTypesDescriptionOrDefault()}, " +
 				$"привод {Drive.TryGetDrivesDescriptionOrDefault()}, " +
-				$"{HorsePower} л.с., " +
+				$"{HorsePower} лс., " +
 				$"пробег {Run} км., " +
-				$"комплектация {EquipmentType.TryGetEquipmentsDescriptionOrDefault()}, " +
+				$"комплектация \"{EquipmentType.TryGetEquipmentsDescriptionOrDefault()}\", " +
 				$"в городе {CityName.CapitalizeFirst()}";
 			return name;
 		}
