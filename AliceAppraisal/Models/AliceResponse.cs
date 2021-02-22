@@ -60,18 +60,21 @@ namespace AliceAppraisal.Models {
 			return this;
 		}
 
-		public string ToJson() {
-			return JsonSerializer.Serialize(this, Settings.JsonOptions).Replace(@"\", "");
-		}
 
 		public static AliceResponse CreateMissResponse() {
-			return new AliceResponse(new AliceRequest()) {
+			return new AliceServiceResponse(new AliceRequest()) {
 				Response = new Response {
-					Text = "У меня нет обработчика этого случая. " +
-						"Я не понимаю что вы мне говорите. Приносим извинения.",
+					Text = "У меня нет обработчика этого случая. Я не понимаю что вы мне говорите. Приносим извинения.",
 					EndSession = false
 				}
 			};
+		}		
+		
+		public static AliceResponse CreatePong(AliceRequest request) {
+			return new AliceServiceResponse(request).ToPong();
 		}
+
+
+		public bool IsServiceResponse() => this?.GetType() == typeof(AliceServiceResponse);
 	}
 }

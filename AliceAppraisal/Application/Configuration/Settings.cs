@@ -32,7 +32,6 @@ namespace AliceAppraisal.Application.Configuration {
 				.MinimumLevel
 				.Debug()
 				.CreateLogger();
-			logger.Information("Start configuration initialization");
 			try {
 				var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 				if (env is null) {
@@ -44,7 +43,6 @@ namespace AliceAppraisal.Application.Configuration {
 					.Build();
 
 				configuration.Bind(Instance);
-				logger.Information("Success configuration initialization");
 			} catch(Exception e) {
 				logger.Information("Error configuration initialization");
 				logger.Error(e.Message);
@@ -57,7 +55,7 @@ namespace AliceAppraisal.Application.Configuration {
 
 		public string Env { get; set; }
 
-		public SheetConfig SheetConfig { get => new SheetConfig {
+		public TelegramBotConfig SheetConfig { get => new TelegramBotConfig {
 			ClientId = ClientId,
 			ClientSecret = ClientSecret,
 			SpreadsheetId = SpreadsheetId,

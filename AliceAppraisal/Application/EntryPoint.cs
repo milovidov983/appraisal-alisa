@@ -19,34 +19,35 @@ namespace AliceAppraisal {
 
 		public async Task<AliceResponse> FunctionHandler(AliceRequest request) {
 			var logger = factory.CreateLogger();
-			logger.Information("START");
+			logger.Information("Running FunctionHandler function");
 			AliceResponse response = null;
 			Exception ex = null;
 			try {
-				try {
-					var serviceResponse = GetServiceResponseOrDefault(request);
+				response = GetServiceResponseOrDefault(request);
 
-					if (serviceResponse is null) {
-						IMainHandler handler = factory.CreateHandler();
-						var (r, e) = await handler.HandleRequest(request);
+				if (response is null) {
+					IMainHandler handler = factory.CreateHandler();
+					var (r, e) = await handler.HandleRequest(request);
 
-						response = r;
+					if(e != null) {
+						logger.Error(e, e.Message);
 						ex = e;
-					} else {
-						response = serviceResponse;
 					}
-				} catch (Exception e) {
-					ex = e;
-				} finally {
+
+					response = r;
+				}
+			}
+			catch(Exception e) {
+				logger.Error(e, e.Message);
+				ex = e;
+			} finally {
+				if (!response.IsServiceResponse()) {
 					await storageService.Insert(new {
 						Request = request,
 						Response = response,
 						Error = ex
 					});
 				}
-			} catch(Exception e) {
-				logger.Information(e.Message);
-
 			}
 			return response;
 		}
@@ -57,7 +58,7 @@ namespace AliceAppraisal {
 			}
 
 			if (request.IsPing()) {
-				return new AliceResponse(request).ToPong();
+				return AliceResponse.CreatePong(request);
 			}
 
 			return null;

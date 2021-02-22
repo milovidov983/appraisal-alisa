@@ -29,10 +29,8 @@ namespace AliceAppraisal.Application {
 			try {
 				externalService ??= this.externalService ?? new ExternalService();
 				serviceFactory = new ServiceFactory(logger, externalService ?? this.externalService);
-				logger.Information("Ok");
 			} catch(Exception e) {
-				logger.Information("Err");
-				logger.Information(e.Message);
+				logger.Error(e, $"{nameof(ServiceFactoryBuilder)}: {e.Message}");
 			}
 		}
 

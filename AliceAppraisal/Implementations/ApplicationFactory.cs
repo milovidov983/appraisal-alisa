@@ -41,7 +41,7 @@ namespace AliceAppraisal.Application {
 			if (storageService is null) {
 				lock (_lock) {
 					if (storageService is null) {
-						storageService = new SpreadsheetStorageService(settings.SheetConfig);
+						storageService = new TelegramBotStorge(settings.SheetConfig);
 					}
 				}
 			}
