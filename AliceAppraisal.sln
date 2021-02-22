@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliceAppraisal", "AliceAppraisal\AliceAppraisal.csproj", "{19AF250C-A903-482A-872F-F192BC27EEE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliceAppraisal", "src\AliceAppraisal.csproj", "{19AF250C-A903-482A-872F-F192BC27EEE6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliceUnitTests", "tests\AliceUnitTests\AliceUnitTests.csproj", "{027DB1F3-4746-44F3-999D-6F85A521CC76}"
 EndProject
