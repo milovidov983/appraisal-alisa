@@ -4,13 +4,13 @@ namespace AliceAppraisal.Core.Engine {
 	/// <summary>
 	/// Управляет порядком переходов между шагами
 	/// </summary>
-	public class StepManager : IStepManager {
+	public class StepService : IStepService {
 		private readonly IServiceFactory serviceFactory;
 		private string customNextStep;
 		private string NextDefaultStep(BaseStrategy currentStep)
 			=> Transitions.GetDeafultNextStep(currentStep); 
 
-		public StepManager(IServiceFactory serviceFactory) {
+		public StepService(IServiceFactory serviceFactory) {
 			this.serviceFactory = serviceFactory;
 		}
 

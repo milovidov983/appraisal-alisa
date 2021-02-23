@@ -22,6 +22,7 @@ namespace AliceAppraisal.Static {
 			InitStrategy _ => typeof(GetMakeStrategy).FullName,
 			GetMakeStrategy _ => typeof(GetModelStrategy).FullName,
 			GetModelStrategy _ => typeof(GetManufactureYearStrategy).FullName,
+			GetMakeAndModelStrategy _ => typeof(GetManufactureYearStrategy).FullName,
 			GetManufactureYearStrategy _ => typeof(GetGenerationStrategy).FullName,
 			GetGenerationStrategy _ => typeof(GetBodyTypeStrategy).FullName,
 			GetBodyTypeStrategy _ => typeof(GearboxStrategy).FullName,

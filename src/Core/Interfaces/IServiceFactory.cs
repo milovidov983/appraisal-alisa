@@ -10,6 +10,7 @@ namespace AliceAppraisal.Core.Engine {
 		IAppraisalProvider GetDataProvider();
 		ILoggerFactory GetLoggerFactory();
 		IStorageService GetStorageService();
-		IStepManager GetStepManager();
+		IStepService GetStepService();
+		IVehicleModelService GetVehicleModelService();
 	}
 } 

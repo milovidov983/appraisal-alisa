@@ -1,16 +1,19 @@
 ﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetMakeStrategy : BaseStrategy {
-		public GetMakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class GetMakeAndModelStrategy : BaseStrategy {
+		private readonly IVehicleModelService modelService;
+		public GetMakeAndModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+			this.modelService = serviceFactory.GetVehicleModelService();
 		}
 
 		protected override bool Check(AliceRequest request, State state) 
 			=> (
-				request.HasIntent(Intents.MakeName)
+				request.HasIntent(Intents.MakeAndModel)
 				&& 
 				(
 					state.NextAction.Is(typeof(GetMakeStrategy)) 
@@ -20,20 +23,26 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			);
 		
 
-		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			var value = request.GetSlot(Intents.MakeName, Slots.Make);
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+			var makeValue = request.GetSlot(Intents.MakeAndModel, Slots.Make);
+			var modelValue = request.GetSlot(Intents.MakeAndModel, Slots.Model);
 
-			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state).FromTask();
+			if (makeValue.IsNullOrEmpty() || modelValue.IsNullOrEmpty()) {
+				return GetMessageForUnknown(request, state);
 			}
 
-			var makeId = value.ExtractId()
-				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {value}");
+			var makeId = makeValue.ExtractId()
+				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {makeValue}");
 
-			state.UpdateMake(makeId, value);
+			var (modelId, name) = await modelService.GetModelData(
+				modelValue, 
+				makeId, 
+				state.Request.MakeEntity, 
+				request.Request.Command.Split(" ").LastOrDefault());
 
-			
-			return CreateNextStepMessage(request, state);
+			state.UpdateMake(makeId, makeValue);
+			state.UpdateModelId(modelId, name);
+			return await CreateNextStepMessage(request, state);
 		}
 
 
@@ -44,8 +53,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			$"Скажите название марки автомобиля, который вы хотите оценить.",
 			$"Укажите марку авто, которое вы хотите оценить"
 		};
-
-		 
+		
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
@@ -57,15 +65,14 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
 			=> new SimpleResponse {
 				Text = $"Что бы оценить авто мне надо знать его марку," +
-				$" пожалуйста попробуйте повторить запрос или попросите у меня подсказку."
+				$" пожалуйста назовите отдельно марку Вашего авто или попросите у меня подсказку."
 			};
 		
 
 		public override SimpleResponse GetHelp() 
 			=> new SimpleResponse {
 				Text = $"Для оценки автомобиля мне необходимо знать его марку, если мне не удается распознать " +
-				$"название марки которое вы говорите, то возможно этой марки у меня просто нету в базе. " +
-				$"Попробуйте произнести название приблизив микрофон ближе. "
+				$"название марки которое вы говорите, попробуйте указать её название отдельным словом без указания модели года или поколения. "
 			};
 		
 	}

@@ -5,13 +5,12 @@ using AliceAppraisal.Core;
 using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Implementations.Infrastructure;
 using AliceAppraisal.Infrastructure;
-using System;
 using System.Collections.Generic;
 
 namespace AliceAppraisal.Application {
 
 	public class ServiceFactory : IServiceFactory {
-		private IAppraisalProvider _dataProviderService;
+		private readonly IAppraisalProvider _dataProviderService;
 		public IAppraisalProvider GetDataProvider() {
 			return _dataProviderService;
 		}
@@ -26,16 +25,14 @@ namespace AliceAppraisal.Application {
 			
 		}
 
-
-
-		#region logger
+		#region Logger
 		private ILoggerFactory _loggerFactory; 
 		public ILoggerFactory GetLoggerFactory() {
 			return _loggerFactory;
 		}
 		#endregion
 
-		#region strategy
+		#region Strategy
 		private IStrategyFactory strategyFactory;
 		public IStrategyFactory StrategyFactory { 
 			get => strategyFactory; 
@@ -51,21 +48,23 @@ namespace AliceAppraisal.Application {
 
 		#endregion
 
-		#region StepManager
+		#region StepService
 
-		IStepManager stepManager;
-		public IStepManager GetStepManager() {
-			if(stepManager is null) {
+		IStepService stepService;
+		public IStepService GetStepService() {
+			if(stepService is null) {
 				lock (_lock) {
-					if(stepManager is null) {
-						stepManager = new StepManager(this);
+					if(stepService is null) {
+						stepService = new StepService(this);
 					}
 				}
 			}
-			return stepManager;
+			return stepService;
 		}
 
 		#endregion;
+
+		#region Storage
 		private static readonly object _storageLock = new object();
 		private IStorageService storageService;
 		public IStorageService GetStorageService() {
@@ -83,5 +82,18 @@ namespace AliceAppraisal.Application {
 			return storageService;
 			
 		}
+
+		#endregion
+
+		#region VehicleModelService
+
+		private readonly IVehicleModelService vehicleModelService = new VehicleModelService();
+
+		public IVehicleModelService GetVehicleModelService() {
+			return vehicleModelService;
+		}
+
+		#endregion
+
 	}
 }

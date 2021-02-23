@@ -1,19 +1,16 @@
-﻿using AliceAppraisal.Core.Engine;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using Serilog;
-using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine {
 	public abstract class BaseStrategy {
-		protected readonly IAppraisalProvider externalService;
 		protected readonly ILogger logger;
-		private readonly IStepManager stepManager;
+
+		private readonly IStepService stepService;
 
 		protected BaseStrategy(IServiceFactory serviceFactory) {
-			this.stepManager = serviceFactory.GetStepManager();
+			this.stepService = serviceFactory.GetStepService();
 			this.logger = serviceFactory.GetLoggerFactory().GetLogger();
-			this.externalService = serviceFactory.GetDataProvider();
 		}
 
 		public bool IsSuitableStrategy(AliceRequest request, State state)
@@ -23,8 +20,6 @@ namespace AliceAppraisal.Core.Engine {
 		public Task<AliceResponse> Run(AliceRequest request, State state)
 			=>  CreateResponse(request, state);
 		
-
-
 		protected virtual async Task<AliceResponse> CreateResponse(AliceRequest request, State state) {
 			try {
 				var simple = await Respond(request, state); // GetRequestTypes
@@ -40,12 +35,12 @@ namespace AliceAppraisal.Core.Engine {
 
 				return response;
 			} finally {
-				stepManager.ResetCustomStep();
+				stepService.ResetCustomStep();
 			}
 		}
 
 		protected virtual void UpdateState(State state) {
-			var nextStepName = stepManager.GetNextStep(this);
+			var nextStepName = stepService.GetNextStep(this);
 			state.SaveCurrentAndNextStep(this.GetType().FullName, nextStepName);
 		}
 
@@ -61,8 +56,8 @@ namespace AliceAppraisal.Core.Engine {
 
 
 		private BaseStrategy GetNextStep(string customNextStep = null) {
-			stepManager.ChangeDefaultStepTo(customNextStep);
-			return stepManager.GetNextStrategy(this);
+			stepService.ChangeDefaultStepTo(customNextStep);
+			return stepService.GetNextStrategy(this);
 		}
 		/// <summary>
 		/// Вспомогательный метод создания ответа от следующего шага диалога
@@ -75,17 +70,11 @@ namespace AliceAppraisal.Core.Engine {
 			return nextStepInstanse.GetMessage(request, state);
 		}
 
-		/// <summary>
-		/// Вспомогательный метод создания ответа от следующего шага диалога
-		/// </summary>
 		protected SimpleResponse CreateNextStepHelp(string customNextStep = null) {
 			var nextStepInstanse = GetNextStep(customNextStep);
 			return nextStepInstanse.GetHelp();
 		}
 
-		/// <summary>
-		/// Вспомогательный метод создания ответа от следующего шага диалога
-		/// </summary>
 		protected SimpleResponse CreateNextStepMessageForUnknown(AliceRequest request, State state, string customNextStep = null) {
 			var nextStepInstanse = GetNextStep(customNextStep);
 			return nextStepInstanse.GetMessageForUnknown(request, state);

@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class StartAppraisalStrategy : BaseStrategy {
+		private readonly IAppraisalProvider appraisalService;
+
 		public StartAppraisalStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+			this.appraisalService = serviceFactory.GetDataProvider();
 		}
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
@@ -35,7 +38,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			=> CreateNextStepMessage(request, state);
 		
 		private async Task<SimpleResponse> CreateFinalResult(State state) {
-			var result = await externalService.GetAppraisalResponse(state.Request);
+			var result = await appraisalService.GetAppraisalResponse(state.Request);
 
 			SimpleResponse response;
 			if (result.Status != "success") {

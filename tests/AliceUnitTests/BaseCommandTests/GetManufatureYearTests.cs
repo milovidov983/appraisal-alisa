@@ -11,14 +11,6 @@ using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
 	public class GetManufatureYearTests {
-		private ILogger logger = new LoggerConfiguration()
-					.WriteTo
-					.Console()
-					.MinimumLevel
-					.Debug()
-					.CreateLogger();
-
-
 		[Fact]
 		public async Task Set_correct_manufactureYear_year_is_saved() {
 			var aliceRequest = RequestBuilder.Create()

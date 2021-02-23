@@ -9,7 +9,10 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class GetGenerationStrategy : BaseStrategy {
+		private readonly IAppraisalProvider appraisalService;
+
 		public GetGenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+			this.appraisalService = serviceFactory.GetDataProvider();
 		}
 
 		protected override bool Check(AliceRequest request, State state)
@@ -77,7 +80,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 			Validate(modelId, manufactureYear);
 
-			var findedGenerations = await externalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
+			var findedGenerations = await appraisalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
 			if(findedGenerations?.Any() != true) {
 				return new SimpleResponse {

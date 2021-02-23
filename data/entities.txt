@@ -3967,6 +3967,8 @@ entity EModels:
              %lemma
              ГЛК-класс
              GLK-Класс
+             Гелентваген
+             Гелик
 
 entity EBodyType:
     values:
