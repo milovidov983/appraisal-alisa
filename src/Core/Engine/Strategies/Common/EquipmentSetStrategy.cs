@@ -1,16 +1,13 @@
 ﻿using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetEquipmentSetStrategy : BaseStrategy {
+	public class EquipmentSetStrategy : BaseStrategy {
 		private static readonly string[] componentTypes = VehicleComponents.Equipments.Values.ToArray();
-		public GetEquipmentSetStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		public EquipmentSetStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();

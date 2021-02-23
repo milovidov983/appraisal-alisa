@@ -1,17 +1,13 @@
-﻿using AliceAppraisal.Core.Engine.Services;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetGenerationStrategy : BaseStrategy {
+	public class GenerationStrategy : BaseStrategy {
 		private readonly IAppraisalProvider appraisalService;
 
-		public GetGenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		public GenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.appraisalService = serviceFactory.GetDataProvider();
 		}
 

@@ -15,8 +15,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_manufactureYear_year_is_saved() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
+					prev: typeof(ModelStrategy).FullName,
+					next: typeof(ManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear()
 				.WithGenerationChoise()
@@ -32,8 +32,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_manufactureYear_response_ok() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
+					prev: typeof(ModelStrategy).FullName,
+					next: typeof(ManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear()
 				.WithGenerationChoise()
@@ -57,8 +57,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_manufactureYear_next_action_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
+					prev: typeof(ModelStrategy).FullName,
+					next: typeof(ManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear()
 				.WithGenerationChoise()
@@ -67,7 +67,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(typeof(GetGenerationStrategy).FullName, response.State.NextAction);
+			Assert.Equal(typeof(GenerationStrategy).FullName, response.State.NextAction);
 		}
 
 		[Fact]
@@ -75,8 +75,8 @@ namespace AliceUnitTests.BaseCommandTests {
 			var wrongManufactureYear = DateTime.UtcNow.Year + 1;
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetModelStrategy).FullName,
-					next: typeof(GetManufactureYearStrategy).FullName)
+					prev: typeof(ModelStrategy).FullName,
+					next: typeof(ManufactureYearStrategy).FullName)
 				.WithModelId()
 				.WithIntentManufactureYear(wrongManufactureYear)
 				.Build();
@@ -91,8 +91,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Find_one_generation_set_special_action() {
 			var aliceRequest = RequestBuilder.Create()
 					.WithActions(
-						prev: typeof(GetModelStrategy).FullName,
-						next: typeof(GetManufactureYearStrategy).FullName)
+						prev: typeof(ModelStrategy).FullName,
+						next: typeof(ManufactureYearStrategy).FullName)
 					.WithModelId()
 					.WithIntentManufactureYear()
 					.WithGenerationChoise(single: true)

@@ -4,8 +4,8 @@ using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetMakeStrategy : BaseStrategy {
-		public GetMakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class MakeStrategy : BaseStrategy {
+		public MakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override bool Check(AliceRequest request, State state) 
@@ -13,7 +13,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				request.HasIntent(Intents.MakeName)
 				&& 
 				(
-					state.NextAction.Is(typeof(GetMakeStrategy)) 
+					state.NextAction.Is(typeof(MakeStrategy)) 
 					|| 
 					state.NextAction.Is(typeof(InitStrategy))
 				)

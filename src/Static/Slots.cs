@@ -6,7 +6,7 @@ namespace AliceAppraisal.Static {
     public static class Slots {
         public const string Make = "make";
         public const string Model = "model";
-        public const string ManufacureYear = "manufacure_year";
+        public const string ManufacureYear = "year";
         public const string Raw = "raw";
         public const string Body = "body";
         public const string Gearbox = "gearbox";

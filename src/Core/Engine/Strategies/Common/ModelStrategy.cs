@@ -1,20 +1,14 @@
-﻿using AliceAppraisal.Application.Configuration;
-using AliceAppraisal.Core.Engine.Services;
+﻿using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetModelStrategy : BaseStrategy {
+	public class ModelStrategy : BaseStrategy {
 		private readonly IVehicleModelService modelService;
 
-		public GetModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		public ModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.modelService = serviceFactory.GetVehicleModelService();
 		}
 

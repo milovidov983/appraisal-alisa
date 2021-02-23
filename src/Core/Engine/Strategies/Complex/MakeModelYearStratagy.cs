@@ -5,18 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetMakeAndModelStrategy : BaseStrategy {
+	public class MakeModelYearStratagy : BaseStrategy {
 		private readonly IVehicleModelService modelService;
-		public GetMakeAndModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		public MakeModelYearStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.modelService = serviceFactory.GetVehicleModelService();
 		}
 
 		protected override bool Check(AliceRequest request, State state) 
 			=> (
-				request.HasIntent(Intents.MakeAndModel)
+				request.HasIntent(Intents.FirstComplexRequest)
 				&& 
 				(
-					state.NextAction.Is(typeof(GetMakeStrategy)) 
+					state.NextAction.Is(typeof(MakeStrategy)) 
 					|| 
 					state.NextAction.Is(typeof(InitStrategy))
 				)
@@ -24,8 +24,9 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			var makeValue = request.GetSlot(Intents.MakeAndModel, Slots.Make);
-			var modelValue = request.GetSlot(Intents.MakeAndModel, Slots.Model);
+			var makeValue = request.GetSlot(Intents.FirstComplexRequest, Slots.Make);
+			var modelValue = request.GetSlot(Intents.FirstComplexRequest, Slots.Model);
+			var yearValue = request.GetSlot(Intents.FirstComplexRequest, Slots.ManufacureYear);
 
 			if (makeValue.IsNullOrEmpty() || modelValue.IsNullOrEmpty()) {
 				return GetMessageForUnknown(request, state);
@@ -48,19 +49,19 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 			return new SimpleResponse {
-				Text = GetMakeStrategy.Messages.GetRand()
+				Text = MakeStrategy.Messages.GetRand()
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
 			=> new SimpleResponse {
-				Text = GetMakeStrategy.GetMessageForUnknownText()
+				Text = MakeStrategy.GetMessageForUnknownText()
 			};
 		
 
 		public override SimpleResponse GetHelp() 
 			=> new SimpleResponse {
-				Text = GetMakeStrategy.GetHelpText()
+				Text = MakeStrategy.GetHelpText()
 			};
 		
 	}

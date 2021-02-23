@@ -8,7 +8,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetCityStrategy : BaseStrategy {
+	public class CityStrategy : BaseStrategy {
 
 		protected List<string> Keywords { get; } = new List<string>
 		{
@@ -61,7 +61,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 
 		public static Dictionary<string, int> CityRegions { get; }
-		static GetCityStrategy() {
+		static CityStrategy() {
 			CityRegions = new Dictionary<string, int>();
 			foreach(var item in RegionItem.All) {
 				CityRegions.TryAdd(item.CapitalName.ToLowerInvariant(), item.Code);
@@ -70,7 +70,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 		private const string DEFAULT_CITY = "москва";
 
-		public GetCityStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+		public CityStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {

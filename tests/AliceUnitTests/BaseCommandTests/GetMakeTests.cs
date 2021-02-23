@@ -9,7 +9,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(InitStrategy).FullName,
-					next: typeof(GetMakeStrategy).FullName)
+					next: typeof(MakeStrategy).FullName)
 				.WithIntentMake()
 				.Build();
 
@@ -24,7 +24,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(InitStrategy).FullName,
-					next: typeof(GetMakeStrategy).FullName)
+					next: typeof(MakeStrategy).FullName)
 				.WithIntentMake()
 				.Build();
 
@@ -38,15 +38,15 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_make_next_action_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetMakeStrategy).FullName,
-					next: typeof(GetModelStrategy).FullName)
+					prev: typeof(MakeStrategy).FullName,
+					next: typeof(ModelStrategy).FullName)
 				.WithIntentMake()
 				.Build();
 
 			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(typeof(GetModelStrategy).FullName, response.State.NextAction);
+			Assert.Equal(typeof(ModelStrategy).FullName, response.State.NextAction);
 		}
 
 		[Fact]
@@ -54,7 +54,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
 					prev: typeof(InitStrategy).FullName,
-					next: typeof(GetMakeStrategy).FullName)
+					next: typeof(MakeStrategy).FullName)
 				.Build();
 
 			var handler = MockHandler.Create();

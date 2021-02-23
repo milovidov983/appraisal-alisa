@@ -28,7 +28,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			=>
 			request.HasIntent(Intents.SpecifyAnotherCity)
 			&&
-			state.NextAction.Is(typeof(GetCityStrategy));
+			state.NextAction.Is(typeof(CityStrategy));
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			return GetMessage(request, state);

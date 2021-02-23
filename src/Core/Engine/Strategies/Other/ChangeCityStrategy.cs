@@ -34,7 +34,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			&&
 			(state.NextAction.Is(typeof(StartAppraisalStrategy))
 			|| 
-			state.PrevAction.Is(typeof(GetCityStrategy)))
+			state.PrevAction.Is(typeof(CityStrategy)))
 			;
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
@@ -47,7 +47,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 					city = JsonSerializer.Deserialize<CityDto>(city)?.City;
 				} catch { }
 			}
-			var cityRegions = GetCityStrategy.CityRegions;
+			var cityRegions = CityStrategy.CityRegions;
 			if (!cityRegions.TryGetValue(city.ToLowerInvariant(), out var regionId)) {
 				return GetMessageForUnknown(request, state).FromTask();
 			}

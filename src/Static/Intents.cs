@@ -27,6 +27,6 @@ namespace AliceAppraisal.Static {
         public const string ChangeParamCity = "change_param_city";
         public const string SelectYear = "select_year";
         public const string SpecifyAnotherCity = "specify_another_city";
-        public const string MakeAndModel = "make_and_model";
+        public const string FirstComplexRequest = "make_model_year";
     }
 }

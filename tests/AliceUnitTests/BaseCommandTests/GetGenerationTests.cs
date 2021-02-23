@@ -16,8 +16,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_generation_result_saved() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetManufactureYearStrategy).FullName,
-					next: typeof(GetGenerationStrategy).FullName)
+					prev: typeof(ManufactureYearStrategy).FullName,
+					next: typeof(GenerationStrategy).FullName)
 				.WithGenerationChoise(single: false)
 				.WithNumberIntent(1)
 				.Build();
@@ -32,8 +32,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_generation_status_ok() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetManufactureYearStrategy).FullName,
-					next: typeof(GetGenerationStrategy).FullName)
+					prev: typeof(ManufactureYearStrategy).FullName,
+					next: typeof(GenerationStrategy).FullName)
 				.WithGenerationChoise(single: false)
 				.WithNumberIntent(1)
 				.Build();
@@ -48,8 +48,8 @@ namespace AliceUnitTests.BaseCommandTests {
 		public async Task Set_correct_generation_next_action_is_correct() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetManufactureYearStrategy).FullName,
-					next: typeof(GetGenerationStrategy).FullName)
+					prev: typeof(ManufactureYearStrategy).FullName,
+					next: typeof(GenerationStrategy).FullName)
 				.WithGenerationChoise(single: false)
 				.WithNumberIntent(1)
 				.Build();
@@ -57,15 +57,15 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(typeof(GetBodyTypeStrategy).FullName, response.State.NextAction);
+			Assert.Equal(typeof(BodyTypeStrategy).FullName, response.State.NextAction);
 		}
 
 		[Fact]
 		public async Task Set_wrong_generation_return_warning_response() {
 			var aliceRequest = RequestBuilder.Create()
 				.WithActions(
-					prev: typeof(GetManufactureYearStrategy).FullName,
-					next: typeof(GetGenerationStrategy).FullName)
+					prev: typeof(ManufactureYearStrategy).FullName,
+					next: typeof(GenerationStrategy).FullName)
 				.WithGenerationChoise(single: false)
 				.WithNumberIntent(99999)
 				.Build();

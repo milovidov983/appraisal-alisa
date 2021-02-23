@@ -49,7 +49,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 				state.UpdateGenerationId(value.Id, value.Name);
 			} else {
-				customNextStep = typeof(GetManufactureYearStrategy).FullName;
+				customNextStep = typeof(ManufactureYearStrategy).FullName;
 			}
 			return CreateNextStepMessage(request, state, customNextStep);
 		}

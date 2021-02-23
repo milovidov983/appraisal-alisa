@@ -1,15 +1,10 @@
-﻿using AliceAppraisal.Core.Engine.Services;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetBodyTypeStrategy : BaseStrategy {
-		public GetBodyTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class BodyTypeStrategy : BaseStrategy {
+		public BodyTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state)

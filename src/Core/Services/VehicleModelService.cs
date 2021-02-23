@@ -1,4 +1,5 @@
 ﻿using AliceAppraisal.Application.Configuration;
+using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Models;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace AliceAppraisal.Core.Engine {
+namespace AliceAppraisal.Core {
 	public class VehicleModelService : IVehicleModelService {
 
 		public async Task<(int modelId, string name)> GetModelData(string value, int makeId, string makeName, string command) {

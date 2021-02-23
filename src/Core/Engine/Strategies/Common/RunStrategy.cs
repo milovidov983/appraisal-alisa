@@ -2,14 +2,11 @@
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetRunStrategy : BaseStrategy {
-		public GetRunStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class RunStrategy : BaseStrategy {
+		public RunStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();

@@ -20,9 +20,9 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				&& state.Request.ModelId.HasValue
 				&& 
 				( 
-					state.NextAction.Is(typeof(GetGenerationStrategy))
+					state.NextAction.Is(typeof(GenerationStrategy))
 					||
-					state.NextAction.Is(typeof(GetManufactureYearStrategy))
+					state.NextAction.Is(typeof(ManufactureYearStrategy))
 				);
 		
 

@@ -2,14 +2,11 @@
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
-	public class GetManufactureYearStrategy : BaseStrategy {
-		public GetManufactureYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+	public class ManufactureYearStrategy : BaseStrategy {
+		public ManufactureYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
 		public static readonly string[] Messages = new[] {
@@ -44,7 +41,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
-			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(typeof(GetManufactureYearStrategy));
+			return request.HasIntent(Intents.DigitInput) && state.NextAction.Is(typeof(ManufactureYearStrategy));
 		}
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
