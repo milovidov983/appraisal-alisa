@@ -36,10 +36,14 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
 			return new SimpleResponse {
-				Text = $"Не удалось распознать модель вашего авто, " +
-				$"попробуйте произнести название модели отдельным " +
-				$"словом без упоминания её поколения или попросите у меня подсказку."
+				Text = GetMessageForUnknownText()
 			};
+		}
+
+		public static string GetMessageForUnknownText() {
+			return $"Что бы оценить авто мне надо знать его модель, " +
+				$"пожалуйста назовите только модель Вашего авто, без указания его поколения и года выпуска " +
+				$"или попросите у меня подсказку.";
 		}
 
 		protected override bool Check(AliceRequest request, State state) {
