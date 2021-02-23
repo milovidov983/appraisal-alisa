@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
-	public class GetModelTests {
+	public class ModelTests {
 
 		[Fact]
 		public async Task Set_correct_model_id_is_saved() {
@@ -65,8 +65,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
-				$"Не удалось распознать модель вашего авто," +
-				$" попробуйте повторить ваш запрос или попросите у меня подсказку.",
+				$"Ой, мне не удалось понять вас. Что бы оценить авто мне надо знать его модель",
 				response.Response.Text);
 		}
 

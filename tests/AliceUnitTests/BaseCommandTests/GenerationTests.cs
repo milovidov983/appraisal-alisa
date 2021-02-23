@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
-	public class GetGenerationTests {
+	public class GenerationTests {
 
 		//public MainHandler CreateHandler(AliceRequest request) {
 		//	var handler =  new MainHandlerMock(request);

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
-	public class GetMakeTests {
+	public class MakeTests {
 		[Fact]
 		public async Task Set_correct_make_id_is_saved() {
 			var aliceRequest = RequestBuilder.Create()
@@ -61,8 +61,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
-				"Что бы оценить авто мне надо знать его марку, " +
-				"пожалуйста попробуйте повторить запрос или попросите у меня подсказку.", 
+				"Ой, мне не удалось понять вас. Что бы оценить авто мне надо знать его марку", 
 				response.Response.Text);
 		}
 

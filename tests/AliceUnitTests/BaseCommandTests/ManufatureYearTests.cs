@@ -1,16 +1,14 @@
 ﻿using AliceAppraisal.Application;
 using AliceAppraisal.Core.Engine;
-using AliceAppraisal.Core.Engine.Services;
 using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
 using AliceUnitTests.Builders;
-using Serilog;
 using System;
 using System.Threading.Tasks;
 using Xunit;
 
 namespace AliceUnitTests.BaseCommandTests {
-	public class GetManufatureYearTests {
+	public class ManufatureYearTests {
 		[Fact]
 		public async Task Set_correct_manufactureYear_year_is_saved() {
 			var aliceRequest = RequestBuilder.Create()
