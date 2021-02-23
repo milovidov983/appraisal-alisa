@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ManufactureYearStrategy : BaseStrategy {
+		private readonly IManufactureYearService yearService;
 		public ManufactureYearStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+			this.yearService = serviceFactory.GetManufactureYearService();
 		}
 
 		public static readonly string[] Messages = new[] {
@@ -51,15 +53,12 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				return GetMessageForUnknown(request, state).FromTask();
 			}
 
-			var isCorrectConverted = Int32.TryParse(value, out var manufactureYear);
-			if (!isCorrectConverted) {
+			var manufactureYear = yearService.GetYearFromUserInputOrNull(value);
+			if (manufactureYear is null) {
 				return GetMessageForUnknown(request, state).FromTask();
 			}
-			string error = Validate(manufactureYear);
-			if(error != null){
-				throw new InvalidRequestException(error);
-			}
-			state.UpdateManufactureYear(manufactureYear);
+
+			state.UpdateManufactureYear(manufactureYear.Value);
 
 			var nextStep = GetNextStepOrDefault(state);
 			return CreateNextStepMessage(request, state, nextStep);

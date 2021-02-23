@@ -95,5 +95,15 @@ namespace AliceAppraisal.Application {
 
 		#endregion
 
+		#region ManufactureYearService
+
+		private readonly IManufactureYearService manufactureYearService = new ManufactureYearService();
+
+		public IManufactureYearService GetManufactureYearService() {
+			return manufactureYearService;
+		}
+
+		#endregion
+
 	}
 }

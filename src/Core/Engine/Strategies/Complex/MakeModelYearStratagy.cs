@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class MakeModelYearStratagy : BaseStrategy {
 		private readonly IVehicleModelService modelService;
+		private readonly IManufactureYearService yearService;
+
 		public MakeModelYearStratagy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.modelService = serviceFactory.GetVehicleModelService();
+			this.yearService = serviceFactory.GetManufactureYearService();
 		}
 
 		protected override bool Check(AliceRequest request, State state) 
@@ -41,9 +44,17 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				state.Request.MakeEntity, 
 				request.Request.Command.Split(" ").LastOrDefault());
 
+			string nextStep = null;
+			var manufactureYear = yearService.GetYearFromUserInputOrNull(yearValue);
+			if (manufactureYear != null) {
+				state.UpdateManufactureYear(manufactureYear.Value);
+				nextStep = typeof(GenerationStrategy).FullName;
+			}
+
 			state.UpdateMake(makeId, makeValue);
 			state.UpdateModelId(modelId, name);
-			return await CreateNextStepMessage(request, state);
+
+			return await CreateNextStepMessage(request, state, nextStep);
 		}
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {

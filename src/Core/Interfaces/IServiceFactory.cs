@@ -12,5 +12,6 @@ namespace AliceAppraisal.Core.Engine {
 		IStorageService GetStorageService();
 		IStepService GetStepService();
 		IVehicleModelService GetVehicleModelService();
+		IManufactureYearService GetManufactureYearService();
 	}
 } 
