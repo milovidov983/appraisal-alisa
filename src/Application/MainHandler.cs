@@ -24,7 +24,7 @@ namespace AliceAppraisal.Application {
 			this.settings = Settings.Instance;
 		}
 		public async Task<(AliceResponse, Exception)> HandleRequest(AliceRequest aliceRequest) {
-			logger.Debug($"ALICE_REQUEST: {aliceRequest.ToJson()}");
+			
 			
 			State state = aliceRequest.State?.Session ?? new State();
 			AliceResponse response = null;
@@ -68,7 +68,13 @@ namespace AliceAppraisal.Application {
 				response = HandleUnhandledException(aliceRequest, state, e);
 				ex = e;
 			}
-			logger.Debug($"ALICE_RESPONSE: {response.ToJson()}");
+			if(ex != null) {
+				logger.Debug($"- Exception req/res data -");
+				logger.Debug($"ALICE_REQUEST:");
+				logger.Debug(aliceRequest.ToJson());
+				logger.Debug($"ALICE_RESPONSE:");
+				logger.Debug(response.ToJson());
+			}
 			return (response, ex);
 		}
 

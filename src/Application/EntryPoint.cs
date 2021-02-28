@@ -29,7 +29,6 @@ namespace AliceAppraisal {
 		}
 
 		public async Task<AliceResponse> FunctionHandler(AliceRequest request) {
-			logger.Information("Running FunctionHandler function");
 			AliceResponse response = null;
 			Exception ex = null;
 			try {

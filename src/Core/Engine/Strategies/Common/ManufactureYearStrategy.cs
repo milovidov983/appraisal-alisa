@@ -67,6 +67,8 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 		/// Гремучее легаси
 		private string GetNextStepOrDefault(State state) {
+			// Если в указанный год выпуска у марки было одно поколение
+			// тогда выбираем его и запрашиваем подтверждение от пользователя
 			if (state.GenerationChoise.Count == 1) {
 				return typeof(ConfirmGenerationStrategy).FullName;
 			}
