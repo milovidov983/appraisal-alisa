@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using AliceAppraisal.Application.Infrastructure;
+using Newtonsoft.Json;
 using Serilog;
 using Serilog.Events;
 using System;
 using System.Text.Json;
+using static System.Environment;
 
 
 namespace AliceAppraisal.Application.Configuration {
@@ -26,15 +28,21 @@ namespace AliceAppraisal.Application.Configuration {
 
 			try {
 				Console.OutputEncoding = System.Text.Encoding.UTF8;
-				Environment = System.Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "develop";
+				Environment = GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "develop";
 
-				Domain = System.Environment.GetEnvironmentVariable(nameof(Domain));
-				TelegramBotToken = System.Environment.GetEnvironmentVariable(nameof(TelegramBotToken));
-				TelegramChatId = System.Environment.GetEnvironmentVariable(nameof(TelegramChatId));
+				Domain = GetEnvironmentVariable(nameof(Domain));
+				TelegramBotToken = GetEnvironmentVariable(nameof(TelegramBotToken));
+				TelegramChatId = GetEnvironmentVariable(nameof(TelegramChatId));
 
-				var _envLogLevel = System.Environment.GetEnvironmentVariable(nameof(LogLevel));
+				var _envLogLevel = GetEnvironmentVariable(nameof(LogLevel));
 				Enum.TryParse(typeof(LogEventLevel), _envLogLevel, true, out var parsedLogLevel);
 				LogLevel = (LogEventLevel)(parsedLogLevel ?? LogEventLevel.Information);
+
+				SheetConfig = new SheetConfig {
+					ClientId = GetEnvironmentVariable(nameof(SheetConfig.ClientId)),
+					ClientSecret = GetEnvironmentVariable(nameof(SheetConfig.ClientSecret)),
+					SpreadsheetId = GetEnvironmentVariable(nameof(SheetConfig.SpreadsheetId)),
+				};
 
 
 				Console.WriteLine($"{nameof(Environment)}: {Environment}");
@@ -53,6 +61,9 @@ namespace AliceAppraisal.Application.Configuration {
 		public string Domain { get; }
 		public string TelegramBotToken { get; }
 		public string TelegramChatId { get; }
+
+
+		public SheetConfig SheetConfig { get; set; }
 
 		/// <summary>
 		/// Мапинг схожих названий у моделей

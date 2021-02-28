@@ -50,8 +50,13 @@ namespace AliceAppraisal {
 				logger.Error(e, e.Message);
 				ex = e;
 			} finally {
-				if (!response.IsServiceResponse()) {
-					await storageService.Insert(LogItem.Create(request, response, ex));
+				try {
+					if (!response.IsServiceResponse()) {
+						await storageService.Insert(LogItem.Create(request, response, ex));
+					}
+				} catch (Exception e) {
+					logger.Warning("storage error");
+					logger.Error(e, "storage error " + e.Message);
 				}
 			}
 			return response;
