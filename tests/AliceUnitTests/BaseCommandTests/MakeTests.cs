@@ -61,7 +61,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var response = await handler.FunctionHandler(aliceRequest);
 
 			Assert.Contains(
-				"Ой, мне не удалось понять вас. Что бы оценить авто мне надо знать его марку", 
+				"Что бы оценить авто мне надо знать его марку", 
 				response.Response.Text);
 		}
 
