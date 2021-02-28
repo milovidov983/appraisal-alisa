@@ -52,8 +52,12 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				? await dataService.GetPupularMakes() 
 				: Array.Empty<string>();
 
+			var additionalText = request.HasScreen()
+				? " Или выберите из наиболее популярных марок."
+				: "";
+
 			return new SimpleResponse {
-				Text = Messages.GetRand(),
+				Text = Messages.GetRand() + additionalText,
 				Buttons = makes
 			};
 		}

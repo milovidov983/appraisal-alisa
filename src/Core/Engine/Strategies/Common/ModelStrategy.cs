@@ -28,8 +28,14 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			var modelsNames = request.HasScreen() && selectedMakeId.HasValue
 				? await dataService.GetPupularModels(selectedMakeId.Value)
 				: Array.Empty<string>();
+
+
+			var additionalText = request.HasScreen()
+				? "Или выберите из наиболее популярных моделей."
+				: "";
+
 			return new SimpleResponse {
-				Text = $"{randGiveWord} пожалуйста модель вашего автомобиля",
+				Text = $"{randGiveWord} пожалуйста модель вашего автомобиля. {additionalText}",
 				Buttons = modelsNames
 			};
 		}

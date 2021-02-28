@@ -4044,11 +4044,14 @@ entity EBodyType:
             Хетчбэк
             Хэтчбэк
             Хэтчбек
+            Хэ(т)?ч бек
             hatchback
         liftback:
             %lemma
             Лифтбек
             Лифтбэк
+            лиф(т)? бэк
+            lift bag
             liftback
         limousine:
             %lemma
