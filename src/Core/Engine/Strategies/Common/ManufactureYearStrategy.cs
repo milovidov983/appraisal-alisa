@@ -2,6 +2,7 @@
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
@@ -22,8 +23,15 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			var randMessage = Messages.GetRand();
 
+			var years = Array.Empty<string>();
+			if (request.HasScreen()) {
+				var currentYear = DateTime.UtcNow.Year;
+				years = Enumerable.Range(0, 15).Select(x => (currentYear - x).ToString()).ToArray();
+			}
+
 			return new SimpleResponse {
-				Text = string.Format(randMessage, randGiveWord)
+				Text = string.Format(randMessage, randGiveWord),
+				Buttons = years
 			};
 		}
 		public override SimpleResponse GetHelp() {

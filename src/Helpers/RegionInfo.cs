@@ -30,6 +30,8 @@ namespace AliceAppraisal.Helpers {
 		/// </summary>
 		public int? ParentCityCode { get; set; }
 
+		public static int[] FavoriteCityIndex { get; } = new[] { 76, 77, 65, 53, 15, 51, 73, 62, 54, 60, 1, 23, 35, 58, 33 };
+
 		public static RegionItem[] All { get; set; } = new RegionItem[] {
 			new RegionItem { ParentCityCode = 23, Code = 1, RegionName = "Адыгея", CapitalName = "Майкоп", RegionId = new Guid("d8327a56-80de-4df2-815c-4f6ab1224c50"), CapitalId = new Guid("8cfbe842-e803-49ca-9347-1ef90481dd98") },
 			new RegionItem { ParentCityCode = 77, Code = 2, RegionName = "Башкортостан", CapitalName = "Уфа", RegionId = new Guid("6f2cbfd8-692a-4ee4-9b16-067210bde3fc"), CapitalId = new Guid("7339e834-2cb4-4734-a4c7-1fca2c66e562") },

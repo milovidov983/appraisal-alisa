@@ -27,11 +27,17 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+
+			var text = request.HasScreen()
+				? "Выберите"
+				: "Назовите";
+
+
 			return new SimpleResponse {
-				Text = $"Сейчас будет произведена оценка {state.Request.MakeEntity.ExtractName().CapitalizeFirst()} " +
-				$"{state.Request.GenerationValue} {state.Request.ManufactureYear} г.в. для Московского региона. " +
-				$"Продолжить?",
-				Buttons = new[] { "Продолжить", "Указать другой город"  }
+				Text = $"{text} город для оценки {state.Request.MakeEntity.ExtractName().CapitalizeFirst()} " +
+				$"{state.Request.GenerationValue} {state.Request.ManufactureYear} г.в., " +
+				$"по умолчанию оценка будет произведена в Московском регионе, продолжить?",
+				Buttons = Buttons.GetCityButtons().Union( new[] { "Продолжить", "Указать другой город"  }).ToArray()
 			};
 		}
 

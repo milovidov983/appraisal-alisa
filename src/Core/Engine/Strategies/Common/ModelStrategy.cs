@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ModelStrategy : BaseStrategy {
 		private readonly IVehicleModelService modelService;
+		private readonly IAppraisalProvider dataService;
 
 		public ModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.modelService = serviceFactory.GetVehicleModelService();
+			this.dataService = serviceFactory.GetDataProvider();
 		}
 
 		public override SimpleResponse GetHelp() {
@@ -21,10 +23,14 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			await Task.Yield();
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
+			var selectedMakeId = request.State.Session.Request.MakeId;
+			var modelsNames = request.HasScreen() && selectedMakeId.HasValue
+				? await dataService.GetPupularModels(selectedMakeId.Value)
+				: Array.Empty<string>();
 			return new SimpleResponse {
-				Text = $"{randGiveWord} пожалуйста модель вашего автомобиля"
+				Text = $"{randGiveWord} пожалуйста модель вашего автомобиля",
+				Buttons = modelsNames
 			};
 		}
 

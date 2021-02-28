@@ -48,8 +48,10 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		};
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			var makes = await dataService.GetPupularMakes();
-			Console.WriteLine(makes.Length);
+			var makes = request.HasScreen() 
+				? await dataService.GetPupularMakes() 
+				: Array.Empty<string>();
+
 			return new SimpleResponse {
 				Text = Messages.GetRand(),
 				Buttons = makes

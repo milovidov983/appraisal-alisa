@@ -1,6 +1,7 @@
 ﻿using AliceAppraisal.Application.Configuration;
 using AliceAppraisal.Application.Infrastructure;
 using AliceAppraisal.Application.Infrastructure.Models;
+using AliceAppraisal.Helpers;
 using AliceAppraisal.Implementations.Infrastructure;
 using Serilog;
 using System;
@@ -12,7 +13,6 @@ namespace AliceAppraisal {
 	class Program {
 		static async Task Main(string[] args) {
 			// AliceAppraisal.EntryPoint.FunctionHandler стартовая функция
-			
 
 			//DataProviderService service = new DataProviderService();
 			//var a = Settings.Instance.Domain;

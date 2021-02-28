@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AliceAppraisal.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,5 +28,13 @@ namespace AliceAppraisal.Static {
 			BodyTypes.Coupe.GetDescription(),
 			BodyTypes.Liftback.GetDescription()
 		};
+
+		public static string[] GetCityButtons() {
+			return RegionItem
+				.FavoriteCityIndex
+				.Select(x => RegionItem.All[x])
+				.Select(x => x.CapitalName)
+				.ToArray();
+		}
 	}
 }
