@@ -35,7 +35,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				return GetMessageForUnknown(request, state);
 			}
 
-			var makeId = makeValue.ExtractId()
+			var makeId = makeValue.ExtractIdOrNull()
 				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {makeValue}");
 
 			var (modelId, name) = await modelService.GetModelData(

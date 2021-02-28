@@ -1,12 +1,21 @@
-﻿using AliceAppraisal.Models;
+﻿using AliceAppraisal.Core.Models;
+using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
+
+
+
 	public class MakeStrategy : BaseStrategy {
 		private readonly IAppraisalProvider dataService;
-		
+		private readonly IntentName intentName = new IntentName {
+			Intent = Intents.MakeName,
+			Slot = Slots.Make
+		};
+
+
 		public MakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.dataService = serviceFactory.GetDataProvider();
 		}
@@ -23,19 +32,23 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			);
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			var value = request.GetSlot(Intents.MakeName, Slots.Make);
+			state.GeneralReset(); // На всякий случай т.к. это первый шаг оценки и данных быть не должно
+			string intentValue = request.GetSlot(intentName);
+			int makeId = ValidateAndGetId(intentValue);
+			state.UpdateMake(makeId, intentValue);
+			Task<SimpleResponse> messageForNextStep = CreateNextStepMessage(request, state);
+			return messageForNextStep;
+		}
 
-			if (value.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state).FromTask();
+
+		private int ValidateAndGetId(string intentValue) {
+			if (intentValue.IsNullOrEmpty()) {
+				throw new InvalidRequestException($"В запросе был найден intent {intentName.Intent} " +
+					$"но при его получении возникла ошибка, полезная нагрузка оказалась пустой.",
+					GetMessageForUnknownText());
 			}
-
-			var makeId = value.ExtractId()
-				?? throw new ArgumentException($"Не удалось извлечь ID марки из сущности {value}");
-
-			state.UpdateMake(makeId, value);
-
-			
-			return CreateNextStepMessage(request, state);
+			return intentValue.ExtractIdOrNull()
+				?? throw new InvalidOperationException($"Не удалось извлечь ID марки из сущности {intentValue}");
 		}
 
 		public static readonly string[] Messages = new[] {
@@ -54,8 +67,6 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			var additionalText = request.HasScreen()
 				? " Или выберите из наиболее популярных марок."
 				: "";
-
-
 
 			return new SimpleResponse {
 				Text = Messages.GetRand() + additionalText,

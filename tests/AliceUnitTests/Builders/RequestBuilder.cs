@@ -147,14 +147,14 @@ namespace AliceUnitTests.BaseCommandTests {
 			aliceRequest.State ??= new SessionState {
 				Session = new State {
 					Request = new AppraisalQuoteRequest {
-						MakeId = make.ExtractId()
+						MakeId = make.ExtractIdOrNull()
 					}
 				}
 			};
 			if(aliceRequest.State.Session is null) {
 				aliceRequest.State.Session = new State {
 					Request = new AppraisalQuoteRequest {
-						MakeId = make.ExtractId()
+						MakeId = make.ExtractIdOrNull()
 					}
 				};
 			}

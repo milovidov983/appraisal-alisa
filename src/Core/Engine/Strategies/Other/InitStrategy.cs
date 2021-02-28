@@ -25,7 +25,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		
 
 		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			state.Clear();
+			state.FullReset();
 			return await GetMessage(request, state);
 		}
 

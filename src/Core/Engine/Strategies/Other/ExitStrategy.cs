@@ -33,7 +33,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
-			state.Clear();
+			state.FullReset();
 			return GetMessage(request, state);
 		}
 	}

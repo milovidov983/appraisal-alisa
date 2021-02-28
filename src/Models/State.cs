@@ -37,6 +37,7 @@ namespace AliceAppraisal.Models {
 		public Dictionary<string, int> MisunderstandingCounter { get; set; } = new Dictionary<string, int>();
 
 
+
 		public void SetStatusCode(Exception exception) {
 			switch (exception) {
 				case NotFoundExcteption _: {
@@ -86,10 +87,13 @@ namespace AliceAppraisal.Models {
 			PrevAction = prev;
 			NextAction = next;
 		}
-
-		public void Clear() {
-			GenerationChoise = new Dictionary<string, IdAndName>();
+		public void GeneralReset() {
 			Request = new AppraisalQuoteRequest();
+			GenerationChoise.Clear();
+		}
+		public void FullReset() {
+			Request = new AppraisalQuoteRequest();
+			GenerationChoise.Clear();
 			PrevAction = "";
 		}
 

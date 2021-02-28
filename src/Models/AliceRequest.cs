@@ -1,4 +1,5 @@
 ﻿using AliceAppraisal.Core.Engine;
+using AliceAppraisal.Core.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -242,6 +243,10 @@ namespace AliceAppraisal.Models {
 
 		public bool HasAllSlots(string intentName, params string[] slotNames) {
 			return slotNames.All(s => HasSlot(intentName, s));
+		}
+
+		public string GetSlot(IntentName name) {
+			return GetSlot(name.Intent, name.Slot);
 		}
 
 		public string GetSlot(string intentName, string slotName) {

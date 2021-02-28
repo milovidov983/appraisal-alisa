@@ -27,7 +27,7 @@ namespace AliceAppraisal.Core {
 					throw new ArgumentException($"Не удалось найти модели из похожих {value}");
 				}
 			} else {
-				newModelId = value.ExtractId()
+				newModelId = value.ExtractIdOrNull()
 					?? throw new ArgumentException($"Не удалось извлечь ID модели из сущности {value}");
 
 				var isFitModel = modelsIdsForCurrentMake.Contains(newModelId);

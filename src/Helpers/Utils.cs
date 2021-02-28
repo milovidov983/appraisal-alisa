@@ -47,7 +47,7 @@ namespace AliceAppraisal {
 		/// <summary>
 		/// Паттерн записи моделей марок имямарки_001 где 001 id
 		/// </summary>
-		public static int? ExtractId(this string val) {
+		public static int? ExtractIdOrNull(this string val) {
 			if (val.IsNullOrEmpty()) {
 				return null;
 			}
