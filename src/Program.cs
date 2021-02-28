@@ -1,4 +1,6 @@
-﻿using AliceAppraisal.Application.Infrastructure.Models;
+﻿using AliceAppraisal.Application.Configuration;
+using AliceAppraisal.Application.Infrastructure;
+using AliceAppraisal.Application.Infrastructure.Models;
 using AliceAppraisal.Implementations.Infrastructure;
 using Serilog;
 using System;
@@ -10,7 +12,11 @@ namespace AliceAppraisal {
 	class Program {
 		static async Task Main(string[] args) {
 			// AliceAppraisal.EntryPoint.FunctionHandler стартовая функция
-			string utf8String = @"\u0410\u0410";
+			
+
+			//DataProviderService service = new DataProviderService();
+			//var a = Settings.Instance.Domain;
+			//await service.GetPupularMakes();
 
 			await Task.Yield();
 		}

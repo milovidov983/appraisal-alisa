@@ -24,7 +24,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				request.HasIntent(Intents.YandexConfirm);
 		
 
-        protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			state.Clear();
 			return await GetMessage(request, state);
 		}

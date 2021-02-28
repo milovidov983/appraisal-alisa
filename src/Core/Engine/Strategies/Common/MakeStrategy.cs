@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class MakeStrategy : BaseStrategy {
+		private readonly IAppraisalProvider dataService;
 		public MakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+			this.dataService = serviceFactory.GetDataProvider();
 		}
 
 		protected override bool Check(AliceRequest request, State state) 
@@ -45,12 +47,12 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			$"Укажите марку авто, которое вы хотите оценить"
 		};
 
-		 
-
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			await Task.Yield();
+			var makes = await dataService.GetPupularMakes();
+			Console.WriteLine(makes.Length);
 			return new SimpleResponse {
-				Text = Messages.GetRand()
+				Text = Messages.GetRand(),
+				Buttons = makes
 			};
 		}
 
