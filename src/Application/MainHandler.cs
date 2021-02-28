@@ -72,42 +72,40 @@ namespace AliceAppraisal.Application {
 				ex = e;
 			}
 			if(ex != null) {
-				logger.Debug($"- Exception req/res data -");
-				logger.Debug($"ALICE_REQUEST:");
-				logger.Debug(aliceRequest.ToJson());
-				logger.Debug($"ALICE_RESPONSE:");
-				logger.Debug(response.ToJson());
+				logger.Information($"- Exception req/res data: {ex.Message}");
+				logger.Information($"ALICE_REQUEST:");
+				logger.Information(aliceRequest.ToJson());
+				logger.Information($"ALICE_RESPONSE:");
+				logger.Information(response.ToJson());
 			}
 			return (response, ex);
 		}
 
 		private AliceResponse HandleUnhandledException(AliceRequest aliceRequest, State state, Exception e) {
-			AliceResponse response;
 			state.SetStatusCode(e);
 			logger.Error("\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR");
 			logger.Error(e, e.Message);
-			response = new AliceResponse(aliceRequest) {
+			return new AliceResponse(aliceRequest) {
 				Response = new Response {
 					Text = "Произошла какая-то ошибка на сервере навыка, разработчик уже уведомлен. " +
 						   "Приносим извинения."
 				},
 				State = state
 			};
-			return response;
+		
 		}
 
 		private AliceResponse HandleException(AliceRequest aliceRequest, State state, CustomException e) {
-			AliceResponse response;
 			state.SetStatusCode(e);
 			logger.Error($"{e.GetType().Name} {e.Message}");
-			response = AliceResponseBuilder.Create()
+			return AliceResponseBuilder.Create()
 				.WithData(aliceRequest)
 				.WithState(state)
 				.WithText(new SimpleResponse {
-					Text = e.UserMessage
+					Text = e.UserMessage ?? InternalErrorException.DefaultUserMessage
 				})
 				.Build();
-			return response;
+
 		}
 	}
 }

@@ -52,6 +52,7 @@ namespace AliceAppraisal.Models {
 					StatusCode = StatusCodes.ExternalError;
 					break;
 				}
+				case InternalErrorException _:
 				case Exception _: {
 					StatusCode = StatusCodes.InternalError;
 					break;

@@ -50,7 +50,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			return intentValue.ExtractIdOrNull()
 				?? throw new InternalErrorException(
 					$"Не удалось извлечь ID марки из сущности {intentValue}",
-					InternalErrorException.StandardUserMessage);
+					InternalErrorException.DefaultUserMessage);
 		}
 
 		public static readonly string[] Messages = new[] {
