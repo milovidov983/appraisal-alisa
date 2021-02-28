@@ -3,6 +3,7 @@ entity EMakes:
         audi_10:
              %lemma
              Ауди
+             ауди
              Audi
         volkswagen_184:
              %lemma
@@ -208,6 +209,7 @@ entity EMakes:
              %lemma
              Киа
              Кио
+             Кия
              Kia
         landrover_97:
              %lemma
@@ -282,7 +284,8 @@ entity EModels:
              Corolla
         rav4_2177:
              %lemma
-             РАВ 4 (РАФ 4)
+             РАВ 4
+             РАФ 4
              RAV 4
         21214x4_2009:
              %lemma
@@ -290,11 +293,11 @@ entity EModels:
              2121 (4x4)
         m2bs4_174:
              %lemma
-             М2 (БС4)
-             M2 (BS4)
+             М2
+             M2
         hoverh5_2277:
              %lemma
-             Ховер H5
+             Ховер
              Hover H5
         jetta_1912:
              %lemma
@@ -319,6 +322,7 @@ entity EModels:
         freelander_1008:
              %lemma
              Фрилендер
+             Фриландер
              Freelander
         mdx_11:
              %lemma
@@ -330,7 +334,8 @@ entity EModels:
              XTS
         clklasse_1191:
              %lemma
-             ЦЛ-класс
+             ЦЛ
+             ЦЛ класс
              CL-Класс
         t600_19302:
              %lemma
@@ -394,12 +399,12 @@ entity EModels:
              Grand Vitara
         clsklasseamg_2344:
              %lemma
-             ЦЛС-класс АМГ
+             ЦЛС АМГ
              CLS AMG
         m1bs6_173:
              %lemma
-             М1 (БС6)
-             M1 (BS6)
+             М1
+             M1
         6_1127:
              %lemma
              6
@@ -410,8 +415,8 @@ entity EModels:
              S60
         cklasseamg_2340:
              %lemma
-             Ц-Класс АМГ
-             C-Класс AMG
+             Ц Класс АМГ
+             C Класс AMG
         6371_19997:
              %lemma
              6371
@@ -430,19 +435,21 @@ entity EModels:
              Axela
         claklasseamg_2342:
              %lemma
-             ЦЛА-класс АМГ
+             ЦЛА АМГ
+             ЦЛА класс АМГ
              CLA AMG
         clklasseamg_2341:
              %lemma
+             ЦЛ АМГ
              ЦЛ класс АМГ
              CL-Класс AMG
         azwagon_1136:
              %lemma
-             АЗ-Вагон
+             АЗ Вагон
              AZ-Wagon
         lcpandacross_686:
              %lemma
-             ЛЦ (Панда) Кросс
+             ЛЦ (Панда)? Кросс
              LC (Panda) Cross
         rs6_103:
              %lemma
@@ -454,6 +461,9 @@ entity EModels:
              S1
         cx7_1146:
              %lemma
+             Цэ икс 7
+             Це икс 7
+             Цеикс 7
              CX-7
              CX-7
         rs4_101:
@@ -478,6 +488,9 @@ entity EModels:
              Biante
         cx5_1145:
              %lemma
+             Цэ икс 5
+             Це икс 5
+             Цеикс 5
              СХ-5
              CX-5
         bt50_1141:
@@ -486,11 +499,14 @@ entity EModels:
              BT-50
         cx9_1147:
              %lemma
-             CX-9
+             Цэ икс 9
+             Це икс 9
+             Цеикс 9
              CX-9
         a4allroad_83:
              %lemma
              А4 олроуд
+             А4 аллроад
              A4 allroad
         shuttle_802:
              %lemma
@@ -499,6 +515,7 @@ entity EModels:
         a6allroad_86:
              %lemma
              А6 олроуд
+             А6 аллроад
              A6 allroad
         s3_107:
              %lemma
@@ -530,6 +547,8 @@ entity EModels:
              MPV
         mx5_1163:
              %lemma
+             Эмикс 5
+             Эм икс 5
              МХ-5
              MX-5
         x4_154:
@@ -542,6 +561,9 @@ entity EModels:
              F6
         cx3_19204:
              %lemma
+             Цэ икс 3
+             Це икс 3
+             Цеикс 3
              ЦХ-3
              CX-3
         bls_217:
@@ -554,6 +576,7 @@ entity EModels:
              CT6
         rx8_1174:
              %lemma
+             Эр икс 8
              РХ-8
              RX-8
         scrum_1175:
@@ -3527,6 +3550,7 @@ entity EModels:
              Vesta
         ex_861:
              %lemma
+             еикс
              Е Икс
              EX
         jx_866:
@@ -3543,6 +3567,7 @@ entity EModels:
              Pickup
         xray_19210:
              %lemma
+             икс рей
              Х Рэй
              XRAY
         soul_961:
@@ -3559,8 +3584,10 @@ entity EModels:
              MU-X
         ftype_915:
              %lemma
-             Ф-Тип
-             F-Type
+             Эф тип
+             Эф тайп
+             Ф Тип
+             F-TypeЫ
         xf_918:
              %lemma
              ХФ
