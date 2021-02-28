@@ -1,10 +1,7 @@
-﻿using AliceAppraisal.Core.Engine.Services;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {

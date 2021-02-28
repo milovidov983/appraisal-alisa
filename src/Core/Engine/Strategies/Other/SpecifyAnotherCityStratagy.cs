@@ -1,6 +1,5 @@
 ﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using System;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {

@@ -36,5 +36,9 @@ namespace AliceAppraisal.Static {
 				.Select(x => x.CapitalName)
 				.ToArray();
 		}
+
+		public static string[] GetMilage() {
+			return Enumerable.Range(1, 10).Select(x => (20000 * x).ToString()).ToArray();
+		}
 	}
 }

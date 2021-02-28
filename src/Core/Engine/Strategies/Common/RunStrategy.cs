@@ -13,20 +13,24 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
 				Text = $"{randGiveWord} примерный пробег вашего авто",
+				Buttons = Buttons.GetMilage()
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state)
 			=> new SimpleResponse {
 				Text = $"Не удалось распознать указанный вами пробег, " +
-				$"попробуйте повторить запрос или попросите у меня подсказку."
+				$"попробуйте повторить запрос или попросите у меня подсказку. ",
+				Buttons = Buttons.GetMilage()
 			};
 
 
 		public override SimpleResponse GetHelp()
 			=> new SimpleResponse {
-				Text = $"Для оценки автомобиля мне необходимо знать его пробег, пробег необходимо указывать в километрах. " +
-				$"Попробуйте произнести название приблизив микрофон ближе."
+				Text = $"Для оценки автомобиля мне необходимо знать его пробег, " +
+				$"пробег необходимо указывать в километрах. " +
+				$"Попробуйте произнести название приблизив микрофон ближе.",
+				Buttons = Buttons.GetMilage()
 			};
 
 

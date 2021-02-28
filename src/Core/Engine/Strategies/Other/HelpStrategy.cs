@@ -1,9 +1,5 @@
-﻿using AliceAppraisal.Core.Engine.Services;
-using AliceAppraisal.Models;
+﻿using AliceAppraisal.Models;
 using AliceAppraisal.Static;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
@@ -20,10 +16,10 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			=> SimpleResponse.Empty;
 		
 		protected override bool Check(AliceRequest request, State state) 
-            => request.HasIntent(Intents.YandexHelp2);
+			=> request.HasIntent(Intents.YandexHelp2);
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) 
 			=> GetMessage(request, state);
 		
-    }
+	}
 }

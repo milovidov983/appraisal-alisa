@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class WhatCanYouDoStrategy : BaseStrategyWithoutChangeStep {
-		private const string MESSAGE = "Я могу угадывать цену у подержанных автомобилей. " +
+		private const string MESSAGE = "Я умею угадывать цену у подержанных автомобилей. " +
 				"Этап оценки состоит из нескольких простых шагов, " +
 				"я спрошу у вас некоторые характеристики авто " +
 				"и по ним попытаюсь найти аналоги и вывести объективную цену " +
