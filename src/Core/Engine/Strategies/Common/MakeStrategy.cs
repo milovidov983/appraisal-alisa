@@ -48,7 +48,9 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 					GetMessageForUnknownText());
 			}
 			return intentValue.ExtractIdOrNull()
-				?? throw new InvalidOperationException($"Не удалось извлечь ID марки из сущности {intentValue}");
+				?? throw new InternalErrorException(
+					$"Не удалось извлечь ID марки из сущности {intentValue}",
+					InternalErrorException.StandardUserMessage);
 		}
 
 		public static readonly string[] Messages = new[] {
