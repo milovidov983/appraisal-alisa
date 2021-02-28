@@ -44,8 +44,19 @@ namespace AliceAppraisal.Models {
 			return Task.FromResult(this);
 		}
 
-		public void AddToHead(string text) {
-			Text = text + Text;
+
+
+		private static string[] misunderstandText = new[] {
+			"Ой, мне не удалось понять вас. ",
+			"Кажется у меня не получается уловить смысл ваших слов. ",
+			"Я очень разочарована, потому что не понимаю вас( ",
+			"Увы мне не удалось распознать ваши слова( ",
+			"Мне так жаль, у меня не получилось распознать ваши слова( ",
+			"Возможно я сегодня туплю) но я не понимаю что вы мне сейчас сказали)",
+		};
+
+		public void AddMisunderstanding() {
+			Text = misunderstandText.GetRand() + Text;
 		}
 	}
 }

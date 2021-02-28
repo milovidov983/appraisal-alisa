@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class MakeStrategy : BaseStrategy {
 		private readonly IAppraisalProvider dataService;
+		
 		public MakeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.dataService = serviceFactory.GetDataProvider();
 		}
@@ -20,7 +21,6 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 					state.NextAction.Is(typeof(InitStrategy))
 				)
 			);
-		
 
 		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var value = request.GetSlot(Intents.MakeName, Slots.Make);
@@ -38,7 +38,6 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			return CreateNextStepMessage(request, state);
 		}
 
-
 		public static readonly string[] Messages = new[] {
 			$"Назовите марку авто, который вы хотите оценить.",
 			$"Назовите марку автомобиля, который вы хотите оценить.",
@@ -55,6 +54,8 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			var additionalText = request.HasScreen()
 				? " Или выберите из наиболее популярных марок."
 				: "";
+
+
 
 			return new SimpleResponse {
 				Text = Messages.GetRand() + additionalText,
@@ -80,9 +81,9 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 		public static string GetHelpText() {
 			return $"Для оценки автомобиля мне необходимо знать его марку, если мне не удается распознать " +
-					$"возможно Вы произнесите название марки с посторонними словами и мне не удается выделить " +
-					$"среди них марку. Попробуйте произнести название модели отдельным словом без названия " +
-					$"поколения Вашего автомобиля.";
+				$"ваши слова, возможно Вы произнесите название марки с посторонними словами и мне не удается выделить " +
+				$"среди них марку. Попробуйте произнести название модели отдельным словом без названия " +
+				$"поколения Вашего автомобиля.";
 		}
 		
 	}

@@ -28,16 +28,15 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
 
-			var text = request.HasScreen()
+			var choice = request.HasScreen()
 				? "Выберите"
 				: "Назовите";
 
-
 			return new SimpleResponse {
-				Text = $"{text} город для оценки {state.Request.MakeEntity.ExtractName().CapitalizeFirst()} " +
-				$"{state.Request.GenerationValue} {state.Request.ManufactureYear} г.в., " +
-				$"по умолчанию оценка будет произведена в Московском регионе, продолжить?",
-				Buttons = Buttons.GetCityButtons().Union( new[] { "Продолжить", "Указать другой город"  }).ToArray()
+				Text = $"{choice} город для оценки {state.Request.MakeEntity.ExtractName().CapitalizeFirst()} " +
+				$"{state.Request.GenerationValue} {state.Request.ManufactureYear} г.в." +
+				$"Если не выбирать город то по умолчанию оценка будет произведена в Московском регионе, продолжить?",
+				Buttons = new[] { "Продолжить" }.Union(Buttons.GetCityButtons()).Union( new[] { "Указать другой город"  }).ToArray()
 			};
 		}
 
@@ -54,6 +53,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				Buttons = new[] { "Продолжить", "Указать другой город" }
 			};
 		}
+
 		protected override bool Check(AliceRequest request, State state) {
 			return (
 				request.HasIntent(Intents.YandexConfirm) 
