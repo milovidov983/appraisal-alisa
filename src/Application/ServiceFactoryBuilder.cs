@@ -11,7 +11,7 @@ namespace AliceAppraisal.Application {
 		private static readonly object _lock = new object();
 		private IServiceFactory serviceFactory;
 
-		private void InitServiceFactory(IAppraisalProvider appraisalProvider = null) {
+		private void InitServiceFactory(IDataProvider appraisalProvider = null) {
 			var loggerFactory = LoggerFactory.Create();
 			try {
 				appraisalProvider ??= new DataProviderService();
@@ -23,7 +23,7 @@ namespace AliceAppraisal.Application {
 		}
 
 
-		public IServiceFactory GetServiceFactory(IAppraisalProvider appraisalProvider = null) {
+		public IServiceFactory GetServiceFactory(IDataProvider appraisalProvider = null) {
 			if(serviceFactory is null) {
 				lock (_lock) {
 					if(serviceFactory is null) {

@@ -9,7 +9,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 
 	public class MakeStrategy : BaseStrategy {
-		private readonly IAppraisalProvider dataService;
+		private readonly IDataProvider dataService;
 		private readonly IntentName intentName = new IntentName {
 			Intent = Intents.MakeName,
 			Slot = Slots.Make

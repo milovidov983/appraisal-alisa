@@ -36,8 +36,10 @@ namespace AliceAppraisal.Core.Models {
 		/// хотелось бы на основе этих данных делать корректировку поведения бота
 		/// </remarks>
 		public Dictionary<string, int> MisunderstandingCounter { get; set; } = new Dictionary<string, int>();
-
-		public AvailableCharacteristics Characteristics { get; set; }
+		/// <summary>
+		/// Характеристики выбронного поколения
+		/// </summary>
+		public AvailableCharacteristics Characteristics { get; set; } = new AvailableCharacteristics();
 
 
 		public void SetStatusCode(Exception exception) {
@@ -93,9 +95,11 @@ namespace AliceAppraisal.Core.Models {
 		public void GeneralReset() {
 			Request = new AppraisalQuoteRequest();
 			GenerationChoise.Clear();
+			Characteristics = new AvailableCharacteristics();
 		}
 		public void FullReset() {
 			Request = new AppraisalQuoteRequest();
+			Characteristics = new AvailableCharacteristics();
 			GenerationChoise.Clear();
 			PrevAction = "";
 		}
@@ -188,6 +192,14 @@ namespace AliceAppraisal.Core.Models {
 
 				Request.GenerationValue = entity;
 
+				return true;
+			}
+			return false;
+		}
+
+		public bool UpdateCharacteristics(AvailableCharacteristics characteristics) {
+			if (characteristics != null) {
+				Characteristics = characteristics;
 				return true;
 			}
 			return false;

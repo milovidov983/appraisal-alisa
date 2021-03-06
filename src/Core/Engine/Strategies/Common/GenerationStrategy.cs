@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class GenerationStrategy : BaseStrategy {
-		private readonly IAppraisalProvider appraisalService;
+		private readonly IDataProvider dataProviderService;
 
 		public GenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
-			this.appraisalService = serviceFactory.GetDataProvider();
+			this.dataProviderService = serviceFactory.GetDataProvider();
 		}
 
 		protected override bool Check(AliceRequest request, State state)
@@ -18,21 +18,22 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 			
 		
 
-		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			var selectedGeneartion = request.GetSlot(Intents.DigitInput, Slots.Number);
 
 			if (selectedGeneartion.IsNullOrEmpty()) {
-				return GetMessageForUnknown(request, state).FromTask();
+				return await GetMessageForUnknown(request, state).FromTask();
 			}
 
 			var value = state.GetGenerationIdBySelected(selectedGeneartion);
 			if(value is null) {
-				return GetMessageForUnknown(request, state).FromTask();
+				return await GetMessageForUnknown(request, state).FromTask();
 			}
-
+			var characteristics = await dataProviderService.GerAvailableCharacteristics(value.Id);
+			state.UpdateCharacteristics(characteristics);
 			state.UpdateGenerationId(value.Id, value.Name);
 			
-			return CreateNextStepMessage(request, state);
+			return await CreateNextStepMessage(request, state);
 		}
 
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state)
@@ -77,7 +78,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 			Validate(modelId, manufactureYear);
 
-			var findedGenerations = await appraisalService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
+			var findedGenerations = await dataProviderService.GetGenerationsFor(modelId.Value, manufactureYear.Value);
 
 			if(findedGenerations?.Any() != true) {
 				return new SimpleResponse {

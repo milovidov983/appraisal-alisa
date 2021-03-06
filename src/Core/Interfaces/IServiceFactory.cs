@@ -7,7 +7,7 @@ namespace AliceAppraisal.Core.Engine {
 		List<BaseStrategy> Strategies { get; }
 	}
 	public interface IServiceFactory : IStrategyInitializer {
-		IAppraisalProvider GetDataProvider();
+		IDataProvider GetDataProvider();
 		ILoggerFactory GetLoggerFactory();
 		IStorageService GetStorageService();
 		IStepService GetStepService();

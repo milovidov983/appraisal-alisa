@@ -25,7 +25,7 @@ namespace AliceUnitTests.BaseCommandTests {
 			var handler = MockHandler.Create();
 			var response = await handler.FunctionHandler(aliceRequest);
 
-			Assert.Equal(12345, response.State.Request.GenerationId);
+			Assert.Equal(18, response.State.Request.GenerationId);
 		}
 
 		[Fact]

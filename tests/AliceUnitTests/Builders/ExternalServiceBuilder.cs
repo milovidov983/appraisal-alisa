@@ -28,8 +28,8 @@ namespace AliceUnitTests.Builders {
 			return this;
 		}
 
-		public IAppraisalProvider Build() {
-			var externalServiceMock = Mock.Of<IAppraisalProvider>(
+		public IDataProvider Build() {
+			var externalServiceMock = Mock.Of<IDataProvider>(
 				s => s.GetAppraisalResponse(It.IsAny<AppraisalQuoteRequest>()) == Task.FromResult(new AppraisalRawResult())
 				&&
 				s.GetGenerationsFor(It.IsAny<int>(), It.IsAny<int>()) == Task.FromResult(generationResponse));

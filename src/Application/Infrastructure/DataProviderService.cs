@@ -11,7 +11,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Application.Infrastructure {
-	public class DataProviderService : IAppraisalProvider {
+	public class DataProviderService : IDataProvider {
 		private readonly string domain = Settings.Instance.Domain;
 
 

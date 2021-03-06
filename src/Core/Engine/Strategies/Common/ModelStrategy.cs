@@ -8,7 +8,7 @@ using AliceAppraisal.Core.Models;
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ModelStrategy : BaseStrategy {
 		private readonly IVehicleModelService modelService;
-		private readonly IAppraisalProvider dataService;
+		private readonly IDataProvider dataService;
 
 		public ModelStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.modelService = serviceFactory.GetVehicleModelService();

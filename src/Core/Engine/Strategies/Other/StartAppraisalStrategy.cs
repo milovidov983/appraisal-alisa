@@ -5,7 +5,7 @@ using AliceAppraisal.Core.Models;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class StartAppraisalStrategy : BaseStrategy {
-		private readonly IAppraisalProvider appraisalService;
+		private readonly IDataProvider appraisalService;
 
 		public StartAppraisalStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 			this.appraisalService = serviceFactory.GetDataProvider();

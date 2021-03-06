@@ -8,12 +8,16 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public BodyTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state)
-			=> Task.FromResult(new SimpleResponse {
-				Text = $"Какой тип кузова у вашего авто? Например седан, " +
-				$"{Buttons.BodyTypesBtn.ConcatToString()} и так далее. ",
-				Buttons = Buttons.BodyTypesBtn
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			var bodyTypes = state.Characteristics.BodyTypes ?? Buttons.BodyTypesBtn;
+
+
+			return Task.FromResult(new SimpleResponse {
+				   Text = $"Какой тип кузова у вашего авто? Например седан, " +
+				$"{bodyTypes.ConcatToString()} и так далее. ",
+				   Buttons = bodyTypes
 			});
+		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) 
 			=> new SimpleResponse {

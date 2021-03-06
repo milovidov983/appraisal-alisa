@@ -253,7 +253,7 @@ namespace AliceUnitTests.BaseCommandTests {
 		public RequestBuilder WithGenerationChoise(bool single = false) {
 			state.Session.GenerationChoise = new Dictionary<string, IdAndName> {
 				["1"] = new IdAndName {
-					Id = 12345,
+					Id = 18,
 					Name = "TestGen"
 				} 
 			};
@@ -261,7 +261,7 @@ namespace AliceUnitTests.BaseCommandTests {
 				state.Session.GenerationChoise.Add(
 					"2", 
 					new IdAndName { 
-						Id = 54321, 
+						Id = 18, 
 						Name = "TestGen2" 
 					}
 				);

@@ -7,7 +7,10 @@ using AliceAppraisal.Core.Models;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class ConfirmGenerationStrategy : BaseStrategy {
+		private readonly IDataProvider dataProviderService;
+
 		public ConfirmGenerationStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
+			this.dataProviderService = serviceFactory.GetDataProvider();
 		}
 
 		public override SimpleResponse GetHelp() {
@@ -39,17 +42,19 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				&& state.NextAction.Is(typeof(ConfirmGenerationStrategy));
 		
 
-		protected override Task<SimpleResponse> Respond(AliceRequest request, State state) {
+		protected override async Task<SimpleResponse> Respond(AliceRequest request, State state) {
 			string customNextStep = null;
 			if (request.HasIntent(Intents.YandexConfirm)) {
 				var value = state.GenerationChoise.Values.FirstOrDefault()
 					?? throw new ArgumentException("Ожидалось что есть одно выбранное поколение.");
 
+				var characteristics = await dataProviderService.GerAvailableCharacteristics(value.Id);
+				state.UpdateCharacteristics(characteristics);
 				state.UpdateGenerationId(value.Id, value.Name);
 			} else {
 				customNextStep = typeof(ManufactureYearStrategy).FullName;
 			}
-			return CreateNextStepMessage(request, state, customNextStep);
+			return await CreateNextStepMessage(request, state, customNextStep);
 		}
 	}
 }

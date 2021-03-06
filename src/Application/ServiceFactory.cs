@@ -10,14 +10,14 @@ using System.Collections.Generic;
 namespace AliceAppraisal.Application {
 
 	public class ServiceFactory : IServiceFactory {
-		private readonly IAppraisalProvider _dataProviderService;
-		public IAppraisalProvider GetDataProvider() {
+		private readonly IDataProvider _dataProviderService;
+		public IDataProvider GetDataProvider() {
 			return _dataProviderService;
 		}
 
 		private static readonly object _lock = new object();
 
-		public ServiceFactory(ILoggerFactory loggerFactory, IAppraisalProvider externalService) {
+		public ServiceFactory(ILoggerFactory loggerFactory, IDataProvider externalService) {
 			_loggerFactory = loggerFactory ?? LoggerFactory.Create();
 			_dataProviderService = externalService;
 
