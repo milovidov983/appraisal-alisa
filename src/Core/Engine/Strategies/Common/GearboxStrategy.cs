@@ -10,17 +10,28 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public GearboxStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			if (state.NextAction.IsOneOf(
+					typeof(GenerationStrategy),
+					typeof(ConfirmGenerationStrategy),
+					typeof(BodyTypeStrategy)
+					)) {
+				var wasFilledAutomatically = state.Request.Gearbox != null;
+				if (wasFilledAutomatically) {
+					var customNextStep = typeof(EngineTypeStrategy).FullName;
+					return await CreateNextStepMessage(request, state, customNextStep);
+				}
+			} 
 			var gearboxes = state.Characteristics.GearboxTypes?.Any() == true
 				? state.Characteristics.GearboxTypes
 				: componentTypes;
 
-
-			return Task.FromResult(new SimpleResponse {
+			return new SimpleResponse {
 				Text = $"Какая коробка передач установлена в вашем авто? Например " +
 					$"{gearboxes.ConcatToStringWithUnion()}",
 				Buttons = gearboxes
-			});
+			};
+
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {

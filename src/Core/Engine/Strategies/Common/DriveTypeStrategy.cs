@@ -11,10 +11,22 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public DriveTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			await Task.Yield();
+			if (state.NextAction.IsOneOf(
+					typeof(GenerationStrategy),
+					typeof(ConfirmGenerationStrategy),
+					typeof(BodyTypeStrategy),
+					typeof(GearboxStrategy),
+					typeof(EngineTypeStrategy)
+					)) {
+				var wasFilledAutomatically = state.Request.Drive != null;
+				if (wasFilledAutomatically) {
+					var customNextStep = typeof(HorsePowerStrategy).FullName;
+					return await CreateNextStepMessage(request, state, customNextStep);
+				}
+			}
 			var driveTypes = state.Characteristics.DriveTypes?.Any() == true
-				? state.Characteristics.DriveTypes
-				: componentTypes;
+							? state.Characteristics.DriveTypes
+							: componentTypes;
 
 			var takeVerb = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
@@ -22,6 +34,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 				$"например {driveTypes.ConcatToStringWithUnion()}",
 				Buttons = driveTypes
 			};
+
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {

@@ -1,8 +1,10 @@
 ﻿using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Core.Engine.Strategy;
 using AliceAppraisal.Models;
+using AliceAppraisal.Static;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AliceAppraisal.Core.Models {
 	public class State {
@@ -198,11 +200,8 @@ namespace AliceAppraisal.Core.Models {
 		}
 
 		public bool UpdateCharacteristics(AvailableCharacteristics characteristics) {
-			if (characteristics != null) {
-				Characteristics = characteristics;
-				return true;
-			}
-			return false;
+			Characteristics = characteristics;
+			return true;
 		}
 
 		public bool UpdateMake(int? makeId, string entity) {
@@ -243,5 +242,37 @@ namespace AliceAppraisal.Core.Models {
 
 
 		#endregion
+
+		/// <summary>
+		/// Параметры авто в единственном экземпляре для выбранного поколения,
+		/// заполняем сразу и не проходим на шаг их заполнения
+		/// </summary>
+		public void TryFillSingleCharacteristics(AvailableCharacteristics characteristics) {
+			ResetCharacteristics();
+
+			if (characteristics.BodyTypes.Length == 1) {
+				var singleBodyType = VehicleComponents.BodyTypes.FirstOrDefault(x => x.Value == characteristics.BodyTypes.First());
+				UpdateBodyType(singleBodyType.Key);
+			}
+			if (characteristics.DriveTypes.Length == 1) {
+				var singleDriveType = VehicleComponents.Drives.FirstOrDefault(x => x.Value == characteristics.DriveTypes.First());
+				UpdateDriveType(singleDriveType.Key);
+			}
+			if (characteristics.EngineTypes.Length == 1) {
+				var engineType = VehicleComponents.EngineTypes.FirstOrDefault(x => x.Value == characteristics.EngineTypes.First());
+				UpdateEngineType(engineType.Key);
+			}
+			if (characteristics.GearboxTypes.Length == 1) {
+				var gearboxType = VehicleComponents.Gearboxes.FirstOrDefault(x => x.Value == characteristics.GearboxTypes.First());
+				UpdateGearbox(gearboxType.Key);
+			}
+		}
+
+		private void ResetCharacteristics() {
+			UpdateBodyType(null);
+			UpdateDriveType(null);
+			UpdateEngineType(null);
+			UpdateGearbox(null);
+		}
 	}
 }

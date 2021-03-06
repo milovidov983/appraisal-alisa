@@ -91,6 +91,11 @@ namespace AliceAppraisal {
 			return self == target.FullName;
 		}
 
+
+		public static bool IsOneOf(this string self, params Type[] items) {
+			return items?.Any(x=>x.FullName == self) == true;
+		}
+
 		public static Random rand = new Random((int)DateTime.UtcNow.Ticks);
 		public static string GetRand(this string[] data) {
 			var start = 0;

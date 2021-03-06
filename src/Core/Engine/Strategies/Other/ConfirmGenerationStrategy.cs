@@ -50,6 +50,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 				var characteristics = await dataProviderService.GerAvailableCharacteristics(value.Id);
 				state.UpdateCharacteristics(characteristics);
+				state.TryFillSingleCharacteristics(characteristics);
 				state.UpdateGenerationId(value.Id, value.Name);
 			} else {
 				customNextStep = typeof(ManufactureYearStrategy).FullName;

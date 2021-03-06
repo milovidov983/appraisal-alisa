@@ -9,17 +9,24 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public BodyTypeStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			if (state.NextAction.IsOneOf(typeof(GenerationStrategy), typeof(ConfirmGenerationStrategy))) {
+				var wasFilledAutomatically = state.Request.BodyType != null;
+				if (wasFilledAutomatically) { 
+					var customNextStep = typeof(GearboxStrategy).FullName;
+					return await CreateNextStepMessage(request, state, customNextStep);
+				}
+			}
 			var bodyTypes = state.Characteristics.BodyTypes?.Any() == true
 				? state.Characteristics.BodyTypes
 				: Buttons.BodyTypesBtn;
-
-
-			return Task.FromResult(new SimpleResponse {
-				   Text = $"Какой тип кузова у вашего авто? Например " +
+			return new SimpleResponse {
+				Text = $"Какой тип кузова у вашего авто? Например " +
 					$"{bodyTypes.ConcatToStringWithUnion()}",
-				   Buttons = bodyTypes
-			});
+				Buttons = bodyTypes
+			};
+			
+
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {

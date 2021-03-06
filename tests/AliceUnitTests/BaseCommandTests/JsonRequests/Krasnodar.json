@@ -10,8 +10,8 @@
 		}
 	},
 	"session": {
-		"message_id": 13,
-		"session_id": "746d25ff-f1f0-46d9-978f-11186963eb52",
+		"message_id": 4,
+		"session_id": "20147066-e33f-43d1-b564-3b004fda2a85",
 		"skill_id": "de7dbc46-a6a7-4a8c-b400-ba43bc4d8f53",
 		"user": {
 			"user_id": "2BBB9AEEE7685AD2F7EBB67B5D92600363E8A8C86F7C243A100BFE3B59F9C7E5"
@@ -23,41 +23,16 @@
 		"new": false
 	},
 	"request": {
-		"command": "измени город на рязань",
-		"original_utterance": "измени город на рязань",
+		"command": "да",
+		"original_utterance": "Да",
 		"nlu": {
 			"tokens": [
-				"измени",
-				"город",
-				"на",
-				"рязань"
+				"да"
 			],
-			"entities": [
-				{
-					"type": "YANDEX.GEO",
-					"tokens": {
-						"start": 2,
-						"end": 4
-					},
-					"value": {
-						"city": "рязань"
-					}
-				}
-			],
+			"entities": [],
 			"intents": {
-				"change_param_city": {
-					"slots": {
-						"city": {
-							"type": "YANDEX.GEO",
-							"tokens": {
-								"start": 2,
-								"end": 4
-							},
-							"value": {
-								"city": "рязань"
-							}
-						}
-					}
+				"YANDEX.CONFIRM": {
+					"slots": {}
 				}
 			}
 		},
@@ -69,36 +44,39 @@
 	"state": {
 		"session": {
 			"Request": {
-				"MakeId": 92,
-				"MakeEntity": "kia_92",
-				"ModelId": 956,
-				"ModelEntity": "rio_956",
+				"MakeId": 18,
+				"MakeEntity": "bmw_18",
+				"ModelId": 155,
+				"ModelEntity": "x5_155",
 				"ManufactureYear": 2017,
-				"GenerationId": 6533,
-				"GenerationValue": "III Рестайлинг",
-				"EngineType": "gasoline",
-				"HorsePower": 123,
-				"BodyType": "sedan",
-				"Gearbox": "manual",
-				"Run": 123,
-				"Drive": "rear",
-				"RegionId": 50,
-				"CityName": "москва",
-				"EquipmentType": "basic"
+				"GenerationId": null,
+				"GenerationValue": null,
+				"EngineType": null,
+				"HorsePower": null,
+				"BodyType": null,
+				"Gearbox": null,
+				"Run": null,
+				"Drive": null,
+				"RegionId": null,
+				"CityName": null,
+				"EquipmentType": null
 			},
-			"PrevAction": "AliceAppraisal.Core.Engine.Strategy.GetCityStrategy",
-			"NextAction": "AliceAppraisal.Core.Engine.Strategy.StartAppraisalStrategy",
+			"PrevAction": "AliceAppraisal.Core.Engine.Strategy.ManufactureYearStrategy",
+			"NextAction": "AliceAppraisal.Core.Engine.Strategy.ConfirmGenerationStrategy",
 			"GenerationChoise": {
 				"1": {
-					"Id": 6533,
-					"Name": "III Рестайлинг"
-				},
-				"2": {
-					"Id": 9480,
-					"Name": "IV"
+					"Id": 140,
+					"Name": "III (F15)"
 				}
 			},
-			"StatusCode": 0
+			"StatusCode": 0,
+			"MisunderstandingCounter": {},
+			"Characteristics": {
+				"DriveTypes": null,
+				"EngineTypes": null,
+				"GearboxTypes": null,
+				"BodyTypes": null
+			}
 		},
 		"user": {},
 		"application": {}
