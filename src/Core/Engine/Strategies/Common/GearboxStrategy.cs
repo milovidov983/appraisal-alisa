@@ -10,18 +10,33 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		public GearboxStrategy(IServiceFactory serviceFactory) : base(serviceFactory) {
 		}
 
-		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			await Task.Yield();
-			return new SimpleResponse {
-				Text = "Какая коробка передач установлена в вашем авто? Например автомат, механика и так далее",
-				Buttons = componentTypes
-			};
+		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
+			var gearboxes = state.Characteristics.GearboxTypes?.Any() == true
+				? state.Characteristics.GearboxTypes
+				: componentTypes;
+
+
+			return Task.FromResult(new SimpleResponse {
+				Text = $"Какая коробка передач установлена в вашем авто? Например " +
+					$"{gearboxes.ConcatToStringWithUnion()}",
+				Buttons = gearboxes
+			});
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+			var additionalText = state.Characteristics.GearboxTypes?.Any() == true
+				? $"Насколько мне известно, указанное вами поколение " +
+				$"{state.Request.MakeEntity} {state.Request.ModelEntity} {state.Request.GenerationValue} " +
+				$"выпускалось с следующими типами коробок передач: {state.Characteristics.GearboxTypes.ConcatToString()} "
+				: " ";
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип коробки передач, " +
-				$"попробуйте повторить запрос или попросите у меня подсказку."
+				Text = 
+				$"Я ожидала услышать от вас название типа коробки передач, " +
+				$"но в ваших словах мне не удалось распознать его. {additionalText}" +
+				$"Попробуйте повторить запрос или попросите у меня подсказку.",
+				Buttons = state.Characteristics.GearboxTypes?.Any() == true
+				? state.Characteristics.GearboxTypes
+				: componentTypes
 			};
 		}
 

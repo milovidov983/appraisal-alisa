@@ -44,6 +44,19 @@ namespace AliceAppraisal {
 			return string.Join(", ", collection);
 		}
 
+		public static string ConcatToStringWithUnion(this string[] collection) {
+			if (collection.Length <= 1) {
+				return collection.FirstOrDefault();
+			}
+			if (collection.Length == 2) {
+				return string.Join(" или ", collection);
+			}
+
+			var commaSeparated = string.Join(", ", collection.Take(collection.Length - 1));
+			var result = $"{commaSeparated} или {collection.Last()}";
+			return result;
+		}
+
 		/// <summary>
 		/// Паттерн записи моделей марок имямарки_001 где 001 id
 		/// </summary>

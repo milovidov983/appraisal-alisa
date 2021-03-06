@@ -12,20 +12,34 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			var driveTypes = state.Characteristics.DriveTypes?.Any() == true
+				? state.Characteristics.DriveTypes
+				: componentTypes;
+
 			var takeVerb = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
 				Text = $"{takeVerb} тип привода у вашего авто, " +
-				$"например {componentTypes.ConcatToString()}",
-				Buttons = componentTypes
+				$"например {driveTypes.ConcatToStringWithUnion()}",
+				Buttons = driveTypes
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+			var additionalText = state.Characteristics.DriveTypes?.Any() == true
+			? $"Насколько мне известно, указанное вами поколение " +
+			$"{state.Request.MakeEntity} {state.Request.ModelEntity} {state.Request.GenerationValue} " +
+			$"выпускалось с следующими типами привода: {state.Characteristics.DriveTypes.ConcatToString()}"
+			: "";
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип привода, " +
-				$"попробуйте повторить запрос или попросите у меня подсказку.",
-				Buttons = componentTypes
+				Text =
+				$"Я ждала от вас тип привода, но мне " +
+				$"не удалось распознать его в ваших словах. {additionalText} " +
+				$"Попробуйте повторить запрос или попросите у меня подсказку.",
+				Buttons = state.Characteristics.DriveTypes?.Any() == true
+				? state.Characteristics.DriveTypes
+				: componentTypes
 			};
+		
 		}
 
 		public override SimpleResponse GetHelp() {

@@ -13,18 +13,34 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 		public override async Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
 			await Task.Yield();
+			var engineTypes = state.Characteristics.EngineTypes?.Any() == true
+				? state.Characteristics.EngineTypes
+				: componentTypes;
+
 			var randGiveWord = WordsCollection.GET_VERB.GetRand();
 			return new SimpleResponse {
 				Text = $"{randGiveWord} тип двигателя вашего авто, " +
-				$"например {componentTypes.ConcatToString()}",
-				Buttons = componentTypes
+				$"например {engineTypes.ConcatToStringWithUnion()}",
+				Buttons = engineTypes
 			};
 		}
 
 		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+			var additionalText = state.Characteristics.EngineTypes?.Any() == true
+				? $"Насколько мне известно, указанное вами поколение " +
+				$"{state.Request.MakeEntity} {state.Request.ModelEntity} {state.Request.GenerationValue} " +
+				$"выпускалось с следующими типами двигателей: {state.Characteristics.EngineTypes.ConcatToString()}"
+				: "";
+
 			return new SimpleResponse {
-				Text = $"Не удалось распознать тип двигателя, " +
-				$"попробуйте повторить запрос или попросите у меня подсказку."
+				Text = 
+				$"Я ожидала услышать тип двигателя вашего автомобиля, но " +
+				$"мне не удалось распознать его в ваших словах. {additionalText} " +
+				$"попробуйте повторить запрос или попросите у меня подсказку.",
+				Buttons = state.Characteristics.EngineTypes?.Any() == true
+				? state.Characteristics.EngineTypes
+				: componentTypes
+
 			};
 		}
 

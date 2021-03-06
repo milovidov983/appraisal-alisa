@@ -1,6 +1,7 @@
 ﻿using AliceAppraisal.Core.Models;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
@@ -9,23 +10,34 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 		}
 
 		public override Task<SimpleResponse> GetMessage(AliceRequest request, State state) {
-			var bodyTypes = state.Characteristics.BodyTypes ?? Buttons.BodyTypesBtn;
+			var bodyTypes = state.Characteristics.BodyTypes?.Any() == true
+				? state.Characteristics.BodyTypes
+				: Buttons.BodyTypesBtn;
 
 
 			return Task.FromResult(new SimpleResponse {
-				   Text = $"Какой тип кузова у вашего авто? Например седан, " +
-				$"{bodyTypes.ConcatToString()} и так далее. ",
+				   Text = $"Какой тип кузова у вашего авто? Например " +
+					$"{bodyTypes.ConcatToStringWithUnion()}",
 				   Buttons = bodyTypes
 			});
 		}
 
-		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) 
-			=> new SimpleResponse {
-				Text = $"Не удалось распознать тип кузова вашего авто, " +
-				$"существуют следующие типы кузовов: {Buttons.BodyTypesBtn.ConcatToString()} и другие. " +
+		public override SimpleResponse GetMessageForUnknown(AliceRequest request, State state) {
+
+			var additionalText = state.Characteristics.BodyTypes?.Any() == true
+				? $"Насколько мне известно, указанное вами поколение " +
+				$"{state.Request.MakeEntity} {state.Request.ModelEntity} {state.Request.GenerationValue} " +
+				$"выпускалось с следующими типами кузовов: {state.Characteristics.BodyTypes.ConcatToString()} "
+				: $"Существуют следующие типы кузовов: {Buttons.BodyTypesBtn.ConcatToString()} и другие. ";
+
+			return new SimpleResponse {
+				   Text =
+				$"Я ожидала услышать от вас название типа кузова вашего автомобиля но " +
+				$"мне не удалось распознать в ваших словах тип кузова. {additionalText}" +
 				$"Попробуйте повторить запрос или попросите у меня подсказку.",
-				Buttons = Buttons.BodyTypesBtn
-			};
+				   Buttons = state.Characteristics.BodyTypes ?? Buttons.BodyTypesBtn
+			   };
+		}
 		
 		public override SimpleResponse GetHelp() 
 			=> new SimpleResponse {
