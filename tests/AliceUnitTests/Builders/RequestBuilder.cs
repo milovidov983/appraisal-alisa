@@ -1,5 +1,6 @@
 ﻿using AliceAppraisal;
 using AliceAppraisal.Core.Engine.Strategy;
+using AliceAppraisal.Core.Models;
 using AliceAppraisal.Models;
 using System;
 using System.Collections.Generic;

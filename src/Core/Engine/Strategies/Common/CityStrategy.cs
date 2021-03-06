@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Helpers;
+﻿using AliceAppraisal.Core.Models;
+using AliceAppraisal.Helpers;
 using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System;

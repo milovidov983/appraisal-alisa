@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Models;
+﻿using AliceAppraisal.Core.Models;
+using AliceAppraisal.Models;
 using Serilog;
 using System.Threading.Tasks;
 

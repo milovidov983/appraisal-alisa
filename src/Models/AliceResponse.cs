@@ -1,4 +1,5 @@
 ﻿using AliceAppraisal.Application.Configuration;
+using AliceAppraisal.Core.Models;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;

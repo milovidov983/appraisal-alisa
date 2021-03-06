@@ -3,6 +3,7 @@ using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System.Linq;
 using System.Threading.Tasks;
+using AliceAppraisal.Core.Models;
 
 namespace AliceAppraisal.Core.Engine.Strategy {
 	public class EquipmentSetStrategy : BaseStrategy {

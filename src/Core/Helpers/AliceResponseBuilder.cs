@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Models;
+﻿using AliceAppraisal.Core.Models;
+using AliceAppraisal.Models;
 using System.Linq;
 
 namespace AliceAppraisal.Core.Engine {

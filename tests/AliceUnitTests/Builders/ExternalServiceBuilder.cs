@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AliceUnitTests.Builders {
 	public class ExternalServiceBuilder {
-		private TextAndValue[] generationResponse = Array.Empty<TextAndValue>();
+		private TextWithValue<int>[] generationResponse = Array.Empty<TextWithValue<int>>();
 
 
 		public static ExternalServiceBuilder Create() {
@@ -17,11 +17,11 @@ namespace AliceUnitTests.Builders {
 
 		public ExternalServiceBuilder WithTwoGeneration() {
 			generationResponse = new[] {
-					new TextAndValue(){
+					new TextWithValue<int>(){
 						Text = "Поколение 1",
 						Value = 123
 					},
-					new TextAndValue(){
+					new TextWithValue<int>(){
 						Text = "Поколение 2",
 						Value = 456
 					} };
@@ -39,7 +39,7 @@ namespace AliceUnitTests.Builders {
 
 		public ExternalServiceBuilder WithOneGeneration() {
 			generationResponse = new[] {
-					new TextAndValue(){
+					new TextWithValue<int>(){
 						Text = "Поколение 1",
 						Value = 123
 					}

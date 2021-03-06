@@ -4,10 +4,10 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 namespace AliceAppraisal.Models {
-	public class TextAndValue {
+	public class TextWithValue<T> where T : struct {
+		[JsonPropertyName("value")]
+		public T Value { get; set; }
 		[JsonPropertyName("text")]
 		public string Text { get; set; }
-		[JsonPropertyName("value")]
-		public int Value { get; set; }
 	}
 }

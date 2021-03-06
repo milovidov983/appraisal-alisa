@@ -1,4 +1,5 @@
-﻿using AliceAppraisal.Models;
+﻿using AliceAppraisal.Core.Models;
+using AliceAppraisal.Models;
 using AliceAppraisal.Static;
 using System.Linq;
 using System.Threading.Tasks;

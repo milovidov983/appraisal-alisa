@@ -1,9 +1,10 @@
 ﻿using AliceAppraisal.Core.Engine;
 using AliceAppraisal.Core.Engine.Strategy;
+using AliceAppraisal.Models;
 using System;
 using System.Collections.Generic;
 
-namespace AliceAppraisal.Models {
+namespace AliceAppraisal.Core.Models {
 	public class State {
 
 
@@ -36,6 +37,7 @@ namespace AliceAppraisal.Models {
 		/// </remarks>
 		public Dictionary<string, int> MisunderstandingCounter { get; set; } = new Dictionary<string, int>();
 
+		public AvailableCharacteristics Characteristics { get; set; }
 
 
 		public void SetStatusCode(Exception exception) {

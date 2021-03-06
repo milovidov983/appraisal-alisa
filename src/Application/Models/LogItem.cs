@@ -1,5 +1,6 @@
 ﻿using AliceAppraisal.Models;
 using System;
+using System.Collections.Generic;
 
 namespace AliceAppraisal.Application.Models {
 	public class LogItem {
@@ -25,7 +26,8 @@ namespace AliceAppraisal.Application.Models {
 					PrevAction = response.State.PrevAction,
 					Text = response.Response.Text,
 					UserId = response.Session.UserId
-				}
+				},
+				MisunderstandingCounter = response.State.MisunderstandingCounter
 			};
 			return item;
 		}
@@ -52,6 +54,7 @@ namespace AliceAppraisal.Application.Models {
 		public class DataInfo {
 			public Req Request { get; set; }
 			public Resp Response { get; set; }
+			public Dictionary<string, int> MisunderstandingCounter { get; set; }
 
 			public class Req {
 				public string Locale { get; set; }
