@@ -201,10 +201,15 @@ namespace AliceAppraisal.Models {
 		[JsonPropertyName("state")]
 		public SessionState State { get; set; }
 
+
 		public bool HasScreen() {
 			return Meta?.Interfaces?.Screen != null;
 		}
 
+		public bool IsEmpty() {
+			return Request.Command?.IsNullOrEmpty() == true;
+		}
+		
 		public bool IsAccountLinking() {
 			return AccountLinkingCompleteEvent != null;
 		}
@@ -261,5 +266,6 @@ namespace AliceAppraisal.Models {
 		public bool IsOutsideCommand() {
 			return Request != null && !Request.Command.IsNullOrEmpty() && Session != null && Session.New;
 		}
+
 	}
 }

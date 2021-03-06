@@ -50,7 +50,7 @@ namespace AliceAppraisal {
 				logger.Error(e, e.Message);
 				ex = e;
 			} finally {
-				if (!response.IsServiceResponse()) {
+				if (!response.IsServiceResponse() && !request.IsEmpty()) {
 					await storageService.Insert(LogItem.Create(request, response, ex));
 				}
 			}

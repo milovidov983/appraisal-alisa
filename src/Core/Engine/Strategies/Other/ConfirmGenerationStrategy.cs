@@ -21,7 +21,7 @@ namespace AliceAppraisal.Core.Engine.Strategy {
 
 			return Task.FromResult(
 				new SimpleResponse {
-					Text = $"Я выбрал поколение {value.Name} для вашего авто, скажите это правильное поколение?",
+					Text = $"Выбрано поколение \"{value.Name}\", скажите, это правильное поколение?",
 					Buttons = Buttons.YesNo
 				}
 			);
