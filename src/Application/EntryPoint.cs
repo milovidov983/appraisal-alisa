@@ -51,7 +51,7 @@ namespace AliceAppraisal {
 				ex = e;
 			} finally {
 				if (!response.IsServiceResponse() && !request.IsEmpty()) {
-					await storageService.Insert(LogItem.Create(request, response, ex));
+					_ = Task.Run(async () => await storageService.Insert(LogItem.Create(request, response, ex)));
 				}
 			}
 			return response;

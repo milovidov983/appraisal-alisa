@@ -3,9 +3,9 @@ using AliceAppraisal.Core.Engine.Strategy;
 
 namespace AliceAppraisal.Core {
 	/// <summary>
-	/// Описание переходов между шагами
+	/// Описание переходов по умолчанию между шагами
 	/// </summary>
-	public static class Transitions {
+	public static class DefaultTransitions {
 		/// <summary>
 		/// Основной путь алгоритма
 		/// может изменятся внутри стратегий путем переопределения 

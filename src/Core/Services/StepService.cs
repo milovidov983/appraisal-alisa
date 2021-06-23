@@ -9,7 +9,7 @@ namespace AliceAppraisal.Core {
 		private readonly IServiceFactory serviceFactory;
 		private string customNextStep;
 		private string NextDefaultStep(BaseStrategy currentStep)
-			=> Transitions.GetDeafultNextStep(currentStep); 
+			=> DefaultTransitions.GetDeafultNextStep(currentStep); 
 
 		public StepService(IServiceFactory serviceFactory) {
 			this.serviceFactory = serviceFactory;
